@@ -46,6 +46,13 @@
             this.doctorVisitButton = new System.Windows.Forms.Button();
             this.doctorDrugButton = new System.Windows.Forms.Button();
             this.doctorDiagButton = new System.Windows.Forms.Button();
+            this.pictureBoxStripe = new System.Windows.Forms.PictureBox();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.labelAll = new System.Windows.Forms.Label();
+            this.deleteItemButton = new System.Windows.Forms.Button();
+            this.editItemButton = new System.Windows.Forms.Button();
+            this.createItemButton = new System.Windows.Forms.Button();
+            this.listBoxAll = new System.Windows.Forms.ListBox();
             this.patientRecPanel = new System.Windows.Forms.Panel();
             this.comboBoxTime = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -58,73 +65,24 @@
             this.lable8 = new System.Windows.Forms.Label();
             this.createReportButton = new System.Windows.Forms.Button();
             this.listBoxPatientsVisit = new System.Windows.Forms.ListBox();
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.deleteCardButton = new System.Windows.Forms.Button();
-            this.editCardButton = new System.Windows.Forms.Button();
-            this.createCardButton = new System.Windows.Forms.Button();
-            this.listBoxPatientsCards = new System.Windows.Forms.ListBox();
-            this.drugPanel = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.deleteDrugButton = new System.Windows.Forms.Button();
-            this.editDrugButton = new System.Windows.Forms.Button();
-            this.createDrugButton = new System.Windows.Forms.Button();
-            this.listBoxDrugs = new System.Windows.Forms.ListBox();
-            this.diagPanel = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.deleteDiagButton = new System.Windows.Forms.Button();
-            this.editDiagButton = new System.Windows.Forms.Button();
-            this.createDiagButton = new System.Windows.Forms.Button();
-            this.listBoxDiag = new System.Windows.Forms.ListBox();
-            this.adressPanel = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.deleteAddressButton = new System.Windows.Forms.Button();
-            this.editAddressButton = new System.Windows.Forms.Button();
-            this.createAddressButton = new System.Windows.Forms.Button();
-            this.listBoxAddress = new System.Windows.Forms.ListBox();
-            this.specPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.deleteSpecButton = new System.Windows.Forms.Button();
-            this.editSpecButton = new System.Windows.Forms.Button();
-            this.createSpecButton = new System.Windows.Forms.Button();
-            this.listBoxSpec = new System.Windows.Forms.ListBox();
-            this.doclistPanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.deleteDoctorButton = new System.Windows.Forms.Button();
-            this.editDoctorButton = new System.Windows.Forms.Button();
-            this.createDoctorButton = new System.Windows.Forms.Button();
-            this.listBoxDoctors = new System.Windows.Forms.ListBox();
-            this.cabinetPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.deleteCabinetButton = new System.Windows.Forms.Button();
-            this.editCabinetButton = new System.Windows.Forms.Button();
-            this.createCabinetButton = new System.Windows.Forms.Button();
-            this.listBoxCabinet = new System.Windows.Forms.ListBox();
             this.registratorButton = new System.Windows.Forms.Button();
             this.doctorButton = new System.Windows.Forms.Button();
             this.administratorButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.pictureBoxStripe = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bottomPanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.adminPanel.SuspendLayout();
             this.regPanel.SuspendLayout();
             this.docPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).BeginInit();
+            this.mainPanel.SuspendLayout();
             this.patientRecPanel.SuspendLayout();
             this.visitPanel.SuspendLayout();
-            this.mainPanel.SuspendLayout();
-            this.drugPanel.SuspendLayout();
-            this.diagPanel.SuspendLayout();
-            this.adressPanel.SuspendLayout();
-            this.specPanel.SuspendLayout();
-            this.doclistPanel.SuspendLayout();
-            this.cabinetPanel.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // bottomPanel
@@ -135,20 +93,13 @@
             this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Controls.Add(this.docPanel);
             this.bottomPanel.Controls.Add(this.pictureBoxStripe);
-            this.bottomPanel.Controls.Add(this.mainPanel);
-            this.bottomPanel.Controls.Add(this.drugPanel);
-            this.bottomPanel.Controls.Add(this.diagPanel);
-            this.bottomPanel.Controls.Add(this.adressPanel);
-            this.bottomPanel.Controls.Add(this.specPanel);
-            this.bottomPanel.Controls.Add(this.doclistPanel);
-            this.bottomPanel.Controls.Add(this.cabinetPanel);
             this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Controls.Add(this.visitPanel);
+            this.bottomPanel.Controls.Add(this.mainPanel);
             this.bottomPanel.Location = new System.Drawing.Point(0, 66);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(902, 520);
             this.bottomPanel.TabIndex = 4;
-            this.bottomPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // statusStrip1
             // 
@@ -180,7 +131,6 @@
             this.adminPanel.Size = new System.Drawing.Size(222, 443);
             this.adminPanel.TabIndex = 3;
             this.adminPanel.Visible = false;
-            this.adminPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.adminPannel_Paint);
             // 
             // adminDrugButton
             // 
@@ -288,7 +238,6 @@
             this.regPanel.Size = new System.Drawing.Size(222, 447);
             this.regPanel.TabIndex = 2;
             this.regPanel.Visible = false;
-            this.regPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.regPanel_Paint);
             // 
             // regCardsButton
             // 
@@ -384,6 +333,104 @@
             this.doctorDiagButton.Text = "Диагнозы";
             this.doctorDiagButton.UseVisualStyleBackColor = false;
             this.doctorDiagButton.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // pictureBoxStripe
+            // 
+            this.pictureBoxStripe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxStripe.Location = new System.Drawing.Point(0, 3);
+            this.pictureBoxStripe.Name = "pictureBoxStripe";
+            this.pictureBoxStripe.Size = new System.Drawing.Size(904, 53);
+            this.pictureBoxStripe.TabIndex = 0;
+            this.pictureBoxStripe.TabStop = false;
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.Controls.Add(this.labelAll);
+            this.mainPanel.Controls.Add(this.deleteItemButton);
+            this.mainPanel.Controls.Add(this.editItemButton);
+            this.mainPanel.Controls.Add(this.createItemButton);
+            this.mainPanel.Controls.Add(this.listBoxAll);
+            this.mainPanel.Location = new System.Drawing.Point(228, 56);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(674, 443);
+            this.mainPanel.TabIndex = 10;
+            this.mainPanel.Visible = false;
+            // 
+            // labelAll
+            // 
+            this.labelAll.AutoSize = true;
+            this.labelAll.BackColor = System.Drawing.Color.DodgerBlue;
+            this.labelAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelAll.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelAll.Location = new System.Drawing.Point(63, 22);
+            this.labelAll.Name = "labelAll";
+            this.labelAll.Size = new System.Drawing.Size(220, 26);
+            this.labelAll.TabIndex = 4;
+            this.labelAll.Text = "КАРТОЧКИ ПАЦИЕНТОВ";
+            // 
+            // deleteItemButton
+            // 
+            this.deleteItemButton.Enabled = false;
+            this.deleteItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.deleteItemButton.FlatAppearance.BorderSize = 4;
+            this.deleteItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.deleteItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.deleteItemButton.Location = new System.Drawing.Point(471, 373);
+            this.deleteItemButton.Name = "deleteItemButton";
+            this.deleteItemButton.Size = new System.Drawing.Size(111, 44);
+            this.deleteItemButton.TabIndex = 3;
+            this.deleteItemButton.Text = "Удалить";
+            this.deleteItemButton.UseVisualStyleBackColor = true;
+            // 
+            // editItemButton
+            // 
+            this.editItemButton.Enabled = false;
+            this.editItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.editItemButton.FlatAppearance.BorderSize = 4;
+            this.editItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.editItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.editItemButton.Location = new System.Drawing.Point(263, 373);
+            this.editItemButton.Name = "editItemButton";
+            this.editItemButton.Size = new System.Drawing.Size(143, 44);
+            this.editItemButton.TabIndex = 2;
+            this.editItemButton.Text = "Редактировать";
+            this.editItemButton.UseVisualStyleBackColor = true;
+            this.editItemButton.Click += new System.EventHandler(this.editCardButton_Click);
+            // 
+            // createItemButton
+            // 
+            this.createItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.createItemButton.FlatAppearance.BorderSize = 4;
+            this.createItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.createItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.createItemButton.Location = new System.Drawing.Point(86, 373);
+            this.createItemButton.Name = "createItemButton";
+            this.createItemButton.Size = new System.Drawing.Size(111, 44);
+            this.createItemButton.TabIndex = 1;
+            this.createItemButton.Text = "Создать";
+            this.createItemButton.UseVisualStyleBackColor = true;
+            this.createItemButton.Click += new System.EventHandler(this.createCardButton_Click);
+            // 
+            // listBoxAll
+            // 
+            this.listBoxAll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxAll.FormattingEnabled = true;
+            this.listBoxAll.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.listBoxAll.Location = new System.Drawing.Point(63, 51);
+            this.listBoxAll.Name = "listBoxAll";
+            this.listBoxAll.Size = new System.Drawing.Size(547, 301);
+            this.listBoxAll.TabIndex = 0;
+            this.listBoxAll.SelectedIndexChanged += new System.EventHandler(this.listBoxPatientsCards_SelectedIndexChanged);
             // 
             // patientRecPanel
             // 
@@ -550,622 +597,7 @@
             this.listBoxPatientsVisit.Name = "listBoxPatientsVisit";
             this.listBoxPatientsVisit.Size = new System.Drawing.Size(547, 301);
             this.listBoxPatientsVisit.TabIndex = 0;
-            this.listBoxPatientsVisit.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged);
             this.listBoxPatientsVisit.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox7_MouseDoubleClick);
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.Controls.Add(this.label8);
-            this.mainPanel.Controls.Add(this.deleteCardButton);
-            this.mainPanel.Controls.Add(this.editCardButton);
-            this.mainPanel.Controls.Add(this.createCardButton);
-            this.mainPanel.Controls.Add(this.listBoxPatientsCards);
-            this.mainPanel.Location = new System.Drawing.Point(228, 56);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(674, 443);
-            this.mainPanel.TabIndex = 10;
-            this.mainPanel.Visible = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(63, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(220, 26);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "КАРТОЧКИ ПАЦИЕНТОВ";
-            // 
-            // deleteCardButton
-            // 
-            this.deleteCardButton.Enabled = false;
-            this.deleteCardButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.deleteCardButton.FlatAppearance.BorderSize = 4;
-            this.deleteCardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.deleteCardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteCardButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteCardButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.deleteCardButton.Location = new System.Drawing.Point(471, 373);
-            this.deleteCardButton.Name = "deleteCardButton";
-            this.deleteCardButton.Size = new System.Drawing.Size(111, 44);
-            this.deleteCardButton.TabIndex = 3;
-            this.deleteCardButton.Text = "Удалить";
-            this.deleteCardButton.UseVisualStyleBackColor = true;
-            // 
-            // editCardButton
-            // 
-            this.editCardButton.Enabled = false;
-            this.editCardButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.editCardButton.FlatAppearance.BorderSize = 4;
-            this.editCardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.editCardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editCardButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editCardButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.editCardButton.Location = new System.Drawing.Point(263, 373);
-            this.editCardButton.Name = "editCardButton";
-            this.editCardButton.Size = new System.Drawing.Size(143, 44);
-            this.editCardButton.TabIndex = 2;
-            this.editCardButton.Text = "Редактировать";
-            this.editCardButton.UseVisualStyleBackColor = true;
-            this.editCardButton.Click += new System.EventHandler(this.editCardButton_Click);
-            // 
-            // createCardButton
-            // 
-            this.createCardButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createCardButton.FlatAppearance.BorderSize = 4;
-            this.createCardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createCardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createCardButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createCardButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createCardButton.Location = new System.Drawing.Point(86, 373);
-            this.createCardButton.Name = "createCardButton";
-            this.createCardButton.Size = new System.Drawing.Size(111, 44);
-            this.createCardButton.TabIndex = 1;
-            this.createCardButton.Text = "Создать";
-            this.createCardButton.UseVisualStyleBackColor = true;
-            this.createCardButton.Click += new System.EventHandler(this.createCardButton_Click);
-            // 
-            // listBoxPatientsCards
-            // 
-            this.listBoxPatientsCards.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxPatientsCards.FormattingEnabled = true;
-            this.listBoxPatientsCards.Items.AddRange(new object[] {
-            "Иванов",
-            "Петров",
-            "Сидоров"});
-            this.listBoxPatientsCards.Location = new System.Drawing.Point(63, 51);
-            this.listBoxPatientsCards.Name = "listBoxPatientsCards";
-            this.listBoxPatientsCards.Size = new System.Drawing.Size(547, 301);
-            this.listBoxPatientsCards.TabIndex = 0;
-            this.listBoxPatientsCards.SelectedIndexChanged += new System.EventHandler(this.listBoxPatientsCards_SelectedIndexChanged);
-            // 
-            // drugPanel
-            // 
-            this.drugPanel.Controls.Add(this.label6);
-            this.drugPanel.Controls.Add(this.deleteDrugButton);
-            this.drugPanel.Controls.Add(this.editDrugButton);
-            this.drugPanel.Controls.Add(this.createDrugButton);
-            this.drugPanel.Controls.Add(this.listBoxDrugs);
-            this.drugPanel.Location = new System.Drawing.Point(228, 56);
-            this.drugPanel.Name = "drugPanel";
-            this.drugPanel.Size = new System.Drawing.Size(674, 443);
-            this.drugPanel.TabIndex = 9;
-            this.drugPanel.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(63, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 26);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "ЛЕКАРСТВА";
-            // 
-            // deleteDrugButton
-            // 
-            this.deleteDrugButton.Enabled = false;
-            this.deleteDrugButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.deleteDrugButton.FlatAppearance.BorderSize = 4;
-            this.deleteDrugButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.deleteDrugButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteDrugButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteDrugButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.deleteDrugButton.Location = new System.Drawing.Point(471, 373);
-            this.deleteDrugButton.Name = "deleteDrugButton";
-            this.deleteDrugButton.Size = new System.Drawing.Size(111, 44);
-            this.deleteDrugButton.TabIndex = 3;
-            this.deleteDrugButton.Text = "Удалить";
-            this.deleteDrugButton.UseVisualStyleBackColor = true;
-            // 
-            // editDrugButton
-            // 
-            this.editDrugButton.Enabled = false;
-            this.editDrugButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.editDrugButton.FlatAppearance.BorderSize = 4;
-            this.editDrugButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.editDrugButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editDrugButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editDrugButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.editDrugButton.Location = new System.Drawing.Point(263, 373);
-            this.editDrugButton.Name = "editDrugButton";
-            this.editDrugButton.Size = new System.Drawing.Size(143, 44);
-            this.editDrugButton.TabIndex = 2;
-            this.editDrugButton.Text = "Редактировать";
-            this.editDrugButton.UseVisualStyleBackColor = true;
-            this.editDrugButton.Click += new System.EventHandler(this.button31_Click);
-            // 
-            // createDrugButton
-            // 
-            this.createDrugButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createDrugButton.FlatAppearance.BorderSize = 4;
-            this.createDrugButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createDrugButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createDrugButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createDrugButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createDrugButton.Location = new System.Drawing.Point(86, 373);
-            this.createDrugButton.Name = "createDrugButton";
-            this.createDrugButton.Size = new System.Drawing.Size(111, 44);
-            this.createDrugButton.TabIndex = 1;
-            this.createDrugButton.Text = "Создать";
-            this.createDrugButton.UseVisualStyleBackColor = true;
-            // 
-            // listBoxDrugs
-            // 
-            this.listBoxDrugs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxDrugs.FormattingEnabled = true;
-            this.listBoxDrugs.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.listBoxDrugs.Location = new System.Drawing.Point(63, 51);
-            this.listBoxDrugs.Name = "listBoxDrugs";
-            this.listBoxDrugs.Size = new System.Drawing.Size(547, 301);
-            this.listBoxDrugs.TabIndex = 0;
-            this.listBoxDrugs.SelectedIndexChanged += new System.EventHandler(this.listBoxDrugs_SelectedIndexChanged);
-            // 
-            // diagPanel
-            // 
-            this.diagPanel.Controls.Add(this.label5);
-            this.diagPanel.Controls.Add(this.deleteDiagButton);
-            this.diagPanel.Controls.Add(this.editDiagButton);
-            this.diagPanel.Controls.Add(this.createDiagButton);
-            this.diagPanel.Controls.Add(this.listBoxDiag);
-            this.diagPanel.Location = new System.Drawing.Point(228, 56);
-            this.diagPanel.Name = "diagPanel";
-            this.diagPanel.Size = new System.Drawing.Size(674, 443);
-            this.diagPanel.TabIndex = 8;
-            this.diagPanel.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(63, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 26);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "ДИАГНОЗЫ";
-            // 
-            // deleteDiagButton
-            // 
-            this.deleteDiagButton.Enabled = false;
-            this.deleteDiagButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.deleteDiagButton.FlatAppearance.BorderSize = 4;
-            this.deleteDiagButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.deleteDiagButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteDiagButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteDiagButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.deleteDiagButton.Location = new System.Drawing.Point(471, 373);
-            this.deleteDiagButton.Name = "deleteDiagButton";
-            this.deleteDiagButton.Size = new System.Drawing.Size(111, 44);
-            this.deleteDiagButton.TabIndex = 3;
-            this.deleteDiagButton.Text = "Удалить";
-            this.deleteDiagButton.UseVisualStyleBackColor = true;
-            // 
-            // editDiagButton
-            // 
-            this.editDiagButton.Enabled = false;
-            this.editDiagButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.editDiagButton.FlatAppearance.BorderSize = 4;
-            this.editDiagButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.editDiagButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editDiagButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editDiagButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.editDiagButton.Location = new System.Drawing.Point(263, 373);
-            this.editDiagButton.Name = "editDiagButton";
-            this.editDiagButton.Size = new System.Drawing.Size(143, 44);
-            this.editDiagButton.TabIndex = 2;
-            this.editDiagButton.Text = "Редактировать";
-            this.editDiagButton.UseVisualStyleBackColor = true;
-            // 
-            // createDiagButton
-            // 
-            this.createDiagButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createDiagButton.FlatAppearance.BorderSize = 4;
-            this.createDiagButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createDiagButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createDiagButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createDiagButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createDiagButton.Location = new System.Drawing.Point(86, 373);
-            this.createDiagButton.Name = "createDiagButton";
-            this.createDiagButton.Size = new System.Drawing.Size(111, 44);
-            this.createDiagButton.TabIndex = 1;
-            this.createDiagButton.Text = "Создать";
-            this.createDiagButton.UseVisualStyleBackColor = true;
-            // 
-            // listBoxDiag
-            // 
-            this.listBoxDiag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxDiag.FormattingEnabled = true;
-            this.listBoxDiag.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.listBoxDiag.Location = new System.Drawing.Point(63, 51);
-            this.listBoxDiag.Name = "listBoxDiag";
-            this.listBoxDiag.Size = new System.Drawing.Size(547, 301);
-            this.listBoxDiag.TabIndex = 0;
-            this.listBoxDiag.SelectedIndexChanged += new System.EventHandler(this.listBoxDiag_SelectedIndexChanged);
-            // 
-            // adressPanel
-            // 
-            this.adressPanel.Controls.Add(this.label4);
-            this.adressPanel.Controls.Add(this.deleteAddressButton);
-            this.adressPanel.Controls.Add(this.editAddressButton);
-            this.adressPanel.Controls.Add(this.createAddressButton);
-            this.adressPanel.Controls.Add(this.listBoxAddress);
-            this.adressPanel.Location = new System.Drawing.Point(228, 56);
-            this.adressPanel.Name = "adressPanel";
-            this.adressPanel.Size = new System.Drawing.Size(674, 443);
-            this.adressPanel.TabIndex = 7;
-            this.adressPanel.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(63, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 26);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "АДРЕСА";
-            // 
-            // deleteAddressButton
-            // 
-            this.deleteAddressButton.Enabled = false;
-            this.deleteAddressButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.deleteAddressButton.FlatAppearance.BorderSize = 4;
-            this.deleteAddressButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.deleteAddressButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteAddressButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteAddressButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.deleteAddressButton.Location = new System.Drawing.Point(471, 373);
-            this.deleteAddressButton.Name = "deleteAddressButton";
-            this.deleteAddressButton.Size = new System.Drawing.Size(111, 44);
-            this.deleteAddressButton.TabIndex = 3;
-            this.deleteAddressButton.Text = "Удалить";
-            this.deleteAddressButton.UseVisualStyleBackColor = true;
-            // 
-            // editAddressButton
-            // 
-            this.editAddressButton.Enabled = false;
-            this.editAddressButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.editAddressButton.FlatAppearance.BorderSize = 4;
-            this.editAddressButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.editAddressButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editAddressButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editAddressButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.editAddressButton.Location = new System.Drawing.Point(263, 373);
-            this.editAddressButton.Name = "editAddressButton";
-            this.editAddressButton.Size = new System.Drawing.Size(143, 44);
-            this.editAddressButton.TabIndex = 2;
-            this.editAddressButton.Text = "Редактировать";
-            this.editAddressButton.UseVisualStyleBackColor = true;
-            // 
-            // createAddressButton
-            // 
-            this.createAddressButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createAddressButton.FlatAppearance.BorderSize = 4;
-            this.createAddressButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createAddressButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createAddressButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createAddressButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createAddressButton.Location = new System.Drawing.Point(86, 373);
-            this.createAddressButton.Name = "createAddressButton";
-            this.createAddressButton.Size = new System.Drawing.Size(111, 44);
-            this.createAddressButton.TabIndex = 1;
-            this.createAddressButton.Text = "Создать";
-            this.createAddressButton.UseVisualStyleBackColor = true;
-            // 
-            // listBoxAddress
-            // 
-            this.listBoxAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxAddress.FormattingEnabled = true;
-            this.listBoxAddress.Items.AddRange(new object[] {
-            "Невский пр. 13/12",
-            "Победы пл. 2а/43",
-            "К.Маркса ул. 36/8"});
-            this.listBoxAddress.Location = new System.Drawing.Point(63, 51);
-            this.listBoxAddress.Name = "listBoxAddress";
-            this.listBoxAddress.Size = new System.Drawing.Size(547, 301);
-            this.listBoxAddress.TabIndex = 0;
-            this.listBoxAddress.SelectedIndexChanged += new System.EventHandler(this.listBoxAddress_SelectedIndexChanged);
-            // 
-            // specPanel
-            // 
-            this.specPanel.Controls.Add(this.label3);
-            this.specPanel.Controls.Add(this.deleteSpecButton);
-            this.specPanel.Controls.Add(this.editSpecButton);
-            this.specPanel.Controls.Add(this.createSpecButton);
-            this.specPanel.Controls.Add(this.listBoxSpec);
-            this.specPanel.Location = new System.Drawing.Point(228, 56);
-            this.specPanel.Name = "specPanel";
-            this.specPanel.Size = new System.Drawing.Size(674, 443);
-            this.specPanel.TabIndex = 6;
-            this.specPanel.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(63, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 26);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "СПЕЦИАЛИЗАЦИИ";
-            // 
-            // deleteSpecButton
-            // 
-            this.deleteSpecButton.Enabled = false;
-            this.deleteSpecButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.deleteSpecButton.FlatAppearance.BorderSize = 4;
-            this.deleteSpecButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.deleteSpecButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteSpecButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteSpecButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.deleteSpecButton.Location = new System.Drawing.Point(471, 373);
-            this.deleteSpecButton.Name = "deleteSpecButton";
-            this.deleteSpecButton.Size = new System.Drawing.Size(111, 44);
-            this.deleteSpecButton.TabIndex = 3;
-            this.deleteSpecButton.Text = "Удалить";
-            this.deleteSpecButton.UseVisualStyleBackColor = true;
-            // 
-            // editSpecButton
-            // 
-            this.editSpecButton.Enabled = false;
-            this.editSpecButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.editSpecButton.FlatAppearance.BorderSize = 4;
-            this.editSpecButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.editSpecButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editSpecButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editSpecButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.editSpecButton.Location = new System.Drawing.Point(263, 373);
-            this.editSpecButton.Name = "editSpecButton";
-            this.editSpecButton.Size = new System.Drawing.Size(143, 44);
-            this.editSpecButton.TabIndex = 2;
-            this.editSpecButton.Text = "Редактировать";
-            this.editSpecButton.UseVisualStyleBackColor = true;
-            // 
-            // createSpecButton
-            // 
-            this.createSpecButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createSpecButton.FlatAppearance.BorderSize = 4;
-            this.createSpecButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createSpecButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createSpecButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createSpecButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createSpecButton.Location = new System.Drawing.Point(86, 373);
-            this.createSpecButton.Name = "createSpecButton";
-            this.createSpecButton.Size = new System.Drawing.Size(111, 44);
-            this.createSpecButton.TabIndex = 1;
-            this.createSpecButton.Text = "Создать";
-            this.createSpecButton.UseVisualStyleBackColor = true;
-            // 
-            // listBoxSpec
-            // 
-            this.listBoxSpec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxSpec.FormattingEnabled = true;
-            this.listBoxSpec.Items.AddRange(new object[] {
-            "Офтальмолог",
-            "Хирург",
-            "Стоматолог"});
-            this.listBoxSpec.Location = new System.Drawing.Point(63, 51);
-            this.listBoxSpec.Name = "listBoxSpec";
-            this.listBoxSpec.Size = new System.Drawing.Size(547, 301);
-            this.listBoxSpec.TabIndex = 0;
-            this.listBoxSpec.SelectedIndexChanged += new System.EventHandler(this.listBoxSpec_SelectedIndexChanged);
-            // 
-            // doclistPanel
-            // 
-            this.doclistPanel.Controls.Add(this.label2);
-            this.doclistPanel.Controls.Add(this.deleteDoctorButton);
-            this.doclistPanel.Controls.Add(this.editDoctorButton);
-            this.doclistPanel.Controls.Add(this.createDoctorButton);
-            this.doclistPanel.Controls.Add(this.listBoxDoctors);
-            this.doclistPanel.Location = new System.Drawing.Point(228, 56);
-            this.doclistPanel.Name = "doclistPanel";
-            this.doclistPanel.Size = new System.Drawing.Size(674, 443);
-            this.doclistPanel.TabIndex = 5;
-            this.doclistPanel.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(63, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 26);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "ВРАЧИ";
-            // 
-            // deleteDoctorButton
-            // 
-            this.deleteDoctorButton.Enabled = false;
-            this.deleteDoctorButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.deleteDoctorButton.FlatAppearance.BorderSize = 4;
-            this.deleteDoctorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.deleteDoctorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteDoctorButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteDoctorButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.deleteDoctorButton.Location = new System.Drawing.Point(471, 373);
-            this.deleteDoctorButton.Name = "deleteDoctorButton";
-            this.deleteDoctorButton.Size = new System.Drawing.Size(111, 44);
-            this.deleteDoctorButton.TabIndex = 3;
-            this.deleteDoctorButton.Text = "Удалить";
-            this.deleteDoctorButton.UseVisualStyleBackColor = true;
-            // 
-            // editDoctorButton
-            // 
-            this.editDoctorButton.Enabled = false;
-            this.editDoctorButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.editDoctorButton.FlatAppearance.BorderSize = 4;
-            this.editDoctorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.editDoctorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editDoctorButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editDoctorButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.editDoctorButton.Location = new System.Drawing.Point(263, 373);
-            this.editDoctorButton.Name = "editDoctorButton";
-            this.editDoctorButton.Size = new System.Drawing.Size(143, 44);
-            this.editDoctorButton.TabIndex = 2;
-            this.editDoctorButton.Text = "Редактировать";
-            this.editDoctorButton.UseVisualStyleBackColor = true;
-            // 
-            // createDoctorButton
-            // 
-            this.createDoctorButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createDoctorButton.FlatAppearance.BorderSize = 4;
-            this.createDoctorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createDoctorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createDoctorButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createDoctorButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createDoctorButton.Location = new System.Drawing.Point(86, 373);
-            this.createDoctorButton.Name = "createDoctorButton";
-            this.createDoctorButton.Size = new System.Drawing.Size(111, 44);
-            this.createDoctorButton.TabIndex = 1;
-            this.createDoctorButton.Text = "Создать";
-            this.createDoctorButton.UseVisualStyleBackColor = true;
-            // 
-            // listBoxDoctors
-            // 
-            this.listBoxDoctors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxDoctors.FormattingEnabled = true;
-            this.listBoxDoctors.Items.AddRange(new object[] {
-            "Иванов",
-            "Петров",
-            "Сидоров"});
-            this.listBoxDoctors.Location = new System.Drawing.Point(63, 51);
-            this.listBoxDoctors.Name = "listBoxDoctors";
-            this.listBoxDoctors.Size = new System.Drawing.Size(547, 301);
-            this.listBoxDoctors.TabIndex = 0;
-            this.listBoxDoctors.SelectedIndexChanged += new System.EventHandler(this.listBoxDoctors_SelectedIndexChanged);
-            // 
-            // cabinetPanel
-            // 
-            this.cabinetPanel.Controls.Add(this.label1);
-            this.cabinetPanel.Controls.Add(this.deleteCabinetButton);
-            this.cabinetPanel.Controls.Add(this.editCabinetButton);
-            this.cabinetPanel.Controls.Add(this.createCabinetButton);
-            this.cabinetPanel.Controls.Add(this.listBoxCabinet);
-            this.cabinetPanel.Location = new System.Drawing.Point(228, 56);
-            this.cabinetPanel.Name = "cabinetPanel";
-            this.cabinetPanel.Size = new System.Drawing.Size(674, 443);
-            this.cabinetPanel.TabIndex = 4;
-            this.cabinetPanel.Visible = false;
-            this.cabinetPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.cabinetPannel_Paint);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(63, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 26);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "КАБИНЕТЫ";
-            // 
-            // deleteCabinetButton
-            // 
-            this.deleteCabinetButton.Enabled = false;
-            this.deleteCabinetButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.deleteCabinetButton.FlatAppearance.BorderSize = 4;
-            this.deleteCabinetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.deleteCabinetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteCabinetButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteCabinetButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.deleteCabinetButton.Location = new System.Drawing.Point(471, 373);
-            this.deleteCabinetButton.Name = "deleteCabinetButton";
-            this.deleteCabinetButton.Size = new System.Drawing.Size(111, 44);
-            this.deleteCabinetButton.TabIndex = 3;
-            this.deleteCabinetButton.Text = "Удалить";
-            this.deleteCabinetButton.UseVisualStyleBackColor = true;
-            // 
-            // editCabinetButton
-            // 
-            this.editCabinetButton.Enabled = false;
-            this.editCabinetButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.editCabinetButton.FlatAppearance.BorderSize = 4;
-            this.editCabinetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.editCabinetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editCabinetButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editCabinetButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.editCabinetButton.Location = new System.Drawing.Point(263, 373);
-            this.editCabinetButton.Name = "editCabinetButton";
-            this.editCabinetButton.Size = new System.Drawing.Size(143, 44);
-            this.editCabinetButton.TabIndex = 2;
-            this.editCabinetButton.Text = "Редактировать";
-            this.editCabinetButton.UseVisualStyleBackColor = true;
-            this.editCabinetButton.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // createCabinetButton
-            // 
-            this.createCabinetButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createCabinetButton.FlatAppearance.BorderSize = 4;
-            this.createCabinetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createCabinetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createCabinetButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createCabinetButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createCabinetButton.Location = new System.Drawing.Point(86, 373);
-            this.createCabinetButton.Name = "createCabinetButton";
-            this.createCabinetButton.Size = new System.Drawing.Size(111, 44);
-            this.createCabinetButton.TabIndex = 1;
-            this.createCabinetButton.Text = "Создать";
-            this.createCabinetButton.UseVisualStyleBackColor = true;
-            // 
-            // listBoxCabinet
-            // 
-            this.listBoxCabinet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxCabinet.FormattingEnabled = true;
-            this.listBoxCabinet.Items.AddRange(new object[] {
-            "101",
-            "102",
-            "103"});
-            this.listBoxCabinet.Location = new System.Drawing.Point(63, 51);
-            this.listBoxCabinet.Name = "listBoxCabinet";
-            this.listBoxCabinet.Size = new System.Drawing.Size(547, 301);
-            this.listBoxCabinet.TabIndex = 0;
-            this.listBoxCabinet.SelectedIndexChanged += new System.EventHandler(this.listBoxCabinet_SelectedIndexChanged);
             // 
             // registratorButton
             // 
@@ -1236,15 +668,6 @@
             this.panel1.Size = new System.Drawing.Size(904, 73);
             this.panel1.TabIndex = 5;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.палка;
-            this.pictureBox1.Location = new System.Drawing.Point(-3, 61);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(905, 10);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.logo;
@@ -1258,15 +681,14 @@
             this.pictureBoxLogo.TabStop = false;
             this.pictureBoxLogo.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // pictureBoxStripe
+            // pictureBox1
             // 
-            this.pictureBoxStripe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxStripe.Location = new System.Drawing.Point(0, 3);
-            this.pictureBoxStripe.Name = "pictureBoxStripe";
-            this.pictureBoxStripe.Size = new System.Drawing.Size(904, 53);
-            this.pictureBoxStripe.TabIndex = 0;
-            this.pictureBoxStripe.TabStop = false;
-            this.pictureBoxStripe.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.палка;
+            this.pictureBox1.Location = new System.Drawing.Point(-3, 61);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(905, 10);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // frmStart
             // 
@@ -1292,28 +714,16 @@
             this.adminPanel.ResumeLayout(false);
             this.regPanel.ResumeLayout(false);
             this.docPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).EndInit();
+            this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
             this.patientRecPanel.ResumeLayout(false);
             this.patientRecPanel.PerformLayout();
             this.visitPanel.ResumeLayout(false);
             this.visitPanel.PerformLayout();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            this.drugPanel.ResumeLayout(false);
-            this.drugPanel.PerformLayout();
-            this.diagPanel.ResumeLayout(false);
-            this.diagPanel.PerformLayout();
-            this.adressPanel.ResumeLayout(false);
-            this.adressPanel.PerformLayout();
-            this.specPanel.ResumeLayout(false);
-            this.specPanel.PerformLayout();
-            this.doclistPanel.ResumeLayout(false);
-            this.doclistPanel.PerformLayout();
-            this.cabinetPanel.ResumeLayout(false);
-            this.cabinetPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1341,42 +751,6 @@
         private System.Windows.Forms.Button adminSpecButton;
         private System.Windows.Forms.Button adminDocButton;
         private System.Windows.Forms.Button adminCabinetButton;
-        private System.Windows.Forms.Panel cabinetPanel;
-        private System.Windows.Forms.Button editCabinetButton;
-        private System.Windows.Forms.Button createCabinetButton;
-        private System.Windows.Forms.ListBox listBoxCabinet;
-        private System.Windows.Forms.Button deleteCabinetButton;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel doclistPanel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button deleteDoctorButton;
-        private System.Windows.Forms.Button editDoctorButton;
-        private System.Windows.Forms.Button createDoctorButton;
-        private System.Windows.Forms.ListBox listBoxDoctors;
-        private System.Windows.Forms.Panel specPanel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button deleteSpecButton;
-        private System.Windows.Forms.Button editSpecButton;
-        private System.Windows.Forms.Button createSpecButton;
-        private System.Windows.Forms.ListBox listBoxSpec;
-        private System.Windows.Forms.Panel adressPanel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button deleteAddressButton;
-        private System.Windows.Forms.Button editAddressButton;
-        private System.Windows.Forms.Button createAddressButton;
-        private System.Windows.Forms.ListBox listBoxAddress;
-        private System.Windows.Forms.Panel diagPanel;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button deleteDiagButton;
-        private System.Windows.Forms.Button editDiagButton;
-        private System.Windows.Forms.Button createDiagButton;
-        private System.Windows.Forms.ListBox listBoxDiag;
-        private System.Windows.Forms.Panel drugPanel;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button deleteDrugButton;
-        private System.Windows.Forms.Button editDrugButton;
-        private System.Windows.Forms.Button createDrugButton;
-        private System.Windows.Forms.ListBox listBoxDrugs;
         private System.Windows.Forms.Panel patientRecPanel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel visitPanel;
@@ -1385,11 +759,11 @@
         private System.Windows.Forms.ListBox listBoxPatientsVisit;
         private System.Windows.Forms.Button patRecButton;
         private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button deleteCardButton;
-        private System.Windows.Forms.Button editCardButton;
-        private System.Windows.Forms.Button createCardButton;
-        private System.Windows.Forms.ListBox listBoxPatientsCards;
+        private System.Windows.Forms.Label labelAll;
+        private System.Windows.Forms.Button deleteItemButton;
+        private System.Windows.Forms.Button editItemButton;
+        private System.Windows.Forms.Button createItemButton;
+        private System.Windows.Forms.ListBox listBoxAll;
         private System.Windows.Forms.ComboBox comboBoxNamePac;
         private System.Windows.Forms.ComboBox comboBoxTime;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
