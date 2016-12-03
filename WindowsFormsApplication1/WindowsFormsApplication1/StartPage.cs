@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
         frmPat formPatList;
         frmCreate formCreate;
         frmEdit formEdit;
+        DateTime date;
 
         private void Start_Load(object sender, EventArgs e)
         {
@@ -42,6 +43,18 @@ namespace WindowsFormsApplication1
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
+            date = DateTime.Now;
+            timer1 = new Timer();
+            timer1.Interval = 10;
+            timer1.Tick += new EventHandler(tickTimer);
+            timer1.Start();
+        }
+        private void tickTimer(object sender, EventArgs e)
+        {
+            long tick = DateTime.Now.Ticks - date.Ticks;
+            DateTime stopWatch=new DateTime();
+            stopWatch=stopWatch.AddTicks(tick);
+            TimeLb1.Text = String.Format("{0:HH:mm:ss}", stopWatch);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -56,6 +69,11 @@ namespace WindowsFormsApplication1
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
+            date = DateTime.Now;
+            timer1 = new Timer();
+            timer1.Interval = 10;
+            timer1.Tick += new EventHandler(tickTimer);
+            timer1.Start();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -70,6 +88,11 @@ namespace WindowsFormsApplication1
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
+            date = DateTime.Now;
+            timer1 = new Timer();
+            timer1.Interval = 10;
+            timer1.Tick += new EventHandler(tickTimer);
+            timer1.Start();
         }
 
         private void button3_MouseMove(object sender, MouseEventArgs e)
@@ -274,6 +297,11 @@ namespace WindowsFormsApplication1
         private void editCardButton_Click(object sender, EventArgs e)
         {
             formEdit.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLb1.Text = string.Format("Текущее время: {0}", DateTime.Now.ToString("HH:mm:ss"));
         }
     }
 }
