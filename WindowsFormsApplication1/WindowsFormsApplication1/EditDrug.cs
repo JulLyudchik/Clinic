@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmCreate : Form
+    public partial class frmEditDrug : Form
     {
-        public frmCreate()
+        public frmEditDrug()
         {
             InitializeComponent();
         }
 
-        private void frmCreate_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmCreate_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmEditDrug_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             Hide();

@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmEdit : Form
+    public partial class frmEditAddress : Form
     {
-        public frmEdit()
+        public frmEditAddress()
         {
             InitializeComponent();
         }
 
-        private void frmEdit_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmEditAddress_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             Hide();

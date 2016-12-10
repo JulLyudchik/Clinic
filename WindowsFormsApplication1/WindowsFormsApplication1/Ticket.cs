@@ -15,12 +15,12 @@ namespace WindowsFormsApplication1
         public frmTicket()
         {
             InitializeComponent();
+            
         }
 
         private void frmTicket_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
-            Hide();
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -41,6 +41,18 @@ namespace WindowsFormsApplication1
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmTicket_Load(object sender, EventArgs e)
+        {
+            frmStart main = this.Owner as frmStart;
+            if (main != null)
+            {
+                labelPac.Text = main.comboBoxNamePac.SelectedItem.ToString();
+                labelDocName.Text = main.comboBoxNameDoc.SelectedItem.ToString();
+                labelDocSpec.Text = main.comboBoxSpec.SelectedItem.ToString();
+
+            }
         }
     }
 }

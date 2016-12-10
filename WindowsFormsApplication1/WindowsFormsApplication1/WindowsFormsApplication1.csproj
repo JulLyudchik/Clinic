@@ -46,17 +46,95 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateItem.cs">
+    <Compile Include="CreateAddress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateItem.Designer.cs">
-      <DependentUpon>CreateItem.cs</DependentUpon>
+    <Compile Include="CreateAddress.Designer.cs">
+      <DependentUpon>CreateAddress.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditItem.cs">
+    <Compile Include="CreateCabinet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditItem.Designer.cs">
-      <DependentUpon>EditItem.cs</DependentUpon>
+    <Compile Include="CreateCabinet.Designer.cs">
+      <DependentUpon>CreateCabinet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCard.Designer.cs">
+      <DependentUpon>CreateCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateDiag.Designer.cs">
+      <DependentUpon>CreateDiag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateDoctor.Designer.cs">
+      <DependentUpon>CreateDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateDrug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateDrug.Designer.cs">
+      <DependentUpon>CreateDrug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateSpec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSpec.Designer.cs">
+      <DependentUpon>CreateSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoctorReg.Designer.cs">
+      <DependentUpon>DoctorReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAddress.Designer.cs">
+      <DependentUpon>EditAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditCabinet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCabinet.Designer.cs">
+      <DependentUpon>EditCabinet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCard.Designer.cs">
+      <DependentUpon>EditCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDiag.Designer.cs">
+      <DependentUpon>EditDiag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDoctor.Designer.cs">
+      <DependentUpon>EditDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDrug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDrug.Designer.cs">
+      <DependentUpon>EditDrug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSpec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSpec.Designer.cs">
+      <DependentUpon>EditSpec.cs</DependentUpon>
     </Compile>
     <Compile Include="PatientListElement.cs">
       <SubType>Form</SubType>
@@ -78,11 +156,50 @@
     <Compile Include="Ticket.Designer.cs">
       <DependentUpon>Ticket.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CreateItem.resx">
-      <DependentUpon>CreateItem.cs</DependentUpon>
+    <EmbeddedResource Include="CreateAddress.resx">
+      <DependentUpon>CreateAddress.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditItem.resx">
-      <DependentUpon>EditItem.cs</DependentUpon>
+    <EmbeddedResource Include="CreateCabinet.resx">
+      <DependentUpon>CreateCabinet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCard.resx">
+      <DependentUpon>CreateCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateDiag.resx">
+      <DependentUpon>CreateDiag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateDoctor.resx">
+      <DependentUpon>CreateDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateDrug.resx">
+      <DependentUpon>CreateDrug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateSpec.resx">
+      <DependentUpon>CreateSpec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoctorReg.resx">
+      <DependentUpon>DoctorReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAddress.resx">
+      <DependentUpon>EditAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCabinet.resx">
+      <DependentUpon>EditCabinet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCard.resx">
+      <DependentUpon>EditCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDiag.resx">
+      <DependentUpon>EditDiag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDoctor.resx">
+      <DependentUpon>EditDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDrug.resx">
+      <DependentUpon>EditDrug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSpec.resx">
+      <DependentUpon>EditSpec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientListElement.resx">
       <DependentUpon>PatientListElement.cs</DependentUpon>

@@ -10,28 +10,27 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmPat : Form
+    public partial class frmCreateCab : Form
     {
-        public frmPat()
+        public frmCreateCab()
         {
             InitializeComponent();
-            label1.Text = this.Text;
         }
 
-        private void frmPat_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmCreate_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmCreate_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             Hide();
         }
 
-        private void frmPat_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
     }
 }

@@ -30,6 +30,12 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelTime = new System.Windows.Forms.Label();
+            this.labelDate = new System.Windows.Forms.Label();
+            this.labelCab = new System.Windows.Forms.Label();
+            this.labelDocName = new System.Windows.Forms.Label();
+            this.labelDocSpec = new System.Windows.Forms.Label();
+            this.labelPac = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,6 +65,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.labelTime);
+            this.panel1.Controls.Add(this.labelDate);
+            this.panel1.Controls.Add(this.labelCab);
+            this.panel1.Controls.Add(this.labelDocName);
+            this.panel1.Controls.Add(this.labelDocSpec);
+            this.panel1.Controls.Add(this.labelPac);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
@@ -70,6 +82,60 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(391, 269);
             this.panel1.TabIndex = 1;
+            // 
+            // labelTime
+            // 
+            this.labelTime.AutoSize = true;
+            this.labelTime.Location = new System.Drawing.Point(148, 204);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(35, 13);
+            this.labelTime.TabIndex = 13;
+            this.labelTime.Text = "label8";
+            // 
+            // labelDate
+            // 
+            this.labelDate.AutoSize = true;
+            this.labelDate.Location = new System.Drawing.Point(148, 181);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(35, 13);
+            this.labelDate.TabIndex = 12;
+            this.labelDate.Text = "label8";
+            // 
+            // labelCab
+            // 
+            this.labelCab.AutoSize = true;
+            this.labelCab.Location = new System.Drawing.Point(148, 158);
+            this.labelCab.Name = "labelCab";
+            this.labelCab.Size = new System.Drawing.Size(35, 13);
+            this.labelCab.TabIndex = 11;
+            this.labelCab.Text = "label8";
+            // 
+            // labelDocName
+            // 
+            this.labelDocName.AutoSize = true;
+            this.labelDocName.Location = new System.Drawing.Point(148, 124);
+            this.labelDocName.Name = "labelDocName";
+            this.labelDocName.Size = new System.Drawing.Size(35, 13);
+            this.labelDocName.TabIndex = 10;
+            this.labelDocName.Text = "label8";
+            // 
+            // labelDocSpec
+            // 
+            this.labelDocSpec.AutoSize = true;
+            this.labelDocSpec.Location = new System.Drawing.Point(148, 101);
+            this.labelDocSpec.Name = "labelDocSpec";
+            this.labelDocSpec.Size = new System.Drawing.Size(35, 13);
+            this.labelDocSpec.TabIndex = 9;
+            this.labelDocSpec.Text = "label8";
+            // 
+            // labelPac
+            // 
+            this.labelPac.AutoSize = true;
+            this.labelPac.Location = new System.Drawing.Point(148, 71);
+            this.labelPac.Name = "labelPac";
+            this.labelPac.Size = new System.Drawing.Size(35, 13);
+            this.labelPac.TabIndex = 8;
+            this.labelPac.Text = "label8";
             // 
             // label7
             // 
@@ -156,6 +222,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Талон";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTicket_FormClosing);
+            this.Load += new System.EventHandler(this.frmTicket_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -173,5 +240,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.Label labelDate;
+        private System.Windows.Forms.Label labelCab;
+        private System.Windows.Forms.Label labelDocName;
+        private System.Windows.Forms.Label labelDocSpec;
+        private System.Windows.Forms.Label labelPac;
     }
 }

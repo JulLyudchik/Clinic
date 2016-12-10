@@ -15,20 +15,49 @@ namespace WindowsFormsApplication1
         public frmStart()
         {
             InitializeComponent();
-            formCreate = new frmCreate();
-            formEdit = new frmEdit();
-            formTicket = new frmTicket();
+            formEditCab = new frmEditCab();
+            formEditDoc = new frmEditDoc();
+            formEditSpec = new frmEditSpec();
+            formEditAddr = new frmEditAddress();
+            formEditDiag = new frmEditDiag();
+            formEditDrug = new frmEditDrug();
+            formEditCard = new frmEditCard();
+            
+           
+           
             formPatList = new frmPat();
         }
         frmTicket formTicket;
         frmPat formPatList;
-        frmCreate formCreate;
-        frmEdit formEdit;
+
+        frmCreateCab formCreateCab;
+        frmEditCab formEditCab;
+        frmCreateDoc formCreateDoc;
+        frmEditDoc formEditDoc;
+        frmCreateSpec formCreateSpec;
+        frmEditSpec formEditSpec;
+        frmCreateAddr formCreateAddr;
+        frmEditAddress formEditAddr;
+        frmCreateDrug formCreateDrug;
+        frmEditDrug formEditDrug;
+        frmCreateDiag formCreateDiag;
+        frmEditDiag formEditDiag;
+        frmCreateCard formCreateCard;
+        frmEditCard formEditCard;
+
+        frmDoctorReg formDoctorReg;
         DateTime date;
 
         private void Start_Load(object sender, EventArgs e)
         {
             bottomPanel.Visible = false;
+            labelDoctor.Location = new Point (600,505);
+            ToolTip ToolTip1 = new ToolTip();
+            ToolTip1.SetToolTip(this.listBoxPatientsVisit, "Щелкните дважды на имени пациента для продолжения работы");
+            ToolTip1.AutoPopDelay = 5000;
+            ToolTip1.InitialDelay = 100;
+            ToolTip1.ReshowDelay = 500;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,6 +73,9 @@ namespace WindowsFormsApplication1
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
             date = DateTime.Now;
+
+            labelDoct.Visible = false;
+
             timer1 = new Timer();
             timer1.Interval = 10;
             timer1.Tick += new EventHandler(tickTimer);
@@ -69,6 +101,9 @@ namespace WindowsFormsApplication1
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
+
+            labelDoct.Visible = false;
+
             date = DateTime.Now;
             timer1 = new Timer();
             timer1.Interval = 10;
@@ -84,11 +119,19 @@ namespace WindowsFormsApplication1
             regPanel.Visible = false;
             adminPanel.Visible = false;
             docPanel.Visible = true;
-            
+            doctorButton.Enabled = false;
+            formDoctorReg = new frmDoctorReg();
+            formDoctorReg.Show();
+            formDoctorReg.Owner = this;
+
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
             date = DateTime.Now;
+
+            labelDoct.Visible = true;
+            
+
             timer1 = new Timer();
             timer1.Interval = 10;
             timer1.Tick += new EventHandler(tickTimer);
@@ -129,6 +172,8 @@ namespace WindowsFormsApplication1
         {
             labelAll.Text = "ДИАГНОЗЫ";
             mainPanel.Visible = true;
+            patientRecPanel.Visible = false;
+            visitPanel.Visible = false;
             listBoxAll.SelectedIndex = -1;
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
@@ -179,6 +224,8 @@ namespace WindowsFormsApplication1
         {
             labelAll.Text = "ДИАГНОЗЫ";
             mainPanel.Visible = true;
+            patientRecPanel.Visible = false;
+            visitPanel.Visible = false;
             listBoxAll.SelectedIndex = -1;
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
@@ -188,6 +235,7 @@ namespace WindowsFormsApplication1
         {
             labelAll.Text = "ЛЕКАРСТВА";
             mainPanel.Visible = true;
+            visitPanel.Visible = false;
             listBoxAll.SelectedIndex = -1;
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
@@ -205,10 +253,7 @@ namespace WindowsFormsApplication1
             comboBoxSpec.Enabled = false;
             comboBoxSpec.SelectedIndex = -1;
             comboBoxSpec.Text = "Специализация";
-            comboBoxTime.Enabled = false;
-            comboBoxTime.SelectedIndex = -1;
-            comboBoxTime.Text = "Время";
-            dateTimePicker1.Enabled = false;
+            dataGridView1.Enabled = false;
             comboBoxNameDoc.Enabled = false;
         }
 
@@ -216,6 +261,8 @@ namespace WindowsFormsApplication1
         {
             labelAll.Text = "ЛЕКАРСТВА";
             mainPanel.Visible = true;
+            patientRecPanel.Visible = false;
+            visitPanel.Visible = false;
             listBoxAll.SelectedIndex = -1;
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
@@ -236,6 +283,8 @@ namespace WindowsFormsApplication1
 
         private void button33_Click(object sender, EventArgs e)
         {
+            formTicket = new frmTicket();
+            formTicket.Owner = this;
             formTicket.Show();
         }
 
@@ -270,13 +319,9 @@ namespace WindowsFormsApplication1
 
         private void comboBoxNameDoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dateTimePicker1.Enabled = true;
+            dataGridView1.Enabled = true;
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            comboBoxTime.Enabled = true;
-        }
 
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -291,17 +336,93 @@ namespace WindowsFormsApplication1
            
         private void createCardButton_Click(object sender, EventArgs e)
         {
-            formCreate.Show();
+            switch (labelAll.Text)
+            {
+                case "КАБИНЕТЫ":
+                    formCreateCab = new frmCreateCab();
+                    formCreateCab.Show();
+                    break;
+                case "ВРАЧИ":
+                    formCreateDoc = new frmCreateDoc();
+                    formCreateDoc.Show();
+                    break;
+                case "СПЕЦИАЛИЗАЦИИ":
+                    formCreateSpec = new frmCreateSpec();
+                    formCreateSpec.Show();
+                    break;
+                case "АДРЕСА":
+                    formCreateAddr = new frmCreateAddr();
+                    formCreateAddr.Show();
+                    break;
+                case "ЛЕКАРСТВА":
+                    formCreateDrug = new frmCreateDrug();
+                    formCreateDrug.Show();
+                    break;
+                case "ДИАГНОЗЫ":
+                    formCreateDiag = new frmCreateDiag();
+                    formCreateDiag.Show();
+                    break;
+                case "КАРТОЧКИ ПАЦИЕНТОВ":
+                    formCreateCard = new frmCreateCard();
+                    formCreateCard.Show();
+                    break;
+            }
+            
         }
 
         private void editCardButton_Click(object sender, EventArgs e)
         {
-            formEdit.Show();
+            switch (labelAll.Text)
+            {
+                case "КАБИНЕТЫ":
+                    formEditCab.Show();
+                    break;
+                case "ВРАЧИ":
+                    formEditDoc.Show();
+                    break;
+                case "СПЕЦИАЛИЗАЦИИ":
+                    formEditSpec.Show();
+                    break;
+                case "АДРЕСА":
+                    formEditAddr.Show();
+                    break;
+                case "ДИАГНОЗЫ":
+                    formEditDiag.Show();
+                    break;
+                case "ЛЕКАРСТВА":
+                    formEditDrug.Show();
+                    break;
+                case "КАРТОЧКИ ПАЦИЕНТОВ":
+                    formEditCard.Show();
+                    break;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             TimeLb1.Text = string.Format("Текущее время: {0}", DateTime.Now.ToString("HH:mm:ss"));
+        }
+
+        private void bottomPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void enterButton_Click(object sender, EventArgs e)
+        {
+            doctorButton.Enabled = true;
+            labelDoctor.Text = "";
+            enterButton.Visible = false;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            patRecButton.Enabled = true;
         }
     }
 }
