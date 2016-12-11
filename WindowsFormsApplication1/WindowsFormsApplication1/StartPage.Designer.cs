@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStart));
             this.bottomPanel = new System.Windows.Forms.Panel();
+            this.labelDoctor = new System.Windows.Forms.Label();
+            this.enterButton = new System.Windows.Forms.Button();
+            this.labelDoct = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TimeLb1 = new System.Windows.Forms.Label();
             this.adminPanel = new System.Windows.Forms.Panel();
@@ -47,12 +50,7 @@
             this.doctorVisitButton = new System.Windows.Forms.Button();
             this.doctorDrugButton = new System.Windows.Forms.Button();
             this.doctorDiagButton = new System.Windows.Forms.Button();
-            this.patientRecPanel = new System.Windows.Forms.Panel();
-            this.comboBoxNameDoc = new System.Windows.Forms.ComboBox();
-            this.comboBoxSpec = new System.Windows.Forms.ComboBox();
-            this.comboBoxNamePac = new System.Windows.Forms.ComboBox();
-            this.patRecButton = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBoxStripe = new System.Windows.Forms.PictureBox();
             this.visitPanel = new System.Windows.Forms.Panel();
             this.lable8 = new System.Windows.Forms.Label();
             this.createReportButton = new System.Windows.Forms.Button();
@@ -63,32 +61,34 @@
             this.editItemButton = new System.Windows.Forms.Button();
             this.createItemButton = new System.Windows.Forms.Button();
             this.listBoxAll = new System.Windows.Forms.ListBox();
+            this.patientRecPanel = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBoxNameDoc = new System.Windows.Forms.ComboBox();
+            this.comboBoxSpec = new System.Windows.Forms.ComboBox();
+            this.comboBoxNamePac = new System.Windows.Forms.ComboBox();
+            this.patRecButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.registratorButton = new System.Windows.Forms.Button();
             this.doctorButton = new System.Windows.Forms.Button();
             this.administratorButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelDoct = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.pictureBoxStripe = new System.Windows.Forms.PictureBox();
-            this.enterButton = new System.Windows.Forms.Button();
-            this.labelDoctor = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bottomPanel.SuspendLayout();
             this.adminPanel.SuspendLayout();
             this.regPanel.SuspendLayout();
             this.docPanel.SuspendLayout();
-            this.patientRecPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).BeginInit();
             this.visitPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).BeginInit();
+            this.patientRecPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // bottomPanel
@@ -99,18 +99,49 @@
             this.bottomPanel.Controls.Add(this.labelDoct);
             this.bottomPanel.Controls.Add(this.label1);
             this.bottomPanel.Controls.Add(this.TimeLb1);
-            this.bottomPanel.Controls.Add(this.adminPanel);
-            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Controls.Add(this.docPanel);
             this.bottomPanel.Controls.Add(this.pictureBoxStripe);
-            this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Controls.Add(this.visitPanel);
             this.bottomPanel.Controls.Add(this.mainPanel);
+            this.bottomPanel.Controls.Add(this.patientRecPanel);
+            this.bottomPanel.Controls.Add(this.adminPanel);
+            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Location = new System.Drawing.Point(0, 66);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(902, 520);
             this.bottomPanel.TabIndex = 4;
             this.bottomPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.bottomPanel_Paint);
+            // 
+            // labelDoctor
+            // 
+            this.labelDoctor.AutoSize = true;
+            this.labelDoctor.Location = new System.Drawing.Point(689, 503);
+            this.labelDoctor.Name = "labelDoctor";
+            this.labelDoctor.Size = new System.Drawing.Size(0, 13);
+            this.labelDoctor.TabIndex = 15;
+            // 
+            // enterButton
+            // 
+            this.enterButton.FlatAppearance.BorderSize = 0;
+            this.enterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enterButton.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.enterButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.enterButton.Location = new System.Drawing.Point(842, 500);
+            this.enterButton.Name = "enterButton";
+            this.enterButton.Size = new System.Drawing.Size(58, 21);
+            this.enterButton.TabIndex = 14;
+            this.enterButton.Text = "ВЫХОД";
+            this.enterButton.UseVisualStyleBackColor = true;
+            this.enterButton.Visible = false;
+            this.enterButton.Click += new System.EventHandler(this.enterButton_Click);
+            // 
+            // labelDoct
+            // 
+            this.labelDoct.AutoSize = true;
+            this.labelDoct.Location = new System.Drawing.Point(719, 504);
+            this.labelDoct.Name = "labelDoct";
+            this.labelDoct.Size = new System.Drawing.Size(0, 13);
+            this.labelDoct.TabIndex = 13;
             // 
             // label1
             // 
@@ -316,7 +347,7 @@
             // 
             this.doctorDrugButton.BackColor = System.Drawing.Color.DodgerBlue;
             this.doctorDrugButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.doctorDrugButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.doctorDrugButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
             this.doctorDrugButton.FlatAppearance.BorderSize = 0;
             this.doctorDrugButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.doctorDrugButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -347,94 +378,14 @@
             this.doctorDiagButton.UseVisualStyleBackColor = false;
             this.doctorDiagButton.Click += new System.EventHandler(this.button5_Click);
             // 
-            // patientRecPanel
+            // pictureBoxStripe
             // 
-            this.patientRecPanel.Controls.Add(this.dataGridView1);
-            this.patientRecPanel.Controls.Add(this.comboBoxNameDoc);
-            this.patientRecPanel.Controls.Add(this.comboBoxSpec);
-            this.patientRecPanel.Controls.Add(this.comboBoxNamePac);
-            this.patientRecPanel.Controls.Add(this.patRecButton);
-            this.patientRecPanel.Controls.Add(this.label7);
-            this.patientRecPanel.Location = new System.Drawing.Point(228, 56);
-            this.patientRecPanel.Name = "patientRecPanel";
-            this.patientRecPanel.Size = new System.Drawing.Size(674, 443);
-            this.patientRecPanel.TabIndex = 10;
-            this.patientRecPanel.Visible = false;
-            // 
-            // comboBoxNameDoc
-            // 
-            this.comboBoxNameDoc.Enabled = false;
-            this.comboBoxNameDoc.FormattingEnabled = true;
-            this.comboBoxNameDoc.Items.AddRange(new object[] {
-            "Иванов",
-            "Петров",
-            "Сидоров"});
-            this.comboBoxNameDoc.Location = new System.Drawing.Point(63, 167);
-            this.comboBoxNameDoc.Name = "comboBoxNameDoc";
-            this.comboBoxNameDoc.Size = new System.Drawing.Size(250, 21);
-            this.comboBoxNameDoc.TabIndex = 8;
-            this.comboBoxNameDoc.Text = "Имя врача";
-            this.comboBoxNameDoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxNameDoc_SelectedIndexChanged);
-            // 
-            // comboBoxSpec
-            // 
-            this.comboBoxSpec.Enabled = false;
-            this.comboBoxSpec.FormattingEnabled = true;
-            this.comboBoxSpec.Items.AddRange(new object[] {
-            "Хирург",
-            "Офтальмолог",
-            "Стоматолог"});
-            this.comboBoxSpec.Location = new System.Drawing.Point(63, 126);
-            this.comboBoxSpec.Name = "comboBoxSpec";
-            this.comboBoxSpec.Size = new System.Drawing.Size(250, 21);
-            this.comboBoxSpec.TabIndex = 7;
-            this.comboBoxSpec.Text = "Специализация";
-            this.comboBoxSpec.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpec_SelectedIndexChanged);
-            // 
-            // comboBoxNamePac
-            // 
-            this.comboBoxNamePac.FormattingEnabled = true;
-            this.comboBoxNamePac.Items.AddRange(new object[] {
-            "Иванов",
-            "Петров",
-            "Сидоров"});
-            this.comboBoxNamePac.Location = new System.Drawing.Point(63, 80);
-            this.comboBoxNamePac.Name = "comboBoxNamePac";
-            this.comboBoxNamePac.Size = new System.Drawing.Size(250, 21);
-            this.comboBoxNamePac.TabIndex = 6;
-            this.comboBoxNamePac.Text = "Имя пациента";
-            this.comboBoxNamePac.SelectedIndexChanged += new System.EventHandler(this.comboBoxNamePac_SelectedIndexChanged);
-            // 
-            // patRecButton
-            // 
-            this.patRecButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.patRecButton.Enabled = false;
-            this.patRecButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.patRecButton.FlatAppearance.BorderSize = 4;
-            this.patRecButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.patRecButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.patRecButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.patRecButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.patRecButton.Location = new System.Drawing.Point(247, 374);
-            this.patRecButton.Name = "patRecButton";
-            this.patRecButton.Size = new System.Drawing.Size(182, 44);
-            this.patRecButton.TabIndex = 5;
-            this.patRecButton.Text = "Записать";
-            this.patRecButton.UseVisualStyleBackColor = true;
-            this.patRecButton.Click += new System.EventHandler(this.button33_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(63, 22);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(182, 26);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "ЗАПИСЬ НА ПРИЕМ";
+            this.pictureBoxStripe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxStripe.Location = new System.Drawing.Point(0, 3);
+            this.pictureBoxStripe.Name = "pictureBoxStripe";
+            this.pictureBoxStripe.Size = new System.Drawing.Size(904, 53);
+            this.pictureBoxStripe.TabIndex = 0;
+            this.pictureBoxStripe.TabStop = false;
             // 
             // visitPanel
             // 
@@ -583,6 +534,120 @@
             this.listBoxAll.TabIndex = 0;
             this.listBoxAll.SelectedIndexChanged += new System.EventHandler(this.listBoxPatientsCards_SelectedIndexChanged);
             // 
+            // patientRecPanel
+            // 
+            this.patientRecPanel.Controls.Add(this.dataGridView1);
+            this.patientRecPanel.Controls.Add(this.comboBoxNameDoc);
+            this.patientRecPanel.Controls.Add(this.comboBoxSpec);
+            this.patientRecPanel.Controls.Add(this.comboBoxNamePac);
+            this.patientRecPanel.Controls.Add(this.patRecButton);
+            this.patientRecPanel.Controls.Add(this.label7);
+            this.patientRecPanel.Location = new System.Drawing.Point(228, 56);
+            this.patientRecPanel.Name = "patientRecPanel";
+            this.patientRecPanel.Size = new System.Drawing.Size(674, 443);
+            this.patientRecPanel.TabIndex = 10;
+            this.patientRecPanel.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.dataGridView1.Enabled = false;
+            this.dataGridView1.Location = new System.Drawing.Point(63, 213);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(250, 150);
+            this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "1 день";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "2 день";
+            this.Column2.Name = "Column2";
+            // 
+            // comboBoxNameDoc
+            // 
+            this.comboBoxNameDoc.Enabled = false;
+            this.comboBoxNameDoc.FormattingEnabled = true;
+            this.comboBoxNameDoc.Items.AddRange(new object[] {
+            "Иванов",
+            "Петров",
+            "Сидоров"});
+            this.comboBoxNameDoc.Location = new System.Drawing.Point(63, 167);
+            this.comboBoxNameDoc.Name = "comboBoxNameDoc";
+            this.comboBoxNameDoc.Size = new System.Drawing.Size(250, 21);
+            this.comboBoxNameDoc.TabIndex = 8;
+            this.comboBoxNameDoc.Text = "Имя врача";
+            this.comboBoxNameDoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxNameDoc_SelectedIndexChanged);
+            // 
+            // comboBoxSpec
+            // 
+            this.comboBoxSpec.Enabled = false;
+            this.comboBoxSpec.FormattingEnabled = true;
+            this.comboBoxSpec.Items.AddRange(new object[] {
+            "Хирург",
+            "Офтальмолог",
+            "Стоматолог"});
+            this.comboBoxSpec.Location = new System.Drawing.Point(63, 126);
+            this.comboBoxSpec.Name = "comboBoxSpec";
+            this.comboBoxSpec.Size = new System.Drawing.Size(250, 21);
+            this.comboBoxSpec.TabIndex = 7;
+            this.comboBoxSpec.Text = "Специализация";
+            this.comboBoxSpec.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpec_SelectedIndexChanged);
+            // 
+            // comboBoxNamePac
+            // 
+            this.comboBoxNamePac.FormattingEnabled = true;
+            this.comboBoxNamePac.Items.AddRange(new object[] {
+            "Иванов",
+            "Петров",
+            "Сидоров"});
+            this.comboBoxNamePac.Location = new System.Drawing.Point(63, 80);
+            this.comboBoxNamePac.Name = "comboBoxNamePac";
+            this.comboBoxNamePac.Size = new System.Drawing.Size(250, 21);
+            this.comboBoxNamePac.TabIndex = 6;
+            this.comboBoxNamePac.Text = "Имя пациента";
+            this.comboBoxNamePac.SelectedIndexChanged += new System.EventHandler(this.comboBoxNamePac_SelectedIndexChanged);
+            // 
+            // patRecButton
+            // 
+            this.patRecButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.patRecButton.Enabled = false;
+            this.patRecButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.patRecButton.FlatAppearance.BorderSize = 4;
+            this.patRecButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.patRecButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.patRecButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.patRecButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.patRecButton.Location = new System.Drawing.Point(247, 374);
+            this.patRecButton.Name = "patRecButton";
+            this.patRecButton.Size = new System.Drawing.Size(182, 44);
+            this.patRecButton.TabIndex = 5;
+            this.patRecButton.Text = "Записать";
+            this.patRecButton.UseVisualStyleBackColor = true;
+            this.patRecButton.Click += new System.EventHandler(this.button33_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.DodgerBlue;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.Location = new System.Drawing.Point(63, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(182, 26);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "ЗАПИСЬ НА ПРИЕМ";
+            // 
             // registratorButton
             // 
             this.registratorButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -652,28 +717,6 @@
             this.panel1.Size = new System.Drawing.Size(904, 73);
             this.panel1.TabIndex = 5;
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // labelDoct
-            // 
-            this.labelDoct.AutoSize = true;
-            this.labelDoct.Location = new System.Drawing.Point(719, 504);
-            this.labelDoct.Name = "labelDoct";
-            this.labelDoct.Size = new System.Drawing.Size(0, 13);
-            this.labelDoct.TabIndex = 13;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.палка;
-            this.pictureBox1.Location = new System.Drawing.Point(-3, 61);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(905, 10);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.logo;
@@ -687,62 +730,19 @@
             this.pictureBoxLogo.TabStop = false;
             this.pictureBoxLogo.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // pictureBoxStripe
+            // timer1
             // 
-            this.pictureBoxStripe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxStripe.Location = new System.Drawing.Point(0, 3);
-            this.pictureBoxStripe.Name = "pictureBoxStripe";
-            this.pictureBoxStripe.Size = new System.Drawing.Size(904, 53);
-            this.pictureBoxStripe.TabIndex = 0;
-            this.pictureBoxStripe.TabStop = false;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // enterButton
+            // pictureBox1
             // 
-            this.enterButton.FlatAppearance.BorderSize = 0;
-            this.enterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enterButton.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.enterButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.enterButton.Location = new System.Drawing.Point(842, 500);
-            this.enterButton.Name = "enterButton";
-            this.enterButton.Size = new System.Drawing.Size(58, 21);
-            this.enterButton.TabIndex = 14;
-            this.enterButton.Text = "ВЫХОД";
-            this.enterButton.UseVisualStyleBackColor = true;
-            this.enterButton.Visible = false;
-            this.enterButton.Click += new System.EventHandler(this.enterButton_Click);
-            // 
-            // labelDoctor
-            // 
-            this.labelDoctor.AutoSize = true;
-            this.labelDoctor.Location = new System.Drawing.Point(689, 503);
-            this.labelDoctor.Name = "labelDoctor";
-            this.labelDoctor.Size = new System.Drawing.Size(0, 13);
-            this.labelDoctor.TabIndex = 15;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
-            this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(63, 213);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(250, 150);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "1 день";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "2 день";
-            this.Column2.Name = "Column2";
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.палка;
+            this.pictureBox1.Location = new System.Drawing.Point(-3, 61);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(905, 10);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // frmStart
             // 
@@ -766,17 +766,17 @@
             this.adminPanel.ResumeLayout(false);
             this.regPanel.ResumeLayout(false);
             this.docPanel.ResumeLayout(false);
-            this.patientRecPanel.ResumeLayout(false);
-            this.patientRecPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).EndInit();
             this.visitPanel.ResumeLayout(false);
             this.visitPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).EndInit();
+            this.patientRecPanel.ResumeLayout(false);
+            this.patientRecPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -808,7 +808,6 @@
         private System.Windows.Forms.Panel visitPanel;
         private System.Windows.Forms.Label lable8;
         private System.Windows.Forms.Button createReportButton;
-        private System.Windows.Forms.ListBox listBoxPatientsVisit;
         private System.Windows.Forms.Button patRecButton;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Label labelAll;
@@ -829,6 +828,7 @@
         public System.Windows.Forms.ComboBox comboBoxNameDoc;
         public System.Windows.Forms.ComboBox comboBoxSpec;
         public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.ListBox listBoxPatientsVisit;
     }
 }
 

@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
             
            
            
-            formPatList = new frmPat();
+            
         }
         frmTicket formTicket;
         frmPat formPatList;
@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1
         private void Start_Load(object sender, EventArgs e)
         {
             bottomPanel.Visible = false;
-            labelDoctor.Location = new Point (600,505);
+            labelDoctor.Location = new Point (540,505);
             ToolTip ToolTip1 = new ToolTip();
             ToolTip1.SetToolTip(this.listBoxPatientsVisit, "Щелкните дважды на имени пациента для продолжения работы");
             ToolTip1.AutoPopDelay = 5000;
@@ -293,6 +293,8 @@ namespace WindowsFormsApplication1
         {
             if (listBoxPatientsVisit.SelectedItem != null)
             {
+                formPatList = new frmPat();
+                formPatList.Owner = this;
                 formPatList.Show();
                 formPatList.Text = listBoxPatientsVisit.SelectedItem.ToString();
             }
@@ -411,6 +413,7 @@ namespace WindowsFormsApplication1
         private void enterButton_Click(object sender, EventArgs e)
         {
             doctorButton.Enabled = true;
+            bottomPanel.Visible = false;
             labelDoctor.Text = "";
             enterButton.Visible = false;
         }
