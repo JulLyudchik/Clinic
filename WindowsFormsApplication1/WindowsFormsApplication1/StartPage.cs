@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
 
 namespace WindowsFormsApplication1
 {
     public partial class frmStart : Form
     {
+        DiagnosisContext diagDB;
         public frmStart()
         {
             InitializeComponent();
@@ -22,10 +24,7 @@ namespace WindowsFormsApplication1
             formEditDiag = new frmEditDiag();
             formEditDrug = new frmEditDrug();
             formEditCard = new frmEditCard();
-            
-           
-           
-            
+            diagDB = new DiagnosisContext();           
         }
         frmTicket formTicket;
         frmPat formPatList;
@@ -222,13 +221,21 @@ namespace WindowsFormsApplication1
 
         private void button13_Click(object sender, EventArgs e)
         {
+            //
+            diagDB.Diagnoses.Load();
+            listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Name";
+            //
             labelAll.Text = "ДИАГНОЗЫ";
             mainPanel.Visible = true;
             patientRecPanel.Visible = false;
-            visitPanel.Visible = false;
+            visitPanel.Visible = false;      
             listBoxAll.SelectedIndex = -1;
+           
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
+            
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -361,8 +368,24 @@ namespace WindowsFormsApplication1
                     formCreateDrug.Show();
                     break;
                 case "ДИАГНОЗЫ":
-                    formCreateDiag = new frmCreateDiag();
-                    formCreateDiag.Show();
+                    //formCreateDiag = new frmCreateDiag();
+                    //
+                    
+                    frmCreateDiag diagForm = new frmCreateDiag();
+                    DialogResult result = diagForm.ShowDialog(this);
+                    if (result == DialogResult.Cancel)
+                        return;
+                    Diagnosis diagnosis = new Diagnosis();
+                    diagnosis.Name = diagForm.textBox1.Text;
+                    diagDB.Diagnoses.Add(diagnosis);
+                    diagDB.SaveChanges();
+                    //listBoxAll.Refresh();
+                    diagDB.Diagnoses.Load();
+                    listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+                    MessageBox.Show("Новый объект добавлен");
+                    //
+                    
+                    //formCreateDiag.Show();
                     break;
                 case "КАРТОЧКИ ПАЦИЕНТОВ":
                     formCreateCard = new frmCreateCard();
@@ -389,7 +412,29 @@ namespace WindowsFormsApplication1
                     formEditAddr.Show();
                     break;
                 case "ДИАГНОЗЫ":
-                    formEditDiag.Show();
+                    //formEditDiag.Show();
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                         if(converted == false)
+                            return;
+
+                        Diagnosis diagnosis = diagDB.Diagnoses.Find(id);
+
+                        frmEditDiag diagForm = new frmEditDiag();
+                        diagForm.textBox1.Text = diagnosis.Name;
+                        DialogResult result = diagForm.ShowDialog(this);
+                        if (result == DialogResult.Cancel)
+                            return;
+                                                
+                        diagnosis.Name = diagForm.textBox1.Text;
+                        
+                        diagDB.SaveChanges();                       
+                        diagDB.Diagnoses.Load();
+                        listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+                        MessageBox.Show("Объект обновлен");
+                    }
                     break;
                 case "ЛЕКАРСТВА":
                     formEditDrug.Show();
@@ -426,6 +471,47 @@ namespace WindowsFormsApplication1
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             patRecButton.Enabled = true;
+        }
+
+        private void deleteItemButton_Click(object sender, EventArgs e)
+        {
+            switch (labelAll.Text)
+            {
+                case "КАБИНЕТЫ":
+                    formEditCab.Show();
+                    break;
+                case "ВРАЧИ":
+                    formEditDoc.Show();
+                    break;
+                case "СПЕЦИАЛИЗАЦИИ":
+                    formEditSpec.Show();
+                    break;
+                case "АДРЕСА":
+                    formEditAddr.Show();
+                    break;
+                case "ДИАГНОЗЫ":
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+
+                        Diagnosis diagnosis = diagDB.Diagnoses.Find(id);
+                        diagDB.Diagnoses.Remove(diagnosis);
+                        diagDB.SaveChanges();
+                        diagDB.Diagnoses.Load();
+                        listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+                        MessageBox.Show("Объект удален");
+                    }
+                    break;
+                case "ЛЕКАРСТВА":
+                    formEditDrug.Show();
+                    break;
+                case "КАРТОЧКИ ПАЦИЕНТОВ":
+                    formEditCard.Show();
+                    break;
+            }
         }
     }
 }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStart));
             this.bottomPanel = new System.Windows.Forms.Panel();
+            this.pictureBoxStripe = new System.Windows.Forms.PictureBox();
             this.labelDoctor = new System.Windows.Forms.Label();
             this.enterButton = new System.Windows.Forms.Button();
             this.labelDoct = new System.Windows.Forms.Label();
@@ -50,16 +51,11 @@
             this.doctorVisitButton = new System.Windows.Forms.Button();
             this.doctorDrugButton = new System.Windows.Forms.Button();
             this.doctorDiagButton = new System.Windows.Forms.Button();
-            this.pictureBoxStripe = new System.Windows.Forms.PictureBox();
-            this.visitPanel = new System.Windows.Forms.Panel();
-            this.lable8 = new System.Windows.Forms.Label();
-            this.createReportButton = new System.Windows.Forms.Button();
-            this.listBoxPatientsVisit = new System.Windows.Forms.ListBox();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.createItemButton = new System.Windows.Forms.Button();
             this.labelAll = new System.Windows.Forms.Label();
             this.deleteItemButton = new System.Windows.Forms.Button();
             this.editItemButton = new System.Windows.Forms.Button();
-            this.createItemButton = new System.Windows.Forms.Button();
             this.listBoxAll = new System.Windows.Forms.ListBox();
             this.patientRecPanel = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -70,6 +66,10 @@
             this.comboBoxNamePac = new System.Windows.Forms.ComboBox();
             this.patRecButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.visitPanel = new System.Windows.Forms.Panel();
+            this.listBoxPatientsVisit = new System.Windows.Forms.ListBox();
+            this.lable8 = new System.Windows.Forms.Label();
+            this.createReportButton = new System.Windows.Forms.Button();
             this.registratorButton = new System.Windows.Forms.Button();
             this.doctorButton = new System.Windows.Forms.Button();
             this.administratorButton = new System.Windows.Forms.Button();
@@ -78,14 +78,14 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).BeginInit();
             this.adminPanel.SuspendLayout();
             this.regPanel.SuspendLayout();
             this.docPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).BeginInit();
-            this.visitPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.patientRecPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.visitPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,23 +94,32 @@
             // bottomPanel
             // 
             this.bottomPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bottomPanel.Controls.Add(this.pictureBoxStripe);
             this.bottomPanel.Controls.Add(this.labelDoctor);
             this.bottomPanel.Controls.Add(this.enterButton);
             this.bottomPanel.Controls.Add(this.labelDoct);
             this.bottomPanel.Controls.Add(this.label1);
             this.bottomPanel.Controls.Add(this.TimeLb1);
-            this.bottomPanel.Controls.Add(this.docPanel);
-            this.bottomPanel.Controls.Add(this.pictureBoxStripe);
-            this.bottomPanel.Controls.Add(this.visitPanel);
-            this.bottomPanel.Controls.Add(this.mainPanel);
-            this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Controls.Add(this.adminPanel);
             this.bottomPanel.Controls.Add(this.regPanel);
+            this.bottomPanel.Controls.Add(this.docPanel);
+            this.bottomPanel.Controls.Add(this.mainPanel);
+            this.bottomPanel.Controls.Add(this.patientRecPanel);
+            this.bottomPanel.Controls.Add(this.visitPanel);
             this.bottomPanel.Location = new System.Drawing.Point(0, 66);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(902, 520);
             this.bottomPanel.TabIndex = 4;
             this.bottomPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.bottomPanel_Paint);
+            // 
+            // pictureBoxStripe
+            // 
+            this.pictureBoxStripe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxStripe.Location = new System.Drawing.Point(0, 3);
+            this.pictureBoxStripe.Name = "pictureBoxStripe";
+            this.pictureBoxStripe.Size = new System.Drawing.Size(904, 53);
+            this.pictureBoxStripe.TabIndex = 0;
+            this.pictureBoxStripe.TabStop = false;
             // 
             // labelDoctor
             // 
@@ -378,82 +387,35 @@
             this.doctorDiagButton.UseVisualStyleBackColor = false;
             this.doctorDiagButton.Click += new System.EventHandler(this.button5_Click);
             // 
-            // pictureBoxStripe
-            // 
-            this.pictureBoxStripe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxStripe.Location = new System.Drawing.Point(0, 3);
-            this.pictureBoxStripe.Name = "pictureBoxStripe";
-            this.pictureBoxStripe.Size = new System.Drawing.Size(904, 53);
-            this.pictureBoxStripe.TabIndex = 0;
-            this.pictureBoxStripe.TabStop = false;
-            // 
-            // visitPanel
-            // 
-            this.visitPanel.Controls.Add(this.lable8);
-            this.visitPanel.Controls.Add(this.createReportButton);
-            this.visitPanel.Controls.Add(this.listBoxPatientsVisit);
-            this.visitPanel.Location = new System.Drawing.Point(228, 56);
-            this.visitPanel.Name = "visitPanel";
-            this.visitPanel.Size = new System.Drawing.Size(674, 443);
-            this.visitPanel.TabIndex = 10;
-            this.visitPanel.Visible = false;
-            // 
-            // lable8
-            // 
-            this.lable8.AutoSize = true;
-            this.lable8.BackColor = System.Drawing.Color.DodgerBlue;
-            this.lable8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lable8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lable8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lable8.Location = new System.Drawing.Point(63, 22);
-            this.lable8.Name = "lable8";
-            this.lable8.Size = new System.Drawing.Size(191, 26);
-            this.lable8.TabIndex = 4;
-            this.lable8.Text = "ПРИЕМ ПАЦИЕНТОВ";
-            // 
-            // createReportButton
-            // 
-            this.createReportButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.createReportButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createReportButton.FlatAppearance.BorderSize = 4;
-            this.createReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createReportButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createReportButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createReportButton.Location = new System.Drawing.Point(247, 370);
-            this.createReportButton.Name = "createReportButton";
-            this.createReportButton.Size = new System.Drawing.Size(182, 44);
-            this.createReportButton.TabIndex = 2;
-            this.createReportButton.Text = "Сформировать отчет";
-            this.createReportButton.UseVisualStyleBackColor = true;
-            this.createReportButton.Click += new System.EventHandler(this.button34_Click);
-            // 
-            // listBoxPatientsVisit
-            // 
-            this.listBoxPatientsVisit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxPatientsVisit.FormattingEnabled = true;
-            this.listBoxPatientsVisit.Items.AddRange(new object[] {
-            "Иванов",
-            "Петров",
-            "Сидоров"});
-            this.listBoxPatientsVisit.Location = new System.Drawing.Point(63, 51);
-            this.listBoxPatientsVisit.Name = "listBoxPatientsVisit";
-            this.listBoxPatientsVisit.Size = new System.Drawing.Size(547, 301);
-            this.listBoxPatientsVisit.TabIndex = 0;
-            this.listBoxPatientsVisit.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox7_MouseDoubleClick);
-            // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.createItemButton);
             this.mainPanel.Controls.Add(this.labelAll);
             this.mainPanel.Controls.Add(this.deleteItemButton);
             this.mainPanel.Controls.Add(this.editItemButton);
-            this.mainPanel.Controls.Add(this.createItemButton);
             this.mainPanel.Controls.Add(this.listBoxAll);
             this.mainPanel.Location = new System.Drawing.Point(228, 56);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(674, 443);
             this.mainPanel.TabIndex = 10;
             this.mainPanel.Visible = false;
+            // 
+            // createItemButton
+            // 
+            this.createItemButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.createItemButton.FlatAppearance.BorderSize = 4;
+            this.createItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.createItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.createItemButton.Location = new System.Drawing.Point(86, 373);
+            this.createItemButton.Name = "createItemButton";
+            this.createItemButton.Size = new System.Drawing.Size(111, 44);
+            this.createItemButton.TabIndex = 1;
+            this.createItemButton.Text = "Создать";
+            this.createItemButton.UseVisualStyleBackColor = true;
+            this.createItemButton.Click += new System.EventHandler(this.createCardButton_Click);
             // 
             // labelAll
             // 
@@ -484,6 +446,7 @@
             this.deleteItemButton.TabIndex = 3;
             this.deleteItemButton.Text = "Удалить";
             this.deleteItemButton.UseVisualStyleBackColor = true;
+            this.deleteItemButton.Click += new System.EventHandler(this.deleteItemButton_Click);
             // 
             // editItemButton
             // 
@@ -502,23 +465,6 @@
             this.editItemButton.Text = "Редактировать";
             this.editItemButton.UseVisualStyleBackColor = true;
             this.editItemButton.Click += new System.EventHandler(this.editCardButton_Click);
-            // 
-            // createItemButton
-            // 
-            this.createItemButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.createItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createItemButton.FlatAppearance.BorderSize = 4;
-            this.createItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createItemButton.Location = new System.Drawing.Point(86, 373);
-            this.createItemButton.Name = "createItemButton";
-            this.createItemButton.Size = new System.Drawing.Size(111, 44);
-            this.createItemButton.TabIndex = 1;
-            this.createItemButton.Text = "Создать";
-            this.createItemButton.UseVisualStyleBackColor = true;
-            this.createItemButton.Click += new System.EventHandler(this.createCardButton_Click);
             // 
             // listBoxAll
             // 
@@ -648,6 +594,61 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "ЗАПИСЬ НА ПРИЕМ";
             // 
+            // visitPanel
+            // 
+            this.visitPanel.Controls.Add(this.listBoxPatientsVisit);
+            this.visitPanel.Controls.Add(this.lable8);
+            this.visitPanel.Controls.Add(this.createReportButton);
+            this.visitPanel.Location = new System.Drawing.Point(228, 56);
+            this.visitPanel.Name = "visitPanel";
+            this.visitPanel.Size = new System.Drawing.Size(674, 443);
+            this.visitPanel.TabIndex = 10;
+            this.visitPanel.Visible = false;
+            // 
+            // listBoxPatientsVisit
+            // 
+            this.listBoxPatientsVisit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxPatientsVisit.FormattingEnabled = true;
+            this.listBoxPatientsVisit.Items.AddRange(new object[] {
+            "Иванов",
+            "Петров",
+            "Сидоров"});
+            this.listBoxPatientsVisit.Location = new System.Drawing.Point(63, 51);
+            this.listBoxPatientsVisit.Name = "listBoxPatientsVisit";
+            this.listBoxPatientsVisit.Size = new System.Drawing.Size(547, 301);
+            this.listBoxPatientsVisit.TabIndex = 0;
+            this.listBoxPatientsVisit.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox7_MouseDoubleClick);
+            // 
+            // lable8
+            // 
+            this.lable8.AutoSize = true;
+            this.lable8.BackColor = System.Drawing.Color.DodgerBlue;
+            this.lable8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lable8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lable8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lable8.Location = new System.Drawing.Point(63, 22);
+            this.lable8.Name = "lable8";
+            this.lable8.Size = new System.Drawing.Size(191, 26);
+            this.lable8.TabIndex = 4;
+            this.lable8.Text = "ПРИЕМ ПАЦИЕНТОВ";
+            // 
+            // createReportButton
+            // 
+            this.createReportButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createReportButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.createReportButton.FlatAppearance.BorderSize = 4;
+            this.createReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.createReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createReportButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createReportButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.createReportButton.Location = new System.Drawing.Point(247, 370);
+            this.createReportButton.Name = "createReportButton";
+            this.createReportButton.Size = new System.Drawing.Size(182, 44);
+            this.createReportButton.TabIndex = 2;
+            this.createReportButton.Text = "Сформировать отчет";
+            this.createReportButton.UseVisualStyleBackColor = true;
+            this.createReportButton.Click += new System.EventHandler(this.button34_Click);
+            // 
             // registratorButton
             // 
             this.registratorButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -708,10 +709,10 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.doctorButton);
             this.panel1.Controls.Add(this.pictureBoxLogo);
             this.panel1.Controls.Add(this.administratorButton);
             this.panel1.Controls.Add(this.registratorButton);
+            this.panel1.Controls.Add(this.doctorButton);
             this.panel1.Location = new System.Drawing.Point(-3, -2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(904, 73);
@@ -763,17 +764,17 @@
             this.Load += new System.EventHandler(this.Start_Load);
             this.bottomPanel.ResumeLayout(false);
             this.bottomPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).EndInit();
             this.adminPanel.ResumeLayout(false);
             this.regPanel.ResumeLayout(false);
             this.docPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).EndInit();
-            this.visitPanel.ResumeLayout(false);
-            this.visitPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.patientRecPanel.ResumeLayout(false);
             this.patientRecPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.visitPanel.ResumeLayout(false);
+            this.visitPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

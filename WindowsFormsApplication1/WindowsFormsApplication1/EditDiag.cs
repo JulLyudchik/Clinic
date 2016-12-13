@@ -17,10 +17,15 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        private void frmEditDiag_FormClosing(object sender, FormClosingEventArgs e)
+        /*private void frmEditDiag_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             Hide();
+        }*/
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
