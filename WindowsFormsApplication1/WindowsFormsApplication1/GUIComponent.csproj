@@ -95,8 +95,6 @@
     <Compile Include="CreateSpec.Designer.cs">
       <DependentUpon>CreateSpec.cs</DependentUpon>
     </Compile>
-    <Compile Include="Diagnosis.cs" />
-    <Compile Include="DiagnosisContext.cs" />
     <Compile Include="DoctorReg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,7 +227,9 @@
     <EmbeddedResource Include="Ticket.resx">
       <DependentUpon>Ticket.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -262,6 +262,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\палка-администратор.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataProviderComponent\DataProviderComponent.csproj">
+      <Project>{511973e8-1a8d-4591-b246-a4ad30732b9b}</Project>
+      <Name>DataProviderComponent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntitiesComponent\EntitiesComponent.csproj">
+      <Project>{f82c6069-d0cb-4243-9e23-1cb386ca7a62}</Project>
+      <Name>EntitiesComponent</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

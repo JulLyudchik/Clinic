@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
+using EntitiesComponent;
+using DataProviderComponent;
 
 namespace WindowsFormsApplication1
 {
