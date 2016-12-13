@@ -17,10 +17,15 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        private void frmEditDrug_FormClosing(object sender, FormClosingEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /*private void frmEditDrug_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             Hide();
-        }
+        }*/
     }
 }

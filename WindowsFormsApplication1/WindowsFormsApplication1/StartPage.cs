@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
     public partial class frmStart : Form
     {
         DiagnosisContext diagDB;
+        DrugContext drugDB;
         public frmStart()
         {
             InitializeComponent();
@@ -26,7 +27,8 @@ namespace WindowsFormsApplication1
             formEditDiag = new frmEditDiag();
             formEditDrug = new frmEditDrug();
             formEditCard = new frmEditCard();
-            diagDB = new DiagnosisContext();           
+            diagDB = new DiagnosisContext();
+            drugDB = new DrugContext();
         }
         frmTicket formTicket;
         frmPat formPatList;
@@ -242,6 +244,12 @@ namespace WindowsFormsApplication1
 
         private void button14_Click(object sender, EventArgs e)
         {
+            //
+            drugDB.Drugs.Load();
+            listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Name";
+            //
             labelAll.Text = "ЛЕКАРСТВА";
             mainPanel.Visible = true;
             visitPanel.Visible = false;
@@ -366,27 +374,35 @@ namespace WindowsFormsApplication1
                     formCreateAddr.Show();
                     break;
                 case "ЛЕКАРСТВА":
-                    formCreateDrug = new frmCreateDrug();
-                    formCreateDrug.Show();
+                    //formCreateDrug = new frmCreateDrug();
+                    frmCreateDrug drugForm = new frmCreateDrug();
+                    DialogResult drugResult = drugForm.ShowDialog(this);
+                    if (drugResult == DialogResult.Cancel)
+                        return;
+                    Drug drug = new Drug();
+                    drug.Name = drugForm.textBox1.Text;
+                    drugDB.Drugs.Add(drug);
+                    drugDB.SaveChanges();               
+                    drugDB.Drugs.Load();
+                    listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+                    MessageBox.Show("Новый объект добавлен");
+                    //formCreateDrug.Show();
                     break;
                 case "ДИАГНОЗЫ":
                     //formCreateDiag = new frmCreateDiag();
-                    //
-                    
+                    //                    
                     frmCreateDiag diagForm = new frmCreateDiag();
-                    DialogResult result = diagForm.ShowDialog(this);
-                    if (result == DialogResult.Cancel)
+                    DialogResult diagResult = diagForm.ShowDialog(this);
+                    if (diagResult == DialogResult.Cancel)
                         return;
                     Diagnosis diagnosis = new Diagnosis();
                     diagnosis.Name = diagForm.textBox1.Text;
                     diagDB.Diagnoses.Add(diagnosis);
-                    diagDB.SaveChanges();
-                    //listBoxAll.Refresh();
+                    diagDB.SaveChanges();                   
                     diagDB.Diagnoses.Load();
                     listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
                     MessageBox.Show("Новый объект добавлен");
-                    //
-                    
+                    //                  
                     //formCreateDiag.Show();
                     break;
                 case "КАРТОЧКИ ПАЦИЕНТОВ":
@@ -426,8 +442,8 @@ namespace WindowsFormsApplication1
 
                         frmEditDiag diagForm = new frmEditDiag();
                         diagForm.textBox1.Text = diagnosis.Name;
-                        DialogResult result = diagForm.ShowDialog(this);
-                        if (result == DialogResult.Cancel)
+                        DialogResult diagResult = diagForm.ShowDialog(this);
+                        if (diagResult == DialogResult.Cancel)
                             return;
                                                 
                         diagnosis.Name = diagForm.textBox1.Text;
@@ -439,7 +455,26 @@ namespace WindowsFormsApplication1
                     }
                     break;
                 case "ЛЕКАРСТВА":
-                    formEditDrug.Show();
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+
+                        Drug drug = drugDB.Drugs.Find(id);
+                        frmEditDrug drugForm = new frmEditDrug();
+                        drugForm.textBox1.Text = drug.Name;
+                        DialogResult drugResult = drugForm.ShowDialog(this);
+                        if (drugResult == DialogResult.Cancel)
+                            return;
+                        drug.Name = drugForm.textBox1.Text;
+                        drugDB.SaveChanges();
+                        drugDB.Drugs.Load();
+                        listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+                        MessageBox.Show("Объект обновлен");
+                    }
+                    //formEditDrug.Show();
                     break;
                 case "КАРТОЧКИ ПАЦИЕНТОВ":
                     formEditCard.Show();
@@ -508,7 +543,20 @@ namespace WindowsFormsApplication1
                     }
                     break;
                 case "ЛЕКАРСТВА":
-                    formEditDrug.Show();
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+
+                        Drug drug = drugDB.Drugs.Find(id);
+                        drugDB.Drugs.Remove(drug);
+                        drugDB.SaveChanges();
+                        drugDB.Drugs.Load();
+                        listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+                        MessageBox.Show("Объект удален");
+                    }
                     break;
                 case "КАРТОЧКИ ПАЦИЕНТОВ":
                     formEditCard.Show();

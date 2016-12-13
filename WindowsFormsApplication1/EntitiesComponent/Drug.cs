@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApplication1
+namespace EntitiesComponent
 {
-    class Diagnosis
+    public class Drug
     {
-
         public int Id { get; set; }
         public string Name { get; set; }
     }
