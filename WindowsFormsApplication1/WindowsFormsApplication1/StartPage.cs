@@ -29,6 +29,8 @@ namespace WindowsFormsApplication1
             formEditCard = new frmEditCard();
             diagDB = new DiagnosisContext();
             drugDB = new DrugContext();
+            diagDB.Diagnoses.Load();
+            drugDB.Drugs.Load();
         }
         frmTicket formTicket;
         frmPat formPatList;
@@ -173,13 +175,19 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //
+            diagDB.Diagnoses.Load();
+            listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Name";
+            //
             labelAll.Text = "ДИАГНОЗЫ";
             mainPanel.Visible = true;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
             listBoxAll.SelectedIndex = -1;
             editItemButton.Enabled = false;
-            deleteItemButton.Enabled = false;
+            deleteItemButton.Enabled = false;       
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -276,6 +284,12 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //
+            drugDB.Drugs.Load();
+            listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Name";
+            //
             labelAll.Text = "ЛЕКАРСТВА";
             mainPanel.Visible = true;
             patientRecPanel.Visible = false;
