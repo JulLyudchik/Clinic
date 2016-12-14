@@ -115,7 +115,7 @@
             // pictureBoxStripe
             // 
             this.pictureBoxStripe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxStripe.Location = new System.Drawing.Point(0, 3);
+            this.pictureBoxStripe.Location = new System.Drawing.Point(0, 5);
             this.pictureBoxStripe.Name = "pictureBoxStripe";
             this.pictureBoxStripe.Size = new System.Drawing.Size(904, 53);
             this.pictureBoxStripe.TabIndex = 0;
@@ -660,7 +660,7 @@
             this.registratorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registratorButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registratorButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.registratorButton.Location = new System.Drawing.Point(651, 12);
+            this.registratorButton.Location = new System.Drawing.Point(448, 12);
             this.registratorButton.Name = "registratorButton";
             this.registratorButton.Size = new System.Drawing.Size(150, 50);
             this.registratorButton.TabIndex = 1;
@@ -680,7 +680,7 @@
             this.doctorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.doctorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.doctorButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.doctorButton.Location = new System.Drawing.Point(798, 12);
+            this.doctorButton.Location = new System.Drawing.Point(595, 12);
             this.doctorButton.Name = "doctorButton";
             this.doctorButton.Size = new System.Drawing.Size(99, 50);
             this.doctorButton.TabIndex = 2;
@@ -698,7 +698,7 @@
             this.administratorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.administratorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.administratorButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.administratorButton.Location = new System.Drawing.Point(485, 12);
+            this.administratorButton.Location = new System.Drawing.Point(282, 12);
             this.administratorButton.Name = "administratorButton";
             this.administratorButton.Size = new System.Drawing.Size(151, 50);
             this.administratorButton.TabIndex = 0;
@@ -710,13 +710,13 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBoxLogo);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.administratorButton);
             this.panel1.Controls.Add(this.registratorButton);
             this.panel1.Controls.Add(this.doctorButton);
-            this.panel1.Location = new System.Drawing.Point(-3, -2);
+            this.panel1.Location = new System.Drawing.Point(204, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(904, 73);
+            this.panel1.Size = new System.Drawing.Size(697, 73);
             this.panel1.TabIndex = 5;
             // 
             // pictureBoxLogo
@@ -725,7 +725,7 @@
             this.pictureBoxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxLogo.InitialImage = global::WindowsFormsApplication1.Properties.Resources.logo;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(31, 12);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(17, 10);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(172, 45);
             this.pictureBoxLogo.TabIndex = 3;
@@ -739,10 +739,12 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.палка;
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.DodgerBlue;
             this.pictureBox1.Location = new System.Drawing.Point(-3, 61);
+            this.pictureBox1.MaximumSize = new System.Drawing.Size(2500, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(905, 10);
+            this.pictureBox1.Size = new System.Drawing.Size(938, 10);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
@@ -752,13 +754,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(901, 585);
+            this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bottomPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(10, 10);
-            this.MaximumSize = new System.Drawing.Size(917, 624);
-            this.MinimumSize = new System.Drawing.Size(917, 624);
             this.Name = "frmStart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CLINICO";

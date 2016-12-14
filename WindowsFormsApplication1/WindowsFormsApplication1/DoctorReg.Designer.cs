@@ -91,6 +91,9 @@
             this.Controls.Add(this.comboBoxNameDoc);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxSpecDoc);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmDoctorReg";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
