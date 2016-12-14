@@ -73,7 +73,10 @@ namespace WindowsFormsApplication1
             adminPanel.Visible = true;
             docPanel.Visible = false;
             regPanel.Visible = false;
-
+            doctorButton.Enabled = true;
+            labelDoctor.Text = "";
+            enterButton.Visible = false;
+            
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
@@ -109,7 +112,7 @@ namespace WindowsFormsApplication1
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
-
+            
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
@@ -194,7 +197,7 @@ namespace WindowsFormsApplication1
             visitPanel.Visible = false;
             listBoxAll.SelectedIndex = -1;
             editItemButton.Enabled = false;
-            deleteItemButton.Enabled = false;       
+            deleteItemButton.Enabled = false;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
