@@ -73,7 +73,11 @@ namespace WindowsFormsApplication1
             adminPanel.Visible = true;
             docPanel.Visible = false;
             regPanel.Visible = false;
-            
+
+            doctorButton.Enabled = true;
+            labelDoctor.Text = "";
+            enterButton.Visible = false;
+
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
@@ -102,7 +106,10 @@ namespace WindowsFormsApplication1
             regPanel.Visible = true;
             docPanel.Visible = false;
             adminPanel.Visible = false;
-            
+            doctorButton.Enabled = true;
+            labelDoctor.Text = "";
+            enterButton.Visible = false;
+
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
@@ -123,7 +130,7 @@ namespace WindowsFormsApplication1
             pictureBoxStripe.Visible = true;
             regPanel.Visible = false;
             adminPanel.Visible = false;
-            docPanel.Visible = true;
+            //docPanel.Visible = true;
             doctorButton.Enabled = false;
             formDoctorReg = new frmDoctorReg();
             formDoctorReg.Show();
