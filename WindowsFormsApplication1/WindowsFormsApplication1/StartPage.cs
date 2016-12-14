@@ -80,7 +80,7 @@ namespace WindowsFormsApplication1
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {           
+        {
             pictureBoxStripe.BackgroundImage = Properties.Resources.палка_администратор;
             bottomPanel.Visible = true;
             pictureBoxStripe.Visible = true;
@@ -90,6 +90,8 @@ namespace WindowsFormsApplication1
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
+            if (formDoctorReg!=null)
+                formDoctorReg.Close();
             
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
@@ -126,6 +128,8 @@ namespace WindowsFormsApplication1
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
+            if (formDoctorReg!=null)
+               formDoctorReg.Close();
             
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
@@ -453,7 +457,7 @@ namespace WindowsFormsApplication1
                     listBoxAll.DataSource = specDB.specializations.Local.ToList();
                     MessageBox.Show("Новый объект добавлен");
                     break;
-                case "АДРЕСА":                   
+                case "АДРЕСА":
                     frmCreateAddr regStForm = new frmCreateAddr();
                     DialogResult regStResult = regStForm.ShowDialog(this);
                     if (regStResult == DialogResult.Cancel)
@@ -560,7 +564,7 @@ namespace WindowsFormsApplication1
                 case "АДРЕСА":
                     formEditAddr.Show();
                     break;
-                case "ДИАГНОЗЫ":                   
+                case "ДИАГНОЗЫ":
                     if (listBoxAll.SelectedIndex != -1)
                     {
                         int id = 0;
