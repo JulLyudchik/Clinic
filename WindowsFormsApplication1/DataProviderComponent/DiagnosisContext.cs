@@ -14,6 +14,6 @@ namespace DataProviderComponent
             : base("DefaultConnection")
         { }
 
-        public DbSet<Diagnosis> Diagnoses { get; set; }
+        public DbSet<Diagnosis> diagnoses { get; set; }
     }
 }

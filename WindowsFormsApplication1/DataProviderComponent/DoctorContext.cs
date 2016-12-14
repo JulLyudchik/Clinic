@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using EntitiesComponent;
+
 namespace DataProviderComponent
 {
-    public class DrugContext : DbContext
+    public class DoctorContext : DbContext
     {
-         public DrugContext()
+        public DoctorContext()
             : base("DefaultConnection")
         { }
 
-        public DbSet<Drug> drugs { get; set; }
+        public DbSet<Doctor> doctors { get; set; }
     }
 }

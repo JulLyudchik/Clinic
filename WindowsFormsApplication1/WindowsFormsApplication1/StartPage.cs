@@ -17,6 +17,10 @@ namespace WindowsFormsApplication1
     {
         DiagnosisContext diagDB;
         DrugContext drugDB;
+        RegStationContext regStDB;
+        SpecContext specDB;
+        DoctorContext docDB;
+        CabinetContext cabDB;
         public frmStart()
         {
             InitializeComponent();
@@ -27,10 +31,20 @@ namespace WindowsFormsApplication1
             formEditDiag = new frmEditDiag();
             formEditDrug = new frmEditDrug();
             formEditCard = new frmEditCard();
+
             diagDB = new DiagnosisContext();
             drugDB = new DrugContext();
-            diagDB.Diagnoses.Load();
-            drugDB.Drugs.Load();
+            regStDB = new RegStationContext();
+            specDB = new SpecContext();
+            docDB = new DoctorContext();
+            cabDB = new CabinetContext();
+
+            diagDB.diagnoses.Load();
+            drugDB.drugs.Load();
+            regStDB.regStations.Load();
+            specDB.specializations.Load();
+            docDB.doctors.Load();
+            cabDB.cabinets.Load();
         }
         frmTicket formTicket;
         frmPat formPatList;
@@ -66,7 +80,7 @@ namespace WindowsFormsApplication1
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {           
             pictureBoxStripe.BackgroundImage = Properties.Resources.палка_администратор;
             bottomPanel.Visible = true;
             pictureBoxStripe.Visible = true;
@@ -186,8 +200,8 @@ namespace WindowsFormsApplication1
         private void button5_Click(object sender, EventArgs e)
         {
             //
-            diagDB.Diagnoses.Load();
-            listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+            diagDB.diagnoses.Load();
+            listBoxAll.DataSource = diagDB.diagnoses.Local.ToList();
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -207,6 +221,11 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
+            cabDB.cabinets.Load();
+            listBoxAll.DataSource = cabDB.cabinets.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Number";
+            //
             labelAll.Text = "КАБИНЕТЫ";
             mainPanel.Visible = true;
             listBoxAll.SelectedIndex = -1;
@@ -216,6 +235,11 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
+            docDB.doctors.Load();
+            listBoxAll.DataSource = docDB.doctors.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Name";
+            //
             labelAll.Text = "ВРАЧИ";
             mainPanel.Visible = true;
             listBoxAll.SelectedIndex = -1;
@@ -225,6 +249,11 @@ namespace WindowsFormsApplication1
 
         private void button11_Click(object sender, EventArgs e)
         {
+            specDB.specializations.Load();
+            listBoxAll.DataSource = specDB.specializations.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Name";
+            //
             labelAll.Text = "СПЕЦИАЛИЗАЦИИ";
             mainPanel.Visible = true;
             listBoxAll.SelectedIndex = -1;
@@ -234,6 +263,12 @@ namespace WindowsFormsApplication1
 
         private void button12_Click(object sender, EventArgs e)
         {
+            //
+            regStDB.regStations.Load();
+            listBoxAll.DataSource = regStDB.regStations.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Name";
+            //
             labelAll.Text = "АДРЕСА";
             mainPanel.Visible = true;
             listBoxAll.SelectedIndex = -1;
@@ -244,8 +279,8 @@ namespace WindowsFormsApplication1
         private void button13_Click(object sender, EventArgs e)
         {
             //
-            diagDB.Diagnoses.Load();
-            listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+            diagDB.diagnoses.Load();
+            listBoxAll.DataSource = diagDB.diagnoses.Local.ToList();
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -263,8 +298,8 @@ namespace WindowsFormsApplication1
         private void button14_Click(object sender, EventArgs e)
         {
             //
-            drugDB.Drugs.Load();
-            listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+            drugDB.drugs.Load();
+            listBoxAll.DataSource = drugDB.drugs.Local.ToList();
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -295,8 +330,8 @@ namespace WindowsFormsApplication1
         private void button4_Click(object sender, EventArgs e)
         {
             //
-            drugDB.Drugs.Load();
-            listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+            drugDB.drugs.Load();
+            listBoxAll.DataSource = drugDB.drugs.Local.ToList();
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -382,20 +417,54 @@ namespace WindowsFormsApplication1
             switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
-                    formCreateCab = new frmCreateCab();
-                    formCreateCab.Show();
+                    frmCreateCab cabForm = new frmCreateCab();
+                    DialogResult cabResult = cabForm.ShowDialog(this);
+                    if (cabResult == DialogResult.Cancel)
+                        return;
+                    int id = 0;
+                    bool converted = Int32.TryParse(cabForm.comboBox1.SelectedValue.ToString(), out id);
+                    if (converted == false) //zahodit
+                        return;
+                    Cabinet cabinet = new Cabinet();
+                    Specialization specialization_t = specDB.specializations.Find(id);                  
+                    cabinet.number = cabForm.textBox1.Text;
+                    cabinet.specialization = specialization_t.name;
+                    cabDB.cabinets.Add(cabinet);
+                    cabDB.SaveChanges();
+                    cabDB.cabinets.Load();
+                    listBoxAll.DataSource = cabDB.cabinets.Local.ToList();
+                    MessageBox.Show("Новый объект добавлен");
                     break;
                 case "ВРАЧИ":
                     formCreateDoc = new frmCreateDoc();
                     formCreateDoc.Show();
                     break;
                 case "СПЕЦИАЛИЗАЦИИ":
-                    formCreateSpec = new frmCreateSpec();
-                    formCreateSpec.Show();
+                    frmCreateSpec specForm = new frmCreateSpec();
+                    DialogResult specResult = specForm.ShowDialog(this);
+                    if (specResult == DialogResult.Cancel)
+                        return;
+                    Specialization specialization = new Specialization();
+                    specialization.name = specForm.textBox1.Text;
+                    specialization.time = specForm.textBox2.Text;
+                    specDB.specializations.Add(specialization);
+                    specDB.SaveChanges();
+                    specDB.specializations.Load();
+                    listBoxAll.DataSource = specDB.specializations.Local.ToList();
+                    MessageBox.Show("Новый объект добавлен");
                     break;
-                case "АДРЕСА":
-                    formCreateAddr = new frmCreateAddr();
-                    formCreateAddr.Show();
+                case "АДРЕСА":                   
+                    frmCreateAddr regStForm = new frmCreateAddr();
+                    DialogResult regStResult = regStForm.ShowDialog(this);
+                    if (regStResult == DialogResult.Cancel)
+                        return;
+                    RegStation regStation = new RegStation();
+                    regStation.name = regStForm.textBox1.Text;
+                    regStDB.regStations.Add(regStation);
+                    regStDB.SaveChanges();
+                    regStDB.regStations.Load();
+                    listBoxAll.DataSource = regStDB.regStations.Local.ToList();
+                    MessageBox.Show("Новый объект добавлен");
                     break;
                 case "ЛЕКАРСТВА":
                     //formCreateDrug = new frmCreateDrug();
@@ -404,11 +473,11 @@ namespace WindowsFormsApplication1
                     if (drugResult == DialogResult.Cancel)
                         return;
                     Drug drug = new Drug();
-                    drug.Name = drugForm.textBox1.Text;
-                    drugDB.Drugs.Add(drug);
+                    drug.name = drugForm.textBox1.Text;
+                    drugDB.drugs.Add(drug);
                     drugDB.SaveChanges();               
-                    drugDB.Drugs.Load();
-                    listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+                    drugDB.drugs.Load();
+                    listBoxAll.DataSource = drugDB.drugs.Local.ToList();
                     MessageBox.Show("Новый объект добавлен");
                     //formCreateDrug.Show();
                     break;
@@ -420,11 +489,11 @@ namespace WindowsFormsApplication1
                     if (diagResult == DialogResult.Cancel)
                         return;
                     Diagnosis diagnosis = new Diagnosis();
-                    diagnosis.Name = diagForm.textBox1.Text;
-                    diagDB.Diagnoses.Add(diagnosis);
+                    diagnosis.name = diagForm.textBox1.Text;
+                    diagDB.diagnoses.Add(diagnosis);
                     diagDB.SaveChanges();                   
-                    diagDB.Diagnoses.Load();
-                    listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+                    diagDB.diagnoses.Load();
+                    listBoxAll.DataSource = diagDB.diagnoses.Local.ToList();
                     MessageBox.Show("Новый объект добавлен");
                     //                  
                     //formCreateDiag.Show();
@@ -442,39 +511,75 @@ namespace WindowsFormsApplication1
             switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
-                    formEditCab.Show();
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+                        Cabinet cabinet = cabDB.cabinets.Find(id);
+                        frmEditCab cabForm = new frmEditCab();
+                        cabForm.textBox1.Text = cabinet.number;
+                        cabForm.comboBox1.SelectedText = cabinet.specialization;
+                        DialogResult cabResult = cabForm.ShowDialog(this);
+                        if (cabResult == DialogResult.Cancel)
+                            return;
+                        cabinet.number = cabForm.textBox1.Text;
+                        cabinet.specialization = cabForm.comboBox1.SelectedText;
+                        cabDB.SaveChanges();
+                        cabDB.cabinets.Load();
+                        listBoxAll.DataSource = cabDB.cabinets.Local.ToList();
+                        MessageBox.Show("Объект обновлен");
+                    }
                     break;
                 case "ВРАЧИ":
                     formEditDoc.Show();
                     break;
                 case "СПЕЦИАЛИЗАЦИИ":
-                    formEditSpec.Show();
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+                        Specialization specialization = specDB.specializations.Find(id);
+                        frmEditSpec specForm = new frmEditSpec();
+                        specForm.textBox1.Text = specialization.name;
+                        specForm.textBox2.Text = specialization.time;
+                        DialogResult specResult = specForm.ShowDialog(this);
+                        if (specResult == DialogResult.Cancel)
+                            return;
+                        specialization.name = specForm.textBox1.Text;
+                        specialization.time = specForm.textBox2.Text;
+                        specDB.SaveChanges();
+                        specDB.specializations.Load();
+                        listBoxAll.DataSource = specDB.specializations.Local.ToList();
+                        MessageBox.Show("Объект обновлен");
+                    }
                     break;
                 case "АДРЕСА":
                     formEditAddr.Show();
                     break;
-                case "ДИАГНОЗЫ":
-                    //formEditDiag.Show();
+                case "ДИАГНОЗЫ":                   
                     if (listBoxAll.SelectedIndex != -1)
                     {
                         int id = 0;
                         bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
                          if(converted == false)
                             return;
-
-                        Diagnosis diagnosis = diagDB.Diagnoses.Find(id);
+                        Diagnosis diagnosis = diagDB.diagnoses.Find(id);
 
                         frmEditDiag diagForm = new frmEditDiag();
-                        diagForm.textBox1.Text = diagnosis.Name;
+                        diagForm.textBox1.Text = diagnosis.name;
                         DialogResult diagResult = diagForm.ShowDialog(this);
                         if (diagResult == DialogResult.Cancel)
                             return;
                                                 
-                        diagnosis.Name = diagForm.textBox1.Text;
+                        diagnosis.name = diagForm.textBox1.Text;
                         
                         diagDB.SaveChanges();                       
-                        diagDB.Diagnoses.Load();
-                        listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+                        diagDB.diagnoses.Load();
+                        listBoxAll.DataSource = diagDB.diagnoses.Local.ToList();
                         MessageBox.Show("Объект обновлен");
                     }
                     break;
@@ -486,16 +591,16 @@ namespace WindowsFormsApplication1
                         if (converted == false)
                             return;
 
-                        Drug drug = drugDB.Drugs.Find(id);
+                        Drug drug = drugDB.drugs.Find(id);
                         frmEditDrug drugForm = new frmEditDrug();
-                        drugForm.textBox1.Text = drug.Name;
+                        drugForm.textBox1.Text = drug.name;
                         DialogResult drugResult = drugForm.ShowDialog(this);
                         if (drugResult == DialogResult.Cancel)
                             return;
-                        drug.Name = drugForm.textBox1.Text;
+                        drug.name = drugForm.textBox1.Text;
                         drugDB.SaveChanges();
-                        drugDB.Drugs.Load();
-                        listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+                        drugDB.drugs.Load();
+                        listBoxAll.DataSource = drugDB.drugs.Local.ToList();
                         MessageBox.Show("Объект обновлен");
                     }
                     //formEditDrug.Show();
@@ -539,13 +644,39 @@ namespace WindowsFormsApplication1
             switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
-                    formEditCab.Show();
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+
+                        Cabinet cabinet = cabDB.cabinets.Find(id);
+                        cabDB.cabinets.Remove(cabinet);
+                        cabDB.SaveChanges();
+                        cabDB.cabinets.Load();
+                        listBoxAll.DataSource = cabDB.cabinets.Local.ToList();
+                        MessageBox.Show("Объект удален");
+                    }
                     break;
                 case "ВРАЧИ":
                     formEditDoc.Show();
                     break;
                 case "СПЕЦИАЛИЗАЦИИ":
-                    formEditSpec.Show();
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+
+                        Specialization specialization = specDB.specializations.Find(id);
+                        specDB.specializations.Remove(specialization);
+                        specDB.SaveChanges();
+                        specDB.specializations.Load();
+                        listBoxAll.DataSource = specDB.specializations.Local.ToList();
+                        MessageBox.Show("Объект удален");
+                    }
                     break;
                 case "АДРЕСА":
                     formEditAddr.Show();
@@ -558,11 +689,11 @@ namespace WindowsFormsApplication1
                         if (converted == false)
                             return;
 
-                        Diagnosis diagnosis = diagDB.Diagnoses.Find(id);
-                        diagDB.Diagnoses.Remove(diagnosis);
+                        Diagnosis diagnosis = diagDB.diagnoses.Find(id);
+                        diagDB.diagnoses.Remove(diagnosis);
                         diagDB.SaveChanges();
-                        diagDB.Diagnoses.Load();
-                        listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+                        diagDB.diagnoses.Load();
+                        listBoxAll.DataSource = diagDB.diagnoses.Local.ToList();
                         MessageBox.Show("Объект удален");
                     }
                     break;
@@ -574,11 +705,11 @@ namespace WindowsFormsApplication1
                         if (converted == false)
                             return;
 
-                        Drug drug = drugDB.Drugs.Find(id);
-                        drugDB.Drugs.Remove(drug);
+                        Drug drug = drugDB.drugs.Find(id);
+                        drugDB.drugs.Remove(drug);
                         drugDB.SaveChanges();
-                        drugDB.Drugs.Load();
-                        listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+                        drugDB.drugs.Load();
+                        listBoxAll.DataSource = drugDB.drugs.Local.ToList();
                         MessageBox.Show("Объект удален");
                     }
                     break;

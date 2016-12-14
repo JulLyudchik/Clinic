@@ -37,20 +37,6 @@
             this.labelDoct = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TimeLb1 = new System.Windows.Forms.Label();
-            this.adminPanel = new System.Windows.Forms.Panel();
-            this.adminDrugButton = new System.Windows.Forms.Button();
-            this.adminDiagButton = new System.Windows.Forms.Button();
-            this.adminAddressButton = new System.Windows.Forms.Button();
-            this.adminSpecButton = new System.Windows.Forms.Button();
-            this.adminDocButton = new System.Windows.Forms.Button();
-            this.adminCabinetButton = new System.Windows.Forms.Button();
-            this.regPanel = new System.Windows.Forms.Panel();
-            this.regCardsButton = new System.Windows.Forms.Button();
-            this.regRecordButton = new System.Windows.Forms.Button();
-            this.docPanel = new System.Windows.Forms.Panel();
-            this.doctorVisitButton = new System.Windows.Forms.Button();
-            this.doctorDrugButton = new System.Windows.Forms.Button();
-            this.doctorDiagButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.createItemButton = new System.Windows.Forms.Button();
             this.labelAll = new System.Windows.Forms.Label();
@@ -70,6 +56,20 @@
             this.listBoxPatientsVisit = new System.Windows.Forms.ListBox();
             this.lable8 = new System.Windows.Forms.Label();
             this.createReportButton = new System.Windows.Forms.Button();
+            this.adminPanel = new System.Windows.Forms.Panel();
+            this.adminDrugButton = new System.Windows.Forms.Button();
+            this.adminDiagButton = new System.Windows.Forms.Button();
+            this.adminAddressButton = new System.Windows.Forms.Button();
+            this.adminSpecButton = new System.Windows.Forms.Button();
+            this.adminDocButton = new System.Windows.Forms.Button();
+            this.adminCabinetButton = new System.Windows.Forms.Button();
+            this.regPanel = new System.Windows.Forms.Panel();
+            this.regCardsButton = new System.Windows.Forms.Button();
+            this.regRecordButton = new System.Windows.Forms.Button();
+            this.docPanel = new System.Windows.Forms.Panel();
+            this.doctorVisitButton = new System.Windows.Forms.Button();
+            this.doctorDrugButton = new System.Windows.Forms.Button();
+            this.doctorDiagButton = new System.Windows.Forms.Button();
             this.registratorButton = new System.Windows.Forms.Button();
             this.doctorButton = new System.Windows.Forms.Button();
             this.administratorButton = new System.Windows.Forms.Button();
@@ -79,13 +79,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).BeginInit();
-            this.adminPanel.SuspendLayout();
-            this.regPanel.SuspendLayout();
-            this.docPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.patientRecPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.visitPanel.SuspendLayout();
+            this.adminPanel.SuspendLayout();
+            this.regPanel.SuspendLayout();
+            this.docPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,12 +100,12 @@
             this.bottomPanel.Controls.Add(this.labelDoct);
             this.bottomPanel.Controls.Add(this.label1);
             this.bottomPanel.Controls.Add(this.TimeLb1);
+            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Controls.Add(this.docPanel);
+            this.bottomPanel.Controls.Add(this.adminPanel);
             this.bottomPanel.Controls.Add(this.mainPanel);
             this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Controls.Add(this.visitPanel);
-            this.bottomPanel.Controls.Add(this.adminPanel);
-            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Location = new System.Drawing.Point(0, 66);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(902, 520);
@@ -170,223 +170,6 @@
             this.TimeLb1.Size = new System.Drawing.Size(49, 13);
             this.TimeLb1.TabIndex = 11;
             this.TimeLb1.Text = "00:00:00";
-            // 
-            // adminPanel
-            // 
-            this.adminPanel.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.adminPanel.Controls.Add(this.adminDrugButton);
-            this.adminPanel.Controls.Add(this.adminDiagButton);
-            this.adminPanel.Controls.Add(this.adminAddressButton);
-            this.adminPanel.Controls.Add(this.adminSpecButton);
-            this.adminPanel.Controls.Add(this.adminDocButton);
-            this.adminPanel.Controls.Add(this.adminCabinetButton);
-            this.adminPanel.Location = new System.Drawing.Point(0, 56);
-            this.adminPanel.Name = "adminPanel";
-            this.adminPanel.Size = new System.Drawing.Size(222, 443);
-            this.adminPanel.TabIndex = 3;
-            this.adminPanel.Visible = false;
-            // 
-            // adminDrugButton
-            // 
-            this.adminDrugButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.adminDrugButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.adminDrugButton.FlatAppearance.BorderSize = 0;
-            this.adminDrugButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.adminDrugButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adminDrugButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adminDrugButton.Location = new System.Drawing.Point(24, 373);
-            this.adminDrugButton.Name = "adminDrugButton";
-            this.adminDrugButton.Size = new System.Drawing.Size(174, 44);
-            this.adminDrugButton.TabIndex = 5;
-            this.adminDrugButton.Text = "Лекарства";
-            this.adminDrugButton.UseVisualStyleBackColor = false;
-            this.adminDrugButton.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // adminDiagButton
-            // 
-            this.adminDiagButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.adminDiagButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.adminDiagButton.FlatAppearance.BorderSize = 0;
-            this.adminDiagButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.adminDiagButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adminDiagButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adminDiagButton.Location = new System.Drawing.Point(24, 308);
-            this.adminDiagButton.Name = "adminDiagButton";
-            this.adminDiagButton.Size = new System.Drawing.Size(174, 44);
-            this.adminDiagButton.TabIndex = 4;
-            this.adminDiagButton.Text = "Диагнозы";
-            this.adminDiagButton.UseVisualStyleBackColor = false;
-            this.adminDiagButton.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // adminAddressButton
-            // 
-            this.adminAddressButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.adminAddressButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.adminAddressButton.FlatAppearance.BorderSize = 0;
-            this.adminAddressButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.adminAddressButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adminAddressButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adminAddressButton.Location = new System.Drawing.Point(24, 242);
-            this.adminAddressButton.Name = "adminAddressButton";
-            this.adminAddressButton.Size = new System.Drawing.Size(174, 44);
-            this.adminAddressButton.TabIndex = 3;
-            this.adminAddressButton.Text = "Адреса";
-            this.adminAddressButton.UseVisualStyleBackColor = false;
-            this.adminAddressButton.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // adminSpecButton
-            // 
-            this.adminSpecButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.adminSpecButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.adminSpecButton.FlatAppearance.BorderSize = 0;
-            this.adminSpecButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.adminSpecButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adminSpecButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adminSpecButton.Location = new System.Drawing.Point(24, 177);
-            this.adminSpecButton.Name = "adminSpecButton";
-            this.adminSpecButton.Size = new System.Drawing.Size(174, 44);
-            this.adminSpecButton.TabIndex = 2;
-            this.adminSpecButton.Text = "Специализации";
-            this.adminSpecButton.UseVisualStyleBackColor = false;
-            this.adminSpecButton.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // adminDocButton
-            // 
-            this.adminDocButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.adminDocButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.adminDocButton.FlatAppearance.BorderSize = 0;
-            this.adminDocButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.adminDocButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adminDocButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adminDocButton.Location = new System.Drawing.Point(24, 111);
-            this.adminDocButton.Name = "adminDocButton";
-            this.adminDocButton.Size = new System.Drawing.Size(174, 44);
-            this.adminDocButton.TabIndex = 1;
-            this.adminDocButton.Text = "Врачи";
-            this.adminDocButton.UseVisualStyleBackColor = false;
-            this.adminDocButton.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // adminCabinetButton
-            // 
-            this.adminCabinetButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.adminCabinetButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.adminCabinetButton.FlatAppearance.BorderSize = 0;
-            this.adminCabinetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.adminCabinetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adminCabinetButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adminCabinetButton.Location = new System.Drawing.Point(24, 45);
-            this.adminCabinetButton.Name = "adminCabinetButton";
-            this.adminCabinetButton.Size = new System.Drawing.Size(174, 44);
-            this.adminCabinetButton.TabIndex = 0;
-            this.adminCabinetButton.Text = "Кабинеты";
-            this.adminCabinetButton.UseVisualStyleBackColor = false;
-            this.adminCabinetButton.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // regPanel
-            // 
-            this.regPanel.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.regPanel.Controls.Add(this.regCardsButton);
-            this.regPanel.Controls.Add(this.regRecordButton);
-            this.regPanel.Location = new System.Drawing.Point(0, 56);
-            this.regPanel.Name = "regPanel";
-            this.regPanel.Size = new System.Drawing.Size(222, 447);
-            this.regPanel.TabIndex = 2;
-            this.regPanel.Visible = false;
-            // 
-            // regCardsButton
-            // 
-            this.regCardsButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.regCardsButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.regCardsButton.FlatAppearance.BorderSize = 0;
-            this.regCardsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.regCardsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.regCardsButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.regCardsButton.Location = new System.Drawing.Point(24, 112);
-            this.regCardsButton.Name = "regCardsButton";
-            this.regCardsButton.Size = new System.Drawing.Size(174, 58);
-            this.regCardsButton.TabIndex = 1;
-            this.regCardsButton.Text = "Управление карточками";
-            this.regCardsButton.UseVisualStyleBackColor = false;
-            this.regCardsButton.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // regRecordButton
-            // 
-            this.regRecordButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.regRecordButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.regRecordButton.FlatAppearance.BorderSize = 0;
-            this.regRecordButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.regRecordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.regRecordButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.regRecordButton.Location = new System.Drawing.Point(24, 45);
-            this.regRecordButton.Name = "regRecordButton";
-            this.regRecordButton.Size = new System.Drawing.Size(174, 44);
-            this.regRecordButton.TabIndex = 0;
-            this.regRecordButton.Text = "Запись на прием";
-            this.regRecordButton.UseVisualStyleBackColor = false;
-            this.regRecordButton.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // docPanel
-            // 
-            this.docPanel.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.docPanel.Controls.Add(this.doctorVisitButton);
-            this.docPanel.Controls.Add(this.doctorDrugButton);
-            this.docPanel.Controls.Add(this.doctorDiagButton);
-            this.docPanel.Location = new System.Drawing.Point(0, 56);
-            this.docPanel.Name = "docPanel";
-            this.docPanel.Size = new System.Drawing.Size(222, 444);
-            this.docPanel.TabIndex = 1;
-            this.docPanel.Visible = false;
-            // 
-            // doctorVisitButton
-            // 
-            this.doctorVisitButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.doctorVisitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.doctorVisitButton.FlatAppearance.BorderSize = 0;
-            this.doctorVisitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.doctorVisitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.doctorVisitButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.doctorVisitButton.Location = new System.Drawing.Point(24, 177);
-            this.doctorVisitButton.Name = "doctorVisitButton";
-            this.doctorVisitButton.Size = new System.Drawing.Size(174, 44);
-            this.doctorVisitButton.TabIndex = 2;
-            this.doctorVisitButton.Text = "Прием пациентов";
-            this.doctorVisitButton.UseVisualStyleBackColor = false;
-            this.doctorVisitButton.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // doctorDrugButton
-            // 
-            this.doctorDrugButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.doctorDrugButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.doctorDrugButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.doctorDrugButton.FlatAppearance.BorderSize = 0;
-            this.doctorDrugButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.doctorDrugButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.doctorDrugButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.doctorDrugButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.doctorDrugButton.Location = new System.Drawing.Point(24, 45);
-            this.doctorDrugButton.Name = "doctorDrugButton";
-            this.doctorDrugButton.Size = new System.Drawing.Size(174, 44);
-            this.doctorDrugButton.TabIndex = 0;
-            this.doctorDrugButton.Text = "Лекарства";
-            this.doctorDrugButton.UseVisualStyleBackColor = false;
-            this.doctorDrugButton.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // doctorDiagButton
-            // 
-            this.doctorDiagButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.doctorDiagButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.doctorDiagButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.doctorDiagButton.FlatAppearance.BorderSize = 0;
-            this.doctorDiagButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.doctorDiagButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.doctorDiagButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.doctorDiagButton.Location = new System.Drawing.Point(24, 112);
-            this.doctorDiagButton.Name = "doctorDiagButton";
-            this.doctorDiagButton.Size = new System.Drawing.Size(174, 44);
-            this.doctorDiagButton.TabIndex = 1;
-            this.doctorDiagButton.Text = "Диагнозы";
-            this.doctorDiagButton.UseVisualStyleBackColor = false;
-            this.doctorDiagButton.Click += new System.EventHandler(this.button5_Click);
             // 
             // mainPanel
             // 
@@ -597,9 +380,9 @@
             // 
             // visitPanel
             // 
-            this.visitPanel.Controls.Add(this.listBoxPatientsVisit);
             this.visitPanel.Controls.Add(this.lable8);
             this.visitPanel.Controls.Add(this.createReportButton);
+            this.visitPanel.Controls.Add(this.listBoxPatientsVisit);
             this.visitPanel.Location = new System.Drawing.Point(228, 56);
             this.visitPanel.Name = "visitPanel";
             this.visitPanel.Size = new System.Drawing.Size(674, 443);
@@ -649,6 +432,223 @@
             this.createReportButton.Text = "Сформировать отчет";
             this.createReportButton.UseVisualStyleBackColor = true;
             this.createReportButton.Click += new System.EventHandler(this.button34_Click);
+            // 
+            // adminPanel
+            // 
+            this.adminPanel.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.adminPanel.Controls.Add(this.adminDrugButton);
+            this.adminPanel.Controls.Add(this.adminDiagButton);
+            this.adminPanel.Controls.Add(this.adminAddressButton);
+            this.adminPanel.Controls.Add(this.adminSpecButton);
+            this.adminPanel.Controls.Add(this.adminDocButton);
+            this.adminPanel.Controls.Add(this.adminCabinetButton);
+            this.adminPanel.Location = new System.Drawing.Point(0, 56);
+            this.adminPanel.Name = "adminPanel";
+            this.adminPanel.Size = new System.Drawing.Size(222, 443);
+            this.adminPanel.TabIndex = 3;
+            this.adminPanel.Visible = false;
+            // 
+            // adminDrugButton
+            // 
+            this.adminDrugButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.adminDrugButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.adminDrugButton.FlatAppearance.BorderSize = 0;
+            this.adminDrugButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.adminDrugButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adminDrugButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminDrugButton.Location = new System.Drawing.Point(24, 373);
+            this.adminDrugButton.Name = "adminDrugButton";
+            this.adminDrugButton.Size = new System.Drawing.Size(174, 44);
+            this.adminDrugButton.TabIndex = 5;
+            this.adminDrugButton.Text = "Лекарства";
+            this.adminDrugButton.UseVisualStyleBackColor = false;
+            this.adminDrugButton.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // adminDiagButton
+            // 
+            this.adminDiagButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.adminDiagButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.adminDiagButton.FlatAppearance.BorderSize = 0;
+            this.adminDiagButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.adminDiagButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adminDiagButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminDiagButton.Location = new System.Drawing.Point(24, 308);
+            this.adminDiagButton.Name = "adminDiagButton";
+            this.adminDiagButton.Size = new System.Drawing.Size(174, 44);
+            this.adminDiagButton.TabIndex = 4;
+            this.adminDiagButton.Text = "Диагнозы";
+            this.adminDiagButton.UseVisualStyleBackColor = false;
+            this.adminDiagButton.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // adminAddressButton
+            // 
+            this.adminAddressButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.adminAddressButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.adminAddressButton.FlatAppearance.BorderSize = 0;
+            this.adminAddressButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.adminAddressButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adminAddressButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminAddressButton.Location = new System.Drawing.Point(24, 242);
+            this.adminAddressButton.Name = "adminAddressButton";
+            this.adminAddressButton.Size = new System.Drawing.Size(174, 44);
+            this.adminAddressButton.TabIndex = 3;
+            this.adminAddressButton.Text = "Участки";
+            this.adminAddressButton.UseVisualStyleBackColor = false;
+            this.adminAddressButton.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // adminSpecButton
+            // 
+            this.adminSpecButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.adminSpecButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.adminSpecButton.FlatAppearance.BorderSize = 0;
+            this.adminSpecButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.adminSpecButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adminSpecButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminSpecButton.Location = new System.Drawing.Point(24, 177);
+            this.adminSpecButton.Name = "adminSpecButton";
+            this.adminSpecButton.Size = new System.Drawing.Size(174, 44);
+            this.adminSpecButton.TabIndex = 2;
+            this.adminSpecButton.Text = "Специализации";
+            this.adminSpecButton.UseVisualStyleBackColor = false;
+            this.adminSpecButton.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // adminDocButton
+            // 
+            this.adminDocButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.adminDocButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.adminDocButton.FlatAppearance.BorderSize = 0;
+            this.adminDocButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.adminDocButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adminDocButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminDocButton.Location = new System.Drawing.Point(24, 111);
+            this.adminDocButton.Name = "adminDocButton";
+            this.adminDocButton.Size = new System.Drawing.Size(174, 44);
+            this.adminDocButton.TabIndex = 1;
+            this.adminDocButton.Text = "Врачи";
+            this.adminDocButton.UseVisualStyleBackColor = false;
+            this.adminDocButton.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // adminCabinetButton
+            // 
+            this.adminCabinetButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.adminCabinetButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.adminCabinetButton.FlatAppearance.BorderSize = 0;
+            this.adminCabinetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.adminCabinetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adminCabinetButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminCabinetButton.Location = new System.Drawing.Point(24, 45);
+            this.adminCabinetButton.Name = "adminCabinetButton";
+            this.adminCabinetButton.Size = new System.Drawing.Size(174, 44);
+            this.adminCabinetButton.TabIndex = 0;
+            this.adminCabinetButton.Text = "Кабинеты";
+            this.adminCabinetButton.UseVisualStyleBackColor = false;
+            this.adminCabinetButton.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // regPanel
+            // 
+            this.regPanel.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.regPanel.Controls.Add(this.regCardsButton);
+            this.regPanel.Controls.Add(this.regRecordButton);
+            this.regPanel.Location = new System.Drawing.Point(0, 56);
+            this.regPanel.Name = "regPanel";
+            this.regPanel.Size = new System.Drawing.Size(222, 447);
+            this.regPanel.TabIndex = 2;
+            this.regPanel.Visible = false;
+            // 
+            // regCardsButton
+            // 
+            this.regCardsButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.regCardsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.regCardsButton.FlatAppearance.BorderSize = 0;
+            this.regCardsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.regCardsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.regCardsButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.regCardsButton.Location = new System.Drawing.Point(24, 112);
+            this.regCardsButton.Name = "regCardsButton";
+            this.regCardsButton.Size = new System.Drawing.Size(174, 58);
+            this.regCardsButton.TabIndex = 1;
+            this.regCardsButton.Text = "Управление карточками";
+            this.regCardsButton.UseVisualStyleBackColor = false;
+            this.regCardsButton.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // regRecordButton
+            // 
+            this.regRecordButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.regRecordButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.regRecordButton.FlatAppearance.BorderSize = 0;
+            this.regRecordButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.regRecordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.regRecordButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.regRecordButton.Location = new System.Drawing.Point(24, 45);
+            this.regRecordButton.Name = "regRecordButton";
+            this.regRecordButton.Size = new System.Drawing.Size(174, 44);
+            this.regRecordButton.TabIndex = 0;
+            this.regRecordButton.Text = "Запись на прием";
+            this.regRecordButton.UseVisualStyleBackColor = false;
+            this.regRecordButton.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // docPanel
+            // 
+            this.docPanel.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.docPanel.Controls.Add(this.doctorVisitButton);
+            this.docPanel.Controls.Add(this.doctorDrugButton);
+            this.docPanel.Controls.Add(this.doctorDiagButton);
+            this.docPanel.Location = new System.Drawing.Point(0, 56);
+            this.docPanel.Name = "docPanel";
+            this.docPanel.Size = new System.Drawing.Size(222, 444);
+            this.docPanel.TabIndex = 1;
+            this.docPanel.Visible = false;
+            // 
+            // doctorVisitButton
+            // 
+            this.doctorVisitButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.doctorVisitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.doctorVisitButton.FlatAppearance.BorderSize = 0;
+            this.doctorVisitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.doctorVisitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.doctorVisitButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.doctorVisitButton.Location = new System.Drawing.Point(24, 177);
+            this.doctorVisitButton.Name = "doctorVisitButton";
+            this.doctorVisitButton.Size = new System.Drawing.Size(174, 44);
+            this.doctorVisitButton.TabIndex = 2;
+            this.doctorVisitButton.Text = "Прием пациентов";
+            this.doctorVisitButton.UseVisualStyleBackColor = false;
+            this.doctorVisitButton.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // doctorDrugButton
+            // 
+            this.doctorDrugButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.doctorDrugButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.doctorDrugButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.doctorDrugButton.FlatAppearance.BorderSize = 0;
+            this.doctorDrugButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.doctorDrugButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.doctorDrugButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.doctorDrugButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.doctorDrugButton.Location = new System.Drawing.Point(24, 45);
+            this.doctorDrugButton.Name = "doctorDrugButton";
+            this.doctorDrugButton.Size = new System.Drawing.Size(174, 44);
+            this.doctorDrugButton.TabIndex = 0;
+            this.doctorDrugButton.Text = "Лекарства";
+            this.doctorDrugButton.UseVisualStyleBackColor = false;
+            this.doctorDrugButton.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // doctorDiagButton
+            // 
+            this.doctorDiagButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.doctorDiagButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.doctorDiagButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.doctorDiagButton.FlatAppearance.BorderSize = 0;
+            this.doctorDiagButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.doctorDiagButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.doctorDiagButton.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.doctorDiagButton.Location = new System.Drawing.Point(24, 112);
+            this.doctorDiagButton.Name = "doctorDiagButton";
+            this.doctorDiagButton.Size = new System.Drawing.Size(174, 44);
+            this.doctorDiagButton.TabIndex = 1;
+            this.doctorDiagButton.Text = "Диагнозы";
+            this.doctorDiagButton.UseVisualStyleBackColor = false;
+            this.doctorDiagButton.Click += new System.EventHandler(this.button5_Click);
             // 
             // registratorButton
             // 
@@ -766,9 +766,6 @@
             this.bottomPanel.ResumeLayout(false);
             this.bottomPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).EndInit();
-            this.adminPanel.ResumeLayout(false);
-            this.regPanel.ResumeLayout(false);
-            this.docPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.patientRecPanel.ResumeLayout(false);
@@ -776,6 +773,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.visitPanel.ResumeLayout(false);
             this.visitPanel.PerformLayout();
+            this.adminPanel.ResumeLayout(false);
+            this.regPanel.ResumeLayout(false);
+            this.docPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

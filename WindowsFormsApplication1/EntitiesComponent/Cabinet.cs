@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace EntitiesComponent
 {
-    public class Diagnosis
+    public class Cabinet
     {
         public int id { get; set; }
-        public string name { get; set; }
+        public string number { get; set; }
+        public string specialization { get; set; }
     }
 }

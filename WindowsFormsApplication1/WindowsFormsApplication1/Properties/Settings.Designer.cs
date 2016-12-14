@@ -33,5 +33,15 @@ namespace WindowsFormsApplication1.Properties {
                 return ((string)(this["Database1ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\v11.0;Initial Catalog=Clinic;Integrated Security=True")]
+        public string ClinicConnectionString {
+            get {
+                return ((string)(this["ClinicConnectionString"]));
+            }
+        }
     }
 }

@@ -68,6 +68,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClinicDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CreateAddress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +247,17 @@
     <EmbeddedResource Include="Ticket.resx">
       <DependentUpon>Ticket.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClinicDataSet.xsc">
+      <DependentUpon>ClinicDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClinicDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClinicDataSet.xss">
+      <DependentUpon>ClinicDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

@@ -36,6 +36,8 @@ namespace WindowsFormsApplication1
                 main.labelDoctor.Text ="Вы вошли как: " + comboBoxNameDoc.SelectedItem.ToString();
                 main.docPanel.Visible = true;
             }
+            this.Close();
+
 
         }
 
