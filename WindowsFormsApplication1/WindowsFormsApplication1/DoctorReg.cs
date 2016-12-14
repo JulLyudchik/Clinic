@@ -34,6 +34,7 @@ namespace WindowsFormsApplication1
             {
                 main.enterButton.Visible = true;
                 main.labelDoctor.Text ="Вы вошли как: " + comboBoxNameDoc.SelectedItem.ToString();
+                main.docPanel.Visible = true;
             }
 
         }

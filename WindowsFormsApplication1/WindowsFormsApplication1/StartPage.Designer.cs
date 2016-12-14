@@ -100,12 +100,12 @@
             this.bottomPanel.Controls.Add(this.labelDoct);
             this.bottomPanel.Controls.Add(this.label1);
             this.bottomPanel.Controls.Add(this.TimeLb1);
-            this.bottomPanel.Controls.Add(this.adminPanel);
-            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Controls.Add(this.docPanel);
             this.bottomPanel.Controls.Add(this.mainPanel);
             this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Controls.Add(this.visitPanel);
+            this.bottomPanel.Controls.Add(this.adminPanel);
+            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Location = new System.Drawing.Point(0, 66);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(902, 520);
@@ -131,6 +131,7 @@
             // 
             // enterButton
             // 
+            this.enterButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.enterButton.FlatAppearance.BorderSize = 0;
             this.enterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enterButton.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -790,7 +791,6 @@
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBoxStripe;
-        private System.Windows.Forms.Panel docPanel;
         private System.Windows.Forms.Button doctorVisitButton;
         private System.Windows.Forms.Button doctorDiagButton;
         private System.Windows.Forms.Button doctorDrugButton;
@@ -830,6 +830,7 @@
         public System.Windows.Forms.ComboBox comboBoxSpec;
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.ListBox listBoxPatientsVisit;
+        public System.Windows.Forms.Panel docPanel;
     }
 }
 
