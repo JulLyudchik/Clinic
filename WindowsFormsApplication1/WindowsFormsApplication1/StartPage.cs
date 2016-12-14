@@ -74,6 +74,8 @@ namespace WindowsFormsApplication1
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
+            if (formDoctorReg!=null)
+                formDoctorReg.Close();
 
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
@@ -106,6 +108,8 @@ namespace WindowsFormsApplication1
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
+            if (formDoctorReg!=null)
+               formDoctorReg.Close();
 
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
