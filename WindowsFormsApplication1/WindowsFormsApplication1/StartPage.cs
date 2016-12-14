@@ -29,6 +29,8 @@ namespace WindowsFormsApplication1
             formEditCard = new frmEditCard();
             diagDB = new DiagnosisContext();
             drugDB = new DrugContext();
+            diagDB.Diagnoses.Load();
+            drugDB.Drugs.Load();
         }
         frmTicket formTicket;
         frmPat formPatList;
@@ -74,8 +76,10 @@ namespace WindowsFormsApplication1
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
-            if (formDoctorReg!=null)
-                formDoctorReg.Close();
+            
+            doctorButton.Enabled = true;
+            labelDoctor.Text = "";
+            enterButton.Visible = false;
 
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
@@ -108,9 +112,7 @@ namespace WindowsFormsApplication1
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
-            if (formDoctorReg!=null)
-               formDoctorReg.Close();
-
+            
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
@@ -131,7 +133,7 @@ namespace WindowsFormsApplication1
             pictureBoxStripe.Visible = true;
             regPanel.Visible = false;
             adminPanel.Visible = false;
-           // docPanel.Visible = true;
+            //docPanel.Visible = true;
             doctorButton.Enabled = false;
             formDoctorReg = new frmDoctorReg();
             formDoctorReg.Show();
@@ -183,6 +185,12 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //
+            diagDB.Diagnoses.Load();
+            listBoxAll.DataSource = diagDB.Diagnoses.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Name";
+            //
             labelAll.Text = "ДИАГНОЗЫ";
             mainPanel.Visible = true;
             patientRecPanel.Visible = false;
@@ -286,6 +294,12 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //
+            drugDB.Drugs.Load();
+            listBoxAll.DataSource = drugDB.Drugs.Local.ToList();
+            listBoxAll.ValueMember = "Id";
+            listBoxAll.DisplayMember = "Name";
+            //
             labelAll.Text = "ЛЕКАРСТВА";
             mainPanel.Visible = true;
             patientRecPanel.Visible = false;
