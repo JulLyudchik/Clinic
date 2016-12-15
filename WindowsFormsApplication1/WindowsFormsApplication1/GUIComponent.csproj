@@ -73,6 +73,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClinicDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ClinicDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CreateAddress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,48 +131,6 @@
     <Compile Include="DoctorReg.Designer.cs">
       <DependentUpon>DoctorReg.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditAddress.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditAddress.Designer.cs">
-      <DependentUpon>EditAddress.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditCabinet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditCabinet.Designer.cs">
-      <DependentUpon>EditCabinet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditCard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditCard.Designer.cs">
-      <DependentUpon>EditCard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditDiag.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditDiag.Designer.cs">
-      <DependentUpon>EditDiag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditDoctor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditDoctor.Designer.cs">
-      <DependentUpon>EditDoctor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditDrug.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditDrug.Designer.cs">
-      <DependentUpon>EditDrug.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditSpec.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditSpec.Designer.cs">
-      <DependentUpon>EditSpec.cs</DependentUpon>
-    </Compile>
     <Compile Include="PatientListElement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,27 +175,6 @@
     <EmbeddedResource Include="DoctorReg.resx">
       <DependentUpon>DoctorReg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditAddress.resx">
-      <DependentUpon>EditAddress.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditCabinet.resx">
-      <DependentUpon>EditCabinet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditCard.resx">
-      <DependentUpon>EditCard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditDiag.resx">
-      <DependentUpon>EditDiag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditDoctor.resx">
-      <DependentUpon>EditDoctor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditDrug.resx">
-      <DependentUpon>EditDrug.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditSpec.resx">
-      <DependentUpon>EditSpec.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PatientListElement.resx">
       <DependentUpon>PatientListElement.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +204,28 @@
     </None>
     <None Include="ClinicDataSet.xss">
       <DependentUpon>ClinicDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicDataSet1.xsc">
+      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClinicDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClinicDataSet1.xss">
+      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicDataSet2.xsc">
+      <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClinicDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClinicDataSet2.xss">
+      <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

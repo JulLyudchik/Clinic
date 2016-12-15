@@ -8,13 +8,17 @@ using EntitiesComponent;
 
 namespace DataProviderComponent
 {
-    public class CabinetContext : DbContext
+    public class Context : DbContext
     {
-        public CabinetContext()
+        public Context()
             : base("DefaultConnection")
         { }
-
         public DbSet<Cabinet> cabinets { get; set; }
         public DbSet<CabinetPlan> cabinetplans { get; set; }
+        public DbSet<Diagnosis> diagnoses { get; set; }
+        public DbSet<Doctor> doctors { get; set; }
+        public DbSet<Drug> drugs { get; set; }
+        public DbSet<RegStation> regStations { get; set; }
+        public DbSet<Specialization> specializations { get; set; }
     }
 }

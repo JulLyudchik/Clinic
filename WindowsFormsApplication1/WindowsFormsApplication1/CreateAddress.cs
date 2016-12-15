@@ -15,15 +15,16 @@ namespace WindowsFormsApplication1
 {
     public partial class frmCreateAddr : Form
     {
-        RegStationContext regStDB;
+        Context db;
         public frmCreateAddr()
         {
             InitializeComponent();
-            regStDB = new RegStationContext();
-            regStDB.regStations.Load();
+            db = new Context();
+            db.regStations.Load();
             //comboBox1.DataSource = regStDB.regStations.ToList();
         }
         List<string> checkList =new List<string>();
+
         
         private void button1_Click(object sender, EventArgs e)
         {
@@ -32,6 +33,8 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e) //сделать проверку на наличие улицы в другом участке
         {
+            listBox1.Items.Add(textBox2.Text);
+            textBox2.Text = "";
             //listBox1.DataSource = regStDB.regstations.Local.ToList();
             //checkList = regStDB.regstations.Local.ToList();
             //listBox1.DataSource = checkList;
@@ -42,7 +45,12 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+        }
 
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            button3.Enabled = true;
         }
     }
 }

@@ -11,6 +11,6 @@ namespace EntitiesComponent
         public int id { get; set; }
         public string name { get; set; }
         public string therapist { get; set; }
-        public List<String> streets { get; set; }
+        public List<string> streets { get; set; }
     }
 }
