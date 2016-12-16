@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class frmCreateDiag
+    partial class frmDiagnosis
     {
         /// <summary>
         /// Required designer variable.

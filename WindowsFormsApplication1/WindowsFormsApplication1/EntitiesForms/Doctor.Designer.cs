@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class frmCreateDoc
+    partial class frmDoctor
     {
         /// <summary>
         /// Required designer variable.

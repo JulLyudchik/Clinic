@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmCreateCab : Form
+    public partial class frmCabinet : Form
     {       
-        public frmCreateCab()
+        public frmCabinet()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class frmCreateCab
+    partial class frmCabinet
     {
         /// <summary>
         /// Required designer variable.

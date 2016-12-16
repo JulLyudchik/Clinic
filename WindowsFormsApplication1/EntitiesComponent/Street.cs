@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace EntitiesComponent
 {
-    public class RegStation
+    public class Street
     {
         public int id { get; set; }
         public string name { get; set; }
-        public string therapist { get; set; }       
-        public ICollection<Street> streets { get; set; }   
-        public RegStation()      
-        { 
-            streets=new List<Street>();
-        }
+        public int? RegStationId { get; set; }
+        public RegStation regStation { get; set; }
     }
 }

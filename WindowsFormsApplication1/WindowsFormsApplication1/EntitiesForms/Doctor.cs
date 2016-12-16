@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmCreateDoc : Form
+    public partial class frmDoctor : Form
     {
-        public frmCreateDoc()
+        public frmDoctor()
         {
             InitializeComponent();
         }

@@ -13,10 +13,10 @@ using System.Data.Entity;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmCreateAddr : Form
+    public partial class frmRegStation : Form
     {
         Context db;
-        public frmCreateAddr()
+        public frmRegStation()
         {
             InitializeComponent();
             db = new Context();
