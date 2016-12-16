@@ -587,41 +587,31 @@ namespace WindowsFormsApplication1
                         frmRegStation regStForm = new frmRegStation();
                         regStForm.Text = "Редактировать участок";
                         regStForm.textBox1.Text = regStation.name;
-                        //regStation.streets = new List<string>();
-                        /*foreach (Team t in db.Teams.Include(t => t.Players))
-                        {
-                            Console.WriteLine("Команда: {0}", t.Name);
-                            foreach (Player pl in t.Players)
-                            {
-                                Console.WriteLine("{0} - {1}", pl.Name, pl.Position);
-                            }
-                            Console.WriteLine();
-                        }*/
+                        //regStation.streets = new List<Street>();
                         foreach (Street st in regStation.streets)
                         {                         
                             regStForm.listBox1.Items.Add(st.name);
                         }
-                        /*for (int i = 0; i < regStation.streets.Count; i++)
-                        {
-                           // string value = regStation.streets.ElementAt(i);
-                           // string str = (string)value;
-                           // regStation.streets.Add(str);
-                            //regStForm.listBox1.Items.Add(value);
-                        }  */
-               
+                     
                         DialogResult regStResult = regStForm.ShowDialog(this);
                         if (regStResult == DialogResult.Cancel)
                             return;
-                        regStation.name = regStForm.textBox1.Text;
-                        
+
+                        regStation.name = regStForm.textBox1.Text;              
+                        //db.SaveChanges();
+                        List<Street> streets = new List<Street>();
                         for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
                         {
-                            var value = regStForm.listBox1.Items[i];
-                            string str = (string)value;
-                           // regStation.streets.Add(str);
-                        }            
-                
-                        db.SaveChanges();
+                            Street street = new Street { name = (string)regStForm.listBox1.Items[i], regStation = regStation };
+                            streets.Add(street);
+                        }
+                        foreach (Street st in db.streets)
+                        {
+                            db.streets.Remove(st);
+                        }      
+                        db.streets.AddRange(streets);
+                        db.SaveChanges();            
+                      
                         db.regStations.Load();
                         listBoxAll.DataSource = db.regStations.Local.ToList();
                         MessageBox.Show("Объект обновлен");

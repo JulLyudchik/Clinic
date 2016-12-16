@@ -14,7 +14,7 @@ namespace EntitiesComponent
         public ICollection<Street> streets { get; set; }   
         public RegStation()      
         { 
-            streets=new List<Street>();
+            streets=new List<Street>();      
         }
     }
 }
