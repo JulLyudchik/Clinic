@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class frmCreateAddr
+    partial class frmRegStation
     {
         /// <summary>
         /// Required designer variable.

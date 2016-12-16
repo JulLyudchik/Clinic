@@ -19,6 +19,7 @@ namespace DataProviderComponent
         public DbSet<Doctor> doctors { get; set; }
         public DbSet<Drug> drugs { get; set; }
         public DbSet<RegStation> regStations { get; set; }
+        public DbSet<Street> streets { get; set; }
         public DbSet<Specialization> specializations { get; set; }
     }
 }

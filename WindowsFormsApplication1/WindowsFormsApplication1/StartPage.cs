@@ -16,6 +16,17 @@ namespace WindowsFormsApplication1
     public partial class frmStart : Form
     {
         Context db;
+        frmTicket formTicket;
+        frmPat formPatList;
+        frmCabinet formCreateCab;
+        frmDoctor formCreateDoc;
+        frmSpecialization formCreateSpec;
+        frmRegStation formCreateAddr;
+        frmDrug formCreateDrug;
+        frmDiagnosis formCreateDiag;
+        frmPatientCard formCreateCard;
+        frmDoctorReg formDoctorReg;
+        DateTime date;
         public frmStart()
         {
             InitializeComponent();
@@ -26,21 +37,7 @@ namespace WindowsFormsApplication1
             db.regStations.Load();
             db.doctors.Load();
             db.cabinets.Load();
-        }
-        frmTicket formTicket;
-        frmPat formPatList;
-
-        frmCreateCab formCreateCab;
-        frmCreateDoc formCreateDoc;
-        frmCreateSpec formCreateSpec;
-        frmCreateAddr formCreateAddr;
-        frmCreateDrug formCreateDrug;
-        frmCreateDiag formCreateDiag;       
-        frmCreateCard formCreateCard;
-
-        frmDoctorReg formDoctorReg;
-        DateTime date;
-
+        }    
         private void Start_Load(object sender, EventArgs e)
         {
             bottomPanel.Visible = false;
@@ -228,6 +225,7 @@ namespace WindowsFormsApplication1
         private void button11_Click(object sender, EventArgs e)
         {
             db.specializations.Load();
+            
             listBoxAll.DataSource = db.specializations.Local.ToList();
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
@@ -395,7 +393,7 @@ namespace WindowsFormsApplication1
             switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
-                    frmCreateCab cabForm = new frmCreateCab();
+                    frmCabinet cabForm = new frmCabinet();
                     cabForm.Text = "Создать кабинет";
                     DialogResult cabResult = cabForm.ShowDialog(this);
                     if (cabResult == DialogResult.Cancel)
@@ -415,7 +413,7 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("Новый объект добавлен");
                     break;
                 case "ВРАЧИ":
-                   frmCreateDoc docForm = new frmCreateDoc();
+                   frmDoctor docForm = new frmDoctor();
                    docForm.Text = "Создать врача";
                    DialogResult docResult = docForm.ShowDialog(this);
                     if (docResult == DialogResult.Cancel)
@@ -447,7 +445,7 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("Новый объект добавлен");
                     break;
                 case "СПЕЦИАЛИЗАЦИИ":
-                    frmCreateSpec specForm = new frmCreateSpec();
+                    frmSpecialization specForm = new frmSpecialization();
                     specForm.Text = "Создать специализацию";
                     DialogResult specResult = specForm.ShowDialog(this);
                     if (specResult == DialogResult.Cancel)
@@ -462,28 +460,31 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("Новый объект добавлен");
                     break;
                 case "УЧАСТКИ":
-                    frmCreateAddr regStForm = new frmCreateAddr();
+                    frmRegStation regStForm = new frmRegStation();
                     regStForm.Text = "Создать участок";
                     DialogResult regStResult = regStForm.ShowDialog(this);
                     if (regStResult == DialogResult.Cancel)
                         return;
+
                     RegStation regStation = new RegStation();
                     regStation.name = regStForm.textBox1.Text;
-                    regStation.streets=new List<string>();
-                    for (int i=0;i<regStForm.listBox1.Items.Count;i++)
-                    {
-                        var value = regStForm.listBox1.Items[i];
-                        string str = (string)value;
-                        regStation.streets.Add(str);
-                    }                  
                     db.regStations.Add(regStation);
                     db.SaveChanges();
+                    List<Street> streets = new List<Street>();
+                    for (int i = 0; i < regStForm.listBox1.Items.Count; i++ )
+                    {
+                        Street street = new Street{name=(string)regStForm.listBox1.Items[i],regStation=regStation};
+                        streets.Add(street);                        
+                    }
+                    db.streets.AddRange(streets);
+                    db.SaveChanges();                   
+                   
                     db.regStations.Load();
-                    listBoxAll.DataSource = db.regStations.Local.ToList();
+                    listBoxAll.DataSource = db.regStations.Local.ToList();                  
                     MessageBox.Show("Новый объект добавлен");
                     break;
                 case "ЛЕКАРСТВА":                  
-                    frmCreateDrug drugForm = new frmCreateDrug();
+                    frmDrug drugForm = new frmDrug();
                     drugForm.Text = "Создать лекарство";
                     DialogResult drugResult = drugForm.ShowDialog(this);
                     if (drugResult == DialogResult.Cancel)
@@ -499,7 +500,7 @@ namespace WindowsFormsApplication1
                 case "ДИАГНОЗЫ":
                     //formCreateDiag = new frmCreateDiag();
                     //                    
-                    frmCreateDiag diagForm = new frmCreateDiag();
+                    frmDiagnosis diagForm = new frmDiagnosis();
                     diagForm.Text = "Создать диагноз";
                     DialogResult diagResult = diagForm.ShowDialog(this);
                     if (diagResult == DialogResult.Cancel)
@@ -515,7 +516,7 @@ namespace WindowsFormsApplication1
                     //formCreateDiag.Show();
                     break;
                 case "КАРТОЧКИ ПАЦИЕНТОВ":
-                    formCreateCard = new frmCreateCard();
+                    formCreateCard = new frmPatientCard();
                     formCreateCard.Show();
                     break;
             }
@@ -534,7 +535,7 @@ namespace WindowsFormsApplication1
                         if (converted == false)
                             return;
                         Cabinet cabinet = db.cabinets.Find(id);
-                        frmCreateCab cabForm = new frmCreateCab();
+                        frmCabinet cabForm = new frmCabinet();
                         cabForm.Text = "Редактировать кабинет";
                         cabForm.textBox1.Text = cabinet.number;
                        // cabForm.comboBox1.SelectedText = cabinet.specialization;
@@ -560,7 +561,7 @@ namespace WindowsFormsApplication1
                         if (converted == false)
                             return;
                         Specialization specialization = db.specializations.Find(id);
-                        frmCreateSpec specForm = new frmCreateSpec();
+                        frmSpecialization specForm = new frmSpecialization();
                         specForm.Text = "Редактировать специализацию";
                         specForm.textBox1.Text = specialization.name;
                         specForm.textBox2.Text = specialization.time;
@@ -576,7 +577,55 @@ namespace WindowsFormsApplication1
                     }
                     break;
                 case "УЧАСТКИ":
-                    
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+                        RegStation regStation = db.regStations.Find(id);
+                        frmRegStation regStForm = new frmRegStation();
+                        regStForm.Text = "Редактировать участок";
+                        regStForm.textBox1.Text = regStation.name;
+                        //regStation.streets = new List<string>();
+                        /*foreach (Team t in db.Teams.Include(t => t.Players))
+                        {
+                            Console.WriteLine("Команда: {0}", t.Name);
+                            foreach (Player pl in t.Players)
+                            {
+                                Console.WriteLine("{0} - {1}", pl.Name, pl.Position);
+                            }
+                            Console.WriteLine();
+                        }*/
+                        foreach (Street st in regStation.streets)
+                        {                         
+                            regStForm.listBox1.Items.Add(st.name);
+                        }
+                        /*for (int i = 0; i < regStation.streets.Count; i++)
+                        {
+                           // string value = regStation.streets.ElementAt(i);
+                           // string str = (string)value;
+                           // regStation.streets.Add(str);
+                            //regStForm.listBox1.Items.Add(value);
+                        }  */
+               
+                        DialogResult regStResult = regStForm.ShowDialog(this);
+                        if (regStResult == DialogResult.Cancel)
+                            return;
+                        regStation.name = regStForm.textBox1.Text;
+                        
+                        for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
+                        {
+                            var value = regStForm.listBox1.Items[i];
+                            string str = (string)value;
+                           // regStation.streets.Add(str);
+                        }            
+                
+                        db.SaveChanges();
+                        db.regStations.Load();
+                        listBoxAll.DataSource = db.regStations.Local.ToList();
+                        MessageBox.Show("Объект обновлен");
+                    }
                     break;
                 case "ДИАГНОЗЫ":
                     if (listBoxAll.SelectedIndex != -1)
@@ -586,7 +635,7 @@ namespace WindowsFormsApplication1
                          if(converted == false)
                             return;
                         Diagnosis diagnosis = db.diagnoses.Find(id);                    
-                        frmCreateDiag diagForm = new frmCreateDiag();
+                        frmDiagnosis diagForm = new frmDiagnosis();
                         diagForm.Text = "Редактировать диагноз";
                         
                         diagForm.textBox1.Text = diagnosis.name;
@@ -611,7 +660,7 @@ namespace WindowsFormsApplication1
                             return;
 
                         Drug drug = db.drugs.Find(id);
-                        frmCreateDrug drugForm = new frmCreateDrug();
+                        frmDrug drugForm = new frmDrug();
                         drugForm.Text = "Редактировать лекарство";
                         drugForm.textBox1.Text = drug.name;
                         DialogResult drugResult = drugForm.ShowDialog(this);

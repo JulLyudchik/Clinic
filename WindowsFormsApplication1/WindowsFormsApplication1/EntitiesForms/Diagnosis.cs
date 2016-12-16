@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmCreateDrug : Form
+    public partial class frmDiagnosis : Form
     {
-        public frmCreateDrug()
+        public frmDiagnosis()
         {
             InitializeComponent();
         }
@@ -20,11 +20,6 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

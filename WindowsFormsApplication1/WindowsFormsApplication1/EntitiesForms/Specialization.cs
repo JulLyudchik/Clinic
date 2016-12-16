@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmCreateSpec : Form
+    public partial class frmSpecialization : Form
     {
-        public frmCreateSpec()
+        public frmSpecialization()
         {
             InitializeComponent();
         }

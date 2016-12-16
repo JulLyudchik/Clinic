@@ -83,47 +83,47 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
     </Compile>
-    <Compile Include="CreateAddress.cs">
+    <Compile Include="EntitiesForms\RegStation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateAddress.Designer.cs">
-      <DependentUpon>CreateAddress.cs</DependentUpon>
+    <Compile Include="EntitiesForms\RegStation.Designer.cs">
+      <DependentUpon>RegStation.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateCabinet.cs">
+    <Compile Include="EntitiesForms\Cabinet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateCabinet.Designer.cs">
-      <DependentUpon>CreateCabinet.cs</DependentUpon>
+    <Compile Include="EntitiesForms\Cabinet.Designer.cs">
+      <DependentUpon>Cabinet.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateCard.cs">
+    <Compile Include="EntitiesForms\PatientCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateCard.Designer.cs">
-      <DependentUpon>CreateCard.cs</DependentUpon>
+    <Compile Include="EntitiesForms\PatientCard.Designer.cs">
+      <DependentUpon>PatientCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateDiag.cs">
+    <Compile Include="EntitiesForms\Diagnosis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateDiag.Designer.cs">
-      <DependentUpon>CreateDiag.cs</DependentUpon>
+    <Compile Include="EntitiesForms\Diagnosis.Designer.cs">
+      <DependentUpon>Diagnosis.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateDoctor.cs">
+    <Compile Include="EntitiesForms\Doctor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateDoctor.Designer.cs">
-      <DependentUpon>CreateDoctor.cs</DependentUpon>
+    <Compile Include="EntitiesForms\Doctor.Designer.cs">
+      <DependentUpon>Doctor.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateDrug.cs">
+    <Compile Include="EntitiesForms\Drug.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateDrug.Designer.cs">
-      <DependentUpon>CreateDrug.cs</DependentUpon>
+    <Compile Include="EntitiesForms\Drug.Designer.cs">
+      <DependentUpon>Drug.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateSpec.cs">
+    <Compile Include="EntitiesForms\Specialization.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateSpec.Designer.cs">
-      <DependentUpon>CreateSpec.cs</DependentUpon>
+    <Compile Include="EntitiesForms\Specialization.Designer.cs">
+      <DependentUpon>Specialization.cs</DependentUpon>
     </Compile>
     <Compile Include="DoctorReg.cs">
       <SubType>Form</SubType>
@@ -151,26 +151,26 @@
     <Compile Include="Ticket.Designer.cs">
       <DependentUpon>Ticket.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CreateAddress.resx">
-      <DependentUpon>CreateAddress.cs</DependentUpon>
+    <EmbeddedResource Include="EntitiesForms\RegStation.resx">
+      <DependentUpon>RegStation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateCabinet.resx">
-      <DependentUpon>CreateCabinet.cs</DependentUpon>
+    <EmbeddedResource Include="EntitiesForms\Cabinet.resx">
+      <DependentUpon>Cabinet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateCard.resx">
-      <DependentUpon>CreateCard.cs</DependentUpon>
+    <EmbeddedResource Include="EntitiesForms\PatientCard.resx">
+      <DependentUpon>PatientCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateDiag.resx">
-      <DependentUpon>CreateDiag.cs</DependentUpon>
+    <EmbeddedResource Include="EntitiesForms\Diagnosis.resx">
+      <DependentUpon>Diagnosis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateDoctor.resx">
-      <DependentUpon>CreateDoctor.cs</DependentUpon>
+    <EmbeddedResource Include="EntitiesForms\Doctor.resx">
+      <DependentUpon>Doctor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateDrug.resx">
-      <DependentUpon>CreateDrug.cs</DependentUpon>
+    <EmbeddedResource Include="EntitiesForms\Drug.resx">
+      <DependentUpon>Drug.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateSpec.resx">
-      <DependentUpon>CreateSpec.cs</DependentUpon>
+    <EmbeddedResource Include="EntitiesForms\Specialization.resx">
+      <DependentUpon>Specialization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DoctorReg.resx">
       <DependentUpon>DoctorReg.cs</DependentUpon>
