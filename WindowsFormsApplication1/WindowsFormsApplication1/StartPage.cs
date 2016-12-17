@@ -477,8 +477,8 @@ namespace WindowsFormsApplication1
                         streets.Add(street);                        
                     }
                     db.streets.AddRange(streets);
-                    db.SaveChanges();                   
-                   
+                    db.SaveChanges();          
+                          
                     db.regStations.Load();
                     listBoxAll.DataSource = db.regStations.Local.ToList();                  
                     MessageBox.Show("Новый объект добавлен");
@@ -521,6 +521,20 @@ namespace WindowsFormsApplication1
                     break;
             }
             
+        }
+
+        private void clearStreets()
+        {
+            db.streets.Load();
+            List<Street> delStreets = db.streets.ToList();
+            foreach (Street st in delStreets)
+            {
+                if (st.RegStationId == null)
+                {
+                    db.streets.Remove(st);
+                }
+            }
+            db.SaveChanges();
         }
 
         private void editCardButton_Click(object sender, EventArgs e)
@@ -578,16 +592,18 @@ namespace WindowsFormsApplication1
                     break;
                 case "УЧАСТКИ":
                     if (listBoxAll.SelectedIndex != -1)
-                    {
+                    {                                               
                         int id = 0;
                         bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
                         if (converted == false)
                             return;
+                        db.streets.Load();                       
                         RegStation regStation = db.regStations.Find(id);
+
                         frmRegStation regStForm = new frmRegStation();
                         regStForm.Text = "Редактировать участок";
+
                         regStForm.textBox1.Text = regStation.name;
-                        //regStation.streets = new List<Street>();
                         foreach (Street st in regStation.streets)
                         {                         
                             regStForm.listBox1.Items.Add(st.name);
@@ -598,20 +614,17 @@ namespace WindowsFormsApplication1
                             return;
 
                         regStation.name = regStForm.textBox1.Text;              
-                        //db.SaveChanges();
                         List<Street> streets = new List<Street>();
                         for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
                         {
                             Street street = new Street { name = (string)regStForm.listBox1.Items[i], regStation = regStation };
                             streets.Add(street);
                         }
-                        foreach (Street st in db.streets)
-                        {
-                            db.streets.Remove(st);
-                        }      
-                        db.streets.AddRange(streets);
-                        db.SaveChanges();            
-                      
+                        regStation.streets = streets;
+                        db.Entry(regStation).State = EntityState.Modified;                       
+                        db.SaveChanges();
+                        clearStreets();
+
                         db.regStations.Load();
                         listBoxAll.DataSource = db.regStations.Local.ToList();
                         MessageBox.Show("Объект обновлен");
@@ -738,7 +751,22 @@ namespace WindowsFormsApplication1
                     }
                     break;
                 case "УЧАСТКИ":
-                    
+                    if (listBoxAll.SelectedIndex != -1)
+                    {                       
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+                        db.streets.Load();
+                        RegStation regStation = db.regStations.Find(id);
+                        db.regStations.Remove(regStation);
+                        db.SaveChanges();
+                        clearStreets();
+                                      
+                        db.regStations.Load();
+                        listBoxAll.DataSource = db.regStations.Local.ToList();
+                        MessageBox.Show("Объект удален");
+                    }
                     break;
                 case "ДИАГНОЗЫ":
                     if (listBoxAll.SelectedIndex != -1)
@@ -776,6 +804,11 @@ namespace WindowsFormsApplication1
                     
                     break;
             }
+        }
+
+        private void listBoxPatientsVisit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
