@@ -36,13 +36,12 @@ namespace Presentation
         public frmStart()
         {
             InitializeComponent();
-            /*db = new Context();
-            db.specializations.Load();
-            db.drugs.Load();
-            //db.diagnoses.Load();
-            db.regStations.Load();
-            db.doctors.Load();
-            db.cabinets.Load();*/
+            drugs = unitOfWork.Drugs.GetAll();
+            specializations = unitOfWork.Specializations.GetAll();
+            diagnoses = unitOfWork.Diagnoses.GetAll();
+            regStations = unitOfWork.RegStations.GetAll();
+            doctors = unitOfWork.Doctors.GetAll();
+            cabinets = unitOfWork.Cabinets.GetAll();            
         }
         private void Start_Load(object sender, EventArgs e)
         {
@@ -170,12 +169,12 @@ namespace Presentation
         {
             administratorButton.ForeColor = Color.Black;
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            //
-
-            //db.diagnoses.Load();
-            //listBoxAll.DataSource = db.diagnoses.Local.ToList();
+            bottomPanel.Visible = false;
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {           
             diagnoses = unitOfWork.Diagnoses.GetAll();
             listBoxAll.DataSource = diagnoses;
             listBoxAll.ValueMember = "Id";
@@ -189,16 +188,9 @@ namespace Presentation
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            bottomPanel.Visible = false;
-        }
-
+       
         private void button9_Click(object sender, EventArgs e)
-        {
-            //db.cabinets.Load();
-            //listBoxAll.DataSource = db.cabinets.Local.ToList();
+        {           
             cabinets = unitOfWork.Cabinets.GetAll();
             listBoxAll.DataSource = cabinets;
             listBoxAll.ValueMember = "Id";
@@ -210,11 +202,8 @@ namespace Presentation
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
         }
-
         private void button10_Click(object sender, EventArgs e)
-        {
-            //db.doctors.Load();
-            //listBoxAll.DataSource = db.doctors.Local.ToList();
+        {           
             doctors = unitOfWork.Doctors.GetAll();
             listBoxAll.DataSource = doctors;
             listBoxAll.ValueMember = "Id";
@@ -226,11 +215,8 @@ namespace Presentation
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
         }
-
         private void button11_Click(object sender, EventArgs e)
-        {
-            //db.specializations.Load();
-            //listBoxAll.DataSource = db.specializations.Local.ToList();
+        {            
             specializations = unitOfWork.Specializations.GetAll();
             listBoxAll.DataSource = specializations;
             listBoxAll.ValueMember = "Id";
@@ -243,10 +229,7 @@ namespace Presentation
             deleteItemButton.Enabled = false;
         }
         private void button12_Click(object sender, EventArgs e)
-        {
-            //
-            //db.regStations.Load();
-            //listBoxAll.DataSource = db.regStations.Local.ToList();
+        {          
             regStations = unitOfWork.RegStations.GetAll();
             listBoxAll.DataSource = regStations;
             listBoxAll.ValueMember = "Id";
@@ -259,10 +242,7 @@ namespace Presentation
             deleteItemButton.Enabled = false;
         }
         private void button13_Click(object sender, EventArgs e)
-        {
-            //
-            //db.diagnoses.Load();
-            //listBoxAll.DataSource = db.diagnoses.Local.ToList();
+        {           
             diagnoses = unitOfWork.Diagnoses.GetAll();
             listBoxAll.DataSource = diagnoses;
             listBoxAll.ValueMember = "Id";
@@ -279,10 +259,7 @@ namespace Presentation
 
         }
         private void button14_Click(object sender, EventArgs e)
-        {
-            //
-            //db.drugs.Load();
-            //listBoxAll.DataSource = db.drugs.Local.ToList();
+        {           
             drugs = unitOfWork.Drugs.GetAll();
             listBoxAll.DataSource = drugs;
             listBoxAll.ValueMember = "Id";
@@ -312,9 +289,6 @@ namespace Presentation
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            //
-            //db.drugs.Load();
-            //listBoxAll.DataSource = db.drugs.Local.ToList();
             drugs = unitOfWork.Drugs.GetAll();
             listBoxAll.DataSource = drugs;
             listBoxAll.ValueMember = "Id";
@@ -369,34 +343,27 @@ namespace Presentation
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
         }
-
         private void comboBoxNamePac_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxSpec.Enabled = true;
         }
-
         private void comboBoxSpec_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxNameDoc.Enabled = true;
         }
-
         private void comboBoxNameDoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataGridView1.Enabled = true;
         }
-
-
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             patRecButton.Enabled = true;
         }
-
         private void listBoxPatientsCards_SelectedIndexChanged(object sender, EventArgs e)
         {
             editItemButton.Enabled = true;
             deleteItemButton.Enabled = true;
         }
-
         private void createCardButton_Click(object sender, EventArgs e)
         {
             switch (labelAll.Text)
@@ -564,7 +531,6 @@ namespace Presentation
             }
             db.SaveChanges();
         }*/
-
         private void editCardButton_Click(object sender, EventArgs e)
         {
             switch (labelAll.Text)
@@ -729,7 +695,6 @@ namespace Presentation
         {
             patRecButton.Enabled = true;
         }
-
         private void deleteItemButton_Click(object sender, EventArgs e)
         {
             /*switch (labelAll.Text)
@@ -824,7 +789,6 @@ namespace Presentation
                     break;
             }*/
         }
-
         private void listBoxPatientsVisit_SelectedIndexChanged(object sender, EventArgs e)
         {
 
