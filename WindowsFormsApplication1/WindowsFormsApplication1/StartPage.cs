@@ -371,21 +371,23 @@ namespace Presentation
                 case "КАБИНЕТЫ":
                     frmCabinet cabForm = new frmCabinet();
                     cabForm.Text = "Создать кабинет";
+                    specializations = unitOfWork.Specializations.GetAll();
+                    cabForm.comboBox1.DataSource = specializations;
+                    //cabForm.comboBox1.DisplayMember = "Name";
+                    //cabForm.comboBox1.ValueMember = "Id";
                     DialogResult cabResult = cabForm.ShowDialog(this);
                     if (cabResult == DialogResult.Cancel)
                         return;
-                    
+
                     int id = 0;
                     Cabinet cabinet = new Cabinet();
-                    id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());
-                    specializations = unitOfWork.Specializations.GetAll();
+                    id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());            
                     Specialization specialization_t = specializations.Find(spec => spec.Id == id);
                     cabinet.number = cabForm.textBox1.Text;
                     cabinet.specialization = specialization_t.name;
 
                     MessageBox.Show(Controller.Service.Add.add(cabinet));
                     cabinets = unitOfWork.Cabinets.GetAll();
-                   
                     listBoxAll.DataSource = cabinets;
                     break;
 
@@ -422,6 +424,24 @@ namespace Presentation
                     MessageBox.Show("Новый объект добавлен");
                     break;*/
                 case "СПЕЦИАЛИЗАЦИИ":
+                    /*frmCabinet cabForm = new frmCabinet();
+                    cabForm.Text = "Создать кабинет";
+                    DialogResult cabResult = cabForm.ShowDialog(this);
+                    if (cabResult == DialogResult.Cancel)
+                        return;
+
+                    int id = 0;
+                    Cabinet cabinet = new Cabinet();
+                    id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());
+                    specializations = unitOfWork.Specializations.GetAll();
+                    Specialization specialization_t = specializations.Find(spec => spec.Id == id);
+                    cabinet.number = cabForm.textBox1.Text;
+                    cabinet.specialization = specialization_t.name;
+
+                    MessageBox.Show(Controller.Service.Add.add(cabinet));
+                    cabinets = unitOfWork.Cabinets.GetAll();
+                    listBoxAll.DataSource = cabinets;
+                    break;*/
                     frmSpecialization specForm = new frmSpecialization();
                     specForm.Text = "Создать специализацию";
                     DialogResult specResult = specForm.ShowDialog(this);
@@ -436,67 +456,67 @@ namespace Presentation
                     specializations = unitOfWork.Specializations.GetAll();
                     listBoxAll.DataSource = specializations;
                     break;
-                    /*case "УЧАСТКИ":
-
-                        frmRegStation regStForm = new frmRegStation();
-                        regStForm.Text = "Создать участок";
-                        DialogResult regStResult = regStForm.ShowDialog(this);
-                        if (regStResult == DialogResult.Cancel)
-                            return;
-
-                        RegStation regStation = new RegStation();
-                        regStation.name = regStForm.textBox1.Text;
-                        db.regStations.Add(regStation);
-                        db.SaveChanges();
-                        List<Street> streets = new List<Street>();
-                        for (int i = 0; i < regStForm.listBox1.Items.Count; i++ )
-                        {
-                            Street street = new Street{name=(string)regStForm.listBox1.Items[i],regStation=regStation};
-                            streets.Add(street);                        
-                        }
-                        db.streets.AddRange(streets);
-                        db.SaveChanges();          
-
-                        db.regStations.Load();
-                        listBoxAll.DataSource = db.regStations.Local.ToList();                  
-                        MessageBox.Show("Новый объект добавлен");
-                        break;
-                   
-               */    
-               case "ЛЕКАРСТВА":                  
-                       frmDrug drugForm = new frmDrug();
-                       drugForm.Text = "Создать лекарство";
-                       DialogResult drugResult = drugForm.ShowDialog(this);
-                       if (drugResult == DialogResult.Cancel)
-                           return;
-
-                       Drug drug = new Drug();
-                       drug.name = drugForm.textBox1.Text;
-                       MessageBox.Show(Controller.Service.Add.add(drug));
-
-                       drugs = unitOfWork.Drugs.GetAll();
-                       listBoxAll.DataSource = drugs;
-                       break;
-               case "ДИАГНОЗЫ":
-                          //formCreateDiag = new frmCreateDiag();
-                          //                    
-                          frmDiagnosis diagForm = new frmDiagnosis();
-                          diagForm.Text = "Создать диагноз";
-                          DialogResult diagResult = diagForm.ShowDialog(this);
-                          if (diagResult == DialogResult.Cancel)
-                              return;
-                          Diagnosis diagnosis = new Diagnosis();
+                /*case "УЧАСТКИ":
                     
-                          diagnosis.name = diagForm.textBox1.Text;
-                          MessageBox.Show(Controller.Service.Add.add(diagnosis));
+                    frmRegStation regStForm = new frmRegStation();
+                    regStForm.Text = "Создать участок";
+                    DialogResult regStResult = regStForm.ShowDialog(this);
+                    if (regStResult == DialogResult.Cancel)
+                        return;
 
-                          diagnoses = unitOfWork.Diagnoses.GetAll();
-                          listBoxAll.DataSource = diagnoses;
-                          break;
-               /*  case "КАРТОЧКИ ПАЦИЕНТОВ": 
-                     formCreateCard = new frmPatientCard();
-                     formCreateCard.Show();
-                     break;*/
+                    RegStation regStation = new RegStation();
+                    regStation.name = regStForm.textBox1.Text;
+                    db.regStations.Add(regStation);
+                    db.SaveChanges();
+                    List<Street> streets = new List<Street>();
+                    for (int i = 0; i < regStForm.listBox1.Items.Count; i++ )
+                    {
+                        Street street = new Street{name=(string)regStForm.listBox1.Items[i],regStation=regStation};
+                        streets.Add(street);                        
+                    }
+                    db.streets.AddRange(streets);
+                    db.SaveChanges();          
+                          
+                    db.regStations.Load();
+                    listBoxAll.DataSource = db.regStations.Local.ToList();                  
+                    MessageBox.Show("Новый объект добавлен");
+                    break;
+                case "ЛЕКАРСТВА":                  
+                    frmDrug drugForm = new frmDrug();
+                    drugForm.Text = "Создать лекарство";
+                    DialogResult drugResult = drugForm.ShowDialog(this);
+                    if (drugResult == DialogResult.Cancel)
+                        return;
+                    Drug drug = new Drug();
+                    drug.name = drugForm.textBox1.Text;
+                    db.drugs.Add(drug);
+                    db.SaveChanges();               
+                    db.drugs.Load();
+                    listBoxAll.DataSource = db.drugs.Local.ToList();
+                    MessageBox.Show("Новый объект добавлен");
+                    break;
+                case "ДИАГНОЗЫ":
+                    //formCreateDiag = new frmCreateDiag();
+                    //                    
+                    frmDiagnosis diagForm = new frmDiagnosis();
+                    diagForm.Text = "Создать диагноз";
+                    DialogResult diagResult = diagForm.ShowDialog(this);
+                    if (diagResult == DialogResult.Cancel)
+                        return;
+                    Diagnosis diagnosis = new Diagnosis();
+                    diagnosis.name = diagForm.textBox1.Text;
+                    db.diagnoses.Add(diagnosis);
+                    db.SaveChanges();                   
+                    db.diagnoses.Load();
+                    listBoxAll.DataSource = db.diagnoses.Local.ToList();
+                    MessageBox.Show("Новый объект добавлен");
+                    //                  
+                    //formCreateDiag.Show();
+                    break;
+                case "КАРТОЧКИ ПАЦИЕНТОВ": 
+                    formCreateCard = new frmPatientCard();
+                    formCreateCard.Show();
+                    break;*/
             }
 
         }
@@ -523,130 +543,144 @@ namespace Presentation
                     {
                         frmCabinet cabForm = new frmCabinet();
                         cabForm.Text = "Редактировать кабинет";
+                        cabForm.comboBox1.DataSource = specializations;
                         int id = 0;
                         id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
                         cabinets = unitOfWork.Cabinets.GetAll();
+                        specializations=unitOfWork.Specializations.GetAll();
                         Cabinet cabinet = cabinets.Find(cab => cab.Id == id);
+                        Specialization specialization = specializations.Find(spec => spec.name == cabinet.specialization);
                         cabForm.textBox1.Text = cabinet.number;
-                        cabForm.comboBox1.SelectedItem = cabinet.specialization;
+                        cabForm.comboBox1.SelectedItem = specialization;
 
                         DialogResult cabResult = cabForm.ShowDialog(this);
                         if (cabResult == DialogResult.Cancel)
                             return;
                         cabinet.number = cabForm.textBox1.Text;
-                        cabinet.specialization = cabForm.comboBox1.SelectedText;
+                        specialization = (Specialization)cabForm.comboBox1.SelectedItem;
+                        cabinet.specialization = specialization.name;
                         MessageBox.Show(Controller.Service.Update.update(cabinet));
 
+                        cabinets = unitOfWork.Cabinets.GetAll();
                         listBoxAll.DataSource = cabinets;
                     }
                     break;
-                    /*case "ВРАЧИ":
-
-                        break;*/
-                    case "СПЕЦИАЛИЗАЦИИ":
-                        if (listBoxAll.SelectedIndex != -1)
-                        {
-                            frmSpecialization specForm = new frmSpecialization();
-                            specForm.Text = "Редактировать специализацию";
-                            specializations = unitOfWork.Specializations.GetAll();
-                            int id = 0;
-                            id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
-                            Specialization specialization = specializations.Find(spec => spec.Id == id);
-                            specForm.textBox1.Text = specialization.name;
-                            specForm.textBox2.Text = specialization.time;
-                            DialogResult specResult = specForm.ShowDialog(this);
-                            if (specResult == DialogResult.Cancel)
-                                return;
-                            specialization.name = specForm.textBox1.Text;
-                            specialization.time = specForm.textBox2.Text;
-                            MessageBox.Show(Controller.Service.Update.update(specialization));
-
-                            listBoxAll.DataSource = specializations;
-                        }
-                        break;
-                   /* case "УЧАСТКИ":
-                        if (listBoxAll.SelectedIndex != -1)
-                        {                                               
-                            int id = 0;
-                            bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                            if (converted == false)
-                                return;
-                            db.streets.Load();                       
-                            RegStation regStation = db.regStations.Find(id);
-
-                            frmRegStation regStForm = new frmRegStation();
-                            regStForm.Text = "Редактировать участок";
-
-                            regStForm.textBox1.Text = regStation.name;
-                            foreach (Street st in regStation.streets)
-                            {                         
-                                regStForm.listBox1.Items.Add(st.name);
-                            }
-
-                            DialogResult regStResult = regStForm.ShowDialog(this);
-                            if (regStResult == DialogResult.Cancel)
-                                return;
-
-                            regStation.name = regStForm.textBox1.Text;              
-                            List<Street> streets = new List<Street>();
-                            for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
-                            {
-                                Street street = new Street { name = (string)regStForm.listBox1.Items[i], regStation = regStation };
-                                streets.Add(street);
-                            }
-                            regStation.streets = streets;
-                            db.Entry(regStation).State = EntityState.Modified;                       
-                            db.SaveChanges();
-                            clearStreets();
-
-                            db.regStations.Load();
-                            listBoxAll.DataSource = db.regStations.Local.ToList();
-                            MessageBox.Show("Объект обновлен");
-                        }
-                        break;
-                        */
-                    case "ДИАГНОЗЫ":
+                /*case "ВРАЧИ":
+                    
+                    break;
+                case "СПЕЦИАЛИЗАЦИИ":
                     if (listBoxAll.SelectedIndex != -1)
                     {
-                        frmDiagnosis diagForm = new frmDiagnosis();
-                            diagForm.Text = "Редактировать диагноз";
-                            diagnoses = unitOfWork.Diagnoses.GetAll();
-                            int id = 0;
-                            id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
-                            Diagnosis diagnosis = diagnoses.Find(diag => diag.Id == id);
-                            diagForm.textBox1.Text = diagnosis.name;
-                            DialogResult diagResult = diagForm.ShowDialog(this);
-                            if (diagResult == DialogResult.Cancel)
-                                return;
-                            diagnosis.name = diagForm.textBox1.Text;
-                            MessageBox.Show(Controller.Service.Update.update(diagnosis));
-
-                            listBoxAll.DataSource = diagnoses;
-                        }
-                        break;
-                    case "ЛЕКАРСТВА":
-                        if (listBoxAll.SelectedIndex != -1)
-                        {
-                            frmDrug drugForm = new frmDrug();
-                            drugForm.Text = "Редактировать лекарство";
-                            drugs = unitOfWork.Drugs.GetAll();
-                            int id = 0;
-                            id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
-                            Drug drug = drugs.Find(drugg => drugg.Id == id);
-                            drugForm.textBox1.Text = drug.name;
-                            DialogResult drugResult = drugForm.ShowDialog(this);
-                            if (drugResult == DialogResult.Cancel)
-                                return;
-                            drug.name = drugForm.textBox1.Text;
-                            MessageBox.Show(Controller.Service.Update.update(drug));
-
-                            listBoxAll.DataSource = drugs;
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+                        Specialization specialization = db.specializations.Find(id);
+                        frmSpecialization specForm = new frmSpecialization();
+                        specForm.Text = "Редактировать специализацию";
+                        specForm.textBox1.Text = specialization.name;
+                        specForm.textBox2.Text = specialization.time;
+                        DialogResult specResult = specForm.ShowDialog(this);
+                        if (specResult == DialogResult.Cancel)
+                            return;
+                        specialization.name = specForm.textBox1.Text;
+                        specialization.time = specForm.textBox2.Text;
+                        db.SaveChanges();
+                        db.specializations.Load();
+                        listBoxAll.DataSource = db.specializations.Local.ToList();
+                        MessageBox.Show("Объект обновлен");
                     }
-                        //formEditDrug.Show();
-                        break;
-                   /* case "КАРТОЧКИ ПАЦИЕНТОВ":
+                    break;
+                case "УЧАСТКИ":
+                    if (listBoxAll.SelectedIndex != -1)
+                    {                                               
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+                        db.streets.Load();                       
+                        RegStation regStation = db.regStations.Find(id);
 
-                        break;*/
+                        frmRegStation regStForm = new frmRegStation();
+                        regStForm.Text = "Редактировать участок";
+
+                        regStForm.textBox1.Text = regStation.name;
+                        foreach (Street st in regStation.streets)
+                        {                         
+                            regStForm.listBox1.Items.Add(st.name);
+                        }
+                     
+                        DialogResult regStResult = regStForm.ShowDialog(this);
+                        if (regStResult == DialogResult.Cancel)
+                            return;
+
+                        regStation.name = regStForm.textBox1.Text;              
+                        List<Street> streets = new List<Street>();
+                        for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
+                        {
+                            Street street = new Street { name = (string)regStForm.listBox1.Items[i], regStation = regStation };
+                            streets.Add(street);
+                        }
+                        regStation.streets = streets;
+                        db.Entry(regStation).State = EntityState.Modified;                       
+                        db.SaveChanges();
+                        clearStreets();
+
+                        db.regStations.Load();
+                        listBoxAll.DataSource = db.regStations.Local.ToList();
+                        MessageBox.Show("Объект обновлен");
+                    }
+                    break;
+                case "ДИАГНОЗЫ":
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                         if(converted == false)
+                            return;
+                        Diagnosis diagnosis = db.diagnoses.Find(id);                    
+                        frmDiagnosis diagForm = new frmDiagnosis();
+                        diagForm.Text = "Редактировать диагноз";
+                        
+                        diagForm.textBox1.Text = diagnosis.name;
+                        DialogResult diagResult = diagForm.ShowDialog(this);
+                        if (diagResult == DialogResult.Cancel)
+                            return;
+                                                
+                        diagnosis.name = diagForm.textBox1.Text;
+                        
+                        db.SaveChanges();                       
+                        db.diagnoses.Load();
+                        listBoxAll.DataSource = db.diagnoses.Local.ToList();
+                        MessageBox.Show("Объект обновлен");
+                    }
+                    break;
+                case "ЛЕКАРСТВА":
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                        if (converted == false)
+                            return;
+
+                        Drug drug = db.drugs.Find(id);
+                        frmDrug drugForm = new frmDrug();
+                        drugForm.Text = "Редактировать лекарство";
+                        drugForm.textBox1.Text = drug.name;
+                        DialogResult drugResult = drugForm.ShowDialog(this);
+                        if (drugResult == DialogResult.Cancel)
+                            return;
+                        drug.name = drugForm.textBox1.Text;
+                        db.SaveChanges();
+                        db.drugs.Load();
+                        listBoxAll.DataSource = db.drugs.Local.ToList();
+                        MessageBox.Show("Объект обновлен");
+                    }
+                    //formEditDrug.Show();
+                    break;
+                case "КАРТОЧКИ ПАЦИЕНТОВ":
+                    
+                    break;*/
             }
         }
         private void bottomPanel_Paint(object sender, PaintEventArgs e)
@@ -670,25 +704,28 @@ namespace Presentation
         }
         private void deleteItemButton_Click(object sender, EventArgs e)
         {
-            /*switch (labelAll.Text)
+            switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
+                    /*
+                       
+                        MessageBox.Show(Controller.Service.Update.update(cabinet));
+
+                        cabinets = unitOfWork.Cabinets.GetAll();
+                        listBoxAll.DataSource = cabinets;*/
                     if (listBoxAll.SelectedIndex != -1)
                     {
                         int id = 0;
-                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                        if (converted == false)
-                            return;
-
-                        Cabinet cabinet = db.cabinets.Find(id);
-                        db.cabinets.Remove(cabinet);
-                        db.SaveChanges();
-                        db.cabinets.Load();
-                        listBoxAll.DataSource = db.cabinets.Local.ToList();
-                        MessageBox.Show("Объект удален");
+                        id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                        cabinets = unitOfWork.Cabinets.GetAll();
+                        Cabinet cabinet = cabinets.Find(cab => cab.Id == id);
+                        MessageBox.Show(Controller.Service.Remove.remove(cabinet));
+                       
+                        cabinets = unitOfWork.Cabinets.GetAll();
+                        listBoxAll.DataSource = cabinets;                   
                     }
                     break;
-                case "ВРАЧИ":
+                /*case "ВРАЧИ":
                     
                     break;
                 case "СПЕЦИАЛИЗАЦИИ":
@@ -759,8 +796,8 @@ namespace Presentation
                     break;
                 case "КАРТОЧКИ ПАЦИЕНТОВ":
                     
-                    break;
-            }*/
+                    break;*/
+            }
         }
         private void listBoxPatientsVisit_SelectedIndexChanged(object sender, EventArgs e)
         {

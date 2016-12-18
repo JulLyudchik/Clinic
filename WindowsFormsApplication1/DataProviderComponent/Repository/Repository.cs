@@ -27,7 +27,7 @@ namespace Controller.Repository
             Context.Entry(entity).State = EntityState.Modified;
         }
 
-        public virtual void Delete(T entity)
+        public virtual void Remove(T entity)
         {
             Context.Entry(entity).State = EntityState.Deleted;
         }

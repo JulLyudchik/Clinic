@@ -15,7 +15,7 @@ namespace Presentation
     {       
         public frmCabinet()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
 
         private void frmCreate_Load(object sender, EventArgs e)
