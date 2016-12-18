@@ -371,14 +371,17 @@ namespace Presentation
                 case "КАБИНЕТЫ":
                     frmCabinet cabForm = new frmCabinet();
                     cabForm.Text = "Создать кабинет";
+                    specializations = unitOfWork.Specializations.GetAll();
+                    cabForm.comboBox1.DataSource = specializations;
+                    //cabForm.comboBox1.DisplayMember = "Name";
+                    //cabForm.comboBox1.ValueMember = "Id";
                     DialogResult cabResult = cabForm.ShowDialog(this);
                     if (cabResult == DialogResult.Cancel)
                         return;
 
                     int id = 0;
                     Cabinet cabinet = new Cabinet();
-                    id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());
-                    specializations = unitOfWork.Specializations.GetAll();
+                    id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());            
                     Specialization specialization_t = specializations.Find(spec => spec.Id == id);
                     cabinet.number = cabForm.textBox1.Text;
                     cabinet.specialization = specialization_t.name;
@@ -540,18 +543,22 @@ namespace Presentation
                     {
                         frmCabinet cabForm = new frmCabinet();
                         cabForm.Text = "Редактировать кабинет";
+                        cabForm.comboBox1.DataSource = specializations;
                         int id = 0;
                         id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
                         cabinets = unitOfWork.Cabinets.GetAll();
+                        specializations=unitOfWork.Specializations.GetAll();
                         Cabinet cabinet = cabinets.Find(cab => cab.Id == id);
+                        Specialization specialization = specializations.Find(spec => spec.name == cabinet.specialization);
                         cabForm.textBox1.Text = cabinet.number;
-                        cabForm.comboBox1.SelectedItem = cabinet.specialization;
+                        cabForm.comboBox1.SelectedItem = specialization;
 
                         DialogResult cabResult = cabForm.ShowDialog(this);
                         if (cabResult == DialogResult.Cancel)
                             return;
                         cabinet.number = cabForm.textBox1.Text;
-                        cabinet.specialization = cabForm.comboBox1.SelectedText;
+                        specialization = (Specialization)cabForm.comboBox1.SelectedItem;
+                        cabinet.specialization = specialization.name;
                         MessageBox.Show(Controller.Service.Update.update(cabinet));
 
                         cabinets = unitOfWork.Cabinets.GetAll();
@@ -697,25 +704,28 @@ namespace Presentation
         }
         private void deleteItemButton_Click(object sender, EventArgs e)
         {
-            /*switch (labelAll.Text)
+            switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
+                    /*
+                       
+                        MessageBox.Show(Controller.Service.Update.update(cabinet));
+
+                        cabinets = unitOfWork.Cabinets.GetAll();
+                        listBoxAll.DataSource = cabinets;*/
                     if (listBoxAll.SelectedIndex != -1)
                     {
                         int id = 0;
-                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                        if (converted == false)
-                            return;
-
-                        Cabinet cabinet = db.cabinets.Find(id);
-                        db.cabinets.Remove(cabinet);
-                        db.SaveChanges();
-                        db.cabinets.Load();
-                        listBoxAll.DataSource = db.cabinets.Local.ToList();
-                        MessageBox.Show("Объект удален");
+                        id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                        cabinets = unitOfWork.Cabinets.GetAll();
+                        Cabinet cabinet = cabinets.Find(cab => cab.Id == id);
+                        MessageBox.Show(Controller.Service.Remove.remove(cabinet));
+                       
+                        cabinets = unitOfWork.Cabinets.GetAll();
+                        listBoxAll.DataSource = cabinets;                   
                     }
                     break;
-                case "ВРАЧИ":
+                /*case "ВРАЧИ":
                     
                     break;
                 case "СПЕЦИАЛИЗАЦИИ":
@@ -786,8 +796,8 @@ namespace Presentation
                     break;
                 case "КАРТОЧКИ ПАЦИЕНТОВ":
                     
-                    break;
-            }*/
+                    break;*/
+            }
         }
         private void listBoxPatientsVisit_SelectedIndexChanged(object sender, EventArgs e)
         {
