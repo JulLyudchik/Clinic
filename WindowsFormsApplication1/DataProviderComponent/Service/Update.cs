@@ -17,5 +17,23 @@ namespace Controller.Service
             unitOfWork.Save();
             return "Кабинет изменён";
         }
+        public static string update(Specialization specialization)
+        {
+            unitOfWork.Specializations.Update(specialization);
+            unitOfWork.Save();
+            return "Специализация изменена";
+        }
+        public static string update(Diagnosis diagnosis)
+        {
+            unitOfWork.Diagnoses.Update(diagnosis);
+            unitOfWork.Save();
+            return "Диагноз изменен";
+        }
+        public static string update(Drug drug)
+        {
+            unitOfWork.Drugs.Update(drug);
+            unitOfWork.Save();
+            return "Лекарство изменено";
+        }
     }
 }
