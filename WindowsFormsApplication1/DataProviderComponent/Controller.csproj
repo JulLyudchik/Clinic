@@ -7,8 +7,8 @@
     <ProjectGuid>{511973E8-1A8D-4591-B246-A4AD30732B9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataProviderComponent</RootNamespace>
-    <AssemblyName>DataProviderComponent</AssemblyName>
+    <RootNamespace>Controller</RootNamespace>
+    <AssemblyName>Controller</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,15 +48,27 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CabinetPlanRepository.cs" />
+    <Compile Include="Repository\CabinetRepository.cs" />
+    <Compile Include="Repository\DiagnosisRepository.cs" />
+    <Compile Include="Repository\DoctorRepository.cs" />
+    <Compile Include="Repository\DrugRepository.cs" />
+    <Compile Include="Repository\RegStationRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\SpecializationRepository.cs" />
+    <Compile Include="Repository\StreetRepository.cs" />
+    <Compile Include="Service\Add.cs" />
+    <Compile Include="Service\Update.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntitiesComponent\EntitiesComponent.csproj">
+    <ProjectReference Include="..\EntitiesComponent\Model.csproj">
       <Project>{f82c6069-d0cb-4243-9e23-1cb386ca7a62}</Project>
-      <Name>EntitiesComponent</Name>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

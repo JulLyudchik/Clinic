@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntitiesComponent
+namespace Model
 {
-    public class Diagnosis
+    public class Diagnosis : Entity
     {
-        public int id { get; set; }
         public string name { get; set; }
     }
 }

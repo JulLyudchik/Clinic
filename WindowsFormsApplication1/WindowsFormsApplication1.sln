@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIComponent", "WindowsFormsApplication1\GUIComponent.csproj", "{AC0B78AA-7A78-4450-8A1A-E8E5F7C120EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "WindowsFormsApplication1\Presentation.csproj", "{AC0B78AA-7A78-4450-8A1A-E8E5F7C120EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesComponent", "EntitiesComponent\EntitiesComponent.csproj", "{F82C6069-D0CB-4243-9E23-1CB386CA7A62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "EntitiesComponent\Model.csproj", "{F82C6069-D0CB-4243-9E23-1CB386CA7A62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProviderComponent", "DataProviderComponent\DataProviderComponent.csproj", "{511973E8-1A8D-4591-B246-A4AD30732B9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "DataProviderComponent\Controller.csproj", "{511973E8-1A8D-4591-B246-A4AD30732B9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

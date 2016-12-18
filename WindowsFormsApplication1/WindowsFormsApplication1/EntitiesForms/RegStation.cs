@@ -7,25 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using EntitiesComponent;
-using DataProviderComponent;
+using Model;
+using Controller;
 using System.Data.Entity;
 
-namespace WindowsFormsApplication1
+namespace Presentation
 {
     public partial class frmRegStation : Form
-    {
-        Context db;
+    {      
         public frmRegStation()
         {
             InitializeComponent();
-            db = new Context();
-            db.regStations.Load();
-            //comboBox1.DataSource = regStDB.regStations.ToList();
+            
         }
-        List<string> checkList =new List<string>();
-
-        
+       
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -35,11 +30,7 @@ namespace WindowsFormsApplication1
         {
             listBox1.Items.Add(textBox2.Text);
             textBox2.Text = "";
-            //listBox1.DataSource = regStDB.regstations.Local.ToList();
-            //checkList = regStDB.regstations.Local.ToList();
-            //listBox1.DataSource = checkList;
-            //listBox1.ValueMember = "Id";
-            //listBox1.DisplayMember = "Name";
+            
 
         }
 

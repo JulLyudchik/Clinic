@@ -4,17 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntitiesComponent
+namespace Model
 {
-    public class RegStation
+    public class RegStation : Entity
     {
-        public int id { get; set; }
         public string name { get; set; }
         public string therapist { get; set; }       
-        public ICollection<Street> streets { get; set; }   
-        public RegStation()      
-        { 
-            streets=new List<Street>();      
-        }
+        public List<Street> streets { get; set; }          
     }
 }

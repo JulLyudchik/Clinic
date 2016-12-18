@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntitiesComponent
+namespace Model
 {
-    public class Street
+    public class Street : Entity
     {
-        public int id { get; set; }
         public string name { get; set; }
         public int? RegStationId { get; set; }
         public RegStation regStation { get; set; }

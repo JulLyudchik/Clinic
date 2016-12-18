@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace WindowsFormsApplication1 {
+namespace Presentation {
     
     
     /// <summary>
@@ -681,7 +681,7 @@ namespace WindowsFormsApplication1 {
         }
     }
 }
-namespace WindowsFormsApplication1.ClinicDataSet2TableAdapters {
+namespace Presentation.ClinicDataSet2TableAdapters {
     
     
     /// <summary>
@@ -837,7 +837,7 @@ namespace WindowsFormsApplication1.ClinicDataSet2TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.ClinicConnectionString;
+            this._connection.ConnectionString = global::Presentation.Properties.Settings.Default.ClinicConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

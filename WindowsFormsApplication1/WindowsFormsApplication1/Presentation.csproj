@@ -7,8 +7,8 @@
     <ProjectGuid>{AC0B78AA-7A78-4450-8A1A-E8E5F7C120EE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsFormsApplication1</RootNamespace>
-    <AssemblyName>WindowsFormsApplication1</AssemblyName>
+    <RootNamespace>Presentation</RootNamespace>
+    <AssemblyName>Presentation</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -68,21 +68,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClinicDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClinicDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ClinicDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ClinicDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="EntitiesForms\RegStation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,39 +179,6 @@
     <EmbeddedResource Include="Ticket.resx">
       <DependentUpon>Ticket.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClinicDataSet.xsc">
-      <DependentUpon>ClinicDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ClinicDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ClinicDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ClinicDataSet.xss">
-      <DependentUpon>ClinicDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ClinicDataSet1.xsc">
-      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="ClinicDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ClinicDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ClinicDataSet1.xss">
-      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="ClinicDataSet2.xsc">
-      <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="ClinicDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ClinicDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ClinicDataSet2.xss">
-      <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
-    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -264,13 +216,13 @@
     <None Include="Resources\палка-администратор.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataProviderComponent\DataProviderComponent.csproj">
+    <ProjectReference Include="..\DataProviderComponent\Controller.csproj">
       <Project>{511973e8-1a8d-4591-b246-a4ad30732b9b}</Project>
-      <Name>DataProviderComponent</Name>
+      <Name>Controller</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EntitiesComponent\EntitiesComponent.csproj">
+    <ProjectReference Include="..\EntitiesComponent\Model.csproj">
       <Project>{f82c6069-d0cb-4243-9e23-1cb386ca7a62}</Project>
-      <Name>EntitiesComponent</Name>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

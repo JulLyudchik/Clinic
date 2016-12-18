@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Cabinet:Entity
+    public abstract class Entity
     {
-        public string number { get; set; }
-        public string specialization { get; set; }
+        public int Id { get; set; }
     }
 }

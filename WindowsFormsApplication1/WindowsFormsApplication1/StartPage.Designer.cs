@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace Presentation
 {
     partial class frmStart
     {
@@ -722,10 +722,10 @@
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.logo;
+            this.pictureBoxLogo.BackgroundImage = global::Presentation.Properties.Resources.logo;
             this.pictureBoxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxLogo.InitialImage = global::WindowsFormsApplication1.Properties.Resources.logo;
+            this.pictureBoxLogo.InitialImage = global::Presentation.Properties.Resources.logo;
             this.pictureBoxLogo.Location = new System.Drawing.Point(17, 10);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(172, 45);

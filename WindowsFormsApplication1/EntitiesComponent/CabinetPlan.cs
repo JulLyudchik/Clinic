@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntitiesComponent
+namespace Model
 {
-    public class CabinetPlan
+    public class CabinetPlan : Entity
     {
-        public int id { get; set; }
         public string day { get; set; }
         public string firstShift { get; set; }
         public string secondShift { get; set; }

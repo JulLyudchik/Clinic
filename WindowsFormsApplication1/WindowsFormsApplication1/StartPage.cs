@@ -8,48 +8,64 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
-using EntitiesComponent;
-using DataProviderComponent;
+using Model;
+using Controller;
 
-namespace WindowsFormsApplication1
+namespace Presentation
 {
     public partial class frmStart : Form
     {
-        Context db;
-        frmTicket formTicket;
-        frmPat formPatList;
-        frmCabinet formCreateCab;
-        frmDoctor formCreateDoc;
+        List<Diagnosis> diagnoses = new List<Diagnosis>();
+        List<Drug> drugs = new List<Drug>();
+        List<Doctor> doctors = new List<Doctor>();
+        List<Specialization> specializations = new List<Specialization>();
+        List<RegStation> regStations = new List<RegStation>();
+        List<Cabinet> cabinets = new List<Cabinet>();
+
+        UnitOfWork unitOfWork = new UnitOfWork();
+
         frmSpecialization formCreateSpec;
         frmRegStation formCreateAddr;
         frmDrug formCreateDrug;
         frmDiagnosis formCreateDiag;
         frmPatientCard formCreateCard;
         frmDoctorReg formDoctorReg;
+        frmPat formPatList;
+        frmTicket formTicket;
         DateTime date;
         public frmStart()
         {
             InitializeComponent();
-            db = new Context();
+            /*db = new Context();
             db.specializations.Load();
             db.drugs.Load();
-            db.diagnoses.Load();
+            //db.diagnoses.Load();
             db.regStations.Load();
             db.doctors.Load();
-            db.cabinets.Load();
-        }    
+            db.cabinets.Load();*/
+        }
         private void Start_Load(object sender, EventArgs e)
         {
             bottomPanel.Visible = false;
-            labelDoctor.Location = new Point (540,505);
+            labelDoctor.Location = new Point(540, 505);
             ToolTip ToolTip1 = new ToolTip();
             ToolTip1.SetToolTip(this.listBoxPatientsVisit, "Щелкните дважды на имени пациента для продолжения работы");
             ToolTip1.AutoPopDelay = 5000;
             ToolTip1.InitialDelay = 100;
             ToolTip1.ReshowDelay = 500;
-            
-        }
 
+        }
+        private void tickTimer(object sender, EventArgs e)
+        {
+            long tick = DateTime.Now.Ticks - date.Ticks;
+            DateTime stopWatch = new DateTime();
+            stopWatch = stopWatch.AddTicks(tick);
+            TimeLb1.Text = String.Format("{0:HH:mm:ss}", stopWatch);
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLb1.Text = string.Format("Текущее время: {0}", DateTime.Now.ToString("HH:mm:ss"));
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             pictureBoxStripe.BackgroundImage = Properties.Resources.палка_администратор;
@@ -61,9 +77,9 @@ namespace WindowsFormsApplication1
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
-            if (formDoctorReg!=null)
+            if (formDoctorReg != null)
                 formDoctorReg.Close();
-            
+
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
@@ -80,14 +96,6 @@ namespace WindowsFormsApplication1
             timer1.Tick += new EventHandler(tickTimer);
             timer1.Start();
         }
-        private void tickTimer(object sender, EventArgs e)
-        {
-            long tick = DateTime.Now.Ticks - date.Ticks;
-            DateTime stopWatch=new DateTime();
-            stopWatch=stopWatch.AddTicks(tick);
-            TimeLb1.Text = String.Format("{0:HH:mm:ss}", stopWatch);
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             pictureBoxStripe.BackgroundImage = Properties.Resources.палка_регистратор;
@@ -99,9 +107,9 @@ namespace WindowsFormsApplication1
             doctorButton.Enabled = true;
             labelDoctor.Text = "";
             enterButton.Visible = false;
-            if (formDoctorReg!=null)
-               formDoctorReg.Close();
-            
+            if (formDoctorReg != null)
+                formDoctorReg.Close();
+
             mainPanel.Visible = false;
             patientRecPanel.Visible = false;
             visitPanel.Visible = false;
@@ -114,7 +122,6 @@ namespace WindowsFormsApplication1
             timer1.Tick += new EventHandler(tickTimer);
             timer1.Start();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             pictureBoxStripe.BackgroundImage = Properties.Resources.палка_врач;
@@ -122,7 +129,6 @@ namespace WindowsFormsApplication1
             pictureBoxStripe.Visible = true;
             regPanel.Visible = false;
             adminPanel.Visible = false;
-            //docPanel.Visible = true;
             doctorButton.Enabled = false;
             formDoctorReg = new frmDoctorReg();
             formDoctorReg.Show();
@@ -134,49 +140,44 @@ namespace WindowsFormsApplication1
             date = DateTime.Now;
 
             labelDoct.Visible = true;
-            
 
             timer1 = new Timer();
             timer1.Interval = 10;
             timer1.Tick += new EventHandler(tickTimer);
             timer1.Start();
         }
-
         private void button3_MouseMove(object sender, MouseEventArgs e)
         {
             doctorButton.ForeColor = Color.White;
         }
-
         private void button3_MouseLeave(object sender, EventArgs e)
         {
             doctorButton.ForeColor = Color.Black;
         }
-
         private void button2_MouseMove(object sender, MouseEventArgs e)
         {
             registratorButton.ForeColor = Color.White;
         }
-
         private void button2_MouseLeave(object sender, EventArgs e)
         {
             registratorButton.ForeColor = Color.Black;
         }
-
         private void button1_MouseMove(object sender, MouseEventArgs e)
         {
             administratorButton.ForeColor = Color.White;
         }
-
         private void button1_MouseLeave(object sender, EventArgs e)
         {
             administratorButton.ForeColor = Color.Black;
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
             //
-            db.diagnoses.Load();
-            listBoxAll.DataSource = db.diagnoses.Local.ToList();
+
+            //db.diagnoses.Load();
+            //listBoxAll.DataSource = db.diagnoses.Local.ToList();
+            diagnoses = unitOfWork.Diagnoses.GetAll();
+            listBoxAll.DataSource = diagnoses;
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -196,8 +197,10 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            db.cabinets.Load();
-            listBoxAll.DataSource = db.cabinets.Local.ToList();
+            //db.cabinets.Load();
+            //listBoxAll.DataSource = db.cabinets.Local.ToList();
+            cabinets = unitOfWork.Cabinets.GetAll();
+            listBoxAll.DataSource = cabinets;
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Number";
             //
@@ -210,8 +213,10 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            db.doctors.Load();
-            listBoxAll.DataSource = db.doctors.Local.ToList();
+            //db.doctors.Load();
+            //listBoxAll.DataSource = db.doctors.Local.ToList();
+            doctors = unitOfWork.Doctors.GetAll();
+            listBoxAll.DataSource = doctors;
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -224,9 +229,10 @@ namespace WindowsFormsApplication1
 
         private void button11_Click(object sender, EventArgs e)
         {
-            db.specializations.Load();
-            
-            listBoxAll.DataSource = db.specializations.Local.ToList();
+            //db.specializations.Load();
+            //listBoxAll.DataSource = db.specializations.Local.ToList();
+            specializations = unitOfWork.Specializations.GetAll();
+            listBoxAll.DataSource = specializations;
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -236,12 +242,13 @@ namespace WindowsFormsApplication1
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
         }
-
         private void button12_Click(object sender, EventArgs e)
         {
             //
-            db.regStations.Load();
-            listBoxAll.DataSource = db.regStations.Local.ToList();
+            //db.regStations.Load();
+            //listBoxAll.DataSource = db.regStations.Local.ToList();
+            regStations = unitOfWork.RegStations.GetAll();
+            listBoxAll.DataSource = regStations;
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -251,31 +258,33 @@ namespace WindowsFormsApplication1
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
         }
-
         private void button13_Click(object sender, EventArgs e)
         {
             //
-            db.diagnoses.Load();
-            listBoxAll.DataSource = db.diagnoses.Local.ToList();
+            //db.diagnoses.Load();
+            //listBoxAll.DataSource = db.diagnoses.Local.ToList();
+            diagnoses = unitOfWork.Diagnoses.GetAll();
+            listBoxAll.DataSource = diagnoses;
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
             labelAll.Text = "ДИАГНОЗЫ";
             mainPanel.Visible = true;
             patientRecPanel.Visible = false;
-            visitPanel.Visible = false;      
+            visitPanel.Visible = false;
             listBoxAll.SelectedIndex = -1;
-           
+
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
-            
-        }
 
+        }
         private void button14_Click(object sender, EventArgs e)
         {
             //
-            db.drugs.Load();
-            listBoxAll.DataSource = db.drugs.Local.ToList();
+            //db.drugs.Load();
+            //listBoxAll.DataSource = db.drugs.Local.ToList();
+            drugs = unitOfWork.Drugs.GetAll();
+            listBoxAll.DataSource = drugs;
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -286,7 +295,6 @@ namespace WindowsFormsApplication1
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
         }
-
         private void button7_Click(object sender, EventArgs e)
         {
             patientRecPanel.Visible = true;
@@ -302,12 +310,13 @@ namespace WindowsFormsApplication1
             dataGridView1.Enabled = false;
             comboBoxNameDoc.Enabled = false;
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             //
-            db.drugs.Load();
-            listBoxAll.DataSource = db.drugs.Local.ToList();
+            //db.drugs.Load();
+            //listBoxAll.DataSource = db.drugs.Local.ToList();
+            drugs = unitOfWork.Drugs.GetAll();
+            listBoxAll.DataSource = drugs;
             listBoxAll.ValueMember = "Id";
             listBoxAll.DisplayMember = "Name";
             //
@@ -387,7 +396,7 @@ namespace WindowsFormsApplication1
             editItemButton.Enabled = true;
             deleteItemButton.Enabled = true;
         }
-           
+
         private void createCardButton_Click(object sender, EventArgs e)
         {
             switch (labelAll.Text)
@@ -398,21 +407,21 @@ namespace WindowsFormsApplication1
                     DialogResult cabResult = cabForm.ShowDialog(this);
                     if (cabResult == DialogResult.Cancel)
                         return;
+
                     int id = 0;
-                    bool converted = Int32.TryParse(cabForm.comboBox1.SelectedValue.ToString(), out id);
-                    if (converted == false) 
-                        return;
                     Cabinet cabinet = new Cabinet();
-                    Specialization specialization_t = db.specializations.Find(id);                  
+                    id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());
+                    specializations = unitOfWork.Specializations.GetAll();
+                    Specialization specialization_t = specializations.Find(spec => spec.Id == id);
                     cabinet.number = cabForm.textBox1.Text;
-                    //cabinet.specialization = specialization_t.name;
-                    db.cabinets.Add(cabinet);
-                    db.SaveChanges();
-                    db.cabinets.Load();
-                    listBoxAll.DataSource = db.cabinets.Local.ToList();
-                    MessageBox.Show("Новый объект добавлен");
+                    cabinet.specialization = specialization_t.name;
+
+                    MessageBox.Show(Controller.Service.Add.add(cabinet));
+                    cabinets = unitOfWork.Cabinets.GetAll();
+                    listBoxAll.DataSource = cabinets;
                     break;
-                case "ВРАЧИ":
+
+                /*case "ВРАЧИ":
                    frmDoctor docForm = new frmDoctor();
                    docForm.Text = "Создать врача";
                    DialogResult docResult = docForm.ShowDialog(this);
@@ -443,23 +452,42 @@ namespace WindowsFormsApplication1
                     db.doctors.Load();
                     listBoxAll.DataSource = db.doctors.Local.ToList();
                     MessageBox.Show("Новый объект добавлен");
-                    break;
+                    break;*/
                 case "СПЕЦИАЛИЗАЦИИ":
+                    /*frmCabinet cabForm = new frmCabinet();
+                    cabForm.Text = "Создать кабинет";
+                    DialogResult cabResult = cabForm.ShowDialog(this);
+                    if (cabResult == DialogResult.Cancel)
+                        return;
+
+                    int id = 0;
+                    Cabinet cabinet = new Cabinet();
+                    id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());
+                    specializations = unitOfWork.Specializations.GetAll();
+                    Specialization specialization_t = specializations.Find(spec => spec.Id == id);
+                    cabinet.number = cabForm.textBox1.Text;
+                    cabinet.specialization = specialization_t.name;
+
+                    MessageBox.Show(Controller.Service.Add.add(cabinet));
+                    cabinets = unitOfWork.Cabinets.GetAll();
+                    listBoxAll.DataSource = cabinets;
+                    break;*/
                     frmSpecialization specForm = new frmSpecialization();
                     specForm.Text = "Создать специализацию";
                     DialogResult specResult = specForm.ShowDialog(this);
                     if (specResult == DialogResult.Cancel)
                         return;
+
                     Specialization specialization = new Specialization();
                     specialization.name = specForm.textBox1.Text;
                     specialization.time = specForm.textBox2.Text;
-                    db.specializations.Add(specialization);
-                    db.SaveChanges();
-                    db.specializations.Load();
-                    listBoxAll.DataSource = db.specializations.Local.ToList();
-                    MessageBox.Show("Новый объект добавлен");
+                    MessageBox.Show(Controller.Service.Add.add(specialization));
+
+                    specializations = unitOfWork.Specializations.GetAll();
+                    listBoxAll.DataSource = specializations;
                     break;
-                case "УЧАСТКИ":
+                /*case "УЧАСТКИ":
+                    
                     frmRegStation regStForm = new frmRegStation();
                     regStForm.Text = "Создать участок";
                     DialogResult regStResult = regStForm.ShowDialog(this);
@@ -515,15 +543,15 @@ namespace WindowsFormsApplication1
                     //                  
                     //formCreateDiag.Show();
                     break;
-                case "КАРТОЧКИ ПАЦИЕНТОВ":
+                case "КАРТОЧКИ ПАЦИЕНТОВ": 
                     formCreateCard = new frmPatientCard();
                     formCreateCard.Show();
-                    break;
+                    break;*/
             }
-            
+
         }
 
-        private void clearStreets()
+        /*private void clearStreets()
         {
             db.streets.Load();
             List<Street> delStreets = db.streets.ToList();
@@ -535,7 +563,7 @@ namespace WindowsFormsApplication1
                 }
             }
             db.SaveChanges();
-        }
+        }*/
 
         private void editCardButton_Click(object sender, EventArgs e)
         {
@@ -544,27 +572,27 @@ namespace WindowsFormsApplication1
                 case "КАБИНЕТЫ":
                     if (listBoxAll.SelectedIndex != -1)
                     {
-                        int id = 0;
-                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                        if (converted == false)
-                            return;
-                        Cabinet cabinet = db.cabinets.Find(id);
                         frmCabinet cabForm = new frmCabinet();
                         cabForm.Text = "Редактировать кабинет";
+                        int id = 0;
+                        id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                        cabinets = unitOfWork.Cabinets.GetAll();
+                        Cabinet cabinet = cabinets.Find(cab => cab.Id == id);
                         cabForm.textBox1.Text = cabinet.number;
-                       // cabForm.comboBox1.SelectedText = cabinet.specialization;
+                        cabForm.comboBox1.SelectedItem = cabinet.specialization;
+
                         DialogResult cabResult = cabForm.ShowDialog(this);
                         if (cabResult == DialogResult.Cancel)
                             return;
                         cabinet.number = cabForm.textBox1.Text;
-                        //cabinet.specialization = cabForm.comboBox1.SelectedText;
-                        db.SaveChanges();
-                        db.cabinets.Load();
-                        listBoxAll.DataSource = db.cabinets.Local.ToList();
-                        MessageBox.Show("Объект обновлен");
+                        cabinet.specialization = cabForm.comboBox1.SelectedText;
+                        MessageBox.Show(Controller.Service.Update.update(cabinet));
+
+                        cabinets = unitOfWork.Cabinets.GetAll();
+                        listBoxAll.DataSource = cabinets;
                     }
                     break;
-                case "ВРАЧИ":
+                /*case "ВРАЧИ":
                     
                     break;
                 case "СПЕЦИАЛИЗАЦИИ":
@@ -679,20 +707,13 @@ namespace WindowsFormsApplication1
                     break;
                 case "КАРТОЧКИ ПАЦИЕНТОВ":
                     
-                    break;
+                    break;*/
             }
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            TimeLb1.Text = string.Format("Текущее время: {0}", DateTime.Now.ToString("HH:mm:ss"));
-        }
-
         private void bottomPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void enterButton_Click(object sender, EventArgs e)
         {
             doctorButton.Enabled = true;
@@ -700,12 +721,10 @@ namespace WindowsFormsApplication1
             labelDoctor.Text = "";
             enterButton.Visible = false;
         }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             patRecButton.Enabled = true;
@@ -713,7 +732,7 @@ namespace WindowsFormsApplication1
 
         private void deleteItemButton_Click(object sender, EventArgs e)
         {
-            switch (labelAll.Text)
+            /*switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
                     if (listBoxAll.SelectedIndex != -1)
@@ -803,7 +822,7 @@ namespace WindowsFormsApplication1
                 case "КАРТОЧКИ ПАЦИЕНТОВ":
                     
                     break;
-            }
+            }*/
         }
 
         private void listBoxPatientsVisit_SelectedIndexChanged(object sender, EventArgs e)

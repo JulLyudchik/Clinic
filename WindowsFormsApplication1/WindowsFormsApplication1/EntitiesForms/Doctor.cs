@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace Presentation
 {
     public partial class frmDoctor : Form
     {
@@ -30,13 +30,7 @@ namespace WindowsFormsApplication1
 
         private void frmCreateDoc_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "clinicDataSet2.RegStations". При необходимости она может быть перемещена или удалена.
-            this.regStationsTableAdapter.Fill(this.clinicDataSet2.RegStations);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "clinicDataSet1.Cabinets". При необходимости она может быть перемещена или удалена.
-            this.cabinetsTableAdapter.Fill(this.clinicDataSet1.Cabinets);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "clinicDataSet.Specializations". При необходимости она может быть перемещена или удалена.
-            this.specializationsTableAdapter.Fill(this.clinicDataSet.Specializations);
-
+            
         }
     }
 }

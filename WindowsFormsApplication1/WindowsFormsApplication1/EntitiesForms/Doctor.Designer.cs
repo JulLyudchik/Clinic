@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace Presentation
 {
     partial class frmDoctor
     {
@@ -34,29 +34,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.specializationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clinicDataSet = new WindowsFormsApplication1.ClinicDataSet();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.cabinetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clinicDataSet1 = new WindowsFormsApplication1.ClinicDataSet1();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.specializationsTableAdapter = new WindowsFormsApplication1.ClinicDataSetTableAdapters.SpecializationsTableAdapter();
             this.clinicDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.cabinetsTableAdapter = new WindowsFormsApplication1.ClinicDataSet1TableAdapters.CabinetsTableAdapter();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.regStationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clinicDataSet2 = new WindowsFormsApplication1.ClinicDataSet2();
             this.label4 = new System.Windows.Forms.Label();
-            this.regStationsTableAdapter = new WindowsFormsApplication1.ClinicDataSet2TableAdapters.RegStationsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.specializationsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cabinetsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clinicDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regStationsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -95,45 +86,27 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.DataSource = this.specializationsBindingSource;
-            this.comboBox1.DisplayMember = "name";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(53, 76);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(179, 21);
             this.comboBox1.TabIndex = 10;
-            this.comboBox1.ValueMember = "id";
             // 
             // specializationsBindingSource
             // 
             this.specializationsBindingSource.DataMember = "Specializations";
-            this.specializationsBindingSource.DataSource = this.clinicDataSet;
-            // 
-            // clinicDataSet
-            // 
-            this.clinicDataSet.DataSetName = "ClinicDataSet";
-            this.clinicDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // comboBox2
             // 
-            this.comboBox2.DataSource = this.cabinetsBindingSource;
-            this.comboBox2.DisplayMember = "number";
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(53, 125);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(179, 21);
             this.comboBox2.TabIndex = 11;
-            this.comboBox2.ValueMember = "id";
             // 
             // cabinetsBindingSource
             // 
             this.cabinetsBindingSource.DataMember = "Cabinets";
-            this.cabinetsBindingSource.DataSource = this.clinicDataSet1;
-            // 
-            // clinicDataSet1
-            // 
-            this.clinicDataSet1.DataSetName = "ClinicDataSet1";
-            this.clinicDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label2
             // 
@@ -153,45 +126,22 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Выберите кабинет:";
             // 
-            // specializationsTableAdapter
-            // 
-            this.specializationsTableAdapter.ClearBeforeFill = true;
-            // 
-            // clinicDataSetBindingSource
-            // 
-            this.clinicDataSetBindingSource.DataSource = this.clinicDataSet;
-            this.clinicDataSetBindingSource.Position = 0;
-            // 
             // bindingSource1
             // 
             this.bindingSource1.DataMember = "Cabinets";
-            this.bindingSource1.DataSource = this.clinicDataSet1;
-            // 
-            // cabinetsTableAdapter
-            // 
-            this.cabinetsTableAdapter.ClearBeforeFill = true;
             // 
             // comboBox3
             // 
-            this.comboBox3.DataSource = this.regStationsBindingSource;
-            this.comboBox3.DisplayMember = "name";
             this.comboBox3.Enabled = false;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(53, 174);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(179, 21);
             this.comboBox3.TabIndex = 14;
-            this.comboBox3.ValueMember = "id";
             // 
             // regStationsBindingSource
             // 
             this.regStationsBindingSource.DataMember = "RegStations";
-            this.regStationsBindingSource.DataSource = this.clinicDataSet2;
-            // 
-            // clinicDataSet2
-            // 
-            this.clinicDataSet2.DataSetName = "ClinicDataSet2";
-            this.clinicDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label4
             // 
@@ -202,11 +152,7 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Выберите участок (для терапевтов):";
             // 
-            // regStationsTableAdapter
-            // 
-            this.regStationsTableAdapter.ClearBeforeFill = true;
-            // 
-            // frmCreateDoc
+            // frmDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -224,19 +170,16 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCreateDoc";
+            this.Name = "frmDoctor";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создать врача";
             this.Load += new System.EventHandler(this.frmCreateDoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.specializationsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cabinetsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clinicDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.regStationsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,19 +193,19 @@
         protected internal System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private ClinicDataSet clinicDataSet;
+        //private ClinicDataSet clinicDataSet;
         private System.Windows.Forms.BindingSource specializationsBindingSource;
-        private ClinicDataSetTableAdapters.SpecializationsTableAdapter specializationsTableAdapter;
+        //private ClinicDataSetTableAdapters.SpecializationsTableAdapter specializationsTableAdapter;
         protected internal System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.BindingSource clinicDataSetBindingSource;
-        private ClinicDataSet1 clinicDataSet1;
+        //private ClinicDataSet1 clinicDataSet1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.BindingSource cabinetsBindingSource;
-        private ClinicDataSet1TableAdapters.CabinetsTableAdapter cabinetsTableAdapter;
+        //private ClinicDataSet1TableAdapters.CabinetsTableAdapter cabinetsTableAdapter;
         protected internal System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label4;
-        private ClinicDataSet2 clinicDataSet2;
+        //private ClinicDataSet2 clinicDataSet2;
         private System.Windows.Forms.BindingSource regStationsBindingSource;
-        private ClinicDataSet2TableAdapters.RegStationsTableAdapter regStationsTableAdapter;
+        //private ClinicDataSet2TableAdapters.RegStationsTableAdapter regStationsTableAdapter;
     }
 }

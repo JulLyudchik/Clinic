@@ -7,8 +7,8 @@
     <ProjectGuid>{F82C6069-D0CB-4243-9E23-1CB386CA7A62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntitiesComponent</RootNamespace>
-    <AssemblyName>EntitiesComponent</AssemblyName>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,6 +44,7 @@
     <Compile Include="Diagnosis.cs" />
     <Compile Include="Doctor.cs" />
     <Compile Include="Drug.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegStation.cs" />
     <Compile Include="Specialization.cs" />

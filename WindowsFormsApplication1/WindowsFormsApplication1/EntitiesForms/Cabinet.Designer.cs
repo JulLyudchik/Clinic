@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace Presentation
 {
     partial class frmCabinet
     {
@@ -35,12 +35,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.specializationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clinicDataSet = new WindowsFormsApplication1.ClinicDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.specializationsTableAdapter = new WindowsFormsApplication1.ClinicDataSetTableAdapters.SpecializationsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.specializationsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,24 +87,15 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.DataSource = this.specializationsBindingSource;
-            this.comboBox1.DisplayMember = "name";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(52, 72);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(193, 21);
             this.comboBox1.TabIndex = 6;
-            this.comboBox1.ValueMember = "id";
             // 
             // specializationsBindingSource
             // 
             this.specializationsBindingSource.DataMember = "Specializations";
-            this.specializationsBindingSource.DataSource = this.clinicDataSet;
-            // 
-            // clinicDataSet
-            // 
-            this.clinicDataSet.DataSetName = "ClinicDataSet";
-            this.clinicDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridView1
             // 
@@ -126,11 +114,7 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Заполните график загруженности:";
             // 
-            // specializationsTableAdapter
-            // 
-            this.specializationsTableAdapter.ClearBeforeFill = true;
-            // 
-            // frmCreateCab
+            // frmCabinet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -146,13 +130,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCreateCab";
+            this.Name = "frmCabinet";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создать кабинет";
             this.Load += new System.EventHandler(this.frmCreate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.specializationsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,8 +151,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         protected internal System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
-        private ClinicDataSet clinicDataSet;
+        //private ClinicDataSet clinicDataSet;
         private System.Windows.Forms.BindingSource specializationsBindingSource;
-        private ClinicDataSetTableAdapters.SpecializationsTableAdapter specializationsTableAdapter;
+        //private ClinicDataSetTableAdapters.SpecializationsTableAdapter specializationsTableAdapter;
     }
 }
