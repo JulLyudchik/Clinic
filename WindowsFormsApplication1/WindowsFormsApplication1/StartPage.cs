@@ -585,6 +585,7 @@ namespace Presentation
                                 specialization.time = specForm.textBox2.Text;
                                 MessageBox.Show(Controller.Service.Update.update(specialization));
 
+                                specializations = unitOfWork.Specializations.GetAll();
                                 listBoxAll.DataSource = specializations;
                             }
                             break;
@@ -645,6 +646,7 @@ namespace Presentation
                               diagnosis.name = diagForm.textBox1.Text;
                               MessageBox.Show(Controller.Service.Update.update(diagnosis));
 
+                              diagnoses = unitOfWork.Diagnoses.GetAll();
                               listBoxAll.DataSource = diagnoses;
                           }
                           break;
@@ -664,6 +666,7 @@ namespace Presentation
                               drug.name = drugForm.textBox1.Text;
                               MessageBox.Show(Controller.Service.Update.update(drug));
 
+                              drugs = unitOfWork.Drugs.GetAll();
                               listBoxAll.DataSource = drugs;
                       }
                           //formEditDrug.Show();
@@ -696,14 +699,15 @@ namespace Presentation
         {
             switch (labelAll.Text)
             {
-              /*  case "КАБИНЕТЫ":
+               case "КАБИНЕТЫ":
                     /*
                        
                         MessageBox.Show(Controller.Service.Update.update(cabinet));
 
                         cabinets = unitOfWork.Cabinets.GetAll();
                         listBoxAll.DataSource = cabinets;*/
-                /*    if (listBoxAll.SelectedIndex != -1)
+                 
+                if (listBoxAll.SelectedIndex != -1)
                     {
                         int id = 0;
                         id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
@@ -714,79 +718,70 @@ namespace Presentation
                         cabinets = unitOfWork.Cabinets.GetAll();
                         listBoxAll.DataSource = cabinets;                   
                     }
-                    break;*/
-                /*case "ВРАЧИ":
-                    
                     break;
-                case "СПЕЦИАЛИЗАЦИИ":
-                    if (listBoxAll.SelectedIndex != -1)
-                    {
-                        int id = 0;
-                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                        if (converted == false)
-                            return;
+                    /*case "ВРАЧИ":
 
-                        Specialization specialization = db.specializations.Find(id);
-                        db.specializations.Remove(specialization);
-                        db.SaveChanges();
-                        db.specializations.Load();
-                        listBoxAll.DataSource = db.specializations.Local.ToList();
-                        MessageBox.Show("Объект удален");
-                    }
-                    break;
-                case "УЧАСТКИ":
-                    if (listBoxAll.SelectedIndex != -1)
-                    {                       
-                        int id = 0;
-                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                        if (converted == false)
-                            return;
-                        db.streets.Load();
-                        RegStation regStation = db.regStations.Find(id);
-                        db.regStations.Remove(regStation);
-                        db.SaveChanges();
-                        clearStreets();
-                                      
-                        db.regStations.Load();
-                        listBoxAll.DataSource = db.regStations.Local.ToList();
-                        MessageBox.Show("Объект удален");
-                    }
-                    break;
-                case "ДИАГНОЗЫ":
-                    if (listBoxAll.SelectedIndex != -1)
-                    {
-                        int id = 0;
-                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                        if (converted == false)
-                            return;
+                        break;*/
+                    case "СПЕЦИАЛИЗАЦИИ":
+                        if (listBoxAll.SelectedIndex != -1)
+                        {
+                            int id = 0;
+                            id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                            specializations = unitOfWork.Specializations.GetAll();
+                            Specialization specialization = specializations.Find(cab => cab.Id == id);
+                            MessageBox.Show(Controller.Service.Remove.remove(specialization));
 
-                        Diagnosis diagnosis = db.diagnoses.Find(id);
-                        db.diagnoses.Remove(diagnosis);
-                        db.SaveChanges();
-                        db.diagnoses.Load();
-                        listBoxAll.DataSource = db.diagnoses.Local.ToList();
-                        MessageBox.Show("Объект удален");
-                    }
-                    break;
+                        specializations = unitOfWork.Specializations.GetAll();
+                        listBoxAll.DataSource = specializations;                   
+                        }
+                        break;
+                    /*case "УЧАСТКИ":
+                        if (listBoxAll.SelectedIndex != -1)
+                        {                       
+                            int id = 0;
+                            bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
+                            if (converted == false)
+                                return;
+                            db.streets.Load();
+                            RegStation regStation = db.regStations.Find(id);
+                            db.regStations.Remove(regStation);
+                            db.SaveChanges();
+                            clearStreets();
+
+                            db.regStations.Load();
+                            listBoxAll.DataSource = db.regStations.Local.ToList();
+                            MessageBox.Show("Объект удален");
+                        }
+                        break;*/
+                    case "ДИАГНОЗЫ":
+                        if (listBoxAll.SelectedIndex != -1)
+                        {
+                            int id = 0;
+                            id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                            diagnoses = unitOfWork.Diagnoses.GetAll();
+                            Diagnosis diagnosis = diagnoses.Find(diag => diag.Id == id);
+                            MessageBox.Show(Controller.Service.Remove.remove(diagnosis));
+
+                            diagnoses = unitOfWork.Diagnoses.GetAll();
+                            listBoxAll.DataSource = diagnoses;
+                        }
+                        break;
                 case "ЛЕКАРСТВА":
-                    if (listBoxAll.SelectedIndex != -1)
-                    {
-                        int id = 0;
-                        bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                        if (converted == false)
-                            return;
+                        if (listBoxAll.SelectedIndex != -1)
+                        {
+                            int id = 0;
+                            id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                            drugs = unitOfWork.Drugs.GetAll();
+                            Drug drug = drugs.Find(drugg => drugg.Id == id);
+                            MessageBox.Show(Controller.Service.Remove.remove(drug));
 
-                        Drug drug = db.drugs.Find(id);
-                        db.drugs.Remove(drug);
-                        db.SaveChanges();
-                        db.drugs.Load();
-                        listBoxAll.DataSource = db.drugs.Local.ToList();
-                        MessageBox.Show("Объект удален");
-                    }
-                    break;
-                case "КАРТОЧКИ ПАЦИЕНТОВ":
-                    
-                    break;*/
+                            drugs = unitOfWork.Drugs.GetAll();
+                            listBoxAll.DataSource = drugs;
+                        }
+                        break;
+                  /*  case "КАРТОЧКИ ПАЦИЕНТОВ":
+
+                        break;*/
             }
         }
         private void listBoxPatientsVisit_SelectedIndexChanged(object sender, EventArgs e)

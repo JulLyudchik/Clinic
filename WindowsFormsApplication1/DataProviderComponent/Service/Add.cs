@@ -33,7 +33,7 @@ namespace Controller.Service
         }
         public static string add(Drug drug)
         {
-            if (unitOfWork.Drugs.GetAll().Find(drugg => drugg.name == drugg.name) == null)
+            if (unitOfWork.Drugs.GetAll().Find(drugg => drugg.name == drug.name) == null)
             {
                 unitOfWork.Drugs.Add(drug);
                 unitOfWork.Save();
@@ -43,7 +43,7 @@ namespace Controller.Service
         }
         public static string add(Diagnosis diagnosis)
         {
-            if (unitOfWork.Diagnoses.GetAll().Find(diag => diag.name == diag.name) == null)
+            if (unitOfWork.Diagnoses.GetAll().Find(diag => diag.name == diagnosis.name) == null)
             {
                 unitOfWork.Diagnoses.Add(diagnosis);
                 unitOfWork.Save();
