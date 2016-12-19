@@ -51,5 +51,15 @@ namespace Controller.Service
             }
             else return "Такой диагноз уже существует!";
         }
+        public static string add(Doctor doctor)
+        {
+            if (unitOfWork.Doctors.GetAll().Find(doc => doc.name == doctor.name) == null)
+            {
+                unitOfWork.Doctors.Add(doctor);
+                unitOfWork.Save();
+                return "Новый врач добавлен.";
+            }
+            else return "Такой врач уже существует!";
+        }
     }
 }

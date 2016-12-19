@@ -86,11 +86,13 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DisplayMember = "Name";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(53, 76);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(179, 21);
             this.comboBox1.TabIndex = 10;
+            this.comboBox1.ValueMember = "Id";
             // 
             // specializationsBindingSource
             // 
@@ -98,11 +100,13 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DisplayMember = "Number";
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(53, 125);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(179, 21);
             this.comboBox2.TabIndex = 11;
+            this.comboBox2.ValueMember = "Id";
             // 
             // cabinetsBindingSource
             // 
@@ -132,12 +136,14 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.DisplayMember = "Name";
             this.comboBox3.Enabled = false;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(53, 174);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(179, 21);
             this.comboBox3.TabIndex = 14;
+            this.comboBox3.ValueMember = "Id";
             // 
             // regStationsBindingSource
             // 
