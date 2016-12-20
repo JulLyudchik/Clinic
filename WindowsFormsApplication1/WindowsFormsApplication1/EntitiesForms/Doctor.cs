@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
+using Model;
+using Controller;
 
 namespace Presentation
 {
@@ -15,6 +18,7 @@ namespace Presentation
         public frmDoctor()
         {
             InitializeComponent();
+            
         }
 
         /*private void CreateDoctor_FormClosing(object sender, FormClosingEventArgs e)
@@ -31,6 +35,11 @@ namespace Presentation
         private void frmCreateDoc_Load(object sender, EventArgs e)
         {
             
+        }
+       
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
