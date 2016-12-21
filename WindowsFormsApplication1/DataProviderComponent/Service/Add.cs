@@ -61,5 +61,25 @@ namespace Controller.Service
             }
             else return "Такой врач уже существует!";
         }
+        public static string add(RegStation regStation)
+        {
+            if (unitOfWork.RegStations.GetAll().Find(regSt => regSt.name == regStation.name) == null)
+            {
+                unitOfWork.RegStations.Add(regStation);
+                unitOfWork.Save();
+                return "Новый участок добавлен.";
+            }
+            else return "Такой участок уже существует!";
+        }
+        public static string add(Street street)
+        {
+            if (unitOfWork.Streets.GetAll().Find(str => str.name == street.name) == null)
+            {
+                unitOfWork.Streets.Add(street);
+                unitOfWork.Save();
+                return "Новая улица добавлена.";
+            }
+            else return "Такая улица уже существует!";
+        }
     }
 }
