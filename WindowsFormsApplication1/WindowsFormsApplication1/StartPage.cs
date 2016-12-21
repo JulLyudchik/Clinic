@@ -373,8 +373,7 @@ namespace Presentation
                     cabForm.Text = "Создать кабинет";
                     specializations = unitOfWork.Specializations.GetAll();
                     cabForm.comboBox1.DataSource = specializations;
-                    //cabForm.comboBox1.DisplayMember = "Name";
-                    //cabForm.comboBox1.ValueMember = "Id";
+                                     
                     DialogResult cabResult = cabForm.ShowDialog(this);
                     if (cabResult == DialogResult.Cancel)
                         return;
@@ -423,25 +422,7 @@ namespace Presentation
                     listBoxAll.DataSource = db.doctors.Local.ToList();
                     MessageBox.Show("Новый объект добавлен");
                     break;*/
-                case "СПЕЦИАЛИЗАЦИИ":
-                    /*frmCabinet cabForm = new frmCabinet();
-                    cabForm.Text = "Создать кабинет";
-                    DialogResult cabResult = cabForm.ShowDialog(this);
-                    if (cabResult == DialogResult.Cancel)
-                        return;
-
-                    int id = 0;
-                    Cabinet cabinet = new Cabinet();
-                    id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());
-                    specializations = unitOfWork.Specializations.GetAll();
-                    Specialization specialization_t = specializations.Find(spec => spec.Id == id);
-                    cabinet.number = cabForm.textBox1.Text;
-                    cabinet.specialization = specialization_t.name;
-
-                    MessageBox.Show(Controller.Service.Add.add(cabinet));
-                    cabinets = unitOfWork.Cabinets.GetAll();
-                    listBoxAll.DataSource = cabinets;
-                    break;*/
+                case "СПЕЦИАЛИЗАЦИИ":                   
                     frmSpecialization specForm = new frmSpecialization();
                     specForm.Text = "Создать специализацию";
                     DialogResult specResult = specForm.ShowDialog(this);
@@ -668,8 +649,8 @@ namespace Presentation
 
                               drugs = unitOfWork.Drugs.GetAll();
                               listBoxAll.DataSource = drugs;
-                      }
-                          //formEditDrug.Show();
+                            }
+                          
                           break;
                      /* case "КАРТОЧКИ ПАЦИЕНТОВ":
 
@@ -699,14 +680,7 @@ namespace Presentation
         {
             switch (labelAll.Text)
             {
-               case "КАБИНЕТЫ":
-                    /*
-                       
-                        MessageBox.Show(Controller.Service.Update.update(cabinet));
-
-                        cabinets = unitOfWork.Cabinets.GetAll();
-                        listBoxAll.DataSource = cabinets;*/
-                 
+               case "КАБИНЕТЫ":                                 
                 if (listBoxAll.SelectedIndex != -1)
                     {
                         int id = 0;
@@ -722,7 +696,7 @@ namespace Presentation
                     /*case "ВРАЧИ":
 
                         break;*/
-                    case "СПЕЦИАЛИЗАЦИИ":
+                case "СПЕЦИАЛИЗАЦИИ":
                         if (listBoxAll.SelectedIndex != -1)
                         {
                             int id = 0;
@@ -753,7 +727,7 @@ namespace Presentation
                             MessageBox.Show("Объект удален");
                         }
                         break;*/
-                    case "ДИАГНОЗЫ":
+               case "ДИАГНОЗЫ":
                         if (listBoxAll.SelectedIndex != -1)
                         {
                             int id = 0;

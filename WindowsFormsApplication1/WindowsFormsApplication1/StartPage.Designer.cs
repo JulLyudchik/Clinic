@@ -51,6 +51,12 @@
             this.adminSpecButton = new System.Windows.Forms.Button();
             this.adminDocButton = new System.Windows.Forms.Button();
             this.adminCabinetButton = new System.Windows.Forms.Button();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.createItemButton = new System.Windows.Forms.Button();
+            this.labelAll = new System.Windows.Forms.Label();
+            this.deleteItemButton = new System.Windows.Forms.Button();
+            this.editItemButton = new System.Windows.Forms.Button();
+            this.listBoxAll = new System.Windows.Forms.ListBox();
             this.patientRecPanel = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,12 +70,6 @@
             this.lable8 = new System.Windows.Forms.Label();
             this.createReportButton = new System.Windows.Forms.Button();
             this.listBoxPatientsVisit = new System.Windows.Forms.ListBox();
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.createItemButton = new System.Windows.Forms.Button();
-            this.labelAll = new System.Windows.Forms.Label();
-            this.deleteItemButton = new System.Windows.Forms.Button();
-            this.editItemButton = new System.Windows.Forms.Button();
-            this.listBoxAll = new System.Windows.Forms.ListBox();
             this.registratorButton = new System.Windows.Forms.Button();
             this.doctorButton = new System.Windows.Forms.Button();
             this.administratorButton = new System.Windows.Forms.Button();
@@ -82,10 +82,10 @@
             this.regPanel.SuspendLayout();
             this.docPanel.SuspendLayout();
             this.adminPanel.SuspendLayout();
+            this.mainPanel.SuspendLayout();
             this.patientRecPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.visitPanel.SuspendLayout();
-            this.mainPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,7 +94,6 @@
             // bottomPanel
             // 
             this.bottomPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bottomPanel.Controls.Add(this.pictureBoxStripe);
             this.bottomPanel.Controls.Add(this.labelDoctor);
             this.bottomPanel.Controls.Add(this.enterButton);
             this.bottomPanel.Controls.Add(this.labelDoct);
@@ -103,9 +102,10 @@
             this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Controls.Add(this.docPanel);
             this.bottomPanel.Controls.Add(this.adminPanel);
-            this.bottomPanel.Controls.Add(this.mainPanel);
             this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Controls.Add(this.visitPanel);
+            this.bottomPanel.Controls.Add(this.pictureBoxStripe);
+            this.bottomPanel.Controls.Add(this.mainPanel);
             this.bottomPanel.Location = new System.Drawing.Point(0, 66);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(902, 520);
@@ -388,6 +388,99 @@
             this.adminCabinetButton.UseVisualStyleBackColor = false;
             this.adminCabinetButton.Click += new System.EventHandler(this.button9_Click);
             // 
+            // mainPanel
+            // 
+            this.mainPanel.Controls.Add(this.createItemButton);
+            this.mainPanel.Controls.Add(this.labelAll);
+            this.mainPanel.Controls.Add(this.deleteItemButton);
+            this.mainPanel.Controls.Add(this.editItemButton);
+            this.mainPanel.Controls.Add(this.listBoxAll);
+            this.mainPanel.Location = new System.Drawing.Point(228, 56);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(674, 443);
+            this.mainPanel.TabIndex = 10;
+            this.mainPanel.Visible = false;
+            // 
+            // createItemButton
+            // 
+            this.createItemButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.createItemButton.FlatAppearance.BorderSize = 4;
+            this.createItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.createItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.createItemButton.Location = new System.Drawing.Point(86, 373);
+            this.createItemButton.Name = "createItemButton";
+            this.createItemButton.Size = new System.Drawing.Size(111, 44);
+            this.createItemButton.TabIndex = 1;
+            this.createItemButton.Text = "Создать";
+            this.createItemButton.UseVisualStyleBackColor = true;
+            this.createItemButton.Click += new System.EventHandler(this.createCardButton_Click);
+            // 
+            // labelAll
+            // 
+            this.labelAll.AutoSize = true;
+            this.labelAll.BackColor = System.Drawing.Color.DodgerBlue;
+            this.labelAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelAll.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelAll.Location = new System.Drawing.Point(63, 22);
+            this.labelAll.Name = "labelAll";
+            this.labelAll.Size = new System.Drawing.Size(220, 26);
+            this.labelAll.TabIndex = 4;
+            this.labelAll.Text = "КАРТОЧКИ ПАЦИЕНТОВ";
+            // 
+            // deleteItemButton
+            // 
+            this.deleteItemButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteItemButton.Enabled = false;
+            this.deleteItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.deleteItemButton.FlatAppearance.BorderSize = 4;
+            this.deleteItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.deleteItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.deleteItemButton.Location = new System.Drawing.Point(471, 373);
+            this.deleteItemButton.Name = "deleteItemButton";
+            this.deleteItemButton.Size = new System.Drawing.Size(111, 44);
+            this.deleteItemButton.TabIndex = 3;
+            this.deleteItemButton.Text = "Удалить";
+            this.deleteItemButton.UseVisualStyleBackColor = true;
+            this.deleteItemButton.Click += new System.EventHandler(this.deleteItemButton_Click);
+            // 
+            // editItemButton
+            // 
+            this.editItemButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editItemButton.Enabled = false;
+            this.editItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.editItemButton.FlatAppearance.BorderSize = 4;
+            this.editItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.editItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.editItemButton.Location = new System.Drawing.Point(263, 373);
+            this.editItemButton.Name = "editItemButton";
+            this.editItemButton.Size = new System.Drawing.Size(143, 44);
+            this.editItemButton.TabIndex = 2;
+            this.editItemButton.Text = "Редактировать";
+            this.editItemButton.UseVisualStyleBackColor = true;
+            this.editItemButton.Click += new System.EventHandler(this.editCardButton_Click);
+            // 
+            // listBoxAll
+            // 
+            this.listBoxAll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxAll.FormattingEnabled = true;
+            this.listBoxAll.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.listBoxAll.Location = new System.Drawing.Point(63, 51);
+            this.listBoxAll.Name = "listBoxAll";
+            this.listBoxAll.Size = new System.Drawing.Size(547, 301);
+            this.listBoxAll.TabIndex = 0;
+            this.listBoxAll.SelectedIndexChanged += new System.EventHandler(this.listBoxPatientsCards_SelectedIndexChanged);
+            // 
             // patientRecPanel
             // 
             this.patientRecPanel.Controls.Add(this.dataGridView1);
@@ -558,99 +651,6 @@
             this.listBoxPatientsVisit.SelectedIndexChanged += new System.EventHandler(this.listBoxPatientsVisit_SelectedIndexChanged);
             this.listBoxPatientsVisit.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox7_MouseDoubleClick);
             // 
-            // mainPanel
-            // 
-            this.mainPanel.Controls.Add(this.createItemButton);
-            this.mainPanel.Controls.Add(this.labelAll);
-            this.mainPanel.Controls.Add(this.deleteItemButton);
-            this.mainPanel.Controls.Add(this.editItemButton);
-            this.mainPanel.Controls.Add(this.listBoxAll);
-            this.mainPanel.Location = new System.Drawing.Point(228, 56);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(674, 443);
-            this.mainPanel.TabIndex = 10;
-            this.mainPanel.Visible = false;
-            // 
-            // createItemButton
-            // 
-            this.createItemButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.createItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.createItemButton.FlatAppearance.BorderSize = 4;
-            this.createItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.createItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.createItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.createItemButton.Location = new System.Drawing.Point(86, 373);
-            this.createItemButton.Name = "createItemButton";
-            this.createItemButton.Size = new System.Drawing.Size(111, 44);
-            this.createItemButton.TabIndex = 1;
-            this.createItemButton.Text = "Создать";
-            this.createItemButton.UseVisualStyleBackColor = true;
-            this.createItemButton.Click += new System.EventHandler(this.createCardButton_Click);
-            // 
-            // labelAll
-            // 
-            this.labelAll.AutoSize = true;
-            this.labelAll.BackColor = System.Drawing.Color.DodgerBlue;
-            this.labelAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelAll.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelAll.Location = new System.Drawing.Point(63, 22);
-            this.labelAll.Name = "labelAll";
-            this.labelAll.Size = new System.Drawing.Size(220, 26);
-            this.labelAll.TabIndex = 4;
-            this.labelAll.Text = "КАРТОЧКИ ПАЦИЕНТОВ";
-            // 
-            // deleteItemButton
-            // 
-            this.deleteItemButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteItemButton.Enabled = false;
-            this.deleteItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.deleteItemButton.FlatAppearance.BorderSize = 4;
-            this.deleteItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.deleteItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.deleteItemButton.Location = new System.Drawing.Point(471, 373);
-            this.deleteItemButton.Name = "deleteItemButton";
-            this.deleteItemButton.Size = new System.Drawing.Size(111, 44);
-            this.deleteItemButton.TabIndex = 3;
-            this.deleteItemButton.Text = "Удалить";
-            this.deleteItemButton.UseVisualStyleBackColor = true;
-            this.deleteItemButton.Click += new System.EventHandler(this.deleteItemButton_Click);
-            // 
-            // editItemButton
-            // 
-            this.editItemButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.editItemButton.Enabled = false;
-            this.editItemButton.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.editItemButton.FlatAppearance.BorderSize = 4;
-            this.editItemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.editItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editItemButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editItemButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.editItemButton.Location = new System.Drawing.Point(263, 373);
-            this.editItemButton.Name = "editItemButton";
-            this.editItemButton.Size = new System.Drawing.Size(143, 44);
-            this.editItemButton.TabIndex = 2;
-            this.editItemButton.Text = "Редактировать";
-            this.editItemButton.UseVisualStyleBackColor = true;
-            this.editItemButton.Click += new System.EventHandler(this.editCardButton_Click);
-            // 
-            // listBoxAll
-            // 
-            this.listBoxAll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxAll.FormattingEnabled = true;
-            this.listBoxAll.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.listBoxAll.Location = new System.Drawing.Point(63, 51);
-            this.listBoxAll.Name = "listBoxAll";
-            this.listBoxAll.Size = new System.Drawing.Size(547, 301);
-            this.listBoxAll.TabIndex = 0;
-            this.listBoxAll.SelectedIndexChanged += new System.EventHandler(this.listBoxPatientsCards_SelectedIndexChanged);
-            // 
             // registratorButton
             // 
             this.registratorButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -772,13 +772,13 @@
             this.regPanel.ResumeLayout(false);
             this.docPanel.ResumeLayout(false);
             this.adminPanel.ResumeLayout(false);
+            this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
             this.patientRecPanel.ResumeLayout(false);
             this.patientRecPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.visitPanel.ResumeLayout(false);
             this.visitPanel.PerformLayout();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

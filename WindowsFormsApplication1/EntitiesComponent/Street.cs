@@ -9,7 +9,7 @@ namespace Model
     public class Street : Entity
     {
         public string name { get; set; }
-        public int? RegStationId { get; set; }
-        public RegStation regStation { get; set; }
+        //public int? RegStationId { get; set; }
+        //public RegStation regStation { get; set; }
     }
 }
