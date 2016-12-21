@@ -8,8 +8,7 @@ namespace Model
 {
     public class RegStation : Entity
     {
-        public string name { get; set; }
-        public string therapist { get; set; }       
+        public string name { get; set; }              
         public List<Street> streets { get; set; }          
     }
 }

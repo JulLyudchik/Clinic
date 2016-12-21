@@ -10,5 +10,7 @@ namespace Model
     {
         public string name { get; set; }
         public string time { get; set; }
+        public List<Cabinet> cabinets { get; set; }
+        public List<Doctor> doctors { get; set; }
     }
 }

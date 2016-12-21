@@ -368,7 +368,7 @@ namespace Presentation
         {
             switch (labelAll.Text)
             {
-                case "КАБИНЕТЫ":
+                /*case "КАБИНЕТЫ":
                     frmCabinet cabForm = new frmCabinet();
                     cabForm.Text = "Создать кабинет";
                     specializations = unitOfWork.Specializations.GetAll();
@@ -390,8 +390,8 @@ namespace Presentation
                     cabinets = unitOfWork.Cabinets.GetAll();
                     listBoxAll.DataSource = cabinets;
                     break;
-
-                case "ВРАЧИ":
+                */
+                /*case "ВРАЧИ":
                     frmDoctor docForm = new frmDoctor();
                     docForm.Text = "Создать врача";
                     specializations = unitOfWork.Specializations.GetAll();
@@ -426,7 +426,7 @@ namespace Presentation
                     MessageBox.Show(Controller.Service.Add.add(doctor));
                     doctors = unitOfWork.Doctors.GetAll();
                     listBoxAll.DataSource = doctors;
-                    break;
+                    break;*/
                 case "СПЕЦИАЛИЗАЦИИ":
                     
                     frmSpecialization specForm = new frmSpecialization();
@@ -524,7 +524,7 @@ namespace Presentation
         {
             switch (labelAll.Text)
             {
-                case "КАБИНЕТЫ":
+                /*case "КАБИНЕТЫ":
                     if (listBoxAll.SelectedIndex != -1)
                     {
                         frmCabinet cabForm = new frmCabinet();
@@ -586,7 +586,7 @@ namespace Presentation
                         doctors = unitOfWork.Doctors.GetAll();
                         listBoxAll.DataSource = doctors;
                     }
-                    break;
+                    break;*/
 
 
                     case "СПЕЦИАЛИЗАЦИИ":
@@ -721,15 +721,8 @@ namespace Presentation
         {
             switch (labelAll.Text)
             {
-               case "КАБИНЕТЫ":
-                    /*
-                       
-                        MessageBox.Show(Controller.Service.Update.update(cabinet));
-
-                        cabinets = unitOfWork.Cabinets.GetAll();
-                        listBoxAll.DataSource = cabinets;*/
-                 
-                if (listBoxAll.SelectedIndex != -1)
+               case "КАБИНЕТЫ":                                    
+                /*if (listBoxAll.SelectedIndex != -1)
                     {
                         int id = 0;
                         id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
@@ -740,7 +733,7 @@ namespace Presentation
                         cabinets = unitOfWork.Cabinets.GetAll();
                         listBoxAll.DataSource = cabinets;                   
                     }
-                    break;
+                    break;*/
                     /*case "ВРАЧИ":
 
                         break;*/

@@ -9,9 +9,7 @@ namespace Model
     public class Doctor : Entity
     {
         public string name { get; set; }
-        public string specialization { get; set; }
-        public string cabinet { get; set; }
-        //public string regStation { get; set; }
+        public RegStation regStation { get; set; }
 
     }
 }

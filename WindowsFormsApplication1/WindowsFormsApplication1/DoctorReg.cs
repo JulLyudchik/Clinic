@@ -63,7 +63,7 @@ namespace Presentation
         
         private void comboBoxSpecDoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBoxNameDoc.Enabled = true;
+            /*comboBoxNameDoc.Enabled = true;
             List<Doctor> doctors_temp = new List<Doctor>();
             comboBoxNameDoc.Text = "";
             specializations = unitOfWork.Specializations.GetAll();
@@ -80,7 +80,7 @@ namespace Presentation
                 }
                 comboBoxNameDoc.DisplayMember = "Name";
             }
-            comboBoxNameDoc.DataSource = doctors_temp;
+            comboBoxNameDoc.DataSource = doctors_temp;*/
             
             
         }
