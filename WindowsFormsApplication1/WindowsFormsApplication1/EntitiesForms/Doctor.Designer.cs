@@ -87,6 +87,7 @@
             // comboBox1
             // 
             this.comboBox1.DisplayMember = "Name";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(53, 76);
             this.comboBox1.Name = "comboBox1";
@@ -102,6 +103,7 @@
             // comboBox2
             // 
             this.comboBox2.DisplayMember = "Number";
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(53, 125);
             this.comboBox2.Name = "comboBox2";
@@ -138,6 +140,7 @@
             // comboBox3
             // 
             this.comboBox3.DisplayMember = "Name";
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.Location = new System.Drawing.Point(53, 174);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(179, 21);

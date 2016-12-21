@@ -39,10 +39,11 @@ namespace Presentation
        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString()== "Терапевт")
+            /*if (comboBox1.SelectedItem.ToString()== "Терапевт")
                 comboBox3.Enabled = true;
             else
                 comboBox3.Enabled = false;
+             * */
         }
     }
 }
