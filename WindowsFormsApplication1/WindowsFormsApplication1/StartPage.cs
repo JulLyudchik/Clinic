@@ -21,6 +21,7 @@ namespace Presentation
         List<Specialization> specializations = new List<Specialization>();
         List<RegStation> regStations = new List<RegStation>();
         List<Cabinet> cabinets = new List<Cabinet>();
+        List<Street> streets = new List<Street>();
 
         UnitOfWork unitOfWork = new UnitOfWork();
 
@@ -402,9 +403,7 @@ namespace Presentation
                     docForm.comboBox3.DataSource = regStations;
                   
 
-                    int id2 = 0;
-                    id2 = Convert.ToInt32(docForm.comboBox1.SelectedValue.ToString());
-                    Specialization specialization_t2 = specializations.Find(spec => spec.Id == id2);
+                    
                      
                     DialogResult docResult = docForm.ShowDialog(this);
                     if (docResult == DialogResult.Cancel)
@@ -412,7 +411,9 @@ namespace Presentation
                     int id3 = 0;
                   //int id4 = 0;
                     Doctor doctor = new Doctor();
-                    
+                    int id2 = 0;
+                    id2 = Convert.ToInt32(docForm.comboBox1.SelectedValue.ToString());
+                    Specialization specialization_t2 = specializations.Find(spec => spec.Id == id2);
                     id3 = Convert.ToInt32(docForm.comboBox2.SelectedValue.ToString());
                     Cabinet cabinet_t = cabinets.Find(cab => cab.Id == id3);
                    // id4 = Convert.ToInt32(docForm.comboBox3.SelectedValue.ToString());
@@ -443,7 +444,7 @@ namespace Presentation
                     specializations = unitOfWork.Specializations.GetAll();
                     listBoxAll.DataSource = specializations;
                     break;
-                    /*case "УЧАСТКИ":
+                    case "УЧАСТКИ":
 
                         frmRegStation regStForm = new frmRegStation();
                         regStForm.Text = "Создать участок";
@@ -453,21 +454,21 @@ namespace Presentation
 
                         RegStation regStation = new RegStation();
                         regStation.name = regStForm.textBox1.Text;
-                        db.regStations.Add(regStation);
-                        db.SaveChanges();
-                        List<Street> streets = new List<Street>();
-                        for (int i = 0; i < regStForm.listBox1.Items.Count; i++ )
+                       
+                        List<Street> streets_t = new List<Street>();
+                        streets = unitOfWork.Streets.GetAll();
+                        for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
                         {
-                            Street street = new Street{name=(string)regStForm.listBox1.Items[i],regStation=regStation};
-                            streets.Add(street);                        
+                            Street street = streets.Find(str => str.name == (string)regStForm.listBox1.Items[i]);                           
+                            streets_t.Add(street);     
                         }
-                        db.streets.AddRange(streets);
-                        db.SaveChanges();          
+                        regStation.streets = streets_t;
+                        MessageBox.Show(Controller.Service.Add.add(regStation));
 
-                        db.regStations.Load();
-                        listBoxAll.DataSource = db.regStations.Local.ToList();                  
-                        MessageBox.Show("Новый объект добавлен");
-                        break;*/
+                        regStations = unitOfWork.RegStations.GetAll();
+                        listBoxAll.DataSource = regStations;
+        
+                        break;
                    case "ЛЕКАРСТВА":                  
                            frmDrug drugForm = new frmDrug();
                            drugForm.Text = "Создать лекарство";
@@ -611,47 +612,38 @@ namespace Presentation
                                 listBoxAll.DataSource = specializations;
                             }
                             break;
-                    /*  case "УЧАСТКИ":
+                      case "УЧАСТКИ":
                           if (listBoxAll.SelectedIndex != -1)
-                          {                                               
-                              int id = 0;
-                              bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                              if (converted == false)
-                                  return;
-                              db.streets.Load();                       
-                              RegStation regStation = db.regStations.Find(id);
-
+                          {                                                                    
                               frmRegStation regStForm = new frmRegStation();
                               regStForm.Text = "Редактировать участок";
+                              regStations = unitOfWork.RegStations.GetAll();
 
+                              int id = 0;
+                              id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                              RegStation regStation = regStations.Find(regSt => regSt.Id == id);
                               regStForm.textBox1.Text = regStation.name;
-                              foreach (Street st in regStation.streets)
-                              {                         
-                                  regStForm.listBox1.Items.Add(st.name);
-                              }
+                              regStForm.listBox1.DataSource = regStation.streets;
+                              regStForm.listBox1.DisplayMember = "Name";
 
                               DialogResult regStResult = regStForm.ShowDialog(this);
                               if (regStResult == DialogResult.Cancel)
                                   return;
 
                               regStation.name = regStForm.textBox1.Text;              
-                              List<Street> streets = new List<Street>();
+                             /* List<Street> streets = new List<Street>();
                               for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
                               {
                                   Street street = new Street { name = (string)regStForm.listBox1.Items[i], regStation = regStation };
                                   streets.Add(street);
-                              }
-                              regStation.streets = streets;
-                              db.Entry(regStation).State = EntityState.Modified;                       
-                              db.SaveChanges();
-                              clearStreets();
-
-                              db.regStations.Load();
-                              listBoxAll.DataSource = db.regStations.Local.ToList();
-                              MessageBox.Show("Объект обновлен");
+                              }*/
+                              //regStation.streets = streets;
+                              regStations = unitOfWork.RegStations.GetAll();
+                              listBoxAll.DataSource = regStations;
+                              
                           }
                           break;
-                          */
+                          
                       case "ДИАГНОЗЫ":
                       if (listBoxAll.SelectedIndex != -1)
                       {

@@ -128,7 +128,7 @@
             this.label4.TabIndex = 19;
             this.label4.Text = "Введите название новой улицы:";
             // 
-            // frmCreateAddr
+            // frmRegStation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -146,10 +146,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCreateAddr";
+            this.Name = "frmRegStation";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создать адрес";
+            this.Load += new System.EventHandler(this.frmRegStation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -35,5 +35,11 @@ namespace Controller.Service
             unitOfWork.Save();
             return "Лекарство удалено.";
         }
+        public static string remove(Street street)
+        {
+            unitOfWork.Streets.Remove(street);
+            unitOfWork.Save();
+            return "Улица удалена.";
+        }
     }
 }
