@@ -35,6 +35,7 @@
             // 
             // comboBoxSpecDoc
             // 
+            this.comboBoxSpecDoc.DisplayMember = "Name";
             this.comboBoxSpecDoc.FormattingEnabled = true;
             this.comboBoxSpecDoc.Items.AddRange(new object[] {
             "Хирург",
@@ -46,6 +47,7 @@
             this.comboBoxSpecDoc.Size = new System.Drawing.Size(246, 21);
             this.comboBoxSpecDoc.TabIndex = 0;
             this.comboBoxSpecDoc.Text = "Специализация";
+            this.comboBoxSpecDoc.ValueMember = "Id";
             this.comboBoxSpecDoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpecDoc_SelectedIndexChanged);
             // 
             // button1

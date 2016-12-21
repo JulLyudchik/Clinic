@@ -35,5 +35,11 @@ namespace Controller.Service
             unitOfWork.Save();
             return "Лекарство изменено";
         }
+        public static string update(Doctor doctor)
+        {
+            unitOfWork.Doctors.Update(doctor);
+            unitOfWork.Save();
+            return "Доктор изменен";
+        }
     }
 }
