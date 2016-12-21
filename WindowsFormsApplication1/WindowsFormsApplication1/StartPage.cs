@@ -23,6 +23,7 @@ namespace Presentation
         List<Cabinet> cabinets = new List<Cabinet>();
         List<Street> streets = new List<Street>();
 
+
         UnitOfWork unitOfWork = new UnitOfWork();
 
         frmSpecialization formCreateSpec;
@@ -43,6 +44,7 @@ namespace Presentation
             regStations = unitOfWork.RegStations.GetAll();
             doctors = unitOfWork.Doctors.GetAll();
             cabinets = unitOfWork.Cabinets.GetAll();            
+            
         }
         private void Start_Load(object sender, EventArgs e)
         {
@@ -369,13 +371,11 @@ namespace Presentation
         {
             switch (labelAll.Text)
             {
-                /*case "КАБИНЕТЫ":
+                case "КАБИНЕТЫ":
                     frmCabinet cabForm = new frmCabinet();
                     cabForm.Text = "Создать кабинет";
                     specializations = unitOfWork.Specializations.GetAll();
                     cabForm.comboBox1.DataSource = specializations;
-                    //cabForm.comboBox1.DisplayMember = "Name";
-                    //cabForm.comboBox1.ValueMember = "Id";
                     DialogResult cabResult = cabForm.ShowDialog(this);
                     if (cabResult == DialogResult.Cancel)
                         return;
@@ -385,14 +385,16 @@ namespace Presentation
                     id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());
                     Specialization specialization_t = specializations.Find(spec => spec.Id == id);
                     cabinet.number = cabForm.textBox1.Text;
-                    cabinet.specialization = specialization_t.name;
+                    if (specialization_t.cabinets ==null)
+                            specialization_t.cabinets = new List<Cabinet>();
+                    specialization_t.cabinets.Add(cabinet);
 
                     MessageBox.Show(Controller.Service.Add.add(cabinet));
                     cabinets = unitOfWork.Cabinets.GetAll();
                     listBoxAll.DataSource = cabinets;
                     break;
-                */
-                /*case "ВРАЧИ":
+                
+                case "ВРАЧИ":
                     frmDoctor docForm = new frmDoctor();
                     docForm.Text = "Создать врача";
                     specializations = unitOfWork.Specializations.GetAll();
@@ -402,32 +404,33 @@ namespace Presentation
                     docForm.comboBox2.DataSource = cabinets;
                     docForm.comboBox3.DataSource = regStations;
                   
-
-                    
-                     
                     DialogResult docResult = docForm.ShowDialog(this);
                     if (docResult == DialogResult.Cancel)
                         return;
                     int id3 = 0;
-                  //int id4 = 0;
+                    int id4 = 0;
                     Doctor doctor = new Doctor();
                     int id2 = 0;
                     id2 = Convert.ToInt32(docForm.comboBox1.SelectedValue.ToString());
                     Specialization specialization_t2 = specializations.Find(spec => spec.Id == id2);
                     id3 = Convert.ToInt32(docForm.comboBox2.SelectedValue.ToString());
                     Cabinet cabinet_t = cabinets.Find(cab => cab.Id == id3);
-                   // id4 = Convert.ToInt32(docForm.comboBox3.SelectedValue.ToString());
-                   // RegStation regStation2 = regStations.Find(regSt => regSt.Id == id4);
+                    id4 = Convert.ToInt32(docForm.comboBox3.SelectedValue.ToString());
+                    RegStation regStation2 = regStations.Find(regSt => regSt.Id == id4);
                     doctor.name = docForm.textBox1.Text;
-                    doctor.specialization = specialization_t2.name;
-                    doctor.cabinet = cabinet_t.number;
-                   // doctor.regStation = regStation2.name;
+                    if (specialization_t2.doctors == null)
+                        specialization_t2.doctors = new List<Doctor>();
+                    specialization_t2.doctors.Add(doctor);
+
+                    specialization_t2.doctors.Add(doctor);
+                    cabinet_t.doctor = doctor;
+                    doctor.regStation = regStation2;
 
 
                     MessageBox.Show(Controller.Service.Add.add(doctor));
                     doctors = unitOfWork.Doctors.GetAll();
                     listBoxAll.DataSource = doctors;
-                    break;*/
+                    break;
                 case "СПЕЦИАЛИЗАЦИИ":
                     
                     frmSpecialization specForm = new frmSpecialization();
@@ -439,6 +442,9 @@ namespace Presentation
                     Specialization specialization = new Specialization();
                     specialization.name = specForm.textBox1.Text;
                     specialization.time = specForm.textBox2.Text;
+                    specialization.cabinets = new List<Cabinet>();
+                    specialization.doctors = new List<Doctor>();
+                    
                     MessageBox.Show(Controller.Service.Add.add(specialization));
 
                     specializations = unitOfWork.Specializations.GetAll();
@@ -451,7 +457,7 @@ namespace Presentation
                         DialogResult regStResult = regStForm.ShowDialog(this);
                         if (regStResult == DialogResult.Cancel)
                             return;
-                        
+
                         RegStation regStation = new RegStation();
                         regStation.name = regStForm.textBox1.Text;
                         BindingList<Street> streets_t = (BindingList<Street>)regStForm.listBox1.DataSource;
@@ -518,7 +524,7 @@ namespace Presentation
         {
             switch (labelAll.Text)
             {
-                /*case "КАБИНЕТЫ":
+                case "КАБИНЕТЫ":
                     if (listBoxAll.SelectedIndex != -1)
                     {
                         frmCabinet cabForm = new frmCabinet();
@@ -529,16 +535,33 @@ namespace Presentation
                         cabinets = unitOfWork.Cabinets.GetAll();
                         specializations=unitOfWork.Specializations.GetAll();
                         Cabinet cabinet = cabinets.Find(cab => cab.Id == id);
-                        Specialization specialization = specializations.Find(spec => spec.name == cabinet.specialization);
+                        List<Specialization> spec_temp = new List<Specialization>();  
+                        for (int i=0;i<specializations.Count;i++)
+                        {
+                            Specialization specialization1 = specializations[i];
+                            if ( specialization1.cabinets!=null)
+                            {
+                                spec_temp.Add(specialization1);
+                            }
+                            
+                        }
+                        Specialization specialization = spec_temp.Find(spec => spec.cabinets.Contains(cabinet));
                         cabForm.textBox1.Text = cabinet.number;
                         cabForm.comboBox1.SelectedItem = specialization;
+                        specialization.cabinets.Remove(cabinet);
 
                         DialogResult cabResult = cabForm.ShowDialog(this);
                         if (cabResult == DialogResult.Cancel)
                             return;
                         cabinet.number = cabForm.textBox1.Text;
                         specialization = (Specialization)cabForm.comboBox1.SelectedItem;
-                        cabinet.specialization = specialization.name;
+                        if (specialization.cabinets != null)
+                            specialization.cabinets.Add(cabinet);
+                        else
+                        {
+                            specialization.cabinets = new List<Cabinet>();
+                            specialization.cabinets.Add(cabinet);
+                        }
                         MessageBox.Show(Controller.Service.Update.update(cabinet));
 
                         cabinets = unitOfWork.Cabinets.GetAll();
@@ -556,31 +579,46 @@ namespace Presentation
                         int id = 0;
                         id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
                         Doctor doctor = doctors.Find(doc => doc.Id == id);
-                        Specialization specialization = specializations.Find(spec => spec.name == doctor.specialization);
-                        Cabinet cabinet = cabinets.Find(cab => cab.number == doctor.cabinet);
-                        //RegStation regStation = regStations.Find(regSt => regSt.name == doctor.regStation);
+                        List<Specialization> spec_temp = new List<Specialization>();
+                        for (int i = 0; i < specializations.Count; i++)
+                        {
+                            Specialization specialization1 = specializations[i];
+                            if (specialization1.doctors != null)
+                            {
+                                spec_temp.Add(specialization1);
+                            }
+
+                        }
+                        Specialization specialization = spec_temp.Find(spec => spec.doctors.Contains(doctor));
+                        Cabinet cabinet = cabinets.Find(cab => cab.doctor == doctor);
+                        RegStation regStation = regStations.Find(regSt => regSt == doctor.regStation);
                         docForm.textBox1.Text = doctor.name;
                         docForm.comboBox1.SelectedItem = specialization;
                         docForm.comboBox2.SelectedItem = cabinet;
-                        //docForm.comboBox3.SelectedItem = regStation;
-                       // doctor.regStation = regStation.name;
+                        docForm.comboBox3.SelectedItem = regStation;
+                        doctor.regStation = regStation;
+
+                        specialization.doctors.Remove(doctor);
                         DialogResult docResult = docForm.ShowDialog(this);
                         if (docResult == DialogResult.Cancel)
                             return;
 
                         doctor.name = docForm.textBox1.Text;
                         specialization = (Specialization)docForm.comboBox1.SelectedItem;
-                        doctor.specialization = specialization.name;
+                        if (specialization.doctors == null)
+                            specialization.doctors = new List<Doctor>();
+                        specialization.doctors.Add(doctor);
+                        
                         cabinet = (Cabinet)docForm.comboBox2.SelectedItem;
-                        doctor.cabinet = cabinet.number;
-                        //regStation = (RegStation)docForm.comboBox3.SelectedItem;
-                        //doctor.regStation = regStation.name;
+                        cabinet.doctor = doctor;
+                        regStation = (RegStation)docForm.comboBox3.SelectedItem;
+                        doctor.regStation = regStation;
 
                         MessageBox.Show(Controller.Service.Update.update(doctor));
                         doctors = unitOfWork.Doctors.GetAll();
                         listBoxAll.DataSource = doctors;
                     }
-                    break;*/
+                    break;
 
 
                     case "СПЕЦИАЛИЗАЦИИ":
@@ -607,7 +645,7 @@ namespace Presentation
                             break;
                       case "УЧАСТКИ":
                           if (listBoxAll.SelectedIndex != -1)
-                          {
+                          {                                                                    
                               /*                                           
                         
                         BindingList<Street> streets_t = (BindingList<Street>)regStForm.listBox1.DataSource;
@@ -632,12 +670,12 @@ namespace Presentation
                                   blStreets.Add(regStation.streets.ElementAt(i));
                               }
                               regStForm.listBox1.DataSource = blStreets;
-                              
+
                               DialogResult regStResult = regStForm.ShowDialog(this);
                               if (regStResult == DialogResult.Cancel)
                                   return;
 
-                              regStation.name = regStForm.textBox1.Text;
+                              regStation.name = regStForm.textBox1.Text;              
                               BindingList<Street> streets_t = (BindingList<Street>)regStForm.listBox1.DataSource;
                               regStation.streets = streets_t.ToList();
                               MessageBox.Show(Controller.Service.Update.update(regStation));
@@ -724,7 +762,7 @@ namespace Presentation
             switch (labelAll.Text)
             {
                case "КАБИНЕТЫ":                                    
-                /*if (listBoxAll.SelectedIndex != -1)
+                 if (listBoxAll.SelectedIndex != -1)
                     {
                         int id = 0;
                         id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
@@ -735,10 +773,20 @@ namespace Presentation
                         cabinets = unitOfWork.Cabinets.GetAll();
                         listBoxAll.DataSource = cabinets;                   
                     }
-                    break;*/
-                    /*case "ВРАЧИ":
+                    break;
+                    case "ВРАЧИ":
+                    if (listBoxAll.SelectedIndex != -1)
+                    {
+                        int id = 0;
+                        id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                        doctors = unitOfWork.Doctors.GetAll();
+                        Doctor doctor = doctors.Find(doc => doc.Id == id);
+                        MessageBox.Show(Controller.Service.Remove.remove(doctor));
 
-                        break;*/
+                        doctors = unitOfWork.Doctors.GetAll();
+                        listBoxAll.DataSource = doctors;
+                    }
+                    break;
                     case "СПЕЦИАЛИЗАЦИИ":
                         if (listBoxAll.SelectedIndex != -1)
                         {
@@ -752,24 +800,20 @@ namespace Presentation
                         listBoxAll.DataSource = specializations;                   
                         }
                         break;
-                    /*case "УЧАСТКИ":
+                    case "УЧАСТКИ":
                         if (listBoxAll.SelectedIndex != -1)
                         {                       
                             int id = 0;
-                            bool converted = Int32.TryParse(listBoxAll.SelectedValue.ToString(), out id);
-                            if (converted == false)
-                                return;
-                            db.streets.Load();
-                            RegStation regStation = db.regStations.Find(id);
-                            db.regStations.Remove(regStation);
-                            db.SaveChanges();
-                            clearStreets();
+                            id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                            regStations = unitOfWork.RegStations.GetAll();
+                            RegStation regStation = regStations.Find(regSt => regSt.Id == id);
+                            MessageBox.Show(Controller.Service.Remove.remove(regStation));
 
-                            db.regStations.Load();
-                            listBoxAll.DataSource = db.regStations.Local.ToList();
-                            MessageBox.Show("Объект удален");
+                            regStations = unitOfWork.RegStations.GetAll();
+                            listBoxAll.DataSource = regStations;
+
                         }
-                        break;*/
+                        break;
                     case "ДИАГНОЗЫ":
                         if (listBoxAll.SelectedIndex != -1)
                         {
