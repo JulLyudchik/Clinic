@@ -281,12 +281,17 @@ namespace Presentation
             mainPanel.Visible = false;
             comboBoxNamePac.SelectedIndex = -1;
             comboBoxNamePac.Text = "Имя пациента";
-            comboBoxNameDoc.Enabled = false;
-            comboBoxNameDoc.SelectedIndex = -1;
-            comboBoxNameDoc.Text = "Имя врача";
+            
             comboBoxSpec.Enabled = false;
             comboBoxSpec.SelectedIndex = -1;
             comboBoxSpec.Text = "Специализация";
+            specializations = unitOfWork.Specializations.GetAll();
+            comboBoxSpec.DataSource = specializations;
+            comboBoxNameDoc.Enabled = false;
+            comboBoxNameDoc.SelectedIndex = -1;
+            comboBoxNameDoc.Text = "Имя врача";
+            Specialization spec = (Specialization)comboBoxSpec.SelectedItem;
+            comboBoxNameDoc.DataSource = spec.doctors;
             dataGridView1.Enabled = false;
             comboBoxNameDoc.Enabled = false;
         }
@@ -316,6 +321,7 @@ namespace Presentation
             visitPanel.Visible = true;
             mainPanel.Visible = false;
             listBoxPatientsVisit.SelectedIndex = -1;
+            
         }
 
 
@@ -335,6 +341,10 @@ namespace Presentation
                 formPatList.Owner = this;
                 formPatList.Show();
                 formPatList.Text = listBoxPatientsVisit.SelectedItem.ToString();
+                diagnoses = unitOfWork.Diagnoses.GetAll();
+                formPatList.comboBox1.DataSource = diagnoses;
+                drugs = unitOfWork.Drugs.GetAll();
+                formPatList.comboBox2.DataSource = drugs;
             }
         }
 
@@ -342,6 +352,7 @@ namespace Presentation
         {
             labelAll.Text = "КАРТОЧКИ ПАЦИЕНТОВ";
             mainPanel.Visible = true;
+            patientRecPanel.Visible = false;
             listBoxAll.SelectedIndex = -1;
             editItemButton.Enabled = false;
             deleteItemButton.Enabled = false;
@@ -401,28 +412,26 @@ namespace Presentation
                     cabinets = unitOfWork.Cabinets.GetAll();
                     regStations = unitOfWork.RegStations.GetAll();
                     docForm.comboBox1.DataSource = specializations;
-                    docForm.comboBox2.DataSource = cabinets;
+                    
                     docForm.comboBox3.DataSource = regStations;
                   
                     DialogResult docResult = docForm.ShowDialog(this);
                     if (docResult == DialogResult.Cancel)
                         return;
                     int id3 = 0;
-                    int id4 = 0;
                     Doctor doctor = new Doctor();
                     int id2 = 0;
                     id2 = Convert.ToInt32(docForm.comboBox1.SelectedValue.ToString());
-                    Specialization specialization_t2 = specializations.Find(spec => spec.Id == id2);
+                    Specialization specialization_t2 = (Specialization)docForm.comboBox1.SelectedItem;
+                    docForm.comboBox2.DataSource = specialization_t2.cabinets;
                     id3 = Convert.ToInt32(docForm.comboBox2.SelectedValue.ToString());
                     Cabinet cabinet_t = cabinets.Find(cab => cab.Id == id3);
-                    id4 = Convert.ToInt32(docForm.comboBox3.SelectedValue.ToString());
-                    RegStation regStation2 = regStations.Find(regSt => regSt.Id == id4);
+                    RegStation regStation2 = (RegStation)docForm.comboBox3.SelectedItem;
                     doctor.name = docForm.textBox1.Text;
                     if (specialization_t2.doctors == null)
                         specialization_t2.doctors = new List<Doctor>();
                     specialization_t2.doctors.Add(doctor);
 
-                    specialization_t2.doctors.Add(doctor);
                     cabinet_t.doctor = doctor;
                     doctor.regStation = regStation2;
 

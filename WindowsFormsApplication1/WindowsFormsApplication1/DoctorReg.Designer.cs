@@ -70,6 +70,7 @@
             // 
             // comboBoxNameDoc
             // 
+            this.comboBoxNameDoc.DisplayMember = "Name";
             this.comboBoxNameDoc.Enabled = false;
             this.comboBoxNameDoc.FormattingEnabled = true;
             this.comboBoxNameDoc.Items.AddRange(new object[] {

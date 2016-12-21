@@ -63,24 +63,12 @@ namespace Presentation
         
         private void comboBoxSpecDoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*comboBoxNameDoc.Enabled = true;
-            List<Doctor> doctors_temp = new List<Doctor>();
+            comboBoxNameDoc.Enabled = true;
             comboBoxNameDoc.Text = "";
             specializations = unitOfWork.Specializations.GetAll();
-            doctors = unitOfWork.Doctors.GetAll();
-            int id = 1;
-            id = Convert.ToInt32(comboBoxSpecDoc.SelectedValue.ToString());
-            Specialization specialization_t2 = specializations.Find(spec => spec.Id == id);
-            for (int i = 0; i < doctors.Count; i++)
-            {
-                Doctor doctor = doctors[i];
-                if (doctor.specialization == specialization_t2.name)
-                {
-                    doctors_temp.Add(doctor);
-                }
-                comboBoxNameDoc.DisplayMember = "Name";
-            }
-            comboBoxNameDoc.DataSource = doctors_temp;*/
+            Specialization spec = (Specialization)comboBoxSpecDoc.SelectedItem;
+            comboBoxNameDoc.DataSource = spec.doctors;
+            
             
             
         }

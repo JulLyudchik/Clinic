@@ -99,12 +99,12 @@
             this.bottomPanel.Controls.Add(this.labelDoct);
             this.bottomPanel.Controls.Add(this.label1);
             this.bottomPanel.Controls.Add(this.TimeLb1);
-            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Controls.Add(this.docPanel);
             this.bottomPanel.Controls.Add(this.adminPanel);
+            this.bottomPanel.Controls.Add(this.pictureBoxStripe);
+            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Controls.Add(this.visitPanel);
-            this.bottomPanel.Controls.Add(this.pictureBoxStripe);
             this.bottomPanel.Controls.Add(this.mainPanel);
             this.bottomPanel.Location = new System.Drawing.Point(0, 66);
             this.bottomPanel.Name = "bottomPanel";
@@ -420,6 +420,7 @@
             // 
             // comboBoxNameDoc
             // 
+            this.comboBoxNameDoc.DisplayMember = "Name";
             this.comboBoxNameDoc.Enabled = false;
             this.comboBoxNameDoc.FormattingEnabled = true;
             this.comboBoxNameDoc.Items.AddRange(new object[] {
@@ -435,6 +436,7 @@
             // 
             // comboBoxSpec
             // 
+            this.comboBoxSpec.DisplayMember = "Name";
             this.comboBoxSpec.Enabled = false;
             this.comboBoxSpec.FormattingEnabled = true;
             this.comboBoxSpec.Items.AddRange(new object[] {

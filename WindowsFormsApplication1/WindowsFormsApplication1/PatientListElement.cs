@@ -38,5 +38,41 @@ namespace Presentation
            
             this.Close();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            listBoxDiag.Items.Add(comboBox1.SelectedItem);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listBoxDrug.Items.Add(comboBox2.SelectedItem);
+
+        }
+
+        private void listBoxDiag_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button4.Enabled = true;
+        }
+
+        private void listBoxDrug_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button5.Enabled = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            listBoxDiag.Items.Remove(listBoxDiag.SelectedItem);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            listBoxDrug.Items.Remove(listBoxDrug.SelectedItem);
+        }
     }
 }

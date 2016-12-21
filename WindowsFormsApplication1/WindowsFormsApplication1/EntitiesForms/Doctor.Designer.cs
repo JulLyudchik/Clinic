@@ -34,15 +34,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.specializationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.cabinetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.clinicDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.regStationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label4 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.specializationsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cabinetsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clinicDataSetBindingSource)).BeginInit();
@@ -99,16 +99,6 @@
             // 
             this.specializationsBindingSource.DataMember = "Specializations";
             // 
-            // comboBox2
-            // 
-            this.comboBox2.DisplayMember = "Number";
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(53, 125);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(179, 21);
-            this.comboBox2.TabIndex = 11;
-            this.comboBox2.ValueMember = "Id";
-            // 
             // cabinetsBindingSource
             // 
             this.cabinetsBindingSource.DataMember = "Cabinets";
@@ -135,15 +125,6 @@
             // 
             this.bindingSource1.DataMember = "Cabinets";
             // 
-            // comboBox3
-            // 
-            this.comboBox3.DisplayMember = "Name";
-            this.comboBox3.Location = new System.Drawing.Point(53, 174);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(179, 21);
-            this.comboBox3.TabIndex = 14;
-            this.comboBox3.ValueMember = "Id";
-            // 
             // regStationsBindingSource
             // 
             this.regStationsBindingSource.DataMember = "RegStations";
@@ -157,17 +138,36 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Выберите участок (для терапевтов):";
             // 
+            // comboBox3
+            // 
+            this.comboBox3.DisplayMember = "Name";
+            this.comboBox3.Enabled = false;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(53, 174);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(179, 21);
+            this.comboBox3.TabIndex = 16;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(53, 125);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(179, 21);
+            this.comboBox2.TabIndex = 17;
+            this.comboBox2.ValueMember = "Id";
+            // 
             // frmDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -195,7 +195,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         protected internal System.Windows.Forms.ComboBox comboBox1;
-        protected internal System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         //private ClinicDataSet clinicDataSet;
@@ -210,6 +209,7 @@
         //private ClinicDataSet2 clinicDataSet2;
         private System.Windows.Forms.BindingSource regStationsBindingSource;
         protected internal System.Windows.Forms.ComboBox comboBox3;
+        protected internal System.Windows.Forms.ComboBox comboBox2;
         //private ClinicDataSet2TableAdapters.RegStationsTableAdapter regStationsTableAdapter;
     }
 }
