@@ -8,9 +8,11 @@ using Model;
 
 namespace Controller.Service
 {
+    
     public class Add
     {
         static UnitOfWork unitOfWork = new UnitOfWork();
+        public static bool error;
         public static string add(Cabinet cabinet)
         {
             if (unitOfWork.Cabinets.GetAll().Find(cab => cab.number == cabinet.number) == null)
@@ -73,13 +75,18 @@ namespace Controller.Service
         }
         public static string add(Street street)
         {
+            error=false;
             if (unitOfWork.Streets.GetAll().Find(str => str.name == street.name) == null)
             {
                 unitOfWork.Streets.Add(street);
                 unitOfWork.Save();
                 return "Новая улица добавлена.";
             }
-            else return "Такая улица уже существует!";
+            else
+            {
+                error = true;
+                return "Такая улица уже существует!";
+            } 
         }
     }
 }

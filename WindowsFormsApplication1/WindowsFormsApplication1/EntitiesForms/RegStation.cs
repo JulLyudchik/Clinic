@@ -15,11 +15,15 @@ namespace Presentation
 {
     public partial class frmRegStation : Form
     {
-        List<Street> streets = new List<Street>();
+        BindingList<Street> streets;
         UnitOfWork unitOfWork = new UnitOfWork();
         public frmRegStation()
         {
-            InitializeComponent();
+            InitializeComponent();           
+            streets=new BindingList<Street>();
+            listBox1.DataSource = streets;
+            listBox1.ValueMember = "Id";
+            listBox1.DisplayMember = "Name";
             
         }
        
@@ -28,27 +32,24 @@ namespace Presentation
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e) //сделать проверку на наличие улицы в другом участке
-        {
-            listBox1.Items.Add(textBox2.Text);
-           
+        private void button2_Click(object sender, EventArgs e) 
+        {                                
             Street street = new Street { name = (string)textBox2.Text };
+            
             MessageBox.Show(Controller.Service.Add.add(street));
-           
+            if (Controller.Service.Add.error==false)
+            {
+                streets.Add(street);                             
+            }                       
             textBox2.Text = "";
 
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {
-            int id = 0;
-            id = Convert.ToInt32(listBox1.SelectedValue.ToString());
-            streets = unitOfWork.Streets.GetAll();
-            Street street = streets.Find(str => str.name == listBox1.SelectedItem.ToString());
-            MessageBox.Show(Controller.Service.Remove.remove(street));
-
-            streets = unitOfWork.Streets.GetAll();
-            listBox1.DataSource = streets;
+        {           
+            Street selectedStreet=(Street)listBox1.SelectedItem;            
+            MessageBox.Show(Controller.Service.Remove.remove(selectedStreet));
+            streets.Remove(selectedStreet);           
         }
 
         private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)

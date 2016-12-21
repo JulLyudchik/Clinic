@@ -41,5 +41,11 @@ namespace Controller.Service
             unitOfWork.Save();
             return "Доктор изменен";
         }
+        public static string update(RegStation regStation)
+        {
+            unitOfWork.RegStations.Update(regStation);
+            unitOfWork.Save();
+            return "Участок изменен";
+        }
     }
 }

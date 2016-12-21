@@ -444,25 +444,18 @@ namespace Presentation
                     specializations = unitOfWork.Specializations.GetAll();
                     listBoxAll.DataSource = specializations;
                     break;
-                    case "УЧАСТКИ":
 
+                case "УЧАСТКИ":
                         frmRegStation regStForm = new frmRegStation();
                         regStForm.Text = "Создать участок";
                         DialogResult regStResult = regStForm.ShowDialog(this);
                         if (regStResult == DialogResult.Cancel)
                             return;
-
+                        
                         RegStation regStation = new RegStation();
                         regStation.name = regStForm.textBox1.Text;
-                       
-                        List<Street> streets_t = new List<Street>();
-                        streets = unitOfWork.Streets.GetAll();
-                        for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
-                        {
-                            Street street = streets.Find(str => str.name == (string)regStForm.listBox1.Items[i]);                           
-                            streets_t.Add(street);     
-                        }
-                        regStation.streets = streets_t;
+                        BindingList<Street> streets_t = (BindingList<Street>)regStForm.listBox1.DataSource;
+                        regStation.streets=streets_t.ToList();                
                         MessageBox.Show(Controller.Service.Add.add(regStation));
 
                         regStations = unitOfWork.RegStations.GetAll();
@@ -614,7 +607,13 @@ namespace Presentation
                             break;
                       case "УЧАСТКИ":
                           if (listBoxAll.SelectedIndex != -1)
-                          {                                                                    
+                          {
+                              /*                                           
+                        
+                        BindingList<Street> streets_t = (BindingList<Street>)regStForm.listBox1.DataSource;
+                        regStation.streets=streets_t.ToList();                
+                        MessageBox.Show(Controller.Service.Add.add(regStation));
+*/                  
                               frmRegStation regStForm = new frmRegStation();
                               regStForm.Text = "Редактировать участок";
                               regStations = unitOfWork.RegStations.GetAll();
@@ -623,14 +622,25 @@ namespace Presentation
                               id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
                               RegStation regStation = regStations.Find(regSt => regSt.Id == id);
                               regStForm.textBox1.Text = regStation.name;
-                              regStForm.listBox1.DataSource = regStation.streets;
-                              regStForm.listBox1.DisplayMember = "Name";
-
+                              BindingList<Street> blStreets = new BindingList<Street>();
+                              /*if (regStation.streets == null)
+                              {
+                                  regStation.streets = new List<Street>();
+                              }*/
+                              for (int i = 0; i < regStation.streets.Count; i++)
+                              {
+                                  blStreets.Add(regStation.streets.ElementAt(i));
+                              }
+                              regStForm.listBox1.DataSource = blStreets;
+                              
                               DialogResult regStResult = regStForm.ShowDialog(this);
                               if (regStResult == DialogResult.Cancel)
                                   return;
 
-                              regStation.name = regStForm.textBox1.Text;              
+                              regStation.name = regStForm.textBox1.Text;
+                              BindingList<Street> streets_t = (BindingList<Street>)regStForm.listBox1.DataSource;
+                              regStation.streets = streets_t.ToList();
+                              MessageBox.Show(Controller.Service.Update.update(regStation));
                              /* List<Street> streets = new List<Street>();
                               for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
                               {
