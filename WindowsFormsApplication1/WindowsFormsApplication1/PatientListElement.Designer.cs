@@ -41,6 +41,12 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listBoxDiag = new System.Windows.Forms.ListBox();
+            this.listBoxDrug = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,15 +72,18 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DisplayMember = "Name";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(47, 312);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(222, 21);
             this.comboBox1.TabIndex = 2;
             this.comboBox1.Text = "Диагнозы";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
+            this.comboBox2.DisplayMember = "Name";
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(368, 312);
             this.comboBox2.Name = "comboBox2";
@@ -91,7 +100,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.button1.Location = new System.Drawing.Point(262, 351);
+            this.button1.Location = new System.Drawing.Point(262, 488);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 37);
             this.button1.TabIndex = 4;
@@ -163,12 +172,108 @@
             this.Column3.HeaderText = "Column3";
             this.Column3.Name = "Column3";
             // 
+            // listBoxDiag
+            // 
+            this.listBoxDiag.DisplayMember = "Name";
+            this.listBoxDiag.FormattingEnabled = true;
+            this.listBoxDiag.Location = new System.Drawing.Point(47, 376);
+            this.listBoxDiag.Name = "listBoxDiag";
+            this.listBoxDiag.Size = new System.Drawing.Size(222, 95);
+            this.listBoxDiag.TabIndex = 8;
+            this.listBoxDiag.SelectedIndexChanged += new System.EventHandler(this.listBoxDiag_SelectedIndexChanged);
+            // 
+            // listBoxDrug
+            // 
+            this.listBoxDrug.DisplayMember = "Name";
+            this.listBoxDrug.FormattingEnabled = true;
+            this.listBoxDrug.Location = new System.Drawing.Point(368, 376);
+            this.listBoxDrug.Name = "listBoxDrug";
+            this.listBoxDrug.Size = new System.Drawing.Size(222, 95);
+            this.listBoxDrug.TabIndex = 9;
+            this.listBoxDrug.SelectedIndexChanged += new System.EventHandler(this.listBoxDrug_SelectedIndexChanged);
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.button2.Location = new System.Drawing.Point(47, 339);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(97, 31);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Добавить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.button3.Location = new System.Drawing.Point(368, 339);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(97, 31);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Добавить";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.Enabled = false;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.button4.Location = new System.Drawing.Point(172, 339);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(97, 31);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "Удалить";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Enabled = false;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.button5.Location = new System.Drawing.Point(493, 339);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(97, 31);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "Удалить";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // frmPat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(637, 418);
+            this.ClientSize = new System.Drawing.Size(637, 535);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.listBoxDrug);
+            this.Controls.Add(this.listBoxDiag);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelFIO);
@@ -196,8 +301,6 @@
 
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelAge;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelFIO;
         private System.Windows.Forms.Label label2;
@@ -207,5 +310,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.ListBox listBoxDiag;
+        private System.Windows.Forms.ListBox listBoxDrug;
+        protected internal System.Windows.Forms.ComboBox comboBox1;
+        protected internal System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
