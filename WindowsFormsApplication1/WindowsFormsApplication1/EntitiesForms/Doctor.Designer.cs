@@ -138,8 +138,6 @@
             // comboBox3
             // 
             this.comboBox3.DisplayMember = "Name";
-            this.comboBox3.Enabled = false;
-            this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(53, 174);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(179, 21);
@@ -208,11 +206,10 @@
         //private ClinicDataSet1 clinicDataSet1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.BindingSource cabinetsBindingSource;
-        //private ClinicDataSet1TableAdapters.CabinetsTableAdapter cabinetsTableAdapter;
-        protected internal System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label4;
         //private ClinicDataSet2 clinicDataSet2;
         private System.Windows.Forms.BindingSource regStationsBindingSource;
+        protected internal System.Windows.Forms.ComboBox comboBox3;
         //private ClinicDataSet2TableAdapters.RegStationsTableAdapter regStationsTableAdapter;
     }
 }
