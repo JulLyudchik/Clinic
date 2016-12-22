@@ -15,13 +15,13 @@ namespace Presentation
 {
     public partial class frmStart : Form
     {
-        List<Diagnosis> diagnoses = new List<Diagnosis>();
-        List<Drug> drugs = new List<Drug>();
-        List<Doctor> doctors = new List<Doctor>();
-        List<Specialization> specializations = new List<Specialization>();
-        List<RegStation> regStations = new List<RegStation>();
-        List<Cabinet> cabinets = new List<Cabinet>();
-        List<Street> streets = new List<Street>();
+        List<Diagnosis> diagnoses;
+        List<Drug> drugs;
+        List<Doctor> doctors;
+        List<Specialization> specializations;
+        List<RegStation> regStations;
+        List<Cabinet> cabinets;
+        List<Street> streets;
 
 
         UnitOfWork unitOfWork = new UnitOfWork();
@@ -41,9 +41,11 @@ namespace Presentation
             drugs = unitOfWork.Drugs.GetAll();
             specializations = unitOfWork.Specializations.GetAll();
             diagnoses = unitOfWork.Diagnoses.GetAll();
+            streets = unitOfWork.Streets.GetAll(); 
             regStations = unitOfWork.RegStations.GetAll();
             doctors = unitOfWork.Doctors.GetAll();
             cabinets = unitOfWork.Cabinets.GetAll();            
+            
             
         }
         private void Start_Load(object sender, EventArgs e)
@@ -279,7 +281,7 @@ namespace Presentation
         {
             patientRecPanel.Visible = true;
             mainPanel.Visible = false;
-            comboBoxNamePac.SelectedIndex = -1;
+           // comboBoxNamePac.SelectedIndex = -1;
             comboBoxNamePac.Text = "Имя пациента";
             
             comboBoxSpec.Enabled = false;
@@ -290,8 +292,8 @@ namespace Presentation
             comboBoxNameDoc.Enabled = false;
             //comboBoxNameDoc.SelectedIndex = -1;
             comboBoxNameDoc.Text = "Имя врача";
-            
-            //dataGridView1.Enabled = false;
+           
+           // dataGridView1.Enabled = false;
             comboBoxNameDoc.Enabled = false;
         }
         private void button4_Click(object sender, EventArgs e)
@@ -333,8 +335,6 @@ namespace Presentation
             formTicket.labelDocSpec.Text = spec.name;
             Doctor doc = (Doctor)comboBoxNameDoc.SelectedItem;
             formTicket.labelDocName.Text = doc.name;
-
-
         }
 
 
@@ -374,13 +374,10 @@ namespace Presentation
         }
         private void comboBoxNameDoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //dataGridView1.Enabled = true;
+            //  dataGridView1.Enabled = true;
             patRecButton.Enabled = true;
         }
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+        
         private void listBoxPatientsCards_SelectedIndexChanged(object sender, EventArgs e)
         {
             editItemButton.Enabled = true;
@@ -416,31 +413,43 @@ namespace Presentation
                 case "ВРАЧИ":
                     frmDoctor docForm = new frmDoctor();
                     docForm.Text = "Создать врача";
-                    specializations = unitOfWork.Specializations.GetAll();
-                    cabinets = unitOfWork.Cabinets.GetAll();
+                    Doctor doctor = new Doctor();
+                    specializations = unitOfWork.Specializations.GetAll(); 
                     regStations = unitOfWork.RegStations.GetAll();
-                    docForm.comboBox1.DataSource = specializations;
-                    
-                    docForm.comboBox3.DataSource = regStations;
+                    docForm.comboBox1.DataSource = specializations;                    
+                    doctors = unitOfWork.Doctors.GetAll();
+                    List<Doctor> therapists = new List<Doctor>();
+                    for (int i = 0; i < specializations.Count; i++)
+                    {
+                        if (specializations.ElementAt(i).name == "Терапевт")
+                        {
+                            therapists = specializations.ElementAt(i).doctors;
+                        }
+                    }                   
+                    List<RegStation> regStations_t = new List<RegStation>();
+                    for (int i = 0; i < regStations.Count; i++ )
+                    {
+                        Doctor doctor_t=therapists.Find(doc => doc.regStation.name == regStations.ElementAt(i).name);
+                        if (doctor_t== null)
+                        {
+                            regStations_t.Add(regStations.ElementAt(i));
+                        }
+                    }
+                    docForm.comboBox3.DataSource = regStations_t;
                   
                     DialogResult docResult = docForm.ShowDialog(this);
                     if (docResult == DialogResult.Cancel)
-                        return;
-                    int id3 = 0;
-                    Doctor doctor = new Doctor();
-                    int id2 = 0;
-                    id2 = Convert.ToInt32(docForm.comboBox1.SelectedValue.ToString());
+                        return;                                     
+                    //int id2 = 0;
+                    //id2 = Convert.ToInt32(docForm.comboBox1.SelectedValue.ToString());
                     Specialization specialization_t2 = (Specialization)docForm.comboBox1.SelectedItem;
-                    docForm.comboBox2.DataSource = specialization_t2.cabinets;
-                    id3 = Convert.ToInt32(docForm.comboBox2.SelectedValue.ToString());
-                    Cabinet cabinet_t = cabinets.Find(cab => cab.Id == id3);
+                    
                     RegStation regStation2 = (RegStation)docForm.comboBox3.SelectedItem;
                     doctor.name = docForm.textBox1.Text;
                     if (specialization_t2.doctors == null)
                         specialization_t2.doctors = new List<Doctor>();
                     specialization_t2.doctors.Add(doctor);
 
-                    cabinet_t.doctor = doctor;
                     doctor.regStation = regStation2;
 
 
@@ -477,8 +486,7 @@ namespace Presentation
 
                         RegStation regStation = new RegStation();
                         regStation.name = regStForm.textBox1.Text;
-                        BindingList<Street> streets_t = (BindingList<Street>)regStForm.listBox1.DataSource;
-                        regStation.streets=streets_t.ToList();                
+                        regStation.streets = (List<Street>)regStForm.listBox1.DataSource;
                         MessageBox.Show(Controller.Service.Add.add(regStation));
 
                         regStations = unitOfWork.RegStations.GetAll();
@@ -587,12 +595,29 @@ namespace Presentation
                     break;
                  case "ВРАЧИ":
                     if (listBoxAll.SelectedIndex != -1)
-                    {
+                    {                   
                         frmDoctor docForm = new frmDoctor();
                         docForm.Text = "Редактировать врача";
+                        List<RegStation> regStations_t = new List<RegStation>();
                         docForm.comboBox1.DataSource = specializations;
-                        docForm.comboBox2.DataSource = cabinets;
-                        docForm.comboBox3.DataSource = regStations;
+                        doctors = unitOfWork.Doctors.GetAll();
+                        List<Doctor> therapists = new List<Doctor>();
+                        for (int i = 0; i < specializations.Count; i++)
+                        {
+                            if (specializations.ElementAt(i).name == "Терапевт")
+                            {
+                                therapists = specializations.ElementAt(i).doctors;
+                            }
+                        }                      
+                        for (int i = 0; i < regStations.Count; i++)
+                        {
+                            Doctor doctor_t = therapists.Find(doc => doc.regStation.name == regStations.ElementAt(i).name);
+                            if (doctor_t == null)
+                            {
+                                regStations_t.Add(regStations.ElementAt(i));
+                            }
+                        }
+                        docForm.comboBox3.DataSource = regStations_t;
                         int id = 0;
                         id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
                         Doctor doctor = doctors.Find(doc => doc.Id == id);
@@ -611,7 +636,6 @@ namespace Presentation
                         RegStation regStation = regStations.Find(regSt => regSt == doctor.regStation);
                         docForm.textBox1.Text = doctor.name;
                         docForm.comboBox1.SelectedItem = specialization;
-                        docForm.comboBox2.SelectedItem = cabinet;
                         docForm.comboBox3.SelectedItem = regStation;
                         doctor.regStation = regStation;
 
@@ -625,9 +649,7 @@ namespace Presentation
                         if (specialization.doctors == null)
                             specialization.doctors = new List<Doctor>();
                         specialization.doctors.Add(doctor);
-                        
-                        cabinet = (Cabinet)docForm.comboBox2.SelectedItem;
-                        cabinet.doctor = doctor;
+                                               
                         regStation = (RegStation)docForm.comboBox3.SelectedItem;
                         doctor.regStation = regStation;
 
@@ -660,15 +682,12 @@ namespace Presentation
                                 listBoxAll.DataSource = specializations;
                             }
                             break;
+
                       case "УЧАСТКИ":
+                       
                           if (listBoxAll.SelectedIndex != -1)
                           {                                                                    
-                              /*                                           
                         
-                        BindingList<Street> streets_t = (BindingList<Street>)regStForm.listBox1.DataSource;
-                        regStation.streets=streets_t.ToList();                
-                        MessageBox.Show(Controller.Service.Add.add(regStation));
-*/                  
                               frmRegStation regStForm = new frmRegStation();
                               regStForm.Text = "Редактировать участок";
                               regStations = unitOfWork.RegStations.GetAll();
@@ -676,36 +695,19 @@ namespace Presentation
                               int id = 0;
                               id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
                               RegStation regStation = regStations.Find(regSt => regSt.Id == id);
-                              regStForm.textBox1.Text = regStation.name;
-                              BindingList<Street> blStreets = new BindingList<Street>();
-                              /*if (regStation.streets == null)
-                              {
-                                  regStation.streets = new List<Street>();
-                              }*/
-                              for (int i = 0; i < regStation.streets.Count; i++)
-                              {
-                                  blStreets.Add(regStation.streets.ElementAt(i));
-                              }
-                              regStForm.listBox1.DataSource = blStreets;
 
+                              regStForm.textBox1.Text = regStation.name;
+                              regStForm.listBox1.DataSource = regStation.streets;                              
                               DialogResult regStResult = regStForm.ShowDialog(this);
                               if (regStResult == DialogResult.Cancel)
                                   return;
 
                               regStation.name = regStForm.textBox1.Text;              
-                              BindingList<Street> streets_t = (BindingList<Street>)regStForm.listBox1.DataSource;
-                              regStation.streets = streets_t.ToList();
+                              regStation.streets = (List<Street>)regStForm.listBox1.DataSource;
                               MessageBox.Show(Controller.Service.Update.update(regStation));
-                             /* List<Street> streets = new List<Street>();
-                              for (int i = 0; i < regStForm.listBox1.Items.Count; i++)
-                              {
-                                  Street street = new Street { name = (string)regStForm.listBox1.Items[i], regStation = regStation };
-                                  streets.Add(street);
-                              }*/
-                              //regStation.streets = streets;
+                             
                               regStations = unitOfWork.RegStations.GetAll();
                               listBoxAll.DataSource = regStations;
-                              
                           }
                           break;
                           
@@ -818,12 +820,18 @@ namespace Presentation
                         }
                         break;
                     case "УЧАСТКИ":
+                        
                         if (listBoxAll.SelectedIndex != -1)
                         {                       
                             int id = 0;
                             id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
                             regStations = unitOfWork.RegStations.GetAll();
                             RegStation regStation = regStations.Find(regSt => regSt.Id == id);
+                            int n = regStation.streets.Count-1;
+                            for (; n >=0; n--)
+                            {
+                                Controller.Service.Remove.remove(regStation.streets.ElementAt(n));
+                            }
                             MessageBox.Show(Controller.Service.Remove.remove(regStation));
 
                             regStations = unitOfWork.RegStations.GetAll();
