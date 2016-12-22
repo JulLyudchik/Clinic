@@ -73,6 +73,16 @@ namespace Controller.Service
             }
             else return "Такой участок уже существует!";
         }
+        public static string add(PatientCard patCard)
+        {
+            if (unitOfWork.PatientCards.GetAll().Find(pCard => pCard.name == patCard.name) == null)
+            {
+                unitOfWork.PatientCards.Add(patCard);
+                unitOfWork.Save();
+                return "Новая карточка добавлена.";
+            }
+            else return "Такая карточка уже существует!";
+        }
         public static string add(Street street)
         {
             error=false;

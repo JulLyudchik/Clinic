@@ -45,10 +45,12 @@
     <Compile Include="Doctor.cs" />
     <Compile Include="Drug.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="PatientCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegStation.cs" />
     <Compile Include="Specialization.cs" />
     <Compile Include="Street.cs" />
+    <Compile Include="Visit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

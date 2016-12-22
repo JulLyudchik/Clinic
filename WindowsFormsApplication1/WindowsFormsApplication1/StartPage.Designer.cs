@@ -100,10 +100,10 @@
             this.bottomPanel.Controls.Add(this.labelDoct);
             this.bottomPanel.Controls.Add(this.label1);
             this.bottomPanel.Controls.Add(this.TimeLb1);
-            this.bottomPanel.Controls.Add(this.docPanel);
-            this.bottomPanel.Controls.Add(this.adminPanel);
             this.bottomPanel.Controls.Add(this.pictureBoxStripe);
             this.bottomPanel.Controls.Add(this.regPanel);
+            this.bottomPanel.Controls.Add(this.docPanel);
+            this.bottomPanel.Controls.Add(this.adminPanel);
             this.bottomPanel.Controls.Add(this.mainPanel);
             this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Controls.Add(this.visitPanel);
@@ -556,6 +556,7 @@
             this.listBoxPatientsVisit.Location = new System.Drawing.Point(63, 51);
             this.listBoxPatientsVisit.Name = "listBoxPatientsVisit";
             this.listBoxPatientsVisit.Size = new System.Drawing.Size(547, 301);
+            this.listBoxPatientsVisit.Sorted = true;
             this.listBoxPatientsVisit.TabIndex = 0;
             this.listBoxPatientsVisit.SelectedIndexChanged += new System.EventHandler(this.listBoxPatientsVisit_SelectedIndexChanged);
             this.listBoxPatientsVisit.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox7_MouseDoubleClick);
@@ -650,6 +651,7 @@
             this.listBoxAll.Location = new System.Drawing.Point(63, 51);
             this.listBoxAll.Name = "listBoxAll";
             this.listBoxAll.Size = new System.Drawing.Size(547, 301);
+            this.listBoxAll.Sorted = true;
             this.listBoxAll.TabIndex = 0;
             this.listBoxAll.SelectedIndexChanged += new System.EventHandler(this.listBoxPatientsCards_SelectedIndexChanged);
             // 
