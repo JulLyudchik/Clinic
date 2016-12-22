@@ -725,8 +725,8 @@ namespace Presentation
                           break;
                           
                       case "ДИАГНОЗЫ":
-                      if (listBoxAll.SelectedIndex != -1)
-                      {
+                        if (listBoxAll.SelectedIndex != -1)
+                        {
                           frmDiagnosis diagForm = new frmDiagnosis();
                               diagForm.Text = "Редактировать диагноз";
                               diagnoses = unitOfWork.Diagnoses.GetAll();
@@ -745,7 +745,7 @@ namespace Presentation
                           }
                           break;
                       case "ЛЕКАРСТВА":
-                          if (listBoxAll.SelectedIndex != -1)
+                        if (listBoxAll.SelectedIndex != -1)
                           {
                               frmDrug drugForm = new frmDrug();
                               drugForm.Text = "Редактировать лекарство";
@@ -762,12 +762,49 @@ namespace Presentation
 
                               drugs = unitOfWork.Drugs.GetAll();
                               listBoxAll.DataSource = drugs;
-                      }
-                          //formEditDrug.Show();
-                          break;
-                     /* case "КАРТОЧКИ ПАЦИЕНТОВ":
+                           }
+                           break;
+                       case "КАРТОЧКИ ПАЦИЕНТОВ":                                              
+                           if (listBoxAll.SelectedIndex != -1)
+                           {
+                               frmPatientCard pCardForm = new frmPatientCard();
+                               PatientCard patCard = (PatientCard)listBoxAll.SelectedItem;
+                               pCardForm.Text = "Редактировать карточку";
+                               streets = unitOfWork.Streets.GetAll();
+                               regStations = unitOfWork.RegStations.GetAll();
+                               pCardForm.textBox1.Text = patCard.name;
+                               pCardForm.dateTimePicker1.Value = patCard.birthDate;
+                               pCardForm.comboBox1.SelectedItem = patCard.sex;
+                               pCardForm.comboBox2.DataSource = streets;
+                               pCardForm.comboBox2.SelectedItem = patCard.street;
+                               pCardForm.textBox4.Text = patCard.houseApartment;
 
-                          break;*/
+                               DialogResult pCardResult = pCardForm.ShowDialog(this);
+                               if (pCardResult == DialogResult.Cancel)
+                                   return;
+
+                               patCard.name = pCardForm.textBox1.Text;
+                               patCard.creationDate = DateTime.Now;
+                               patCard.birthDate = pCardForm.dateTimePicker1.Value;
+                               patCard.sex = (string)pCardForm.comboBox1.SelectedItem;
+                               patCard.street = (Street)pCardForm.comboBox2.SelectedItem;
+                               patCard.houseApartment = pCardForm.textBox4.Text;
+                               for (int i = 0; i < regStations.Count; i++)
+                               {
+                                   List<Street> streets_t = regStations[i].streets;
+                                   for (int j = 0; j < streets_t.Count; j++)
+                                   {
+                                       if (streets_t[j] == pCardForm.comboBox2.SelectedItem)
+                                       {
+                                           patCard.registrationStation = regStations[i];
+                                       }
+                                   }
+                               }
+                               MessageBox.Show(Controller.Service.Update.update(patCard));
+                               patCards = unitOfWork.PatientCards.GetAll();
+                               listBoxAll.DataSource = patCards; 
+                           }
+                           break;
             }
         }
         private void bottomPanel_Paint(object sender, PaintEventArgs e)
@@ -878,9 +915,19 @@ namespace Presentation
                             listBoxAll.DataSource = drugs;
                         }
                         break;
-                  /*  case "КАРТОЧКИ ПАЦИЕНТОВ":
+                 case "КАРТОЧКИ ПАЦИЕНТОВ":
+                        if (listBoxAll.SelectedIndex != -1)
+                        {
+                            int id = 0;
+                            id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                            patCards = unitOfWork.PatientCards.GetAll();
+                            PatientCard pCard = patCards.Find(pC => pC.Id == id);
+                            MessageBox.Show(Controller.Service.Remove.remove(pCard));
 
-                        break;*/
+                            patCards = unitOfWork.PatientCards.GetAll();
+                            listBoxAll.DataSource = patCards;
+                        }
+                        break;
             }
         }
         private void listBoxPatientsVisit_SelectedIndexChanged(object sender, EventArgs e)
