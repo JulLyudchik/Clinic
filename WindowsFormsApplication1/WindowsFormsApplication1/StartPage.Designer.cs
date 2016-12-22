@@ -51,9 +51,6 @@
             this.adminDocButton = new System.Windows.Forms.Button();
             this.adminCabinetButton = new System.Windows.Forms.Button();
             this.patientRecPanel = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBoxNameDoc = new System.Windows.Forms.ComboBox();
             this.comboBoxSpec = new System.Windows.Forms.ComboBox();
             this.comboBoxNamePac = new System.Windows.Forms.ComboBox();
@@ -77,18 +74,22 @@
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.bottomPanel.SuspendLayout();
             this.regPanel.SuspendLayout();
             this.docPanel.SuspendLayout();
             this.adminPanel.SuspendLayout();
             this.patientRecPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.visitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).BeginInit();
             this.mainPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // bottomPanel
@@ -381,7 +382,9 @@
             // 
             // patientRecPanel
             // 
-            this.patientRecPanel.Controls.Add(this.dataGridView1);
+            this.patientRecPanel.Controls.Add(this.dateTimePicker1);
+            this.patientRecPanel.Controls.Add(this.numericUpDown2);
+            this.patientRecPanel.Controls.Add(this.numericUpDown1);
             this.patientRecPanel.Controls.Add(this.comboBoxNameDoc);
             this.patientRecPanel.Controls.Add(this.comboBoxSpec);
             this.patientRecPanel.Controls.Add(this.comboBoxNamePac);
@@ -392,31 +395,6 @@
             this.patientRecPanel.Size = new System.Drawing.Size(674, 443);
             this.patientRecPanel.TabIndex = 10;
             this.patientRecPanel.Visible = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
-            this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(63, 213);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(250, 150);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "1 день";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "2 день";
-            this.Column2.Name = "Column2";
             // 
             // comboBoxNameDoc
             // 
@@ -751,6 +729,27 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(63, 266);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown1.TabIndex = 10;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(114, 266);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(43, 20);
+            this.numericUpDown2.TabIndex = 11;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(63, 212);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(250, 20);
+            this.dateTimePicker1.TabIndex = 13;
+            // 
             // frmStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -775,7 +774,6 @@
             this.adminPanel.ResumeLayout(false);
             this.patientRecPanel.ResumeLayout(false);
             this.patientRecPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.visitPanel.ResumeLayout(false);
             this.visitPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStripe)).EndInit();
@@ -784,6 +782,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -828,14 +828,14 @@
         public System.Windows.Forms.Button enterButton;
         public System.Windows.Forms.Button doctorButton;
         public System.Windows.Forms.Label labelDoctor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         public System.Windows.Forms.ComboBox comboBoxNamePac;
-        public System.Windows.Forms.ComboBox comboBoxNameDoc;
-        public System.Windows.Forms.ComboBox comboBoxSpec;
-        public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.ListBox listBoxPatientsVisit;
         public System.Windows.Forms.Panel docPanel;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        protected internal System.Windows.Forms.ComboBox comboBoxNameDoc;
+        protected internal System.Windows.Forms.ComboBox comboBoxSpec;
+        protected internal System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 

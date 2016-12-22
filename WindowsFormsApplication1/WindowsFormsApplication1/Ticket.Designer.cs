@@ -249,11 +249,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label labelTime;
-        private System.Windows.Forms.Label labelDate;
-        private System.Windows.Forms.Label labelCab;
-        private System.Windows.Forms.Label labelDocName;
-        private System.Windows.Forms.Label labelDocSpec;
-        private System.Windows.Forms.Label labelPac;
+        protected internal System.Windows.Forms.Label labelTime;
+        protected internal System.Windows.Forms.Label labelDate;
+        protected internal System.Windows.Forms.Label labelCab;
+        protected internal System.Windows.Forms.Label labelDocName;
+        protected internal System.Windows.Forms.Label labelDocSpec;
+        protected internal System.Windows.Forms.Label labelPac;
     }
 }

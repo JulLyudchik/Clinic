@@ -283,16 +283,15 @@ namespace Presentation
             comboBoxNamePac.Text = "Имя пациента";
             
             comboBoxSpec.Enabled = false;
-            comboBoxSpec.SelectedIndex = -1;
+            //comboBoxSpec.SelectedIndex = -1;
             comboBoxSpec.Text = "Специализация";
             specializations = unitOfWork.Specializations.GetAll();
             comboBoxSpec.DataSource = specializations;
             comboBoxNameDoc.Enabled = false;
-            comboBoxNameDoc.SelectedIndex = -1;
+            //comboBoxNameDoc.SelectedIndex = -1;
             comboBoxNameDoc.Text = "Имя врача";
-            Specialization spec = (Specialization)comboBoxSpec.SelectedItem;
-            comboBoxNameDoc.DataSource = spec.doctors;
-            dataGridView1.Enabled = false;
+            
+            //dataGridView1.Enabled = false;
             comboBoxNameDoc.Enabled = false;
         }
         private void button4_Click(object sender, EventArgs e)
@@ -330,6 +329,12 @@ namespace Presentation
             formTicket = new frmTicket();
             formTicket.Owner = this;
             formTicket.Show();
+            Specialization spec = (Specialization)comboBoxSpec.SelectedItem;
+            formTicket.labelDocSpec.Text = spec.name;
+            Doctor doc = (Doctor)comboBoxNameDoc.SelectedItem;
+            formTicket.labelDocName.Text = doc.name;
+
+
         }
 
 
@@ -364,14 +369,17 @@ namespace Presentation
         private void comboBoxSpec_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxNameDoc.Enabled = true;
+            Specialization spec = (Specialization)comboBoxSpec.SelectedItem;
+            comboBoxNameDoc.DataSource = spec.doctors;
         }
         private void comboBoxNameDoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView1.Enabled = true;
+            //dataGridView1.Enabled = true;
+            patRecButton.Enabled = true;
         }
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            patRecButton.Enabled = true;
+            
         }
         private void listBoxPatientsCards_SelectedIndexChanged(object sender, EventArgs e)
         {

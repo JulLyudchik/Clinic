@@ -39,6 +39,12 @@ namespace Presentation
        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Specialization spec = (Specialization)comboBox1.SelectedItem;
+            // if (spec.name == "Терапевт") comboBox3.Enabled = true; else comboBox3.Enabled = false;
+        }
+
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
             Specialization spec = (Specialization)comboBox1.SelectedItem;
             if (spec.name == "Терапевт") comboBox3.Enabled = true; else comboBox3.Enabled = false;
         }

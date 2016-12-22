@@ -45,14 +45,14 @@ namespace Presentation
 
         private void frmTicket_Load(object sender, EventArgs e)
         {
-            frmStart main = this.Owner as frmStart;
+           /* frmStart main = this.Owner as frmStart;
             if (main != null)
             {
                 labelPac.Text = main.comboBoxNamePac.SelectedItem.ToString();
                 labelDocName.Text = main.comboBoxNameDoc.SelectedItem.ToString();
                 labelDocSpec.Text = main.comboBoxSpec.SelectedItem.ToString();
 
-            }
+            }*/
         }
     }
 }
