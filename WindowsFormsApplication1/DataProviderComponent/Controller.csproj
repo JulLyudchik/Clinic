@@ -53,10 +53,12 @@
     <Compile Include="Repository\DiagnosisRepository.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\DrugRepository.cs" />
+    <Compile Include="Repository\PatientCardRepository.cs" />
     <Compile Include="Repository\RegStationRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\SpecializationRepository.cs" />
     <Compile Include="Repository\StreetRepository.cs" />
+    <Compile Include="Repository\VisitRepository.cs" />
     <Compile Include="Service\Add.cs" />
     <Compile Include="Service\Remove.cs" />
     <Compile Include="Service\Update.cs" />

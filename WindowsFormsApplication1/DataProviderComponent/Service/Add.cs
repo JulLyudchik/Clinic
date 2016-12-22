@@ -73,6 +73,16 @@ namespace Controller.Service
             }
             else return "Такой участок уже существует!";
         }
+        public static string add(PatientCard patCard)
+        {
+            if (unitOfWork.PatientCards.GetAll().Find(pCard => pCard.name == patCard.name) == null)
+            {
+                unitOfWork.PatientCards.Add(patCard);
+                unitOfWork.Save();
+                return "Новая карточка добавлена.";
+            }
+            else return "Такая карточка уже существует!";
+        }
         public static string add(Street street)
         {
             error=false;
@@ -90,11 +100,11 @@ namespace Controller.Service
         }
         public static string add(CabinetPlan cabPlan)
         {
-            
-                unitOfWork.CabinetPlans.Add(cabPlan);
-                unitOfWork.Save();
-                return "Загрузка на день определена";
-           
+
+            unitOfWork.CabinetPlans.Add(cabPlan);
+            unitOfWork.Save();
+            return "Загрузка на день определена";
+
         }
     }
 }

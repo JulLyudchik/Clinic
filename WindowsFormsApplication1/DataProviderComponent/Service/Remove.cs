@@ -53,5 +53,11 @@ namespace Controller.Service
             unitOfWork.Save();
             return "Участок удален.";
         }
+        public static string remove(PatientCard patCard)
+        {
+            unitOfWork.PatientCards.Remove(patCard);
+            unitOfWork.Save();
+            return "Карточка пациента удалена.";
+        }
     }
 }

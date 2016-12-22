@@ -21,5 +21,7 @@ namespace Controller
         public DbSet<RegStation> regStations { get; set; }
         public DbSet<Street> streets { get; set; }
         public DbSet<Specialization> specializations { get; set; }
+        public DbSet<PatientCard> patientCards { get; set; }
+        public DbSet<Visit> visits { get; set; }
     }
 }
