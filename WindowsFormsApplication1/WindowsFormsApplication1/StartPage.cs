@@ -597,54 +597,40 @@ namespace Presentation
                     if (listBoxAll.SelectedIndex != -1)
                     {                   
                         frmDoctor docForm = new frmDoctor();
-                        docForm.Text = "Редактировать врача";
-                        List<RegStation> regStations_t = new List<RegStation>();
-                        docForm.comboBox1.DataSource = specializations;
+                        docForm.Text = "Редактировать врача";                       
                         doctors = unitOfWork.Doctors.GetAll();
-                        List<Doctor> therapists = new List<Doctor>();
-                        for (int i = 0; i < specializations.Count; i++)
-                        {
-                            if (specializations.ElementAt(i).name == "Терапевт")
-                            {
-                                therapists = specializations.ElementAt(i).doctors;
-                            }
-                        }                      
-                        for (int i = 0; i < regStations.Count; i++)
-                        {
-                            Doctor doctor_t = therapists.Find(doc => doc.regStation.name == regStations.ElementAt(i).name);
-                            if (doctor_t == null)
-                            {
-                                regStations_t.Add(regStations.ElementAt(i));
-                            }
-                        }
-                        docForm.comboBox3.DataSource = regStations_t;
-                        int id = 0;
-                        id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
-                        Doctor doctor = doctors.Find(doc => doc.Id == id);
-                        List<Specialization> spec_temp = new List<Specialization>();
-                        for (int i = 0; i < specializations.Count; i++)
-                        {
-                            Specialization specialization1 = specializations[i];
-                            if (specialization1.doctors != null)
-                            {
-                                spec_temp.Add(specialization1);
-                            }
+                        specializations = unitOfWork.Specializations.GetAll();
+                        regStations = unitOfWork.RegStations.GetAll();
+                        Doctor doctor = (Doctor)listBoxAll.SelectedItem;
+                        docForm.doctor = doctor;
+                        docForm.textBox1.Text = doctor.name;
 
+                        docForm.comboBox1.DataSource = specializations;
+                        List<Specialization> spec_temp = new List<Specialization>(); //специализации имеющие врачей
+                        List<Doctor> therapists = new List<Doctor>(); //список терапевтов
+                        for (int i = 0; i < specializations.Count; i++)
+                        {
+                            if (specializations[i].doctors != null)
+                            {
+                                spec_temp.Add(specializations[i]);
+                                if (specializations[i].name == "Терапевт")
+                                {
+                                    therapists=specializations[i].doctors;
+                                    docForm.therapists = therapists;
+                                }
+                            }
                         }
                         Specialization specialization = spec_temp.Find(spec => spec.doctors.Contains(doctor));
-                        Cabinet cabinet = cabinets.Find(cab => cab.doctor == doctor);
-                        RegStation regStation = regStations.Find(regSt => regSt == doctor.regStation);
-                        docForm.textBox1.Text = doctor.name;
                         docForm.comboBox1.SelectedItem = specialization;
-                        docForm.comboBox3.SelectedItem = regStation;
-                        doctor.regStation = regStation;
+                        docForm.specialization_old = specialization;
 
-                        specialization.doctors.Remove(doctor);
+
                         DialogResult docResult = docForm.ShowDialog(this);
                         if (docResult == DialogResult.Cancel)
                             return;
-
+                        RegStation regStation = new RegStation();
                         doctor.name = docForm.textBox1.Text;
+
                         specialization = (Specialization)docForm.comboBox1.SelectedItem;
                         if (specialization.doctors == null)
                             specialization.doctors = new List<Doctor>();
@@ -871,6 +857,11 @@ namespace Presentation
             }
         }
         private void listBoxPatientsVisit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
 
         }
