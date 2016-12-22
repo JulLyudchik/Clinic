@@ -404,7 +404,7 @@ namespace Presentation
                     if (specialization_t.cabinets ==null)
                             specialization_t.cabinets = new List<Cabinet>();
                     specialization_t.cabinets.Add(cabinet);
-
+                    cabinet.cabinetPlans = (List<CabinetPlan>)cabForm.dataGridView1.DataSource;
                     MessageBox.Show(Controller.Service.Add.add(cabinet));
                     cabinets = unitOfWork.Cabinets.GetAll();
                     listBoxAll.DataSource = cabinets;
@@ -597,6 +597,7 @@ namespace Presentation
                         Specialization specialization = spec_temp.Find(spec => spec.cabinets.Contains(cabinet));
                         cabForm.textBox1.Text = cabinet.number;
                         cabForm.comboBox1.SelectedItem = specialization;
+                        cabForm.dataGridView1.DataSource = cabForm.cabinetPlans;
                         specialization.cabinets.Remove(cabinet);
 
                         DialogResult cabResult = cabForm.ShowDialog(this);

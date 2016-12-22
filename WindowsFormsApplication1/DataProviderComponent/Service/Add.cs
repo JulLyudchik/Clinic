@@ -88,5 +88,13 @@ namespace Controller.Service
                 return "Такая улица уже существует!";
             } 
         }
+        public static string add(CabinetPlan cabPlan)
+        {
+            
+                unitOfWork.CabinetPlans.Add(cabPlan);
+                unitOfWork.Save();
+                return "Загрузка на день определена";
+           
+        }
     }
 }
