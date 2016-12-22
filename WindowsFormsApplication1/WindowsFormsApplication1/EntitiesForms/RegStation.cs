@@ -29,7 +29,16 @@ namespace Presentation
        
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (textBox1.Text != "" && listBox1.Items.Count!=0)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля!");
+                this.DialogResult = DialogResult.None;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e) 

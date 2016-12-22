@@ -36,7 +36,6 @@
             // button1
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatAppearance.BorderSize = 4;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
@@ -68,7 +67,7 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Введите название лекарства:";
             // 
-            // frmCreateDrug
+            // frmDrug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,10 +79,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCreateDrug";
+            this.Name = "frmDrug";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создать лекарство";
+            this.Load += new System.EventHandler(this.frmDrug_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

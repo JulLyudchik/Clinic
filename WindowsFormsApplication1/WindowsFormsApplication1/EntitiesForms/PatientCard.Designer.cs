@@ -51,7 +51,6 @@
             // button1
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatAppearance.BorderSize = 4;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;

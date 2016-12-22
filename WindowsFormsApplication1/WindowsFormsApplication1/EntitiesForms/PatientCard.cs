@@ -19,7 +19,16 @@ namespace Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (textBox1.Text != "" && comboBox1.SelectedItem != null && comboBox2.SelectedItem != null &&textBox4.Text != "")
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля!");
+                this.DialogResult = DialogResult.None;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

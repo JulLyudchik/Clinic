@@ -51,7 +51,6 @@
             // button1
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatAppearance.BorderSize = 4;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
@@ -64,6 +63,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 

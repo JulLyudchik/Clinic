@@ -19,7 +19,21 @@ namespace Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (textBox1.Text != "" && textBox2.Text!="")
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля!");
+                this.DialogResult = DialogResult.None;
+            }
+        }
+
+        private void frmSpecialization_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
