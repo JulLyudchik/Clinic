@@ -18,7 +18,7 @@ namespace Presentation
         UnitOfWork unitOfWork = new UnitOfWork();
         public Doctor doctor;
         public List<Doctor> therapists;
-        public Specialization specialization_old;
+        public Specialization specialization_old=new Specialization();
         public frmDoctor()
         {
             InitializeComponent();
@@ -58,7 +58,7 @@ namespace Presentation
                     }
                 }
                 comboBox3.DataSource = regStations_t;
-                if (specialization.name == "Терапевт")
+                if (specialization_old.name == "Терапевт") //если раньше был терапевтом, то выделить его участок
                 {
                     comboBox3.SelectedItem = doctor.regStation;           
                 }

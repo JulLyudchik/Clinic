@@ -411,21 +411,46 @@ namespace Presentation
                     break;
                 
                 case "ВРАЧИ":
+                    /*                      
+                        
+                        docForm.doctor = doctor;
+                                                                    
+                        List<Specialization> spec_temp = new List<Specialization>(); //специализации имеющие врачей
+                        
+                        for (int i = 0; i < specializations.Count; i++)
+                        {
+                            if (specializations[i].doctors != null)
+                            {
+                                spec_temp.Add(specializations[i]);
+                                if (specializations[i].name == "Терапевт")
+                                {
+                                    therapists=specializations[i].doctors;
+                                    docForm.therapists = therapists;
+                                }
+                            }
+                        }
+                        Specialization specialization = spec_temp.Find(spec => spec.doctors.Contains(doctor));
+                        
+                        docForm.specialization_old = specialization;*/
                     frmDoctor docForm = new frmDoctor();
                     docForm.Text = "Создать врача";
                     Doctor doctor = new Doctor();
                     specializations = unitOfWork.Specializations.GetAll(); 
                     regStations = unitOfWork.RegStations.GetAll();
-                    docForm.comboBox1.DataSource = specializations;                    
                     doctors = unitOfWork.Doctors.GetAll();
+
+                    docForm.comboBox1.DataSource = specializations;
+
                     List<Doctor> therapists = new List<Doctor>();
+                    
                     for (int i = 0; i < specializations.Count; i++)
                     {
                         if (specializations.ElementAt(i).name == "Терапевт")
                         {
                             therapists = specializations.ElementAt(i).doctors;
+                            docForm.therapists = therapists;
                         }
-                    }                   
+                    }                  
                     List<RegStation> regStations_t = new List<RegStation>();
                     for (int i = 0; i < regStations.Count; i++ )
                     {
@@ -440,8 +465,7 @@ namespace Presentation
                     DialogResult docResult = docForm.ShowDialog(this);
                     if (docResult == DialogResult.Cancel)
                         return;                                     
-                    //int id2 = 0;
-                    //id2 = Convert.ToInt32(docForm.comboBox1.SelectedValue.ToString());
+                    
                     Specialization specialization_t2 = (Specialization)docForm.comboBox1.SelectedItem;
                     
                     RegStation regStation2 = (RegStation)docForm.comboBox3.SelectedItem;
