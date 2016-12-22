@@ -408,6 +408,7 @@ namespace Presentation
                     id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());
                     Specialization specialization_t = specializations.Find(spec => spec.Id == id);
                     cabinet.number = cabForm.textBox1.Text;
+                    cabinet.cabinetPlans = (List<CabinetPlan>)cabForm.dataGridView1.DataSource;
                     if (specialization_t.cabinets ==null)
                             specialization_t.cabinets = new List<Cabinet>();
                     specialization_t.cabinets.Add(cabinet);
@@ -600,6 +601,7 @@ namespace Presentation
                         Specialization specialization = spec_temp.Find(spec => spec.cabinets.Contains(cabinet));
                         cabForm.textBox1.Text = cabinet.number;
                         cabForm.comboBox1.SelectedItem = specialization;
+                        cabForm.dataGridView1.DataSource = cabinet.cabinetPlans;
                         specialization.cabinets.Remove(cabinet);
 
                         DialogResult cabResult = cabForm.ShowDialog(this);
