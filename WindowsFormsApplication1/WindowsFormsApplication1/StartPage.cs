@@ -60,7 +60,7 @@ namespace Presentation
             ToolTip1.ReshowDelay = 500;
 
         }
-        private void tickTimer(object sender, EventArgs e)
+      /*  private void tickTimer(object sender, EventArgs e)
         {
             long tick = DateTime.Now.Ticks - date.Ticks;
             DateTime stopWatch = new DateTime();
@@ -71,6 +71,7 @@ namespace Presentation
         {
             TimeLb1.Text = string.Format("Текущее время: {0}", DateTime.Now.ToString("HH:mm:ss"));
         }
+        */
         private void button1_Click(object sender, EventArgs e)
         {
             pictureBoxStripe.BackgroundImage = Properties.Resources.палка_администратор;
@@ -98,7 +99,7 @@ namespace Presentation
 
             timer1 = new Timer();
             timer1.Interval = 10;
-            timer1.Tick += new EventHandler(tickTimer);
+         //   timer1.Tick += new EventHandler(tickTimer);
             timer1.Start();
         }
         private void button2_Click(object sender, EventArgs e)
@@ -124,7 +125,7 @@ namespace Presentation
             date = DateTime.Now;
             timer1 = new Timer();
             timer1.Interval = 10;
-            timer1.Tick += new EventHandler(tickTimer);
+           // timer1.Tick += new EventHandler(tickTimer);
             timer1.Start();
         }
         private void button3_Click(object sender, EventArgs e)
@@ -148,7 +149,7 @@ namespace Presentation
 
             timer1 = new Timer();
             timer1.Interval = 10;
-            timer1.Tick += new EventHandler(tickTimer);
+         //   timer1.Tick += new EventHandler(tickTimer);
             timer1.Start();
         }
         private void button3_MouseMove(object sender, MouseEventArgs e)
@@ -284,7 +285,9 @@ namespace Presentation
             mainPanel.Visible = false;
            // comboBoxNamePac.SelectedIndex = -1;
             comboBoxNamePac.Text = "Имя пациента";
-            
+            patCards = unitOfWork.PatientCards.GetAll();
+            comboBoxNamePac.DataSource = patCards;
+            comboBoxNamePac.DisplayMember = "Name";
             comboBoxSpec.Enabled = false;
             //comboBoxSpec.SelectedIndex = -1;
             comboBoxSpec.Text = "Специализация";
@@ -296,6 +299,7 @@ namespace Presentation
            
            // dataGridView1.Enabled = false;
             comboBoxNameDoc.Enabled = false;
+            patRecButton.Enabled = false;
         }
         private void button4_Click(object sender, EventArgs e)
         {
@@ -394,6 +398,8 @@ namespace Presentation
         {
             //  dataGridView1.Enabled = true;
             patRecButton.Enabled = true;
+           
+
         }
         
         private void listBoxPatientsCards_SelectedIndexChanged(object sender, EventArgs e)
@@ -948,6 +954,22 @@ namespace Presentation
         private void visitPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            patRecButton.Enabled = true;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            date = dateTimePicker1.Value;
+            string day = date.DayOfWeek.ToString();
+
+            List<TimeSpan> time = new List<TimeSpan>();
+            TimeSpan one = new TimeSpan(10, 10, 0);
+            time.Add(one);
+            comboBox1.Text = one.ToString();
         }
     }
 }
