@@ -9,7 +9,7 @@ namespace Model
     public class Cabinet:Entity
     {
         public string number { get; set; }
-        public Doctor doctor { get; set; }
-        public List<CabinetPlan> cabinetPlans{ get; set; }     
+        public List<Doctor> doctors { get; set; }
+        public CabinetPlan cabinetPlan { get; set; }     
     }
 }

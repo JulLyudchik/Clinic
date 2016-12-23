@@ -408,15 +408,25 @@ namespace Presentation
                 case "КАБИНЕТЫ":
                     frmCabinet cabForm = new frmCabinet();
                     cabForm.Text = "Создать кабинет";
+                    Cabinet cabinet = new Cabinet();                    
+                    
                     specializations = unitOfWork.Specializations.GetAll();
                     cabForm.comboBox1.DataSource = specializations;
+                    
+                
                     DialogResult cabResult = cabForm.ShowDialog(this);
                     if (cabResult == DialogResult.Cancel)
                         return;
-
-                    
-
-                    //MessageBox.Show(Controller.Service.Add.add(cabinet));
+                    cabinet.number = cabForm.textBox1.Text;            
+                    cabinet.cabinetPlan = cabForm.cabinetPlan;
+                    cabinet.doctors = cabForm.doctors;
+                    Specialization specialization_t1 = (Specialization)cabForm.comboBox1.SelectedItem;
+                            
+                    if (specialization_t1.cabinets == null)
+                        specialization_t1.cabinets = new List<Cabinet>();
+                    specialization_t1.cabinets.Add(cabinet);
+                 
+                    MessageBox.Show(Controller.Service.Add.add(cabinet));
                     cabinets = unitOfWork.Cabinets.GetAll();
                     listBoxAll.DataSource = cabinets;
                     break;
@@ -553,6 +563,7 @@ namespace Presentation
                     patCard.name = pCardForm.textBox1.Text;
                     patCard.creationDate = DateTime.Now;
                     patCard.birthDate = pCardForm.dateTimePicker1.Value;
+                   
                     patCard.sex = (string)pCardForm.comboBox1.SelectedItem;
                     patCard.street = (Street)pCardForm.comboBox2.SelectedItem;
                     patCard.houseApartment = pCardForm.textBox4.Text;
@@ -581,7 +592,7 @@ namespace Presentation
             switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
-                    if (listBoxAll.SelectedIndex != -1)
+                   /* if (listBoxAll.SelectedIndex != -1)
                     {
                         frmCabinet cabForm = new frmCabinet();
                         cabForm.Text = "Редактировать кабинет";
@@ -624,7 +635,7 @@ namespace Presentation
                         cabinets = unitOfWork.Cabinets.GetAll();
                         listBoxAll.DataSource = cabinets;
                     }
-                    break;
+                    break;*/
                  case "ВРАЧИ":
                     if (listBoxAll.SelectedIndex != -1)
                     {                   
