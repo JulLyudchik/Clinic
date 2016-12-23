@@ -21,6 +21,7 @@ namespace Controller
         private StreetRepository streetRepository = new StreetRepository(Context);
         private PatientCardRepository patCardRepository = new PatientCardRepository(Context);
         private VisitRepository visitRepository = new VisitRepository(Context);
+        private TicketRepository ticketRepository = new TicketRepository(Context);
         public CabinetPlanRepository CabinetPlans
         {
             get
@@ -109,6 +110,15 @@ namespace Controller
                 if (visitRepository == null)
                     visitRepository = new VisitRepository(Context);
                 return visitRepository;
+            }
+        }
+        public TicketRepository Tickets
+        {
+            get
+            {
+                if (ticketRepository == null)
+                    ticketRepository = new TicketRepository(Context);
+                return ticketRepository;
             }
         }
 
