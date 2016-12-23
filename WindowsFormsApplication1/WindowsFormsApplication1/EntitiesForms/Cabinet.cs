@@ -66,7 +66,7 @@ namespace Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "")
+            if (textBox1.Text != ""&&!isNotFool())
             {              
                 this.DialogResult = DialogResult.OK;
 
@@ -74,7 +74,7 @@ namespace Presentation
             }
             else
             {
-                MessageBox.Show("Заполните номер кабинета!");
+                MessageBox.Show("Заполните номер кабинета и график загруженности!");
                 this.DialogResult = DialogResult.None;
             }
             
@@ -203,6 +203,18 @@ namespace Presentation
             dataGridView1.Rows[4].Cells[2].Value = null;
             dataGridView1.Rows[5].Cells[2].Value = null;
             dataGridView1.Rows[6].Cells[2].Value = null;        
+        }
+
+        private bool isNotFool( )
+        {
+            bool c = false;
+
+            for (int j = 0; j < dataGridView1.Rows.Count-1; j++)
+                for (int i = 0; i < dataGridView1.Rows[j].Cells.Count; i++)
+                    if (dataGridView1.Rows[j].Cells[i].Value == null)
+                        c = true;
+            
+            return c;
         }
     }
 }

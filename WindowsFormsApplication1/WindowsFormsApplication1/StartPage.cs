@@ -1012,10 +1012,10 @@ namespace Presentation
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-          //  List<DateTime> timeInterval = new List<DateTime>();
-          //  DateTime firstShift_start = new DateTime ;
-          //  DateTime secondShift_start = ;
-          //  DateTime secondShift_end = ;
+            List<String> timeInterval = new List<String>();
+            DateTime firstShift_start = new DateTime(1,1,1,8,0,0) ;
+            DateTime secondShift_start = new DateTime(1, 1, 1, 14, 0, 0);
+            DateTime secondShift_end = new DateTime(1, 1, 1, 20, 0, 0);
 
             //из комбобокса достаем текущего врача
             Doctor doctor = (Doctor)comboBoxNameDoc.SelectedItem;
@@ -1023,40 +1023,189 @@ namespace Presentation
             String day = dateTimePicker1.Value.DayOfWeek.ToString();
             //из специализации достаем интервал
             Specialization spec = (Specialization)comboBoxSpec.SelectedItem;
-            String time = spec.time;
+            int time = Convert.ToInt32(spec.time);
             // подгружаем кабинеты для нужной специализации
             cabinets = spec.cabinets;
             // из подгруженных по списку каблист находим тот, у которого или фирст или секонд с определенным днем недели наш
             switch (day)
             {
                 case ("Monday"):
-                    Cabinet cabinetFirs0t_mon = cabinets.Find(cab => cab.cabinetPlan.firstShift_mon.name == doctor.name);
-                    Cabinet cabinetSecond_mon = cabinets.Find(cab => cab.cabinetPlan.secondShift_mon.name == doctor.name);
 
+                    Cabinet cabinetFirst_mon = cabinets.Find(cab => cab.cabinetPlan.firstShift_mon.name == doctor.name);
+                    if (cabinetFirst_mon != null)
+                    {
+                        DateTime start = firstShift_start;
+                        while (start.CompareTo(secondShift_start) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                        
+                       // formTicket.labelCab.Text = cabinetFirst_mon.number;
+                    }
+                    else
+                    {
+                        Cabinet cabinetSecond_mon = cabinets.Find(cab => cab.cabinetPlan.secondShift_mon.name == doctor.name);
+                        DateTime start = secondShift_start;
+                        while (start.CompareTo(secondShift_end) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                      //  formTicket.labelCab.Text = cabinetSecond_mon.number;
+                    }
                     break;
                 case ("Tuesday"):
                     Cabinet cabinetFirst_tues = cabinets.Find(cab => cab.cabinetPlan.firstShift_tues.name == doctor.name);
-                    Cabinet cabinetSecond_tues = cabinets.Find(cab => cab.cabinetPlan.secondShift_tues.name == doctor.name);
+                    if (cabinetFirst_tues != null)
+                    {
+                        DateTime start = firstShift_start;
+                        while (start.CompareTo(secondShift_start) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    else
+                    {
+                        Cabinet cabinetSecond_tues = cabinets.Find(cab => cab.cabinetPlan.secondShift_tues.name == doctor.name);
+                        DateTime start = secondShift_start;
+                        while (start.CompareTo(secondShift_end) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                        //formTicket.labelCab.Text = cabinetSecond_tues.number;
+                    }
                     break;
                 case ("Wednesday"):
                     Cabinet cabinetFirst_wednes = cabinets.Find(cab => cab.cabinetPlan.firstShift_wednes.name == doctor.name);
-                    Cabinet cabinetSecond_wednes = cabinets.Find(cab => cab.cabinetPlan.secondShift_wednes.name == doctor.name);
+                    if (cabinetFirst_wednes != null)
+                    {
+                        DateTime start = firstShift_start;
+                        while (start.CompareTo(secondShift_start) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    else
+                    {
+                        Cabinet cabinetSecond_wednes = cabinets.Find(cab => cab.cabinetPlan.secondShift_wednes.name == doctor.name);
+                        DateTime start = secondShift_start;
+                        while (start.CompareTo(secondShift_end) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    
                     break;
                 case ("Thursday"):
                     Cabinet cabinetFirst_thurs = cabinets.Find(cab => cab.cabinetPlan.firstShift_thurs.name == doctor.name);
-                    Cabinet cabinetSecond_thurs = cabinets.Find(cab => cab.cabinetPlan.secondShift_thurs.name == doctor.name);
+                    if (cabinetFirst_thurs != null)
+                    {
+                        DateTime start = firstShift_start;
+                        while (start.CompareTo(secondShift_start) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    else
+                    {
+                        Cabinet cabinetSecond_thurs = cabinets.Find(cab => cab.cabinetPlan.secondShift_thurs.name == doctor.name);
+                        DateTime start = secondShift_start;
+                        while (start.CompareTo(secondShift_end) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    
                     break;
                 case ("Friday"):
                     Cabinet cabinetFirst_fri = cabinets.Find(cab => cab.cabinetPlan.firstShift_fri.name == doctor.name);
-                    Cabinet cabinetSecond_fri = cabinets.Find(cab => cab.cabinetPlan.secondShift_fri.name == doctor.name);
+                    if (cabinetFirst_fri != null)
+                    {
+                        DateTime start = firstShift_start;
+                        while (start.CompareTo(secondShift_start) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    else
+                    {
+                        Cabinet cabinetSecond_fri = cabinets.Find(cab => cab.cabinetPlan.secondShift_fri.name == doctor.name);
+                        DateTime start = secondShift_start;
+                        while (start.CompareTo(secondShift_end) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    
                     break;
                 case ("Saturday"):
                     Cabinet cabinetFirst_satur = cabinets.Find(cab => cab.cabinetPlan.firstShift_satur.name == doctor.name);
-                    Cabinet cabinetSecond_satur = cabinets.Find(cab => cab.cabinetPlan.secondShift_satur.name == doctor.name);
+                    if (cabinetFirst_satur != null)
+                    {
+                        DateTime start = firstShift_start;
+                        while (start.CompareTo(secondShift_start) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    else
+                    {
+                        Cabinet cabinetSecond_satur = cabinets.Find(cab => cab.cabinetPlan.secondShift_satur.name == doctor.name);
+                        DateTime start = secondShift_start;
+                        while (start.CompareTo(secondShift_end) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    
                     break;
                 case ("Sunday"):
                     Cabinet cabinetFirst_sun = cabinets.Find(cab => cab.cabinetPlan.firstShift_sun.name == doctor.name);
-                    Cabinet cabinetSecond_sun = cabinets.Find(cab => cab.cabinetPlan.secondShift_sun.name == doctor.name);
+                    if (cabinetFirst_sun != null)
+                    {
+                        DateTime start = firstShift_start;
+                        while (start.CompareTo(secondShift_start) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    else
+                    {
+                        Cabinet cabinetSecond_sun = cabinets.Find(cab => cab.cabinetPlan.secondShift_sun.name == doctor.name);
+                        DateTime start = secondShift_start;
+                        while (start.CompareTo(secondShift_end) < 0)
+                        {
+                            timeInterval.Add(start.ToShortTimeString());
+                            start = start.AddMinutes(time);
+                        }
+                        comboBoxTime.DataSource = timeInterval;
+                    }
+                    
                     break;
             }
             // в зависимости от фирст или секонд генерим 8-14 и 14-20 с интервалом спец.интервал
