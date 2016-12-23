@@ -23,7 +23,7 @@ namespace Presentation
         List<Cabinet> cabinets;
         List<Street> streets;
         List<PatientCard> patCards;
-
+        List<CabinetPlan> cabPlans;
 
         UnitOfWork unitOfWork = new UnitOfWork();
 
@@ -47,6 +47,7 @@ namespace Presentation
             doctors = unitOfWork.Doctors.GetAll();
             cabinets = unitOfWork.Cabinets.GetAll();
             patCards = unitOfWork.PatientCards.GetAll();
+            cabPlans = unitOfWork.CabinetPlans.GetAll();
             
         }
         private void Start_Load(object sender, EventArgs e)
@@ -599,11 +600,15 @@ namespace Presentation
                     {
                         frmCabinet cabForm = new frmCabinet();
                         cabForm.Text = "Редактировать кабинет";
-                        cabForm.comboBox1.DataSource = specializations;
-
+                        cabPlans = unitOfWork.CabinetPlans.GetAll();
                         cabinets = unitOfWork.Cabinets.GetAll();
-                        //listBoxAll.DataSource = cabinets;
                         specializations=unitOfWork.Specializations.GetAll();
+                       
+                        cabForm.comboBox1.DataSource = specializations;
+                        
+
+                        //listBoxAll.DataSource = cabinets;
+                        
                         Cabinet cabinet = (Cabinet)listBoxAll.SelectedItem;
                         List<Specialization> spec_temp = new List<Specialization>();  
                         for (int i=0;i<specializations.Count;i++)
@@ -618,6 +623,7 @@ namespace Presentation
                         Specialization specialization = spec_temp.Find(spec => spec.cabinets.Contains(cabinet));
                         cabForm.textBox1.Text = cabinet.number;
                         cabForm.comboBox1.SelectedItem = specialization;
+                        cabForm.cabinetPlan = cabinet.cabinetPlan;
                         // cabForm.dataGridView1.DataSource = cabinet.cabinetPlans;
                         if (cabinet.cabinetPlan != null)
                         {
@@ -650,6 +656,8 @@ namespace Presentation
                             if (cabinet.cabinetPlan.secondShift_sun != null)
                                 cabForm.dataGridView1.Rows[6].Cells[2].Value = cabinet.cabinetPlan.secondShift_sun.name;
                         }
+
+                        cabPlans.Remove(cabinet.cabinetPlan);
                         specialization.cabinets.Remove(cabinet);
 
                         DialogResult cabResult = cabForm.ShowDialog(this);
@@ -884,10 +892,12 @@ namespace Presentation
                     {
                         int id = 0;
                         id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+                        cabPlans = unitOfWork.CabinetPlans.GetAll();
                         cabinets = unitOfWork.Cabinets.GetAll();
                         Cabinet cabinet = cabinets.Find(cab => cab.Id == id);
+                        cabPlans.Remove(cabinet.cabinetPlan);
                         MessageBox.Show(Controller.Service.Remove.remove(cabinet));
-                       
+                        
                         cabinets = unitOfWork.Cabinets.GetAll();
                         listBoxAll.DataSource = cabinets;                   
                     }
