@@ -595,16 +595,16 @@ namespace Presentation
             switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
-                   /* if (listBoxAll.SelectedIndex != -1)
+                    if (listBoxAll.SelectedIndex != -1)
                     {
                         frmCabinet cabForm = new frmCabinet();
                         cabForm.Text = "Редактировать кабинет";
                         cabForm.comboBox1.DataSource = specializations;
-                        int id = 0;
-                        id = Convert.ToInt32(listBoxAll.SelectedValue.ToString());
+
                         cabinets = unitOfWork.Cabinets.GetAll();
+                        //listBoxAll.DataSource = cabinets;
                         specializations=unitOfWork.Specializations.GetAll();
-                        Cabinet cabinet = cabinets.Find(cab => cab.Id == id);
+                        Cabinet cabinet = (Cabinet)listBoxAll.SelectedItem;
                         List<Specialization> spec_temp = new List<Specialization>();  
                         for (int i=0;i<specializations.Count;i++)
                         {
@@ -618,27 +618,57 @@ namespace Presentation
                         Specialization specialization = spec_temp.Find(spec => spec.cabinets.Contains(cabinet));
                         cabForm.textBox1.Text = cabinet.number;
                         cabForm.comboBox1.SelectedItem = specialization;
-                        cabForm.dataGridView1.DataSource = cabinet.cabinetPlans;
+                        // cabForm.dataGridView1.DataSource = cabinet.cabinetPlans;
+                        if (cabinet.cabinetPlan != null)
+                        {
+                            if (cabinet.cabinetPlan.firstShift_mon != null)
+                                cabForm.dataGridView1.Rows[0].Cells[1].Value = cabinet.cabinetPlan.firstShift_mon.name;
+                            if (cabinet.cabinetPlan.secondShift_mon != null)
+                                cabForm.dataGridView1.Rows[0].Cells[2].Value = cabinet.cabinetPlan.secondShift_mon.name;
+                            if (cabinet.cabinetPlan.firstShift_tues != null)
+                                cabForm.dataGridView1.Rows[1].Cells[1].Value = cabinet.cabinetPlan.firstShift_tues.name;
+                            if (cabinet.cabinetPlan.secondShift_tues != null)
+                                cabForm.dataGridView1.Rows[1].Cells[2].Value = cabinet.cabinetPlan.secondShift_tues.name;
+                            if (cabinet.cabinetPlan.firstShift_wednes != null)
+                                cabForm.dataGridView1.Rows[2].Cells[1].Value = cabinet.cabinetPlan.firstShift_wednes.name;
+                            if (cabinet.cabinetPlan.secondShift_wednes != null)
+                                cabForm.dataGridView1.Rows[2].Cells[2].Value = cabinet.cabinetPlan.secondShift_wednes.name;
+                            if (cabinet.cabinetPlan.firstShift_thurs != null)
+                                cabForm.dataGridView1.Rows[3].Cells[1].Value = cabinet.cabinetPlan.firstShift_thurs.name;
+                            if (cabinet.cabinetPlan.secondShift_thurs != null)
+                                cabForm.dataGridView1.Rows[3].Cells[2].Value = cabinet.cabinetPlan.secondShift_thurs.name;
+                            if (cabinet.cabinetPlan.firstShift_fri != null)
+                                cabForm.dataGridView1.Rows[4].Cells[1].Value = cabinet.cabinetPlan.firstShift_fri.name;
+                            if (cabinet.cabinetPlan.secondShift_fri != null)
+                                cabForm.dataGridView1.Rows[4].Cells[2].Value = cabinet.cabinetPlan.secondShift_fri.name;
+                            if (cabinet.cabinetPlan.firstShift_satur != null)
+                                cabForm.dataGridView1.Rows[5].Cells[1].Value = cabinet.cabinetPlan.firstShift_satur.name;
+                            if (cabinet.cabinetPlan.secondShift_satur != null)
+                                cabForm.dataGridView1.Rows[5].Cells[2].Value = cabinet.cabinetPlan.secondShift_satur.name;
+                            if (cabinet.cabinetPlan.firstShift_sun != null)
+                                cabForm.dataGridView1.Rows[6].Cells[1].Value = cabinet.cabinetPlan.firstShift_sun.name;
+                            if (cabinet.cabinetPlan.secondShift_sun != null)
+                                cabForm.dataGridView1.Rows[6].Cells[2].Value = cabinet.cabinetPlan.secondShift_sun.name;
+                        }
                         specialization.cabinets.Remove(cabinet);
 
                         DialogResult cabResult = cabForm.ShowDialog(this);
                         if (cabResult == DialogResult.Cancel)
                             return;
                         cabinet.number = cabForm.textBox1.Text;
-                        specialization = (Specialization)cabForm.comboBox1.SelectedItem;
-                        if (specialization.cabinets != null)
-                            specialization.cabinets.Add(cabinet);
-                        else
-                        {
-                            specialization.cabinets = new List<Cabinet>();
-                            specialization.cabinets.Add(cabinet);
-                        }
+                        cabinet.cabinetPlan = cabForm.cabinetPlan;
+                        cabinet.doctors = cabForm.doctors;
+                        Specialization specialization_t1 = (Specialization)cabForm.comboBox1.SelectedItem;
+
+                        if (specialization_t1.cabinets == null)
+                            specialization_t1.cabinets = new List<Cabinet>();
+                        specialization_t1.cabinets.Add(cabinet);
                         MessageBox.Show(Controller.Service.Update.update(cabinet));
 
                         cabinets = unitOfWork.Cabinets.GetAll();
                         listBoxAll.DataSource = cabinets;
                     }
-                    break;*/
+                    break;
                  case "ВРАЧИ":
                     if (listBoxAll.SelectedIndex != -1)
                     {                   
