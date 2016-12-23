@@ -60,7 +60,7 @@ namespace Presentation
             ToolTip1.ReshowDelay = 500;
 
         }
-      /*  private void tickTimer(object sender, EventArgs e)
+        private void tickTimer(object sender, EventArgs e)
         {
             long tick = DateTime.Now.Ticks - date.Ticks;
             DateTime stopWatch = new DateTime();
@@ -71,7 +71,6 @@ namespace Presentation
         {
             TimeLb1.Text = string.Format("Текущее время: {0}", DateTime.Now.ToString("HH:mm:ss"));
         }
-        */
         private void button1_Click(object sender, EventArgs e)
         {
             pictureBoxStripe.BackgroundImage = Properties.Resources.палка_администратор;
@@ -99,7 +98,7 @@ namespace Presentation
 
             timer1 = new Timer();
             timer1.Interval = 10;
-         //   timer1.Tick += new EventHandler(tickTimer);
+            timer1.Tick += new EventHandler(tickTimer);
             timer1.Start();
         }
         private void button2_Click(object sender, EventArgs e)
@@ -125,7 +124,7 @@ namespace Presentation
             date = DateTime.Now;
             timer1 = new Timer();
             timer1.Interval = 10;
-           // timer1.Tick += new EventHandler(tickTimer);
+            timer1.Tick += new EventHandler(tickTimer);
             timer1.Start();
         }
         private void button3_Click(object sender, EventArgs e)
@@ -149,7 +148,7 @@ namespace Presentation
 
             timer1 = new Timer();
             timer1.Interval = 10;
-         //   timer1.Tick += new EventHandler(tickTimer);
+            timer1.Tick += new EventHandler(tickTimer);
             timer1.Start();
         }
         private void button3_MouseMove(object sender, MouseEventArgs e)
@@ -283,7 +282,7 @@ namespace Presentation
         {
             patientRecPanel.Visible = true;
             mainPanel.Visible = false;
-           // comboBoxNamePac.SelectedIndex = -1;
+            // comboBoxNamePac.SelectedIndex = -1;
             comboBoxNamePac.Text = "Имя пациента";
             patCards = unitOfWork.PatientCards.GetAll();
             comboBoxNamePac.DataSource = patCards;
@@ -296,8 +295,8 @@ namespace Presentation
             comboBoxNameDoc.Enabled = false;
             //comboBoxNameDoc.SelectedIndex = -1;
             comboBoxNameDoc.Text = "Имя врача";
-           
-           // dataGridView1.Enabled = false;
+
+            // dataGridView1.Enabled = false;
             comboBoxNameDoc.Enabled = false;
             patRecButton.Enabled = false;
         }
@@ -398,8 +397,6 @@ namespace Presentation
         {
             //  dataGridView1.Enabled = true;
             patRecButton.Enabled = true;
-           
-
         }
         
         private void listBoxPatientsCards_SelectedIndexChanged(object sender, EventArgs e)
@@ -414,15 +411,25 @@ namespace Presentation
                 case "КАБИНЕТЫ":
                     frmCabinet cabForm = new frmCabinet();
                     cabForm.Text = "Создать кабинет";
+                    Cabinet cabinet = new Cabinet();                    
+                    
                     specializations = unitOfWork.Specializations.GetAll();
                     cabForm.comboBox1.DataSource = specializations;
+                    
+                
                     DialogResult cabResult = cabForm.ShowDialog(this);
                     if (cabResult == DialogResult.Cancel)
                         return;
-
-                    
-
-                    //MessageBox.Show(Controller.Service.Add.add(cabinet));
+                    cabinet.number = cabForm.textBox1.Text;            
+                    cabinet.cabinetPlan = cabForm.cabinetPlan;
+                    cabinet.doctors = cabForm.doctors;
+                    Specialization specialization_t1 = (Specialization)cabForm.comboBox1.SelectedItem;
+                            
+                    if (specialization_t1.cabinets == null)
+                        specialization_t1.cabinets = new List<Cabinet>();
+                    specialization_t1.cabinets.Add(cabinet);
+                 
+                    MessageBox.Show(Controller.Service.Add.add(cabinet));
                     cabinets = unitOfWork.Cabinets.GetAll();
                     listBoxAll.DataSource = cabinets;
                     break;
@@ -559,6 +566,7 @@ namespace Presentation
                     patCard.name = pCardForm.textBox1.Text;
                     patCard.creationDate = DateTime.Now;
                     patCard.birthDate = pCardForm.dateTimePicker1.Value;
+                   
                     patCard.sex = (string)pCardForm.comboBox1.SelectedItem;
                     patCard.street = (Street)pCardForm.comboBox2.SelectedItem;
                     patCard.houseApartment = pCardForm.textBox4.Text;
@@ -587,7 +595,7 @@ namespace Presentation
             switch (labelAll.Text)
             {
                 case "КАБИНЕТЫ":
-                    if (listBoxAll.SelectedIndex != -1)
+                   /* if (listBoxAll.SelectedIndex != -1)
                     {
                         frmCabinet cabForm = new frmCabinet();
                         cabForm.Text = "Редактировать кабинет";
@@ -630,7 +638,7 @@ namespace Presentation
                         cabinets = unitOfWork.Cabinets.GetAll();
                         listBoxAll.DataSource = cabinets;
                     }
-                    break;
+                    break;*/
                  case "ВРАЧИ":
                     if (listBoxAll.SelectedIndex != -1)
                     {                   
@@ -954,22 +962,6 @@ namespace Presentation
         private void visitPanel_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            patRecButton.Enabled = true;
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            date = dateTimePicker1.Value;
-            string day = date.DayOfWeek.ToString();
-
-            List<TimeSpan> time = new List<TimeSpan>();
-            TimeSpan one = new TimeSpan(10, 10, 0);
-            time.Add(one);
-            comboBox1.Text = one.ToString();
         }
     }
 }

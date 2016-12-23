@@ -15,48 +15,47 @@ namespace Presentation
 {
     public partial class frmCabinet : Form
     {
-        public List<CabinetPlan> cabinetPlans;
-        UnitOfWork unitOfWork = new UnitOfWork();
+        public CabinetPlan cabinetPlan;
+        public List<Doctor> doctors;
+        //UnitOfWork unitOfWork = new UnitOfWork();
         private BindingSource BindingSource = new BindingSource();
-        List<Specialization> specializations;
+        //List<Specialization> specializations;
         public frmCabinet()
         {
             InitializeComponent();
-            cabinetPlans = new List<CabinetPlan>();
+            cabinetPlan = new CabinetPlan();
+            doctors = new List<Doctor>();
 
-          //  this.BindingSource.DataSource = cabinetPlans;
-            dataGridView1.DataSource = cabinetPlans; ;
-            dataGridView1.Columns[0].HeaderText = "День недели";
-            dataGridView1.Columns[1].HeaderText = "Врач первой смены";
-            dataGridView1.Columns[2].HeaderText = "Врач второй смены";
-            dataGridView1.AutoGenerateColumns = false;
-           
-            //dataGridView1.
-
-
-            /*DataGridViewRow row1 = new DataGridViewRow();
-            row1.HeaderCell.Value = "Пн";
+            DataGridViewRow row1 = new DataGridViewRow();
             dataGridView1.Rows.Add(row1);
 
             DataGridViewRow row2 = new DataGridViewRow();
-            row2.HeaderCell.Value = "Вт";
             dataGridView1.Rows.Add(row2);
 
             DataGridViewRow row3 = new DataGridViewRow();
-            row3.HeaderCell.Value = "Ср";
             dataGridView1.Rows.Add(row3);
 
             DataGridViewRow row4 = new DataGridViewRow();
-            row4.HeaderCell.Value = "Чт";
             dataGridView1.Rows.Add(row4);
 
             DataGridViewRow row5 = new DataGridViewRow();
-            row5.HeaderCell.Value = "Пт";
             dataGridView1.Rows.Add(row5);
 
             DataGridViewRow row6 = new DataGridViewRow();
-            row6.HeaderCell.Value = "Сб";
-            dataGridView1.Rows.Add(row6);*/
+            dataGridView1.Rows.Add(row6);
+
+            DataGridViewRow row7 = new DataGridViewRow();
+            dataGridView1.Rows.Add(row7);
+       
+            dataGridView1.Rows[0].Cells[0].Value = "Понедельник";           
+            dataGridView1.Rows[1].Cells[0].Value = "Вторник";
+            dataGridView1.Rows[2].Cells[0].Value = "Среда";
+            dataGridView1.Rows[3].Cells[0].Value = "Четверг";
+            dataGridView1.Rows[4].Cells[0].Value = "Пятница";
+            dataGridView1.Rows[5].Cells[0].Value = "Суббота";
+            dataGridView1.Rows[6].Cells[0].Value = "Воскресенье";
+
+            button2.Enabled = false;
         }
 
         private void frmCreate_Load(object sender, EventArgs e)
@@ -65,34 +64,20 @@ namespace Presentation
 
         }
 
-        /*private void frmCreate_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            Hide();
-        }*/
-
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "" && comboBoxFirstS.SelectedItem != null && comboBoxSecondS.SelectedItem != null && comboBoxDay.SelectedItem != null && comboBox1.SelectedItem != null)
-            { this.DialogResult = DialogResult.OK;
-                
-                int id = 0;
-                Cabinet cabinet = new Cabinet();
-                id = Convert.ToInt32(comboBox1.SelectedValue.ToString());
-                specializations = unitOfWork.Specializations.GetAll();
-                Specialization specialization_t = specializations.Find(spec => spec.Id == id);
-                cabinet.number = textBox1.Text;
-                cabinet.cabinetPlans = cabinetPlans;
-                if (specialization_t.cabinets == null)
-                    specialization_t.cabinets = new List<Cabinet>();
-                specialization_t.cabinets.Add(cabinet);
+            if (textBox1.Text != "")
+            {              
+                this.DialogResult = DialogResult.OK;
 
-                MessageBox.Show(Controller.Service.Add.add(cabinet));
-                this.Close(); }
+                this.Close();
+            }
             else
-            { MessageBox.Show("Заполните все поля!");
+            {
+                MessageBox.Show("Заполните номер кабинета!");
                 this.DialogResult = DialogResult.None;
             }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -112,23 +97,112 @@ namespace Presentation
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //BindingSource = (BindingSource)dataGridView1.DataSource;
-            //cabinetPlans = (List<CabinetPlan>)dataGridView1.DataSource;
-            CabinetPlan cabPlan = new CabinetPlan { day = (string)comboBoxDay.SelectedItem, firstShift = (Doctor)comboBoxFirstS.SelectedItem, secondShift = (Doctor)comboBoxSecondS.SelectedItem};
-            MessageBox.Show(Controller.Service.Add.add(cabPlan));    
-            cabinetPlans.Add(cabPlan);
-            // this.BindingSource.DataSource = cabinetPlans;
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = cabinetPlans;
-            //refresh();
-            
+            if (dataGridView1.SelectedCells[0].ColumnIndex!=0)
+                {
+                    dataGridView1.SelectedCells[0].Value = ((Doctor)comboBox2.SelectedItem).name;
+                    if (!doctors.Contains((Doctor)comboBox2.SelectedItem))
+                    {
+                        doctors.Add((Doctor)comboBox2.SelectedItem);
+                    }
+                    if (dataGridView1.SelectedCells[0].ColumnIndex == 1)
+                    {
+                        if (dataGridView1.SelectedCells[0].RowIndex == 0)
+                        {
+                            cabinetPlan.firstShift_mon=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 1)
+                        {
+                            cabinetPlan.firstShift_tues=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 2)
+                        {
+                            cabinetPlan.firstShift_wednes=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 3)
+                        {
+                            cabinetPlan.firstShift_thurs=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 4)
+                        {
+                            cabinetPlan.firstShift_fri=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 5)
+                        {
+                            cabinetPlan.firstShift_satur=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 6)
+                        {
+                            cabinetPlan.firstShift_sun = (Doctor)comboBox2.SelectedItem;
+                        }
+                    }
+                    else
+                    {
+                        if (dataGridView1.SelectedCells[0].RowIndex == 0)
+                        {
+                            cabinetPlan.secondShift_mon=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 1)
+                        {
+                            cabinetPlan.secondShift_tues=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 2)
+                        {
+                            cabinetPlan.secondShift_wednes=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 3)
+                        {
+                            cabinetPlan.secondShift_thurs=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 4)
+                        {
+                            cabinetPlan.secondShift_fri=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 5)
+                        {
+                            cabinetPlan.secondShift_satur=(Doctor)comboBox2.SelectedItem;
+                        }
+                        if (dataGridView1.SelectedCells[0].RowIndex == 6)
+                        {
+                            cabinetPlan.secondShift_sun = (Doctor)comboBox2.SelectedItem;
+                        }
+                    }
+                }
+                      
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            clearCells();
             Specialization spec = (Specialization)comboBox1.SelectedItem;
-            comboBoxFirstS.DataSource = spec.doctors;
-            comboBoxSecondS.DataSource = spec.doctors;
+            comboBox2.DataSource = spec.doctors;     
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            button2.Enabled = true;
+        }
+        private void clearCells()
+        {
+            dataGridView1.Rows[0].Cells[1].Value = null;
+            dataGridView1.Rows[1].Cells[1].Value = null;
+            dataGridView1.Rows[2].Cells[1].Value = null;
+            dataGridView1.Rows[3].Cells[1].Value = null;
+            dataGridView1.Rows[4].Cells[1].Value = null;
+            dataGridView1.Rows[5].Cells[1].Value = null;
+            dataGridView1.Rows[6].Cells[1].Value = null;
+
+            dataGridView1.Rows[0].Cells[2].Value = null;
+            dataGridView1.Rows[1].Cells[2].Value = null;
+            dataGridView1.Rows[2].Cells[2].Value = null;
+            dataGridView1.Rows[3].Cells[2].Value = null;
+            dataGridView1.Rows[4].Cells[2].Value = null;
+            dataGridView1.Rows[5].Cells[2].Value = null;
+            dataGridView1.Rows[6].Cells[2].Value = null;        
         }
     }
 }
