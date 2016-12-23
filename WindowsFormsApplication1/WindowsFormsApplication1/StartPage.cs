@@ -335,15 +335,22 @@ namespace Presentation
         }
 
 
-        private void button33_Click(object sender, EventArgs e)
+        private void button33_Click(object sender, EventArgs e) // запись на прием
         {
             formTicket = new frmTicket();
             formTicket.Owner = this;
             formTicket.Show();
+            PatientCard patCard = (PatientCard)comboBoxNamePac.SelectedItem;
+            formTicket.labelPac.Text = patCard.name;
             Specialization spec = (Specialization)comboBoxSpec.SelectedItem;
             formTicket.labelDocSpec.Text = spec.name;
             Doctor doc = (Doctor)comboBoxNameDoc.SelectedItem;
             formTicket.labelDocName.Text = doc.name;
+
+            String date = dateTimePicker1.Value.ToString("dd.MM.yyyy");
+
+
+            formTicket.labelDate.Text = date;
         }
 
 
@@ -984,14 +991,62 @@ namespace Presentation
 
         }
 
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+      
+        private void visitPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void visitPanel_Paint(object sender, PaintEventArgs e)
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+          //  List<DateTime> timeInterval = new List<DateTime>();
+          //  DateTime firstShift_start = new DateTime ;
+          //  DateTime secondShift_start = ;
+          //  DateTime secondShift_end = ;
 
+            //из комбобокса достаем текущего врача
+            Doctor doctor = (Doctor)comboBoxNameDoc.SelectedItem;
+            //из деттайм достаем день недели
+            String day = dateTimePicker1.Value.DayOfWeek.ToString();
+            //из специализации достаем интервал
+            Specialization spec = (Specialization)comboBoxSpec.SelectedItem;
+            String time = spec.time;
+            // подгружаем кабинеты для нужной специализации
+            cabinets = spec.cabinets;
+            // из подгруженных по списку каблист находим тот, у которого или фирст или секонд с определенным днем недели наш
+            switch (day)
+            {
+                case ("Monday"):
+                    Cabinet cabinetFirs0t_mon = cabinets.Find(cab => cab.cabinetPlan.firstShift_mon.name == doctor.name);
+                    Cabinet cabinetSecond_mon = cabinets.Find(cab => cab.cabinetPlan.secondShift_mon.name == doctor.name);
+
+                    break;
+                case ("Tuesday"):
+                    Cabinet cabinetFirst_tues = cabinets.Find(cab => cab.cabinetPlan.firstShift_tues.name == doctor.name);
+                    Cabinet cabinetSecond_tues = cabinets.Find(cab => cab.cabinetPlan.secondShift_tues.name == doctor.name);
+                    break;
+                case ("Wednesday"):
+                    Cabinet cabinetFirst_wednes = cabinets.Find(cab => cab.cabinetPlan.firstShift_wednes.name == doctor.name);
+                    Cabinet cabinetSecond_wednes = cabinets.Find(cab => cab.cabinetPlan.secondShift_wednes.name == doctor.name);
+                    break;
+                case ("Thursday"):
+                    Cabinet cabinetFirst_thurs = cabinets.Find(cab => cab.cabinetPlan.firstShift_thurs.name == doctor.name);
+                    Cabinet cabinetSecond_thurs = cabinets.Find(cab => cab.cabinetPlan.secondShift_thurs.name == doctor.name);
+                    break;
+                case ("Friday"):
+                    Cabinet cabinetFirst_fri = cabinets.Find(cab => cab.cabinetPlan.firstShift_fri.name == doctor.name);
+                    Cabinet cabinetSecond_fri = cabinets.Find(cab => cab.cabinetPlan.secondShift_fri.name == doctor.name);
+                    break;
+                case ("Saturday"):
+                    Cabinet cabinetFirst_satur = cabinets.Find(cab => cab.cabinetPlan.firstShift_satur.name == doctor.name);
+                    Cabinet cabinetSecond_satur = cabinets.Find(cab => cab.cabinetPlan.secondShift_satur.name == doctor.name);
+                    break;
+                case ("Sunday"):
+                    Cabinet cabinetFirst_sun = cabinets.Find(cab => cab.cabinetPlan.firstShift_sun.name == doctor.name);
+                    Cabinet cabinetSecond_sun = cabinets.Find(cab => cab.cabinetPlan.secondShift_sun.name == doctor.name);
+                    break;
+            }
+            // в зависимости от фирст или секонд генерим 8-14 и 14-20 с интервалом спец.интервал
         }
     }
 }
