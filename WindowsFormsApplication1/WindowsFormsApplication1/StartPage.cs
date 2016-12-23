@@ -895,7 +895,8 @@ namespace Presentation
                         cabPlans = unitOfWork.CabinetPlans.GetAll();
                         cabinets = unitOfWork.Cabinets.GetAll();
                         Cabinet cabinet = cabinets.Find(cab => cab.Id == id);
-                        cabPlans.Remove(cabinet.cabinetPlan);
+                        //cabPlans.Remove(cabinet.cabinetPlan);
+                        Controller.Service.Remove.remove(cabinet.cabinetPlan);
                         MessageBox.Show(Controller.Service.Remove.remove(cabinet));
                         
                         cabinets = unitOfWork.Cabinets.GetAll();

@@ -59,5 +59,10 @@ namespace Controller.Service
             unitOfWork.Save();
             return "Карточка пациента удалена.";
         }
+        public static void remove(CabinetPlan cabPlan)
+        {
+            unitOfWork.CabinetPlans.Remove(cabPlan);
+            unitOfWork.Save();          
+        }
     }
 }
