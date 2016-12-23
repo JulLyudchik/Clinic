@@ -101,12 +101,12 @@
             this.bottomPanel.Controls.Add(this.label1);
             this.bottomPanel.Controls.Add(this.TimeLb1);
             this.bottomPanel.Controls.Add(this.pictureBoxStripe);
-            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Controls.Add(this.docPanel);
             this.bottomPanel.Controls.Add(this.adminPanel);
+            this.bottomPanel.Controls.Add(this.visitPanel);
             this.bottomPanel.Controls.Add(this.mainPanel);
             this.bottomPanel.Controls.Add(this.patientRecPanel);
-            this.bottomPanel.Controls.Add(this.visitPanel);
+            this.bottomPanel.Controls.Add(this.regPanel);
             this.bottomPanel.Location = new System.Drawing.Point(0, 66);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(902, 520);
@@ -609,6 +609,7 @@
             this.visitPanel.Size = new System.Drawing.Size(674, 443);
             this.visitPanel.TabIndex = 10;
             this.visitPanel.Visible = false;
+            this.visitPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.visitPanel_Paint);
             // 
             // lable8
             // 
@@ -643,11 +644,8 @@
             // listBoxPatientsVisit
             // 
             this.listBoxPatientsVisit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxPatientsVisit.DisplayMember = "Name";
             this.listBoxPatientsVisit.FormattingEnabled = true;
-            this.listBoxPatientsVisit.Items.AddRange(new object[] {
-            "Иванов",
-            "Петров",
-            "Сидоров"});
             this.listBoxPatientsVisit.Location = new System.Drawing.Point(63, 51);
             this.listBoxPatientsVisit.Name = "listBoxPatientsVisit";
             this.listBoxPatientsVisit.Size = new System.Drawing.Size(547, 301);

@@ -15,7 +15,7 @@ namespace Presentation
         public frmPat()
         {
             InitializeComponent();
-            labelFIO.Text = this.Text;
+            
         }
 
         private void frmPat_FormClosing(object sender, FormClosingEventArgs e)
@@ -25,11 +25,7 @@ namespace Presentation
 
         private void frmPat_Load(object sender, EventArgs e)
         {
-            frmStart main = this.Owner as frmStart;
-            if (main != null)
-            {
-                labelFIO.Text = main.listBoxPatientsVisit.SelectedItem.ToString();
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -322,8 +322,13 @@ namespace Presentation
         {
             visitPanel.Visible = true;
             mainPanel.Visible = false;
+            patCards = unitOfWork.PatientCards.GetAll();
+            listBoxPatientsVisit.DataSource = patCards;
+            listBoxPatientsVisit.ValueMember = "Id";
+            listBoxPatientsVisit.DisplayMember = "Name";
             listBoxPatientsVisit.SelectedIndex = -1;
             
+
         }
 
 
@@ -344,13 +349,19 @@ namespace Presentation
             if (listBoxPatientsVisit.SelectedItem != null)
             {
                 formPatList = new frmPat();
-                formPatList.Owner = this;
-                formPatList.Show();
-                formPatList.Text = listBoxPatientsVisit.SelectedItem.ToString();
+                
+                DialogResult patResult = formPatList.ShowDialog(this);
+                if (patResult == DialogResult.Cancel)
+                    return;
+                PatientCard patCard = (PatientCard)listBoxPatientsVisit.SelectedItem;
+                formPatList.Text = patCard.name;
+                formPatList.labelFIO.Text = patCard.name;
+                formPatList.labelDate.Text= patCard.birthDate.ToString();
                 diagnoses = unitOfWork.Diagnoses.GetAll();
                 formPatList.comboBox1.DataSource = diagnoses;
                 drugs = unitOfWork.Drugs.GetAll();
                 formPatList.comboBox2.DataSource = drugs;
+                
             }
         }
 
@@ -403,17 +414,9 @@ namespace Presentation
                     if (cabResult == DialogResult.Cancel)
                         return;
 
-                    int id = 0;
-                    Cabinet cabinet = new Cabinet();
-                    id = Convert.ToInt32(cabForm.comboBox1.SelectedValue.ToString());
-                    Specialization specialization_t = specializations.Find(spec => spec.Id == id);
-                    cabinet.number = cabForm.textBox1.Text;
-                    cabinet.cabinetPlans = (List<CabinetPlan>)cabForm.dataGridView1.DataSource;
-                    if (specialization_t.cabinets ==null)
-                            specialization_t.cabinets = new List<Cabinet>();
-                    specialization_t.cabinets.Add(cabinet);
+                    
 
-                    MessageBox.Show(Controller.Service.Add.add(cabinet));
+                    //MessageBox.Show(Controller.Service.Add.add(cabinet));
                     cabinets = unitOfWork.Cabinets.GetAll();
                     listBoxAll.DataSource = cabinets;
                     break;
@@ -938,6 +941,11 @@ namespace Presentation
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void visitPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

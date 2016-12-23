@@ -18,6 +18,7 @@ namespace Presentation
         public List<CabinetPlan> cabinetPlans;
         UnitOfWork unitOfWork = new UnitOfWork();
         private BindingSource BindingSource = new BindingSource();
+        List<Specialization> specializations;
         public frmCabinet()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Presentation
             dataGridView1.Columns[1].HeaderText = "Врач первой смены";
             dataGridView1.Columns[2].HeaderText = "Врач второй смены";
             dataGridView1.AutoGenerateColumns = false;
+           
             //dataGridView1.
 
 
@@ -73,6 +75,19 @@ namespace Presentation
         {
             if (textBox1.Text != "" && comboBoxFirstS.SelectedItem != null && comboBoxSecondS.SelectedItem != null && comboBoxDay.SelectedItem != null && comboBox1.SelectedItem != null)
             { this.DialogResult = DialogResult.OK;
+                
+                int id = 0;
+                Cabinet cabinet = new Cabinet();
+                id = Convert.ToInt32(comboBox1.SelectedValue.ToString());
+                specializations = unitOfWork.Specializations.GetAll();
+                Specialization specialization_t = specializations.Find(spec => spec.Id == id);
+                cabinet.number = textBox1.Text;
+                cabinet.cabinetPlans = cabinetPlans;
+                if (specialization_t.cabinets == null)
+                    specialization_t.cabinets = new List<Cabinet>();
+                specialization_t.cabinets.Add(cabinet);
+
+                MessageBox.Show(Controller.Service.Add.add(cabinet));
                 this.Close(); }
             else
             { MessageBox.Show("Заполните все поля!");
@@ -98,7 +113,7 @@ namespace Presentation
         private void button2_Click(object sender, EventArgs e)
         {
             //BindingSource = (BindingSource)dataGridView1.DataSource;
-            cabinetPlans = (List<CabinetPlan>)dataGridView1.DataSource;
+            //cabinetPlans = (List<CabinetPlan>)dataGridView1.DataSource;
             CabinetPlan cabPlan = new CabinetPlan { day = (string)comboBoxDay.SelectedItem, firstShift = (Doctor)comboBoxFirstS.SelectedItem, secondShift = (Doctor)comboBoxSecondS.SelectedItem};
             MessageBox.Show(Controller.Service.Add.add(cabPlan));    
             cabinetPlans.Add(cabPlan);
