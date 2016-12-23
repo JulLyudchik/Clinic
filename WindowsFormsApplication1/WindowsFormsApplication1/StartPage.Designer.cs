@@ -191,6 +191,7 @@
             this.comboBoxTime.Name = "comboBoxTime";
             this.comboBoxTime.Size = new System.Drawing.Size(250, 21);
             this.comboBoxTime.TabIndex = 14;
+            this.comboBoxTime.SelectedIndexChanged += new System.EventHandler(this.comboBoxTime_SelectedIndexChanged);
             // 
             // dateTimePicker1
             // 

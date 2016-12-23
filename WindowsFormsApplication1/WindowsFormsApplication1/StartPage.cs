@@ -25,6 +25,7 @@ namespace Presentation
         List<PatientCard> patCards;
         List<CabinetPlan> cabPlans;
         List<Ticket> tickets;
+        Cabinet cabForTicket = new Cabinet();
 
         UnitOfWork unitOfWork = new UnitOfWork();
 
@@ -301,6 +302,8 @@ namespace Presentation
 
             // dataGridView1.Enabled = false;
             comboBoxNameDoc.Enabled = false;
+            dateTimePicker1.Enabled = false;
+            comboBoxTime.Enabled = false;
             patRecButton.Enabled = false;
         }
         private void button4_Click(object sender, EventArgs e)
@@ -354,6 +357,8 @@ namespace Presentation
 
 
             formTicket.labelDate.Text = date;
+            formTicket.labelTime.Text = comboBoxTime.SelectedItem.ToString();
+            formTicket.labelCab.Text = cabForTicket.number;
         }
 
 
@@ -406,7 +411,8 @@ namespace Presentation
         private void comboBoxNameDoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             //  dataGridView1.Enabled = true;
-            patRecButton.Enabled = true;
+            dateTimePicker1.Enabled = true;
+            comboBoxTime.Enabled = true;
         }
         
         private void listBoxPatientsCards_SelectedIndexChanged(object sender, EventArgs e)
@@ -1041,8 +1047,8 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
-                        
-                       // formTicket.labelCab.Text = cabinetFirst_mon.number;
+
+                        cabForTicket = cabinetFirst_mon;
                     }
                     else
                     {
@@ -1054,7 +1060,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
-                      //  formTicket.labelCab.Text = cabinetSecond_mon.number;
+                        cabForTicket = cabinetSecond_mon;
                     }
                     break;
                 case ("Tuesday"):
@@ -1068,6 +1074,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetFirst_tues;
                     }
                     else
                     {
@@ -1079,7 +1086,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
-                        //formTicket.labelCab.Text = cabinetSecond_tues.number;
+                        cabForTicket = cabinetSecond_tues;
                     }
                     break;
                 case ("Wednesday"):
@@ -1093,6 +1100,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetFirst_wednes;
                     }
                     else
                     {
@@ -1104,6 +1112,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetSecond_wednes;
                     }
                     
                     break;
@@ -1118,6 +1127,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetFirst_thurs;
                     }
                     else
                     {
@@ -1129,6 +1139,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetSecond_thurs;
                     }
                     
                     break;
@@ -1143,6 +1154,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetFirst_fri;
                     }
                     else
                     {
@@ -1154,6 +1166,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetSecond_fri;
                     }
                     
                     break;
@@ -1168,6 +1181,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetFirst_satur;
                     }
                     else
                     {
@@ -1179,6 +1193,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetSecond_satur;
                     }
                     
                     break;
@@ -1193,6 +1208,7 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetFirst_sun;
                     }
                     else
                     {
@@ -1204,11 +1220,17 @@ namespace Presentation
                             start = start.AddMinutes(time);
                         }
                         comboBoxTime.DataSource = timeInterval;
+                        cabForTicket = cabinetSecond_sun;
                     }
                     
                     break;
             }
             // в зависимости от фирст или секонд генерим 8-14 и 14-20 с интервалом спец.интервал
+        }
+
+        private void comboBoxTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            patRecButton.Enabled = true;
         }
     }
 }
