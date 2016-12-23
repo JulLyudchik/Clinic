@@ -23,5 +23,7 @@ namespace Controller
         public DbSet<Specialization> specializations { get; set; }
         public DbSet<PatientCard> patientCards { get; set; }
         public DbSet<Visit> visits { get; set; }
+        public DbSet<Ticket> tickets { get; set; }
+            
     }
 }

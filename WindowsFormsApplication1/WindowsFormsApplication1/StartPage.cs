@@ -24,6 +24,7 @@ namespace Presentation
         List<Street> streets;
         List<PatientCard> patCards;
         List<CabinetPlan> cabPlans;
+        List<Ticket> tickets;
 
         UnitOfWork unitOfWork = new UnitOfWork();
 
@@ -48,6 +49,7 @@ namespace Presentation
             cabinets = unitOfWork.Cabinets.GetAll();
             patCards = unitOfWork.PatientCards.GetAll();
             cabPlans = unitOfWork.CabinetPlans.GetAll();
+            tickets = unitOfWork.Tickets.GetAll();
             
         }
         private void Start_Load(object sender, EventArgs e)

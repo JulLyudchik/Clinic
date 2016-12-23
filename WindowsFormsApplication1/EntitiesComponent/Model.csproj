@@ -50,6 +50,7 @@
     <Compile Include="RegStation.cs" />
     <Compile Include="Specialization.cs" />
     <Compile Include="Street.cs" />
+    <Compile Include="Ticket.cs" />
     <Compile Include="Visit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
