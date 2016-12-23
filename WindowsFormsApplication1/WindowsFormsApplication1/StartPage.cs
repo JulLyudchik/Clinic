@@ -332,12 +332,23 @@ namespace Presentation
             visitPanel.Visible = true;
             mainPanel.Visible = false;
             patCards = unitOfWork.PatientCards.GetAll();
-            listBoxPatientsVisit.DataSource = patCards;
+            
             listBoxPatientsVisit.ValueMember = "Id";
             listBoxPatientsVisit.DisplayMember = "Name";
             listBoxPatientsVisit.SelectedIndex = -1;
+            tickets = unitOfWork.Tickets.GetAll();
+            List<Ticket> todayPlan = new List<Ticket>();
+            foreach(Ticket ticket in tickets)
+            {
+                int day = ticket.date.DayOfYear;
+                int daytoday = DateTime.Today.DayOfYear;
+                if(("Вы вошли как: "+ticket.doctor.name==labelDoctor.Text) && (day == DateTime.Today.DayOfYear))
+                {
+                    todayPlan.Add(ticket);
+                }
+            }
+            listBoxPatientsVisit.DataSource = todayPlan;
             
-
         }
 
 
@@ -1239,7 +1250,7 @@ namespace Presentation
             else
                 MessageBox.Show("У этого врача нет кабинета!");
 
-            // в зависимости от фирст или секонд генерим 8-14 и 14-20 с интервалом спец.интервал
+            
         }
 
         private void comboBoxTime_SelectedIndexChanged(object sender, EventArgs e)
