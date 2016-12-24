@@ -78,7 +78,10 @@ namespace Presentation
             app.Selection.TypeText("Кабинет : " + ticket.cabinet.number);
             app.Selection.TypeParagraph();
             app.Selection.TypeText("Время : " + ticket.time);
-            app.Visible = true; 
+            app.PrintOut();
+            
+            //app.Visible = true; 
+            this.Close();
         }
     }
 }
