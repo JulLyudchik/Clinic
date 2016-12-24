@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
-//using Word = Microsoft.Office.Interop.Word;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace Presentation
 {
@@ -47,19 +47,19 @@ namespace Presentation
 
         private void frmTicket_Load(object sender, EventArgs e)
         {
-           /* frmStart main = this.Owner as frmStart;
+           frmStart main = this.Owner as frmStart;
             if (main != null)
             {
                 labelPac.Text = main.comboBoxNamePac.SelectedItem.ToString();
                 labelDocName.Text = main.comboBoxNameDoc.SelectedItem.ToString();
                 labelDocSpec.Text = main.comboBoxSpec.SelectedItem.ToString();
 
-            }*/
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           /* Word.Application app = new Word.Application();
+           Word.Application app = new Word.Application();
             Word.Document doc = app.Documents.Add();
             doc.Select();
             app.Selection.TypeParagraph();
@@ -81,7 +81,7 @@ namespace Presentation
             app.PrintOut();
             
             //app.Visible = true; 
-            this.Close();*/
+            this.Close();
         }
     }
 }

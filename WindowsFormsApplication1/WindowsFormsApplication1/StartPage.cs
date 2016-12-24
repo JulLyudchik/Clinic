@@ -429,29 +429,36 @@ namespace Presentation
                 
                 for (int i = 0; i < visits.Count; i++)
                 {
-                    /*if (ticket.patCard.visits.Contains(visits[i]))
-                    {*/
-                        DataGridViewRow row = new DataGridViewRow();
-                        formPatList.dataGridView1.Rows.Add(row);
-                        string date_t = Convert.ToString(visits[i].date);
-                        formPatList.dataGridView1.Rows[i].Cells[0].Value = date_t;
-                        string specialization_t = visits[i].speciazation.name;
-                        formPatList.dataGridView1.Rows[i].Cells[1].Value = specialization_t;
-                        string doctor_t = visits[i].doctor.name;
-                        formPatList.dataGridView1.Rows[i].Cells[2].Value = doctor_t;
-                        string diagnoses_t = "";
-                        for (int j = 0; j < visits[i].diagnoses.Count; j++)
+                    if (ticket.patCard.visits==null)
+                    {
+                        patCard.visits = new List<Visit>();
+                    }
+                    else if(ticket.patCard.visits.Contains(visits[i]))
+                    {
+                        for (int k = 0; k < patCard.visits.Count; k++)
                         {
-                            diagnoses_t += visits[i].diagnoses[j].name + ", ";
+                            DataGridViewRow row = new DataGridViewRow();
+                            formPatList.dataGridView1.Rows.Add(row);
+                            string date_t = visits[i].date.ToString("dd.MM.yyyy"); ;
+                            formPatList.dataGridView1.Rows[k].Cells[0].Value = date_t;
+                            string specialization_t = visits[i].speciazation.name;
+                            formPatList.dataGridView1.Rows[k].Cells[1].Value = specialization_t;
+                            string doctor_t = visits[i].doctor.name;
+                            formPatList.dataGridView1.Rows[k].Cells[2].Value = doctor_t;
+                            string diagnoses_t = "";
+                            for (int j = 0; j < visits[i].diagnoses.Count; j++)
+                            {
+                                diagnoses_t += visits[i].diagnoses[j].name + ", ";
+                            }
+                            formPatList.dataGridView1.Rows[k].Cells[3].Value = diagnoses_t;
+                            string drugs_t = "";
+                            for (int j = 0; j < visits[i].drugs.Count; j++)
+                            {
+                                drugs_t += visits[i].drugs[j].name + ", ";
+                            }
+                            formPatList.dataGridView1.Rows[k].Cells[4].Value = drugs_t;
                         }
-                        formPatList.dataGridView1.Rows[i].Cells[3].Value = diagnoses_t;
-                        string drugs_t = "";
-                        for (int j = 0; j < visits[i].drugs.Count; j++)
-                        {
-                            drugs_t += visits[i].drugs[j].name + ", ";
-                        }
-                        formPatList.dataGridView1.Rows[i].Cells[4].Value = drugs_t;
-                    //}
+                    }
                 }
  
                 DialogResult patResult = formPatList.ShowDialog(this);
@@ -476,7 +483,10 @@ namespace Presentation
                     }
                     visit.drugs.Add((Drug)formPatList.listBoxDrug.Items[i]);
                 }
-                MessageBox.Show(Controller.Service.Add.add(visit));                   
+                MessageBox.Show(Controller.Service.Add.add(visit));
+                patCard.visits.Add(visit);
+                Controller.Service.Update.update(patCard);
+                   
             }
         }
 
@@ -712,8 +722,7 @@ namespace Presentation
                     if (listBoxAll.SelectedIndex != -1)
                     {
                         frmCabinet cabForm = new frmCabinet();
-                        cabForm.Text = "Редактировать кабинет";
-                        cabForm.ControlBox = false;
+                        cabForm.Text = "Редактировать кабинет";                        
                         cabPlans = unitOfWork.CabinetPlans.GetAll();
                         cabinets = unitOfWork.Cabinets.GetAll();
                         specializations=unitOfWork.Specializations.GetAll();
@@ -1298,21 +1307,29 @@ namespace Presentation
             int day = dateTimePicker1.Value.DayOfYear;
             
             Ticket ticket = new Ticket();
-            for (int i = 0; i < tickets.Count; i++)
+            if (tickets.Count > 0)
             {
-                if (tickets[i].patCard == patCard)
+                for (int i = 0; i < tickets.Count; i++)
                 {
-                    ticket = tickets[i];
-                    int day1 = ticket.date.DayOfYear;
-                    if((ticket.time == time) && (day==day1 ))
+                    if (tickets[i].patCard == patCard)
                     {
-                        MessageBox.Show("Пациент уже записан на это время!");
-                    }
-                    else
-                    {
-                        patRecButton.Enabled = true;
+                        ticket = tickets[i];
+                        int day1 = ticket.date.DayOfYear;
+                        if ((ticket.time == time) && (day == day1))
+                        {
+                            MessageBox.Show("Пациент уже записан на это время!");
+                        }
+                        else
+                        {
+                            patRecButton.Enabled = true;
+                        }
                     }
                 }
+                patRecButton.Enabled = true;
+            }
+            else
+            {
+                patRecButton.Enabled = true;
             }
 
 
