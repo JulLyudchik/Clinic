@@ -451,6 +451,7 @@ namespace Presentation
                 case "КАБИНЕТЫ":
                     frmCabinet cabForm = new frmCabinet();
                     cabForm.Text = "Создать кабинет";
+                    cabForm.ControlBox = true;
                     Cabinet cabinet = new Cabinet();                    
                     
                     specializations = unitOfWork.Specializations.GetAll();
@@ -639,6 +640,7 @@ namespace Presentation
                     {
                         frmCabinet cabForm = new frmCabinet();
                         cabForm.Text = "Редактировать кабинет";
+                        cabForm.ControlBox = false;
                         cabPlans = unitOfWork.CabinetPlans.GetAll();
                         cabinets = unitOfWork.Cabinets.GetAll();
                         specializations=unitOfWork.Specializations.GetAll();
