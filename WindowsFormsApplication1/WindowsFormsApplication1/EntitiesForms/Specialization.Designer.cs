@@ -44,7 +44,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.button1.Location = new System.Drawing.Point(81, 189);
+            this.button1.Location = new System.Drawing.Point(103, 189);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 37);
             this.button1.TabIndex = 9;
@@ -56,7 +56,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(33, 29);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(219, 20);
+            this.textBox1.Size = new System.Drawing.Size(248, 20);
             this.textBox1.TabIndex = 8;
             // 
             // label1
@@ -71,17 +71,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 61);
+            this.label2.Location = new System.Drawing.Point(30, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(222, 13);
+            this.label2.Size = new System.Drawing.Size(251, 13);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Введите длительность приёма пациентов:";
+            this.label2.Text = "Введите длительность приёма пациентов (мин):";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(33, 77);
+            this.textBox2.Location = new System.Drawing.Point(33, 90);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(219, 20);
+            this.textBox2.Size = new System.Drawing.Size(248, 20);
             this.textBox2.TabIndex = 12;
             // 
             // frmSpecialization
@@ -89,7 +89,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(307, 261);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
