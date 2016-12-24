@@ -1096,7 +1096,7 @@ namespace Presentation
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            List<String> timeInterval = new List<String>();
+          
             DateTime firstShift_start = new DateTime(1,1,1,8,0,0) ;
             DateTime secondShift_start = new DateTime(1, 1, 1, 14, 0, 0);
             DateTime secondShift_end = new DateTime(1, 1, 1, 20, 0, 0);
@@ -1123,13 +1123,11 @@ namespace Presentation
 
                             Cabinet cabinetFirst_mon = cabinets.Find(cab => cab.cabinetPlan.firstShift_mon.name == doctor.name);
                             if (cabinetFirst_mon != null)
-                            {
+                            {   
+                                //Если уже существует тикет с тикет.тайм == start и в этом же тикете текущий врач - не добавлять время
+                                
                                 DateTime start = firstShift_start;
-                                while (start.CompareTo(secondShift_start) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
+                                List<string> timeInterval = createListIntervals(firstShift_start, secondShift_start, start, doctor, time);
                                 comboBoxTime.DataSource = timeInterval;
 
                                 cabForTicket = cabinetFirst_mon;
@@ -1138,12 +1136,8 @@ namespace Presentation
                             {
                                 Cabinet cabinetSecond_mon = cabinets.Find(cab => cab.cabinetPlan.secondShift_mon.name == doctor.name);
                                 DateTime start = secondShift_start;
-                                while (start.CompareTo(secondShift_end) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
-                                comboBoxTime.DataSource = timeInterval;
+                                List<string> timeIntervall = createListIntervals(secondShift_start, secondShift_end, start, doctor, time);
+                                comboBoxTime.DataSource = timeIntervall;
                                 cabForTicket = cabinetSecond_mon;
                             }
                             break;
@@ -1152,11 +1146,7 @@ namespace Presentation
                             if (cabinetFirst_tues != null)
                             {
                                 DateTime start = firstShift_start;
-                                while (start.CompareTo(secondShift_start) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
+                                List<string> timeInterval = createListIntervals(firstShift_start, secondShift_start, start, doctor, time);
                                 comboBoxTime.DataSource = timeInterval;
                                 cabForTicket = cabinetFirst_tues;
                             }
@@ -1164,12 +1154,8 @@ namespace Presentation
                             {
                                 Cabinet cabinetSecond_tues = cabinets.Find(cab => cab.cabinetPlan.secondShift_tues.name == doctor.name);
                                 DateTime start = secondShift_start;
-                                while (start.CompareTo(secondShift_end) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
-                                comboBoxTime.DataSource = timeInterval;
+                                List<string> timeIntervall = createListIntervals(secondShift_start, secondShift_end, start, doctor, time);
+                                comboBoxTime.DataSource = timeIntervall;
                                 cabForTicket = cabinetSecond_tues;
                             }
                             break;
@@ -1178,11 +1164,7 @@ namespace Presentation
                             if (cabinetFirst_wednes != null)
                             {
                                 DateTime start = firstShift_start;
-                                while (start.CompareTo(secondShift_start) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
+                                List<string> timeInterval = createListIntervals(firstShift_start, secondShift_start, start, doctor, time);
                                 comboBoxTime.DataSource = timeInterval;
                                 cabForTicket = cabinetFirst_wednes;
                             }
@@ -1190,12 +1172,8 @@ namespace Presentation
                             {
                                 Cabinet cabinetSecond_wednes = cabinets.Find(cab => cab.cabinetPlan.secondShift_wednes.name == doctor.name);
                                 DateTime start = secondShift_start;
-                                while (start.CompareTo(secondShift_end) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
-                                comboBoxTime.DataSource = timeInterval;
+                                List<string> timeIntervall = createListIntervals(secondShift_start, secondShift_end, start, doctor, time);
+                                comboBoxTime.DataSource = timeIntervall;
                                 cabForTicket = cabinetSecond_wednes;
                             }
 
@@ -1205,11 +1183,7 @@ namespace Presentation
                             if (cabinetFirst_thurs != null)
                             {
                                 DateTime start = firstShift_start;
-                                while (start.CompareTo(secondShift_start) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
+                                List<string> timeInterval = createListIntervals(firstShift_start, secondShift_start, start, doctor, time);
                                 comboBoxTime.DataSource = timeInterval;
                                 cabForTicket = cabinetFirst_thurs;
                             }
@@ -1217,12 +1191,8 @@ namespace Presentation
                             {
                                 Cabinet cabinetSecond_thurs = cabinets.Find(cab => cab.cabinetPlan.secondShift_thurs.name == doctor.name);
                                 DateTime start = secondShift_start;
-                                while (start.CompareTo(secondShift_end) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
-                                comboBoxTime.DataSource = timeInterval;
+                                List<string> timeIntervall = createListIntervals(secondShift_start, secondShift_end, start, doctor, time);
+                                comboBoxTime.DataSource = timeIntervall;
                                 cabForTicket = cabinetSecond_thurs;
                             }
 
@@ -1232,11 +1202,7 @@ namespace Presentation
                             if (cabinetFirst_fri != null)
                             {
                                 DateTime start = firstShift_start;
-                                while (start.CompareTo(secondShift_start) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
+                                List<string> timeInterval = createListIntervals(firstShift_start, secondShift_start, start, doctor, time);
                                 comboBoxTime.DataSource = timeInterval;
                                 cabForTicket = cabinetFirst_fri;
                             }
@@ -1244,12 +1210,8 @@ namespace Presentation
                             {
                                 Cabinet cabinetSecond_fri = cabinets.Find(cab => cab.cabinetPlan.secondShift_fri.name == doctor.name);
                                 DateTime start = secondShift_start;
-                                while (start.CompareTo(secondShift_end) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
-                                comboBoxTime.DataSource = timeInterval;
+                                List<string> timeIntervall = createListIntervals(secondShift_start, secondShift_end, start, doctor, time);
+                                comboBoxTime.DataSource = timeIntervall;
                                 cabForTicket = cabinetSecond_fri;
                             }
 
@@ -1259,24 +1221,17 @@ namespace Presentation
                             if (cabinetFirst_satur != null)
                             {
                                 DateTime start = firstShift_start;
-                                while (start.CompareTo(secondShift_start) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
-                                comboBoxTime.DataSource = timeInterval;
+                                List<string> timeIntervall = createListIntervals(firstShift_start, secondShift_start, start, doctor, time);
+                                comboBoxTime.DataSource = timeIntervall;
                                 cabForTicket = cabinetFirst_satur;
                             }
                             else
                             {
                                 Cabinet cabinetSecond_satur = cabinets.Find(cab => cab.cabinetPlan.secondShift_satur.name == doctor.name);
                                 DateTime start = secondShift_start;
-                                while (start.CompareTo(secondShift_end) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
-                                comboBoxTime.DataSource = timeInterval;
+                                tickets = unitOfWork.Tickets.GetAll();
+                                List<string> timeIntervall = createListIntervals(secondShift_start, secondShift_end, start, doctor, time);
+                                comboBoxTime.DataSource = timeIntervall;
                                 cabForTicket = cabinetSecond_satur;
                             }
 
@@ -1286,11 +1241,7 @@ namespace Presentation
                             if (cabinetFirst_sun != null)
                             {
                                 DateTime start = firstShift_start;
-                                while (start.CompareTo(secondShift_start) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
+                                List<string> timeInterval = createListIntervals(firstShift_start, secondShift_start, start, doctor, time);
                                 comboBoxTime.DataSource = timeInterval;
                                 cabForTicket = cabinetFirst_sun;
                             }
@@ -1298,12 +1249,9 @@ namespace Presentation
                             {
                                 Cabinet cabinetSecond_sun = cabinets.Find(cab => cab.cabinetPlan.secondShift_sun.name == doctor.name);
                                 DateTime start = secondShift_start;
-                                while (start.CompareTo(secondShift_end) < 0)
-                                {
-                                    timeInterval.Add(start.ToShortTimeString());
-                                    start = start.AddMinutes(time);
-                                }
-                                comboBoxTime.DataSource = timeInterval;
+                                
+                                List<string> timeIntervall = createListIntervals(secondShift_start, secondShift_end, start, doctor, time);
+                                comboBoxTime.DataSource = timeIntervall;
                                 cabForTicket = cabinetSecond_sun;
                             }
 
@@ -1322,6 +1270,42 @@ namespace Presentation
         private void comboBoxTime_SelectedIndexChanged(object sender, EventArgs e)
         {
             patRecButton.Enabled = true;
+        }
+
+        private List<string> createListIntervals(DateTime shift_start, DateTime shift_end, DateTime start, Doctor doctor, int time)
+        {
+            List<String> timeIntervall = new List<String>();
+            while (start.CompareTo(shift_end) < 0)
+            {
+
+                Ticket ticketDoctor1 = new Ticket();
+
+                ticketDoctor1 = tickets.Find(tic => tic.doctor == doctor);
+                if (ticketDoctor1.time != start.ToShortTimeString())
+                    timeIntervall.Add(start.ToShortTimeString());
+                start = start.AddMinutes(time);
+            }
+
+
+            for (int i = 0; i < tickets.Count; i++)
+
+            {
+                start = shift_start;
+                while (start.CompareTo(shift_end) < 0)
+                {
+                    Ticket ticketDoctor = new Ticket();
+                    if (tickets[i].doctor == doctor)
+                    {
+                        ticketDoctor = tickets[i];
+                        string timer = ticketDoctor.time;
+                        if (ticketDoctor.time == start.ToShortTimeString())
+                            timeIntervall.Remove(start.ToShortTimeString());
+                    }
+                    start = start.AddMinutes(time);
+                }
+
+            }
+            return timeIntervall;
         }
     }
 }
