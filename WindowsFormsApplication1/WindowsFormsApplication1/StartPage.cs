@@ -333,8 +333,8 @@ namespace Presentation
             mainPanel.Visible = false;
             patCards = unitOfWork.PatientCards.GetAll();
             
-            listBoxPatientsVisit.ValueMember = "Id";
-            listBoxPatientsVisit.DisplayMember = "Name";
+           // listBoxPatientsVisit.ValueMember = "Id";
+           // listBoxPatientsVisit.DisplayMember = "Name";
             listBoxPatientsVisit.SelectedIndex = -1;
             tickets = unitOfWork.Tickets.GetAll();
             List<Ticket> todayPlan = new List<Ticket>();
@@ -348,7 +348,7 @@ namespace Presentation
                 }
             }
             listBoxPatientsVisit.DataSource = todayPlan;
-            
+            listBoxPatientsVisit.DisplayMember = "time";
         }
 
 
@@ -381,24 +381,29 @@ namespace Presentation
         }
 
 
-        private void listBox7_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listBox7_MouseDoubleClick(object sender, MouseEventArgs e) //прием пациента
         {
             if (listBoxPatientsVisit.SelectedItem != null)
             {
                 formPatList = new frmPat();
                 
-                DialogResult patResult = formPatList.ShowDialog(this);
-                if (patResult == DialogResult.Cancel)
-                    return;
-                PatientCard patCard = (PatientCard)listBoxPatientsVisit.SelectedItem;
+                
+                tickets = unitOfWork.Tickets.GetAll();
+                
+                Ticket ticket = (Ticket)listBoxPatientsVisit.SelectedItem;
+                patCards = unitOfWork.PatientCards.GetAll();
+                PatientCard patCard = patCards.Find(pC => pC == ticket.patCard);
                 formPatList.Text = patCard.name;
                 formPatList.labelFIO.Text = patCard.name;
-                formPatList.labelDate.Text= patCard.birthDate.ToString();
+                formPatList.labelDate.Text = patCard.birthDate.ToShortDateString();
                 diagnoses = unitOfWork.Diagnoses.GetAll();
                 formPatList.comboBox1.DataSource = diagnoses;
                 drugs = unitOfWork.Drugs.GetAll();
                 formPatList.comboBox2.DataSource = drugs;
-                
+                DialogResult patResult = formPatList.ShowDialog(this);
+                if (patResult == DialogResult.Cancel)
+                    return;
+
             }
         }
 

@@ -366,7 +366,7 @@
             // listBoxPatientsVisit
             // 
             this.listBoxPatientsVisit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxPatientsVisit.DisplayMember = "Name";
+            this.listBoxPatientsVisit.DisplayMember = "Time";
             this.listBoxPatientsVisit.FormattingEnabled = true;
             this.listBoxPatientsVisit.Location = new System.Drawing.Point(63, 51);
             this.listBoxPatientsVisit.Name = "listBoxPatientsVisit";
