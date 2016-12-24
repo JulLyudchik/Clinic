@@ -7,15 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace Presentation
 {
     public partial class frmTicket : Form
     {
+        public Ticket ticket;
         public frmTicket()
         {
-            InitializeComponent();
-            
+            InitializeComponent();         
         }
 
         private void frmTicket_FormClosing(object sender, FormClosingEventArgs e)
@@ -53,6 +55,30 @@ namespace Presentation
                 labelDocSpec.Text = main.comboBoxSpec.SelectedItem.ToString();
 
             }*/
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Word.Application app = new Word.Application();
+            Word.Document doc = app.Documents.Add();
+            doc.Select();
+            app.Selection.TypeParagraph();
+            app.Selection.TypeText(" ТАЛОН ");
+            app.Selection.TypeParagraph();
+            app.Selection.TypeText("на прием к врачу : ");
+            app.Selection.TypeParagraph();
+            app.Selection.TypeText("Имя пациента : " + ticket.patCard.name);
+            app.Selection.TypeParagraph();
+            app.Selection.TypeText("Специализация : " + ticket.specialization.name);
+            app.Selection.TypeParagraph();
+            app.Selection.TypeText("ФИО врача : " + ticket.doctor.name);
+            app.Selection.TypeParagraph();
+            app.Selection.TypeText("Дата : " + ticket.date.ToString("dd.MM.yyyy"));
+            app.Selection.TypeParagraph();
+            app.Selection.TypeText("Кабинет : " + ticket.cabinet.number);
+            app.Selection.TypeParagraph();
+            app.Selection.TypeText("Время : " + ticket.time);
+            app.Visible = true; 
         }
     }
 }

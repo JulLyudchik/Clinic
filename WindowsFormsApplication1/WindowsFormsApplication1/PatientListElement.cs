@@ -7,15 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
+using Controller;
+using System.Data.Entity;
 
 namespace Presentation
 {
     public partial class frmPat : Form
     {
+
         public frmPat()
         {
             InitializeComponent();
-            
+
+   
         }
 
         private void frmPat_FormClosing(object sender, FormClosingEventArgs e)
@@ -28,27 +33,31 @@ namespace Presentation
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) 
         {
-            
-           
+                      
             this.Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)//диагнозы
         {
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//добавить диагноз
         {
-            listBoxDiag.Items.Add(comboBox1.SelectedItem);
+            if (!listBoxDiag.Items.Contains(comboBox1.SelectedItem))
+            {
+                listBoxDiag.Items.Add(comboBox1.SelectedItem);
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//добавить лекарство
         {
-            listBoxDrug.Items.Add(comboBox2.SelectedItem);
-
+            if (!listBoxDrug.Items.Contains(comboBox2.SelectedItem))
+            {
+                listBoxDrug.Items.Add(comboBox2.SelectedItem);
+            }
         }
 
         private void listBoxDiag_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,12 +70,12 @@ namespace Presentation
             button5.Enabled = true;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)//удалить диагноз
         {
             listBoxDiag.Items.Remove(listBoxDiag.SelectedItem);
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)//удалить лекарство
         {
             listBoxDrug.Items.Remove(listBoxDrug.SelectedItem);
         }

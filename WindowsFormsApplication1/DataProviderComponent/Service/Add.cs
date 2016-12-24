@@ -106,12 +106,19 @@ namespace Controller.Service
             return "Загрузка на день определена";
 
         }
-        public static string add(Ticket ticket)
+        public static void add(Ticket ticket)
         {
 
             unitOfWork.Tickets.Add(ticket);
+            unitOfWork.Save();    
+
+        }
+        public static string add(Visit visit)
+        {
+
+            unitOfWork.Visits.Add(visit);
             unitOfWork.Save();
-            return "Пациент записан";
+            return "Запись в карточку сделана";
 
         }
     }

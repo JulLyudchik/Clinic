@@ -25,6 +25,7 @@ namespace Presentation
         List<PatientCard> patCards;
         List<CabinetPlan> cabPlans;
         List<Ticket> tickets;
+        List<Visit> visits;
         Cabinet cabForTicket = new Cabinet();
 
         UnitOfWork unitOfWork = new UnitOfWork();
@@ -48,6 +49,7 @@ namespace Presentation
             regStations = unitOfWork.RegStations.GetAll();
             doctors = unitOfWork.Doctors.GetAll();
             cabinets = unitOfWork.Cabinets.GetAll();
+            visits = unitOfWork.Visits.GetAll();
             patCards = unitOfWork.PatientCards.GetAll();
             cabPlans = unitOfWork.CabinetPlans.GetAll();
             tickets = unitOfWork.Tickets.GetAll();
@@ -327,7 +329,7 @@ namespace Presentation
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)//принять пациентов
         {
             visitPanel.Visible = true;
             mainPanel.Visible = false;
@@ -375,7 +377,8 @@ namespace Presentation
             ticket.specialization = spec;
             ticket.cabinet = cabForTicket;
             ticket.patCard = patCard;
-            MessageBox.Show(Controller.Service.Add.add(ticket));
+            formTicket.ticket = ticket;
+            Controller.Service.Add.add(ticket);
             tickets = unitOfWork.Tickets.GetAll();
 
         }
@@ -386,25 +389,71 @@ namespace Presentation
             if (listBoxPatientsVisit.SelectedItem != null)
             {
                 formPatList = new frmPat();
-                
-                
-                tickets = unitOfWork.Tickets.GetAll();
-                
-                Ticket ticket = (Ticket)listBoxPatientsVisit.SelectedItem;
+                Visit visit = new Visit();
+                visits = unitOfWork.Visits.GetAll();
                 patCards = unitOfWork.PatientCards.GetAll();
+                tickets = unitOfWork.Tickets.GetAll();     
+                Ticket ticket = (Ticket)listBoxPatientsVisit.SelectedItem;
+                
                 PatientCard patCard = patCards.Find(pC => pC == ticket.patCard);
                 formPatList.Text = patCard.name;
                 formPatList.labelFIO.Text = patCard.name;
                 formPatList.labelDate.Text = patCard.birthDate.ToShortDateString();
                 diagnoses = unitOfWork.Diagnoses.GetAll();
                 formPatList.comboBox1.DataSource = diagnoses;
-                drugs = unitOfWork.Drugs.GetAll();
+                drugs = unitOfWork.Drugs.GetAll();   
                 formPatList.comboBox2.DataSource = drugs;
+                
+                for (int i = 0; i < visits.Count; i++)
+                {
+                    /*if (ticket.patCard.visits.Contains(visits[i]))
+                    {*/
+                        DataGridViewRow row = new DataGridViewRow();
+                        formPatList.dataGridView1.Rows.Add(row);
+                        string date_t = Convert.ToString(visits[i].date);
+                        formPatList.dataGridView1.Rows[i].Cells[0].Value = date_t;
+                        string specialization_t = visits[i].speciazation.name;
+                        formPatList.dataGridView1.Rows[i].Cells[1].Value = specialization_t;
+                        string doctor_t = visits[i].doctor.name;
+                        formPatList.dataGridView1.Rows[i].Cells[2].Value = doctor_t;
+                        string diagnoses_t = "";
+                        for (int j = 0; j < visits[i].diagnoses.Count; j++)
+                        {
+                            diagnoses_t += visits[i].diagnoses[j].name + ", ";
+                        }
+                        formPatList.dataGridView1.Rows[i].Cells[3].Value = diagnoses_t;
+                        string drugs_t = "";
+                        for (int j = 0; j < visits[i].drugs.Count; j++)
+                        {
+                            drugs_t += visits[i].drugs[j].name + ", ";
+                        }
+                        formPatList.dataGridView1.Rows[i].Cells[4].Value = drugs_t;
+                    //}
+                }
+
                 DialogResult patResult = formPatList.ShowDialog(this);
                 if (patResult == DialogResult.Cancel)
                     return;
-                
-
+                visit.date = ticket.date;
+                visit.speciazation = ticket.specialization;
+                visit.doctor = ticket.doctor;
+                for (int i = 0; i < formPatList.listBoxDiag.Items.Count; i++)
+                {
+                    if (visit.diagnoses == null)
+                    {
+                        visit.diagnoses = new List<Diagnosis>();
+                    }
+                    visit.diagnoses.Add((Diagnosis)formPatList.listBoxDiag.Items[i]);
+                }
+                for (int i = 0; i < formPatList.listBoxDrug.Items.Count; i++)
+                {
+                    if (visit.drugs == null)
+                    {
+                        visit.drugs=new List<Drug>();
+                    }
+                    visit.drugs.Add((Drug)formPatList.listBoxDrug.Items[i]);
+                }
+                MessageBox.Show(Controller.Service.Add.add(visit));                   
             }
         }
 
