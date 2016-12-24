@@ -101,9 +101,9 @@
             this.bottomPanel.Controls.Add(this.docPanel);
             this.bottomPanel.Controls.Add(this.adminPanel);
             this.bottomPanel.Controls.Add(this.regPanel);
-            this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Controls.Add(this.visitPanel);
             this.bottomPanel.Controls.Add(this.mainPanel);
+            this.bottomPanel.Controls.Add(this.patientRecPanel);
             this.bottomPanel.Location = new System.Drawing.Point(0, 66);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(902, 520);

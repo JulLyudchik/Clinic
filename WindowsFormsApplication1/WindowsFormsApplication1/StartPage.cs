@@ -379,7 +379,9 @@ namespace Presentation
             ticket.patCard = patCard;
             formTicket.ticket = ticket;
             Controller.Service.Add.add(ticket);
+          
             tickets = unitOfWork.Tickets.GetAll();
+            
 
         }
 

@@ -13,6 +13,7 @@ namespace Model
         public Doctor doctor { get; set; }
         public Specialization specialization { get; set; }
         public Cabinet cabinet { get; set; }
-        public PatientCard patCard { get; set; }   
+        public PatientCard patCard { get; set; }
+        public bool check { get; set; }
     }
 }
