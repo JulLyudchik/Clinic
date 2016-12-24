@@ -1290,7 +1290,32 @@ namespace Presentation
 
         private void comboBoxTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            patRecButton.Enabled = true;
+            
+            patCards = unitOfWork.PatientCards.GetAll();
+            PatientCard patCard = (PatientCard)comboBoxNamePac.SelectedItem;
+            tickets = unitOfWork.Tickets.GetAll();
+            string time = comboBoxTime.SelectedItem.ToString();
+            int day = dateTimePicker1.Value.DayOfYear;
+            
+            Ticket ticket = new Ticket();
+            for (int i = 0; i < tickets.Count; i++)
+            {
+                if (tickets[i].patCard == patCard)
+                {
+                    ticket = tickets[i];
+                    int day1 = ticket.date.DayOfYear;
+                    if((ticket.time == time) && (day==day1 ))
+                    {
+                        MessageBox.Show("Пациент уже записан на это время!");
+                    }
+                    else
+                    {
+                        patRecButton.Enabled = true;
+                    }
+                }
+            }
+
+
         }
 
         private List<string> createListIntervals(DateTime shift_start, DateTime shift_end, DateTime start, Doctor doctor, int time)
@@ -1302,9 +1327,17 @@ namespace Presentation
                 Ticket ticketDoctor1 = new Ticket();
 
                 ticketDoctor1 = tickets.Find(tic => tic.doctor == doctor);
-                if (ticketDoctor1.time != start.ToShortTimeString())
+                if (ticketDoctor1 != null)
+                {
+                    if (ticketDoctor1.time != start.ToShortTimeString())
+                        timeIntervall.Add(start.ToShortTimeString());
+                    start = start.AddMinutes(time);
+                }
+                else
+                {
                     timeIntervall.Add(start.ToShortTimeString());
-                start = start.AddMinutes(time);
+                    start = start.AddMinutes(time);
+                }
             }
 
 
