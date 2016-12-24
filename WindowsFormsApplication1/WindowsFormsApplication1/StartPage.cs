@@ -26,6 +26,8 @@ namespace Presentation
         List<CabinetPlan> cabPlans;
         List<Ticket> tickets;
         List<Visit> visits;
+        List<Ticket> dayPlan;
+        
         Cabinet cabForTicket = new Cabinet();
 
         UnitOfWork unitOfWork = new UnitOfWork();
@@ -326,7 +328,15 @@ namespace Presentation
 
         private void button34_Click(object sender, EventArgs e) //сформировать отчет
         {
-
+            int n = 0;
+            for (int i = 0; i < listBoxPatientsVisit.Items.Count; i++)          
+            {
+                if (((Ticket)listBoxPatientsVisit.Items[i]).check == true)
+                {
+                    n++;
+                }
+            }
+            MessageBox.Show("Явился(ось) " + n + " пациет(ов). " + (listBoxPatientsVisit.Items.Count-n)+" пациент(ов) не пришёл(ло).");
         }
 
         private void button6_Click(object sender, EventArgs e)//принять пациентов
@@ -350,6 +360,7 @@ namespace Presentation
                 }
             }
             listBoxPatientsVisit.DataSource = todayPlan;
+            dayPlan = todayPlan;
             listBoxPatientsVisit.DisplayMember = "time";
         }
 
@@ -388,15 +399,25 @@ namespace Presentation
 
         private void listBox7_MouseDoubleClick(object sender, MouseEventArgs e) //прием пациента
         {
-            if (listBoxPatientsVisit.SelectedItem != null)
+            if (listBoxPatientsVisit.SelectedItem != null && ((Ticket)(listBoxPatientsVisit.SelectedItem)).check==false)
             {
+                
                 formPatList = new frmPat();
+                formPatList.Owner = this;
+                
                 Visit visit = new Visit();
                 visits = unitOfWork.Visits.GetAll();
                 patCards = unitOfWork.PatientCards.GetAll();
                 tickets = unitOfWork.Tickets.GetAll();     
                 Ticket ticket = (Ticket)listBoxPatientsVisit.SelectedItem;
-                
+                for (int i = 0; i < dayPlan.Count; i++)
+                {
+                    if (dayPlan[i] == ticket)
+                    {
+                        dayPlan[i].check = true;
+                    }
+                }
+                formPatList.dayPlan = dayPlan;
                 PatientCard patCard = patCards.Find(pC => pC == ticket.patCard);
                 formPatList.Text = patCard.name;
                 formPatList.labelFIO.Text = patCard.name;
@@ -432,7 +453,7 @@ namespace Presentation
                         formPatList.dataGridView1.Rows[i].Cells[4].Value = drugs_t;
                     //}
                 }
-
+ 
                 DialogResult patResult = formPatList.ShowDialog(this);
                 if (patResult == DialogResult.Cancel)
                     return;

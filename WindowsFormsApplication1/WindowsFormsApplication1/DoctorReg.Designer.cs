@@ -36,6 +36,7 @@
             // comboBoxSpecDoc
             // 
             this.comboBoxSpecDoc.DisplayMember = "Name";
+            this.comboBoxSpecDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSpecDoc.FormattingEnabled = true;
             this.comboBoxSpecDoc.Items.AddRange(new object[] {
             "Хирург",
@@ -46,7 +47,6 @@
             this.comboBoxSpecDoc.Name = "comboBoxSpecDoc";
             this.comboBoxSpecDoc.Size = new System.Drawing.Size(246, 21);
             this.comboBoxSpecDoc.TabIndex = 0;
-            this.comboBoxSpecDoc.Text = "Специализация";
             this.comboBoxSpecDoc.ValueMember = "Id";
             this.comboBoxSpecDoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpecDoc_SelectedIndexChanged);
             // 
@@ -71,6 +71,7 @@
             // comboBoxNameDoc
             // 
             this.comboBoxNameDoc.DisplayMember = "Name";
+            this.comboBoxNameDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNameDoc.Enabled = false;
             this.comboBoxNameDoc.FormattingEnabled = true;
             this.comboBoxNameDoc.Items.AddRange(new object[] {
@@ -81,7 +82,6 @@
             this.comboBoxNameDoc.Name = "comboBoxNameDoc";
             this.comboBoxNameDoc.Size = new System.Drawing.Size(246, 21);
             this.comboBoxNameDoc.TabIndex = 11;
-            this.comboBoxNameDoc.Text = "Имя";
             this.comboBoxNameDoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxNameDoc_SelectedIndexChanged);
             // 
             // frmDoctorReg

@@ -15,7 +15,7 @@ namespace Presentation
 {
     public partial class frmPat : Form
     {
-
+        public List<Ticket> dayPlan;
         public frmPat()
         {
             InitializeComponent();
@@ -35,7 +35,12 @@ namespace Presentation
 
         private void button1_Click(object sender, EventArgs e) 
         {
-                      
+            frmStart main = this.Owner as frmStart;
+            if (main != null)
+            {
+                main.listBoxPatientsVisit.DataSource = dayPlan;
+                main.listBoxPatientsVisit.DisplayMember = "time";
+            }
             this.Close();
         }
 
