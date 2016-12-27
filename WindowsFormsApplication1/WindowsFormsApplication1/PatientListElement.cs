@@ -41,7 +41,17 @@ namespace Presentation
                 main.listBoxPatientsVisit.DataSource = dayPlan;
                 main.listBoxPatientsVisit.DisplayMember = "time";
             }
-            this.Close();
+
+            if (listBoxDrug.Items.Count>0 && listBoxDiag.Items.Count>0)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля!");
+                this.DialogResult = DialogResult.None;
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)//диагнозы

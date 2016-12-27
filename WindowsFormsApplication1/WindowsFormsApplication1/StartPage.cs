@@ -392,7 +392,32 @@ namespace Presentation
             Controller.Service.Add.add(ticket);
           
             tickets = unitOfWork.Tickets.GetAll();
-            
+
+            patientRecPanel.Visible = true;
+            mainPanel.Visible = false;
+            // comboBoxNamePac.SelectedIndex = -1;
+            comboBoxNamePac.Text = "Имя пациента";
+            patCards = unitOfWork.PatientCards.GetAll();
+            comboBoxNamePac.DataSource = patCards;
+            comboBoxNamePac.DisplayMember = "Name";
+            comboBoxSpec.Enabled = false;
+            //comboBoxSpec.SelectedIndex = -1;
+            comboBoxSpec.Text = "Специализация";
+            specializations = unitOfWork.Specializations.GetAll();
+            comboBoxSpec.DataSource = specializations;
+            comboBoxNameDoc.Enabled = false;
+            //comboBoxNameDoc.SelectedIndex = -1;
+            comboBoxNameDoc.Text = "Имя врача";
+
+            // dataGridView1.Enabled = false;
+            comboBoxNameDoc.Enabled = false;
+            dateTimePicker1.Enabled = false;
+            comboBoxTime.Enabled = false;
+            patRecButton.Enabled = false;
+            DateTime dt = DateTime.Now;
+            TimeSpan ts = new TimeSpan(1,0,0,0);
+            dt.Subtract(ts);
+            dateTimePicker1.Value=dt;
 
         }
 
@@ -533,6 +558,7 @@ namespace Presentation
             {
                 case "КАБИНЕТЫ":
                     frmCabinet cabForm = new frmCabinet();
+                    cabForm.Owner = this;
                     cabForm.Text = "Создать кабинет";
                     cabForm.ControlBox = true;
                     Cabinet cabinet = new Cabinet();                    
@@ -770,22 +796,16 @@ namespace Presentation
                                 cabForm.dataGridView1.Rows[4].Cells[1].Value = cabinet.cabinetPlan.firstShift_fri.name;
                             if (cabinet.cabinetPlan.secondShift_fri != null)
                                 cabForm.dataGridView1.Rows[4].Cells[2].Value = cabinet.cabinetPlan.secondShift_fri.name;
-                            if (cabinet.cabinetPlan.firstShift_satur != null)
-                                cabForm.dataGridView1.Rows[5].Cells[1].Value = cabinet.cabinetPlan.firstShift_satur.name;
-                            if (cabinet.cabinetPlan.secondShift_satur != null)
-                                cabForm.dataGridView1.Rows[5].Cells[2].Value = cabinet.cabinetPlan.secondShift_satur.name;
-                            if (cabinet.cabinetPlan.firstShift_sun != null)
-                                cabForm.dataGridView1.Rows[6].Cells[1].Value = cabinet.cabinetPlan.firstShift_sun.name;
-                            if (cabinet.cabinetPlan.secondShift_sun != null)
-                                cabForm.dataGridView1.Rows[6].Cells[2].Value = cabinet.cabinetPlan.secondShift_sun.name;
+                            
                         }
 
-                        cabPlans.Remove(cabinet.cabinetPlan);
-                        specialization.cabinets.Remove(cabinet);
+                       
 
                         DialogResult cabResult = cabForm.ShowDialog(this);
                         if (cabResult == DialogResult.Cancel)
                             return;
+                        cabPlans.Remove(cabinet.cabinetPlan);
+                        specialization.cabinets.Remove(cabinet);
                         cabinet.number = cabForm.textBox1.Text;
                         cabinet.cabinetPlan = cabForm.cabinetPlan;
                         cabinet.doctors = cabForm.doctors;
@@ -1141,11 +1161,16 @@ namespace Presentation
             Specialization spec = (Specialization)comboBoxSpec.SelectedItem;
             int time = Convert.ToInt32(spec.time);
             // подгружаем кабинеты для нужной специализации
+            Cabinet cab1 = new Cabinet();
             cabinets = spec.cabinets;
+            foreach (Cabinet cab in cabinets)
+            {
+                cab1 = cabinets.Find(c => cab.doctors.Contains(doctor));
+            }
             // из подгруженных по списку каблист находим тот, у которого или фирст или секонд с определенным днем недели наш
             if (daySelected >= dayCheck)
             {
-                if (cabinets != null)
+                if (cab1 != null)
                 {
                     switch (day)
                     {
@@ -1247,43 +1272,11 @@ namespace Presentation
 
                             break;
                         case ("Saturday"):
-                            Cabinet cabinetFirst_satur = cabinets.Find(cab => cab.cabinetPlan.firstShift_satur.name == doctor.name);
-                            if (cabinetFirst_satur != null)
-                            {
-                                DateTime start = firstShift_start;
-                                List<string> timeIntervall = createListIntervals(firstShift_start, secondShift_start, start, doctor, time);
-                                comboBoxTime.DataSource = timeIntervall;
-                                cabForTicket = cabinetFirst_satur;
-                            }
-                            else
-                            {
-                                Cabinet cabinetSecond_satur = cabinets.Find(cab => cab.cabinetPlan.secondShift_satur.name == doctor.name);
-                                DateTime start = secondShift_start;
-                                tickets = unitOfWork.Tickets.GetAll();
-                                List<string> timeIntervall = createListIntervals(secondShift_start, secondShift_end, start, doctor, time);
-                                comboBoxTime.DataSource = timeIntervall;
-                                cabForTicket = cabinetSecond_satur;
-                            }
+                            MessageBox.Show("Поликлиника не работает");
 
                             break;
                         case ("Sunday"):
-                            Cabinet cabinetFirst_sun = cabinets.Find(cab => cab.cabinetPlan.firstShift_sun.name == doctor.name);
-                            if (cabinetFirst_sun != null)
-                            {
-                                DateTime start = firstShift_start;
-                                List<string> timeInterval = createListIntervals(firstShift_start, secondShift_start, start, doctor, time);
-                                comboBoxTime.DataSource = timeInterval;
-                                cabForTicket = cabinetFirst_sun;
-                            }
-                            else
-                            {
-                                Cabinet cabinetSecond_sun = cabinets.Find(cab => cab.cabinetPlan.secondShift_sun.name == doctor.name);
-                                DateTime start = secondShift_start;
-                                
-                                List<string> timeIntervall = createListIntervals(secondShift_start, secondShift_end, start, doctor, time);
-                                comboBoxTime.DataSource = timeIntervall;
-                                cabForTicket = cabinetSecond_sun;
-                            }
+                            MessageBox.Show("Поликлиника не работает");
 
                             break;
                     }
